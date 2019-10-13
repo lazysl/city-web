@@ -1,0 +1,49 @@
+.plan .checkCon .checkItem{margin-bottom: 60px}
+.plan .checkCon .checkItem .itemTime {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 10px
+}
+.plan .checkCon .checkItem .itemTime span{
+    overflow: hidden;
+    font-size: 16px;
+}
+.plan .checkCon .checkItem .itemTime input{
+    width: 50px;
+    height: 28px;
+    border: solid 1px #e4e4e4;
+    resize: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    color: #fff;
+    text-align: center;
+}
+.plan .checkCon .checkItem .item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 10px;
+}
+.plan .checkCon .checkItem .item p{
+    overflow: hidden;
+    font-size: 16px;
+}
+.plan .checkCon .checkItem .item .input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #e4e4e4;
+    min-width: 300px;
+}
+.plan .checkCon .checkItem .item .input.inputTime {
+    min-width: 50px;
+    width: 50px;
+    padding: 5px 10px;
+    margin-right: 10px;
+}

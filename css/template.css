@@ -1,0 +1,450 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+html {
+    font-size: 62.5%;
+}
+ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input, textarea {
+    -webkit-appearance: none;
+    outline: medium;
+}
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+    box-shadow:none;
+    -webkit-text-fill-color: transparent;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+    vertical-align: middle;
+}
+q, blockquote {
+    quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none;
+}
+img {
+    overflow: hidden;
+    display: block;
+    border: none;
+}
+a {
+    text-decoration: none;
+    outline: none;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Microsoft YaHei", arial, sans-serif;
+    color: #fff;
+    background: #292929;
+    width: 100%;
+}
+#body{
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: -moz-linear-gradient(-135deg, #645870 0%, #292929 30%);
+    background: -webkit-linear-gradient(-135deg, #645870 0%, #292929 30%);
+    background: -o-linear-gradient(-135deg, #645870 0%, #292929 30%);
+    background: -ms-linear-gradient(-135deg, #645870 0%, #292929 30%);
+    background: linear-gradient(135deg, #645870 0%, #292929 30%);
+}
+#header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+#header .logo{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+}
+#header .logo p{
+    overflow: hidden;
+    width: 56px;
+    height: 56px;
+    border-radius: 6px;
+    background: #fff;
+    margin-right: 20px;
+}
+#header .logo span{
+    overflow: hidden;
+    font-size: 36px;
+}
+#nav{
+    overflow: hidden;
+    padding: 0 30px;
+    width: 220px;
+    position: fixed;
+    top: 120px;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+}
+#nav ul li{
+    overflow: hidden;
+    display: block;
+    padding: 15px 0;
+}
+#nav ul li span{
+    overflow: hidden;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: #fff;
+    margin-right: 20px;
+}
+#nav ul li p{
+    overflow: hidden;
+    display: inline-block;
+    color: #fff;
+    font-size: 22px;
+    line-height: 36px;
+}
+#content{
+    padding: 120px 20px 0 240px;
+    position: relative;
+    z-index: 1;
+}
+.layout{
+    background: rgba(0,0,0,.5);
+    padding: 10px 30px;
+}
+.title{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
+.title span{
+    overflow: hidden;
+    font-size: 22px;
+    color: #00deff;
+}
+.btn{
+    overflow: hidden;
+    background: #00deff;
+    border-radius: 6px;
+    padding: 5px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.search{
+    overflow: hidden;
+    width: 150px;
+    height: 30px;
+    border: solid 1px #e4e4e4;
+    border-radius: 19px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+    margin: 10px 0;
+}
+.search img{width: 20px}
+.search input{
+    overflow: hidden;
+    border: 0;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #4e3030;
+    width: 70px;
+}
+.search input::placeholder,.search input::-moz-placeholder,.search input::-webkit-input-placeholder,.search input:-ms-input-placeholder{
+    color: #4e3030;
+}
+.select {
+    min-width: 150px;
+    border: solid 1px #e4e4e4;
+    position: relative;
+}
+.select span{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #575961;
+    cursor: pointer;
+    background: transparent;
+    padding: 0 10px;
+}
+.select i{
+    overflow: hidden;
+    display: block;
+    float: right;
+    background: url("../images/template/icon-down.png") no-repeat;
+    width: 20px;
+    height: 20px;
+}
+.select ul{
+    width: 100%;
+    border: solid 1px #e4e4e4;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    z-index: 3;
+    display: none;
+    background: #fff;
+}
+.select ul li{
+    display: block;
+    width: 100%;
+    margin-bottom: 0;
+    border: none;
+}
+.checkList {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 10px;
+}
+.checkList p{font-size: 16px}
+.checkList .checkbox {
+    display: none;
+    width: 18px!important;
+    height: 18px!important;
+    border: solid 1px #80878b;
+    margin-top: 0!important;
+    line-height: normal!important;
+    padding: 0!important;
+    background: transparent;
+}
+.checkList .checkbox + label ,.checkbox{
+    color: transparent;
+    border: solid 1px #fff;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    line-height: 18px;
+    margin-right: 10px;
+    background: transparent;
+}
+.checkList .checkbox + label img{margin: 2px auto 0;display: none}
+.checkList .checkbox:checked + label {
+    color: transparent;
+    border: solid 1px #fff;
+}
+.checkList .checkbox:checked + label img{display: block}
+.checkList .radio{
+    color: transparent;
+    border: solid 1px #fff;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    border-radius: 100%;
+    line-height: 18px;
+    margin-right: 10px;
+    background: transparent;
+    position: relative;
+}
+.checkList input[type="radio"]:checked{
+    color: transparent;
+    border: solid 1px #fff;
+}
+.checkList input[type="radio"]:checked::after{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    top: 3px;
+    left: 3px;
+    border-radius: 100%;
+}
+.tcHide{
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1111;
+    display: none;
+}
+.masking {
+    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1112;
+    background: rgba(0, 0, 0, .8);
+    cursor: pointer;
+}
+.tcHide .tcCon{
+    overflow: hidden;
+    position: relative;
+    z-index: 1113;
+    margin: 0 auto;
+    top: 15%;
+    width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+.tcHide .tcCon .off{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 24px;
+    cursor: pointer;
+}
+.tcHide .tcCon .tcTit {
+    overflow: hidden;
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0 20px;
+}
+.tcHide .tcCon .itemList{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px 0 0 50px;
+}
+.tcHide .tcCon .itemList span{
+    overflow: hidden;
+    font-size: 16px;
+    color: #333;
+}
+.tcHide .tcCon .itemList span em{
+    display: inline-block;
+    width: 140px;
+}
+.tcHide .tcCon .itemList input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #e4e4e4;
+    width: 50%;
+}
+.tcHide .tcCon .itemBtn {
+    overflow: hidden;
+    margin: 30px 0;
+    text-align: center
+}
+.tcHide .tcCon .itemBtn a{
+    overflow: hidden;
+    margin: 0 auto;
+    display: inline-block;
+}

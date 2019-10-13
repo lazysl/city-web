@@ -1,0 +1,88 @@
+.management .manageCon{margin: 0 10px}
+.management .manageCon .itemTit{
+    overflow: hidden;
+    font-size: 16px;
+}
+.management .manageCon .manageItem {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 15px 10px 30px;
+}
+.management .manageCon .manageItem .itemCon{
+    overflow: hidden;
+    width: 60%;
+}
+.management .manageCon .manageItem .itemCon .itemList{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.management .manageCon .manageItem .item{
+    overflow: hidden;
+    width: 40%;
+}
+.management .manageCon .manageItem .item p{
+    overflow: hidden;
+    font-size: 16px;
+    text-align: center;
+    line-height: 20px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.management .manageCon .manageItem .item p img{display: inline-block;margin-left: 10px}
+.management .manageCon .manageItem .item ul{
+    border: solid 1px #e4e4e4;
+    min-height: 400px;
+}
+.management .manageCon .manageItem .itemCon .itemList .item ul{min-height: 180px;}
+.management .manageCon .manageItem .item li{
+    overflow: hidden;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border-bottom: solid 1px #fff;
+}
+.management .manageCon .manageItem .itemPic{margin: 0 20px}
+.management .manageCon .manageItem .itemPic img{width: 24px}
+.management .manageCon .manageItem .itemList1{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 0 0 0;
+    width: 100%;
+}
+.management .manageCon .manageItem .itemList1 span{
+    overflow: hidden;
+    font-size: 16px;
+    width: 150px;
+}
+.management .manageCon .manageItem .itemList1.account span{
+    margin-left: 50px;
+    width: 100px;
+}
+.management .manageCon .manageItem .itemList1 input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #e4e4e4;
+    margin-right: 20px;
+    min-width: 150px;
+}
+.management .manageCon .manageItem .itemList1 input.width{
+    min-width: 50px;
+    width: 50px;
+    text-align: center;
+}
+.management .manageCon .manageItem .itemList1 .checkList{margin: 15px 0;width: 100%}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>考评模型-智能考评系统</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="wap-font-scale" content="no">
+    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/evaluationModel.css">
+    <script src="js/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <div id="body"></div>
+    <div id="header">
+        <div class="logo">
+            <p></p>
+            <span>智能考评系统</span>
+        </div>
+    </div>
+    <div id="nav">
+        <ul>
+            <li><a href="evaluationObject.html"><span></span><p>考评对象</p></a></li>
+            <li><a href="evaluationModel.html"><span></span><p>考评模型</p></a></li>
+            <li><a href="evaluationPlan.html"><span></span><p>考评计划</p></a></li>
+            <li><a href="management.html"><span></span><p>管理</p></a></li>
+        </ul>
+    </div>
+    <div id="content" class="model">
+        <div class="layout">
+            <div class="title">
+                <span>考评模型管理</span>
+                <a class="btn" onclick="$('#addObject').show()">保存</a>
+            </div>
+            <div class="modelCon">
+                <div class="item">
+                    <div class="itemCon"><p>日评模型</p></div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="start1"><label for="start1"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>启用</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="day1"><label for="day1"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>可用性好评，达标条件：></p>
+                        <input class="input" type="text">
+                        <p>%</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="day2"><label for="day2"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>性能考评，达标条件：<</p>
+                        <input class="input" type="text">
+                        <p>个性能故障</p>
+                    </div>
+                    <div class="itemCon">
+                        <div class="checkList">
+                            <input type="checkbox" class="checkbox" id="day3"><label for="day3"><img src="images/template/icon-check.png" alt=""></label>
+                            <p>数据质量考评，达标条件：></p>
+                            <input class="input" type="text">
+                            <p>分（综合评分）</p>
+                        </div>
+                        <div class="modelList">
+                            <ul>
+                                <li>
+                                    <i></i>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="day4"><label for="day4"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>逻辑检查评分：></p>
+                                        <input class="input" type="text">
+                                        <p>分</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemCon"><p>周评模型</p></div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="start2"><label for="start2"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>启用</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="week1"><label for="week1"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>可用性好评，达标条件：></p>
+                        <input class="input" type="text">
+                        <p>%</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="week2"><label for="week2"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>性能考评，达标条件：<</p>
+                        <input class="input" type="text">
+                        <p>个性能故障</p>
+                    </div>
+                    <div class="itemCon">
+                        <div class="checkList">
+                            <input type="checkbox" class="checkbox" id="week3"><label for="week3"><img src="images/template/icon-check.png" alt=""></label>
+                            <p>数据质量考评，达标条件：></p>
+                            <input class="input" type="text">
+                            <p>分（综合评分）</p>
+                        </div>
+                        <div class="modelList">
+                            <ul>
+                                <li>
+                                    <i></i>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="week4"><label for="week4"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>逻辑检查评分：></p>
+                                        <input class="input" type="text">
+                                        <p>分</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemCon"><p>月评模型</p></div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="start3"><label for="start3"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>启用</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="mount1"><label for="mount1"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>可用性好评，达标条件：></p>
+                        <input class="input" type="text">
+                        <p>%</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="mount2"><label for="mount2"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>性能考评，达标条件：<</p>
+                        <input class="input" type="text">
+                        <p>个性能故障</p>
+                    </div>
+                    <div class="itemCon">
+                        <div class="checkList">
+                            <input type="checkbox" class="checkbox" id="mount3"><label for="mount3"><img src="images/template/icon-check.png" alt=""></label>
+                            <p>数据质量考评，达标条件：></p>
+                            <input class="input" type="text">
+                            <p>分（综合评分）</p>
+                        </div>
+                        <div class="modelList">
+                            <ul>
+                                <li>
+                                    <i></i>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="mount4"><label for="mount4"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>逻辑检查评分：></p>
+                                        <input class="input" type="text">
+                                        <p>分</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="itemCon"><p>日评模型</p></div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="start4"><label for="start1"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>启用</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="year1"><label for="year1"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>可用性好评，达标条件：></p>
+                        <input class="input" type="text">
+                        <p>%</p>
+                    </div>
+                    <div class="checkList">
+                        <input type="checkbox" class="checkbox" id="year2"><label for="year2"><img src="images/template/icon-check.png" alt=""></label>
+                        <p>性能考评，达标条件：<</p>
+                        <input class="input" type="text">
+                        <p>个性能故障</p>
+                    </div>
+                    <div class="itemCon">
+                        <div class="checkList">
+                            <input type="checkbox" class="checkbox" id="year3"><label for="year3"><img src="images/template/icon-check.png" alt=""></label>
+                            <p>数据质量考评，达标条件：></p>
+                            <input class="input" type="text">
+                            <p>分（综合评分）</p>
+                        </div>
+                        <div class="modelList">
+                            <ul>
+                                <li>
+                                    <i></i>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="year4"><label for="year4"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>逻辑检查评分：></p>
+                                        <input class="input" type="text">
+                                        <p>分</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

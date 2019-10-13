@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>考评对象-智能考评系统</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="wap-font-scale" content="no">
+    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/evaluationObject.css">
+    <script src="js/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <div id="body"></div>
+    <div id="header">
+        <div class="logo">
+            <p></p>
+            <span>智能考评系统</span>
+        </div>
+    </div>
+    <div id="nav">
+        <ul>
+            <li><a href="evaluationObject.html"><span></span><p>考评对象</p></a></li>
+            <li><a href="evaluationModel.html"><span></span><p>考评模型</p></a></li>
+            <li><a href="evaluationPlan.html"><span></span><p>考评计划</p></a></li>
+            <li><a href="management.html"><span></span><p>管理</p></a></li>
+        </ul>
+    </div>
+    <div id="content" class="object">
+        <div class="layout">
+            <div class="title">
+                <span>考评对象管理</span>
+                <a class="btn" onclick="$('#addObject').show()">新增考评对象</a>
+            </div>
+            <div class="navTree">
+                <div class="itemList">
+                    <div class="itemTit">
+                        <div class="item click"><em class="open"></em><span>大数据治理应用平台</span></div>
+                        <div class="item right">
+                            <img onclick="$('#addMonitor').show()"  src="images/template/icon-add.png"/>
+                            <img src="images/template/icon-change.png"/>
+                            <img src="images/template/icon-del.png"/>
+                        </div>
+                    </div>
+                    <div class="itemCon">
+                        <ul>
+                            <li>
+                                <div class="item"><i></i><img src="images/windows.png"/><p>大数据治理Windows服务器</p></div>
+                                <img src="images/template/icon-del.png"/>
+                            </li>
+                            <li>
+                                <div class="item"><i></i><img src="images/windows.png"/><p>大数据治理Windows服务器</p></div>
+                                <img src="images/template/icon-del.png"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="itemList">
+                    <div class="itemTit">
+                        <div class="item click"><em class="open"></em><span>大数据治理应用平台</span></div>
+                        <div class="item right">
+                            <img src="images/template/icon-add.png"/>
+                            <img src="images/template/icon-change.png"/>
+                            <img src="images/template/icon-del.png"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="itemList">
+                    <div class="itemTit">
+                        <div class="item click"><em class="open"></em><span>大数据治理应用平台</span></div>
+                        <div class="item right">
+                            <img src="images/template/icon-add.png"/>
+                            <img src="images/template/icon-change.png"/>
+                            <img src="images/template/icon-del.png"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增考评对象-->
+<div class="tcHide" id="addObject">
+    <div class="masking"></div>
+    <div class="tcCon">
+        <img onclick="$('#addObject').hide()" class="off" src="images/template/icon-off.png"/>
+        <div class="tcTit"><span>新增考评对象</span></div>
+        <div class="itemList"><span>对象名称：</span><input type="text" placeholder="请输入"></div>
+        <div class="itemBtn"><a class="btn">保存</a></div>
+    </div>
+</div>
+<!--添加监视器-->
+<div class="tcHide" id="addMonitor">
+    <div class="masking"></div>
+    <div class="tcCon">
+        <img onclick="$('#addMonitor').hide()" class="off" src="images/template/icon-off.png"/>
+        <div class="tcTit"><span>新增考评对象</span></div>
+        <div class="monitorCon">
+            <div class="monitorTit">
+                <span>刷选监视器：</span>
+                <div class="select">
+                    <span id="selected">数据库1<i></i></span>
+                    <ul>
+                        <li name="数据库1"><span>数据库1</span></li>
+                        <li name="数据库2"><span>数据库2</span></li>
+                        <li name="数据库3"><span>数据库3</span></li>
+                    </ul>
+                </div>
+                <div class="search">
+                    <img src="images/template/icon-search.png"/>
+                    <input type="text" placeholder="搜索"/>
+                </div>
+            </div>
+            <div class="monitorItem">
+                <div class="item">
+                    <ul>
+                        <li>数据库1</li>
+                        <li>数据库2</li>
+                    </ul>
+                </div>
+                <div class="itemPic">
+                    <img src="images/template/icon-left.png"/>
+                    <img src="images/template/icon-right.png"/>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li>数据库3</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="itemBtn"><a class="btn">保存</a></div>
+    </div>
+</div>
+<!--接口地址-->
+<div class="tcHide" id="addApi">
+    <div class="masking"></div>
+    <div class="tcCon">
+        <img onclick="$('#addApi').hide()" class="off" src="images/template/icon-off.png"/>
+        <div class="tcTit"><span>新增接口地址</span></div>
+        <div class="itemList"><span><em>物联网设备监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
+        <div class="itemList"><span><em>信息安全监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
+        <div class="itemBtn"><a class="btn">保存</a></div>
+    </div>
+</div>
+</body>
+<script src="js/public.js"></script>
+<script>
+    $('.itemTit .click').click(function () {
+        $(this).parents(".itemTit").siblings(".itemCon").slideToggle();
+        $(this).parents(".itemTit").find("em").toggleClass("close")
+    })
+</script>
+</html>

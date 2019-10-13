@@ -1,0 +1,113 @@
+#main{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.object .navTree{
+    overflow: hidden;
+}
+.object .navTree .itemList{
+    overflow: hidden;
+    margin: 30px 0;
+}
+.object .navTree .itemList .itemTit{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.object .navTree .itemList .itemTit .item{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.object .navTree .itemList .itemTit .item.right{
+    justify-content: flex-end;
+}
+.object .navTree .itemList .itemTit .item.right img{ margin-left: 10px}
+.object .navTree .itemList .itemTit .item span{
+    overflow: hidden;
+    font-size: 16px;
+}
+.object .navTree .itemList .itemTit .item em{
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background: url("../images/template/‭icon-open.png") no-repeat;
+}
+.object .navTree .itemList .itemTit .item em.close{
+    background: url("../images/template/icon-close.png") no-repeat;
+}
+.object .navTree .itemList .itemCon{
+    overflow: hidden;
+    border-left: dashed 1px #fff;
+    margin-left: 9px;
+    display: none;
+}
+.object .navTree .itemList .itemCon li{
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0 0;
+}
+.object .navTree .itemList .itemCon li .item{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.object .navTree .itemList .itemCon li .item i{
+    overflow: hidden;
+    width: 30px;
+    height: 1px;
+    border-bottom: dashed 1px #fff;
+    margin: 0 9px;
+}
+.object .navTree .itemList .itemCon li .item img{margin-right: 10px}
+.object .navTree .itemList .itemCon li .item p{
+    overflow: hidden;
+    font-size: 16px;
+}
+.tcHide .tcCon .monitorCon{margin-left: 30px}
+.tcHide .tcCon .monitorCon .monitorTit{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.tcHide .tcCon .monitorCon .monitorTit span{
+    overflow: hidden;
+    font-size: 16px;
+    color: #333;
+}
+.tcHide .tcCon .monitorCon .monitorTit .search{margin-left: 20px}
+.tcHide .tcCon .monitorCon .monitorItem {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 10px 15px;
+}
+.tcHide .tcCon .monitorCon .monitorItem .item{
+    overflow: hidden;
+    border: solid 1px #e4e4e4;
+    width: 40%;
+    min-height: 180px;
+}
+.tcHide .tcCon .monitorCon .monitorItem .item li{
+    overflow: hidden;
+    background: #e1edff;
+    color: #333;
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border-bottom: solid 1px #e4e4e4;
+}
+.tcHide .tcCon .monitorCon .monitorItem .item li:last-child{border-bottom: none}
+.tcHide .tcCon .monitorCon .monitorItem .itemPic{margin: 0 20px}
+.tcHide .tcCon .monitorCon .monitorItem .itemPic img{width: 24px}
