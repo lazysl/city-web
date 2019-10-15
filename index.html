@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>智能考评系统</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="wap-font-scale" content="no">
+    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<div id="main">
+    <div id="body"></div>
+    <div id="header">
+        <div class="logo">
+            <a href="./index.html">
+                <p></p>
+                <span></span>
+            </a>
+        </div>
+        <img class="quit" src="images/template/icon-quit.png"/>
+    </div>
+    <div id="nav">
+        <ul>
+            <li class="checked"><a href="evaluationObject.html"><span class="ic1"></span><p>考评对象</p></a></li>
+            <li><a href="evaluationModel.html"><span class="ic2"></span><p>考评模型</p></a></li>
+            <li><a href="evaluationPlan.html"><span class="ic3"></span><p>考评计划</p></a></li>
+            <li><a href="management.html"><span class="ic4"></span><p>管理</p></a></li>
+        </ul>
+    </div>
+    <div id="content" class="index">
+        <div class="leftCon">
+            <div class="conList">
+                <ul>
+                    <li>
+                        <div class="layout">
+                            <div class="item"><img src="images/index/icon1.png"/></div>
+                            <div class="item"><p>可用预告报警数</p><span>10</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="layout">
+                            <div class="item"><img src="images/index/icon2.png"/></div>
+                            <div class="item"><p>故障报警数</p><span>10</span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="layout">
+                            <div class="item"><img src="images/index/icon3.png"/></div>
+                            <div class="item"><p>待办</p><span>10</span></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="chartCon">
+                <div class="layout">
+                    <div class="chartTit">
+                        <div class="title"><span>考评输出表</span></div>
+                        <div class="item">
+                            <a class="color1">今天</a>
+                            <a class="color2">本周</a>
+                            <a class="color3">本月</a>
+                            <a class="color4">本年度</a>
+                        </div>
+                    </div>
+                    <div class="chartTit"><div class="title"><span>整体达标率趋势报表</span></div></div>
+                    <div id="polyline"></div>
+                </div>
+            </div>
+            <div class="tabCon">
+                <div class="layout">
+                    <div class="title"><span>最新告警</span></div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>告警等级</th>
+                                <th>设备名称</th>
+                                <th>告警信息</th>
+                                <th>告警信息</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><span class="red"></span></td>
+                                <td class="para">+12V</td>
+                                <td>否</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td><span class="green"></span></td>
+                                <td class="para">+12V</td>
+                                <td>否</td>
+                                <td>1</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rightCon">
+            <div class="circleCon">
+                <div class="layout">
+                    <div class="title"><span>整体达标率趋势报表</span></div>
+                    <div class="circleChart" id="0"></div>
+                </div>
+            </div>
+
+            <div class="rectCon">
+                <div class="layout">
+                    <div class="title"><span>考评达标排行</span></div>
+                    <div id="rect"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/echarts.min.js"></script>
+<script src="js/circleChart.js"></script>
+<script>
+    /*折线图*/
+    $(function () {
+        var myChart = echarts.init(document.getElementById('polyline'));
+        var data = [["0",100,10],["200",90,40],["300",34,74],["400",65,83],["500",89,100],["600",100,100],["700",100,100],["800",90,40],["900",90,40],["1000",90,40]];
+        console.log(data)
+        var dateList = data.map(function (item) {
+            return item[0];
+        });
+        var valueList = data.map(function (item) {
+            return item[1];
+        });
+        var valueList2 = data.map(function (item) {
+            return item[2];
+        });
+        option = {
+            tooltip: {
+                trigger: 'axis',
+            },
+            grid: {
+                left: '4.5%',
+                right: '8%',
+                bottom: '3%',
+                top:"4%",
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    axisLine: {
+                        lineStyle: {
+                            color: '#4f5459',
+                            width: .5,
+                        }
+                    },
+                    axisTick: {
+                        show: true,
+                        alignWithLabel: true,
+                        inside: true,
+                        length: 8,
+                        lineStyle: {
+                            width: 1,
+                            color: '#4f5459'
+                        }
+                    },
+                    axisLabel: {
+                        color: '#989a9c',
+                        fontSize: 14,
+                    },
+                    data: dateList,
+                },
+            ],
+            yAxis: [{
+                type: 'value',
+                splitLine: {
+                    show:false,
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#4f5459',
+                        width: .5,
+                    }
+                },
+                axisTick: {
+                    show: true,
+                    alignWithLabel: true,
+                    inside: true,
+                    length: 8,
+                    lineStyle: {
+                        width: 1,
+                        color: '#4f5459'
+                    }
+                },
+                axisLabel: {
+                    color: '#989a9c',
+                    fontSize: 14
+                },
+            }],
+            series: [{
+                name: '实际值',
+                type: 'line',
+                symbol: 'none',
+                animationDuration: 2000,
+                lineStyle: {
+                    normal: {
+                        color: "#00e6c8",
+                        width: 2,
+                    }
+                },
+                data: valueList,
+                label: {
+                    normal: {
+                        show: true,
+                        color: '#fff',
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#00e6c8'
+                        }, {
+                            offset: 1,
+                            color: '#7c3ffb'
+                        }])
+                    }
+                },
+            }, {
+                name: '理论值',
+                type: 'line',
+                symbol: 'none',
+                animationDuration: 2000,
+                lineStyle: {
+                    normal: {
+                        color: "#845ec2",
+                        type: 'dashed',
+                        opacity:0
+                    }
+                },
+                data: valueList2,
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: '#b47efb'
+                        }, {
+                            offset: 1,
+                            color: '#7c3ffb'
+                        }])
+                    }
+                },
+            }]
+        };
+        myChart.setOption(option);
+    })
+    /*进度*/
+    $(".circleChart#0").circleChart({
+        size: 170,
+        value: 30,
+        innerColorStart: "#00e6c8",
+        innerColorEnd: "#00e6c8",
+        color: "#00e6c8",
+        backgroundColor: "#454755",
+        text: 0,
+        textSize: 22,
+        textWeight: 600,
+        onDraw: function (el, circle) {
+            circle.text(Math.round(circle.value) + "%");
+        }
+    });
+    /*柱状图*/
+    $(function () {
+        var myChart = echarts.init(document.getElementById('rect'));
+        var data = [["0",100,10],["200",90,40],["300",34,74],["400",65,83]];
+        var myColor = ['#ae7efa','#00e6c8'];
+        option = {
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01],
+                axisLabel: {
+                    color: '#989a9c',
+                    fontSize: 14,
+                },
+                splitLine: {
+                    show:false,
+                },
+            },
+            yAxis: {
+                type: 'category',
+                axisLabel: {
+                    color: '#989a9c',
+                    fontSize: 14
+                },
+                offset: 80,
+            },
+            series: [
+                {
+                    name: '2011年',
+                    type: 'bar',
+                    data: [182, 234, 290, 104, 131, 302],
+                    itemStyle: {
+                        normal: {
+                            color: function(params) {
+                                var num = myColor.length;
+                                return myColor[params.dataIndex % num]
+                            }
+                        }
+                    },
+                    barWidth:40
+                },
+                /*{
+                    name: '2012年',
+                    type: 'bar',
+                    data: [19325, 23438, 31000, 121594, 134141, 681807],
+                    itemStyle: {
+                        normal: {
+                            color: "#00e6c8",
+                        }
+                    },
+                    barWidth:40
+                }*/
+            ]
+        };
+        myChart.setOption(option);
+    })
+</script>
+</html>

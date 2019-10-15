@@ -135,7 +135,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 body {
     font-family: "Microsoft YaHei", arial, sans-serif;
-    color: #fff;
+    color: #a9a8b2;
     background: #292929;
     width: 100%;
 }
@@ -144,11 +144,11 @@ body {
     z-index: 0;
     width: 100%;
     height: 100%;
-    background: -moz-linear-gradient(-135deg, #645870 0%, #292929 30%);
-    background: -webkit-linear-gradient(-135deg, #645870 0%, #292929 30%);
-    background: -o-linear-gradient(-135deg, #645870 0%, #292929 30%);
-    background: -ms-linear-gradient(-135deg, #645870 0%, #292929 30%);
-    background: linear-gradient(135deg, #645870 0%, #292929 30%);
+    background: -moz-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
+    background: -webkit-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
+    background: -o-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
+    background: -ms-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
+    background: linear-gradient(135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
 }
 #header{
     width: 100%;
@@ -157,30 +157,39 @@ body {
     left: 0;
     z-index: 99;
 }
+#header .quit{
+    position: absolute;
+    right: 0;
+    top:0;
+}
 #header .logo{
     overflow: hidden;
+    width: 100%;
+    padding: 40px;
+}
+#header .logo a{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
-    padding: 30px;
 }
 #header .logo p{
     overflow: hidden;
-    width: 56px;
-    height: 56px;
+    width: 40px;
+    height: 40px;
     border-radius: 6px;
     background: #fff;
     margin-right: 20px;
 }
 #header .logo span{
     overflow: hidden;
-    font-size: 36px;
+    background: url("../images/template/logo.png") no-repeat;
+    width: 240px;
+    height: 30px;
 }
 #nav{
     overflow: hidden;
-    padding: 0 30px;
-    width: 220px;
+    padding: 0 40px;
+    width: 255px;
     position: fixed;
     top: 120px;
     left: 0;
@@ -190,32 +199,44 @@ body {
 #nav ul li{
     overflow: hidden;
     display: block;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 #nav ul li span{
     overflow: hidden;
     display: inline-block;
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
+    width: 35px;
+    height: 35px;
     background: #fff;
-    margin-right: 20px;
+    margin-right: 15px;
+}
+#nav ul li span.ic1{
+    background: url("../images/template/icon1.png") no-repeat center center;
+}
+#nav ul li.checked span.ic1{background: url("../images/template/icon1-hover.png") no-repeat center center;}
+#nav ul li span.ic2{
+    background: url("../images/template/icon2.png") no-repeat center center;
+}
+#nav ul li span.ic3{
+    background: url("../images/template/icon3.png") no-repeat center center;
+}
+#nav ul li span.ic4{
+    background: url("../images/template/icon4.png") no-repeat center center;
 }
 #nav ul li p{
     overflow: hidden;
     display: inline-block;
-    color: #fff;
-    font-size: 22px;
-    line-height: 36px;
+    color: #a9a8b2;
+    font-size: 18px;
+    line-height: 35px;
 }
 #content{
-    padding: 120px 20px 0 240px;
+    padding: 128px 20px 0 255px;
     position: relative;
     z-index: 1;
 }
 .layout{
     background: rgba(0,0,0,.5);
-    padding: 10px 30px;
+    padding: 25px 45px;
 }
 .title{
     overflow: hidden;
@@ -223,12 +244,11 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 20px 0;
+    padding: 0 0 20px;
 }
 .title span{
     overflow: hidden;
-    font-size: 22px;
-    color: #00deff;
+    font-size: 16px;
 }
 .btn{
     overflow: hidden;
@@ -237,6 +257,7 @@ body {
     padding: 5px 20px;
     font-size: 16px;
     cursor: pointer;
+    color: #fff;
 }
 .search{
     overflow: hidden;

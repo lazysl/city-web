@@ -1,0 +1,162 @@
+.index .leftCon{
+    width: 70%;
+    float: left;
+}
+.index .rightCon{
+    width: 25%;
+    float: right;
+    margin-right: 2%;
+}
+.index .conList{
+    overflow: hidden;
+}
+.index .conList li{
+    width: 31%;
+    float: left;
+    margin-right: 3.5%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.index .conList li:last-child{margin-right: 0}
+.index .conList li .layout{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}/*
+.index .conList li:first-child .layout{
+    background: -moz-linear-gradient(-125deg, #5b536a, #4b4c60);
+    background: -webkit-linear-gradient(-125deg, #5b536a, #4b4c60);
+    background: -o-linear-gradient(-125deg, #5b536a, #4b4c60);
+    background: -ms-linear-gradient(-125deg, #5b536a, #4b4c60);
+    background: linear-gradient(125deg, #5b536a, #4b4c60);
+}*/
+.index .conList li .item img{width: 41px;margin-right: 25px}
+.index .conList li .item p,.index .conList li .item span{
+    overflow: hidden;
+    display: block;
+    font-size: 16px;
+}
+.index .conList li .item span{
+    font-size: 48px;
+    color: #fff;
+}
+.index .chartCon{
+    overflow: hidden;
+    width: 100%;
+    margin: 30px 0;
+}
+.index .chartCon .chartTit{
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.index .chartCon .chartTit .item{overflow: hidden;margin-bottom: 15px}
+.index .chartCon .chartTit .item span{
+    overflow: hidden;
+    font-size: 16px;
+}
+.index .chartCon .chartTit .item a{
+    overflow: hidden;
+    display: block;
+    width: 108px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 10px;
+    float: left;
+    margin-right: 30px;
+}
+.index .chartCon .chartTit .item a.color1{background: #00e6c8}
+.index .chartCon .chartTit .item a.color2{background: #ae7efa}
+.index .chartCon .chartTit .item a.color3{background: #ff0179}
+.index .chartCon .chartTit .item a.color4{background: #fb8455}
+#polyline{
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+    margin: -20px 0 0 0;
+}
+#polyline div:first-child{width: 100%!important;}
+#polyline canvas{width: 100%!important;overflow: hidden}
+.index .tabCon{
+    overflow: hidden;
+    width: 100%;
+}
+.index .tabCon .table{overflow: hidden;width: 100%}
+.index .tabCon table{
+    width: 96%;
+    margin: 0 auto;
+    max-height: 517px;
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.index .tabCon table thead{
+    border-bottom: solid 1px rgba(255,255,255,.5);
+}
+.index .tabCon table tbody{
+    width: 100%;
+}
+.index .tabCon table tr:last-child{border-bottom:none}
+.index .tabCon table tr td,.index .tabCon table tr th{
+    font-size: 16px;
+    padding: 5px 0;
+}
+.index .tabCon table tr th{padding: 10px 0}
+.index .tabCon table tr td:first-child {
+    text-align: left
+}
+.index .tabCon table tr td:nth-child(2) {
+    color: #fff;
+}
+.index .tabCon table tr td:nth-child(3) {
+    color: #ff0179;
+}
+.index .tabCon table tbody tr:first-child td{
+    padding-top: 20px;
+}
+.index .tabCon table tr td span{
+    overflow: hidden;
+    display: block;
+    width: 26px;
+    height: 26px;
+    border-radius: 100%;
+    margin-left: 10%;
+}
+.index .tabCon table tr td span.red{
+    background: -moz-linear-gradient(top, #ff2c90, #ff0000);
+    background: -webkit-linear-gradient(top, #ff2c90, #ff0000);
+    background: -o-linear-gradient(top, #ff2c90, #ff0000);
+    background: -ms-linear-gradient(top, #ff2c90, #ff0000);
+    background: linear-gradient(to top, #ff2c90, #ff0000);
+}
+.index .tabCon table tr td span.green{
+    background: -moz-linear-gradient(top, #46cf1c, #2ea504);
+    background: -webkit-linear-gradient(top, #46cf1c, #2ea504);
+    background: -o-linear-gradient(top, #46cf1c, #2ea504);
+    background: -ms-linear-gradient(top, #46cf1c, #2ea504);
+    background: linear-gradient(to top, #46cf1c, #2ea504);
+}
+.circleChart{
+    overflow: hidden;
+    width: 170px;
+    border-radius: 100%;
+    margin: 40px auto;
+}
+.index .circleCon{overflow: hidden;margin-bottom: 30px}
+.index .rectCon{overflow: hidden}
+#rect{
+    overflow: hidden;
+    width: 100%;
+    height: 670px;
+    margin: -20px 0 0 0;
+}
+#rect div:first-child{width: 100%!important;}
+#rect canvas{width: 100%!important;overflow: hidden}
+
+
+
+
