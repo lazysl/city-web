@@ -176,9 +176,11 @@ body {
     overflow: hidden;
     width: 40px;
     height: 40px;
-    border-radius: 6px;
+    /*border-radius: 6px;*/
     background: #fff;
     margin-right: 20px;
+    background: url("../images/template/icon-logo.png") no-repeat;
+    background-size: 100% 100%;
 }
 #header .logo span{
     overflow: hidden;
@@ -225,10 +227,11 @@ body {
 #nav ul li p{
     overflow: hidden;
     display: inline-block;
-    color: #a9a8b2;
+    color: rgba(255,255,255,.5);
     font-size: 18px;
     line-height: 35px;
 }
+#nav ul li.checked p{color: #fff}
 #content{
     padding: 128px 20px 0 255px;
     position: relative;
