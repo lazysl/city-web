@@ -9,9 +9,16 @@
 }
 .index .conList{
     overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+}
+.index .conList ul{
+    overflow: hidden;
+    margin: 25px 22px;
 }
 .index .conList li{
-    width: 31%;
+    width: 300px;
+    height: 130px;
     float: left;
     margin-right: 3.5%;
     display: flex;
@@ -23,24 +30,25 @@
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
-}/*
+}
 .index .conList li:first-child .layout{
-    background: -moz-linear-gradient(-125deg, #5b536a, #4b4c60);
-    background: -webkit-linear-gradient(-125deg, #5b536a, #4b4c60);
-    background: -o-linear-gradient(-125deg, #5b536a, #4b4c60);
-    background: -ms-linear-gradient(-125deg, #5b536a, #4b4c60);
-    background: linear-gradient(125deg, #5b536a, #4b4c60);
-}*/
+    background: url("../images/index/li-bg1.png") no-repeat;
+}
+.index .conList li:nth-child(2) .layout{
+    background: url("../images/index/li-bg2.png") no-repeat;
+}
+.index .conList li:last-child .layout{
+    background: url("../images/index/li-bg3.png") no-repeat;
+}
 .index .conList li .item img{width: 41px;margin-right: 25px}
 .index .conList li .item p,.index .conList li .item span{
     overflow: hidden;
     display: block;
     font-size: 16px;
+    color: #fff;
 }
 .index .conList li .item span{
     font-size: 48px;
-    color: #fff;
 }
 .index .chartCon{
     overflow: hidden;
@@ -63,16 +71,22 @@
     height: 36px;
     line-height: 36px;
     text-align: center;
-    color: #fff;
+    color: #333;
     font-size: 16px;
     border-radius: 10px;
     float: left;
     margin-right: 30px;
+    font-weight: bold;
+    cursor: pointer;
 }
-.index .chartCon .chartTit .item a.color1{background: #00e6c8}
-.index .chartCon .chartTit .item a.color2{background: #ae7efa}
-.index .chartCon .chartTit .item a.color3{background: #ff0179}
-.index .chartCon .chartTit .item a.color4{background: #fb8455}
+.index .chartCon .chartTit .item a.color1{border: solid 1px #482afe}
+.index .chartCon .chartTit .item a.color1.checked,.index .chartCon .chartTit .item a.color1:hover{background: #482afe;color: #fff}
+.index .chartCon .chartTit .item a.color2{border: solid 1px #ae7efa}
+.index .chartCon .chartTit .item a.color2.checked,.index .chartCon .chartTit .item a.color2:hover{background: #ae7efa;color: #fff}
+.index .chartCon .chartTit .item a.color3{border: solid 1px #ff0179}
+.index .chartCon .chartTit .item a.color3.checked,.index .chartCon .chartTit .item a.color3:hover{background: #ff0179;color: #fff}
+.index .chartCon .chartTit .item a.color4{border: solid 1px #fb8455}
+.index .chartCon .chartTit .item a.color4.checked,.index .chartCon .chartTit .item a.color4:hover{background: #fb8455;color: #fff}
 #polyline{
     overflow: hidden;
     width: 100%;
@@ -84,6 +98,7 @@
 .index .tabCon{
     overflow: hidden;
     width: 100%;
+    margin-bottom: 30px;
 }
 .index .tabCon .table{overflow: hidden;width: 100%}
 .index .tabCon table{
@@ -104,16 +119,20 @@
 .index .tabCon table tr td,.index .tabCon table tr th{
     font-size: 16px;
     padding: 5px 0;
+    font-weight: bold;
 }
 .index .tabCon table tr th{padding: 10px 0}
 .index .tabCon table tr td:first-child {
     text-align: left
 }
 .index .tabCon table tr td:nth-child(2) {
-    color: #fff;
+    font-weight: bold;
 }
 .index .tabCon table tr td:nth-child(3) {
-    color: #ff0179;
+    font-weight: bold;
+}
+.index .tabCon table tr td:last-child{
+    color: rgba(51,51,51,.5);
 }
 .index .tabCon table tbody tr:first-child td{
     padding-top: 20px;

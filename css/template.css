@@ -133,22 +133,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 * {
     box-sizing: border-box;
 }
-body {
-    font-family: "Microsoft YaHei", arial, sans-serif;
-    color: #a9a8b2;
-    background: #292929;
-    width: 100%;
+html {
+    background: url("../images/template/bg.png") no-repeat center bottom;
+    background-size: 100% 100%;
 }
-#body{
-    position: absolute;
-    z-index: 0;
+body{
+    font-family: "Microsoft YaHei", arial, sans-serif;
+    color: #333;
     width: 100%;
-    height: 100%;
-    background: -moz-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
-    background: -webkit-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
-    background: -o-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
-    background: -ms-linear-gradient(-135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
-    background: linear-gradient(135deg, #625a71 0%, #4b5161 28%, #2b2d3c 61%, #2a2938 98%);
 }
 #header{
     width: 100%;
@@ -191,11 +183,11 @@ body {
 #nav{
     overflow: hidden;
     padding: 0 40px;
-    width: 255px;
+    width: 300px;
     position: fixed;
     top: 120px;
     left: 0;
-    height: 100%;
+    /*height: 100%;*/
     z-index: 999;
 }
 #nav ul li{
@@ -233,13 +225,15 @@ body {
 }
 #nav ul li.checked p{color: #fff}
 #content{
-    padding: 128px 20px 0 255px;
+    padding: 128px 20px 0 300px;
     position: relative;
     z-index: 1;
+    margin-bottom: 30px;
 }
 .layout{
-    background: rgba(0,0,0,.5);
+    background: #fff;
     padding: 25px 45px;
+    border-radius: 10px;
 }
 .title{
     overflow: hidden;
@@ -252,10 +246,11 @@ body {
 .title span{
     overflow: hidden;
     font-size: 16px;
+    font-weight: bold;
 }
 .btn{
     overflow: hidden;
-    background: #00deff;
+    background: #482afe;
     border-radius: 6px;
     padding: 5px 20px;
     font-size: 16px;
@@ -266,7 +261,7 @@ body {
     overflow: hidden;
     width: 150px;
     height: 30px;
-    border: solid 1px #e4e4e4;
+    border: solid 1px #333;
     border-radius: 19px;
     display: flex;
     justify-content: flex-start;
@@ -288,7 +283,7 @@ body {
 }
 .select {
     min-width: 150px;
-    border: solid 1px #e4e4e4;
+    border: solid 1px #333;
     position: relative;
 }
 .select span{
@@ -314,7 +309,7 @@ body {
 }
 .select ul{
     width: 100%;
-    border: solid 1px #e4e4e4;
+    border: solid 1px #333;
     position: absolute;
     top: 32px;
     left: 0;
@@ -350,7 +345,7 @@ body {
 }
 .checkList .checkbox + label ,.checkbox{
     color: transparent;
-    border: solid 1px #fff;
+    border: solid 1px #333;
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -361,12 +356,12 @@ body {
 .checkList .checkbox + label img{margin: 2px auto 0;display: none}
 .checkList .checkbox:checked + label {
     color: transparent;
-    border: solid 1px #fff;
+    border: solid 1px #333;
 }
 .checkList .checkbox:checked + label img{display: block}
 .checkList .radio{
     color: transparent;
-    border: solid 1px #fff;
+    border: solid 1px #333;
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -378,14 +373,14 @@ body {
 }
 .checkList input[type="radio"]:checked{
     color: transparent;
-    border: solid 1px #fff;
+    border: solid 1px #333;
 }
 .checkList input[type="radio"]:checked::after{
     content: '';
     position: absolute;
     width: 10px;
     height: 10px;
-    background: #fff;
+    background: #333;
     top: 3px;
     left: 3px;
     border-radius: 100%;
@@ -459,7 +454,7 @@ body {
     padding: 10px;
     color: #333;
     cursor: pointer;
-    border: solid 1px #e4e4e4;
+    border: solid 1px #333;
     width: 50%;
 }
 .tcHide .tcCon .itemBtn {

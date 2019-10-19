@@ -41,19 +41,22 @@
 .object .navTree .itemList .itemTit .item em.close{
     background: url("../images/template/icon-close.png") no-repeat;
 }
-.object .navTree .itemList .itemCon{
+.object .navTree .itemList .itemCon,.object .navTree .itemList .itemCon .itemLast{
     overflow: hidden;
-    border-left: dashed 1px #fff;
+    border-left: dashed 1px #bbb;
     margin-left: 9px;
     display: none;
 }
+.object .navTree .itemList .itemCon .itemLast{margin-left: 64px}
 .object .navTree .itemList .itemCon li{
     overflow: hidden;
     width: 100%;
+    padding: 20px 0 0;
+}
+.object .navTree .itemList .itemCon li .itemSub,.object .navTree .itemList .itemCon .itemLast li{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0 0;
 }
 .object .navTree .itemList .itemCon li .item{
     overflow: hidden;
@@ -61,14 +64,17 @@
     justify-content: flex-start;
     align-items: center;
 }
+.object .navTree .itemList .itemCon li .item.clicked{cursor: pointer}
 .object .navTree .itemList .itemCon li .item i{
     overflow: hidden;
     width: 30px;
     height: 1px;
-    border-bottom: dashed 1px #fff;
+    border-bottom: dashed 1px #bbb;
     margin: 0 9px;
 }
 .object .navTree .itemList .itemCon li .item img{margin-right: 10px}
+.object .navTree .itemList .itemCon li .item.right img{margin-left: 10px;margin-right: 0}
+.object .navTree .itemList .itemCon .itemLast li .item img{margin-right: 0}
 .object .navTree .itemList .itemCon li .item p{
     overflow: hidden;
     font-size: 16px;
@@ -94,7 +100,7 @@
 }
 .tcHide .tcCon .monitorCon .monitorItem .item{
     overflow: hidden;
-    border: solid 1px #e4e4e4;
+    border: solid 1px #333;
     width: 40%;
     min-height: 180px;
 }
@@ -106,7 +112,7 @@
     height: 30px;
     line-height: 30px;
     padding: 0 5px;
-    border-bottom: solid 1px #e4e4e4;
+    border-bottom: solid 1px #bbb;
 }
 .tcHide .tcCon .monitorCon .monitorItem .item li:last-child{border-bottom: none}
 .tcHide .tcCon .monitorCon .monitorItem .itemPic{margin: 0 20px}

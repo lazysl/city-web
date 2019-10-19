@@ -37,7 +37,7 @@
 }
 .management .manageCon .manageItem .item p img{display: inline-block;margin-left: 10px}
 .management .manageCon .manageItem .item ul{
-    border: solid 1px #e4e4e4;
+    border: solid 1px #333;
     min-height: 400px;
 }
 .management .manageCon .manageItem .itemCon .itemList .item ul{min-height: 180px;}
@@ -74,9 +74,9 @@
     outline: none;
     background: transparent;
     padding: 10px;
-    color: #fff;
+    color: #333;
     cursor: pointer;
-    border: solid 1px #e4e4e4;
+    border: solid 1px #333;
     margin-right: 20px;
     min-width: 150px;
 }
