@@ -172,6 +172,9 @@ body{
     justify-content: flex-start;
     align-items: center;
 }
+#header .crumbsNav .itemNav ul.hide{display: none}
+#main.collapse #header .crumbsNav .itemNav ul{display: none}
+#main.collapse #header .crumbsNav .itemNav ul.hide{display: flex}
 #header .crumbsNav .itemNav li{
    overflow: hidden;
     margin-right: 10px;

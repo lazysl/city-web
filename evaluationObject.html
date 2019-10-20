@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/template.css">
     <link rel="stylesheet" href="css/evaluationObject.css">
     <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/public.js"></script>
 </head>
 <body>
 <div id="main">
@@ -55,6 +56,11 @@
                     <li><a href="index.html">首页</a></li>
                     <li><span>/</span></li>
                     <li class="check"><a href="evaluationObject.html">考评对象</a></li>
+                </ul>
+                <ul class="hide">
+                    <li><a href="index.html#tpye=collapse">首页</a></li>
+                    <li><span>/</span></li>
+                    <li class="check"><a href="evaluationObject.html#tpye=collapse">考评对象</a></li>
                 </ul>
             </div>
             <div class="quit"><img src="images/template/icon-quit.png"/></div>
@@ -190,7 +196,6 @@
     </div>
 </div>
 </body>
-<script src="js/public.js"></script>
 <script>
     $('.itemTit .click').click(function () {
         $(this).parents(".itemTit").siblings(".itemCon").slideToggle();
