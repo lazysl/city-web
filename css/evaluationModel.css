@@ -19,7 +19,7 @@
     padding: 10px;
     color: #333;
     cursor: pointer;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     min-width: 100px;
     width: 100px;
     margin: 0 10px;
@@ -29,7 +29,7 @@
 .model .modelCon .item .itemCon .checkList{margin: 0 10px}
 .model .modelCon .item .itemCon .modelList{
     overflow: hidden;
-    border-left: dashed 1px #333;
+    border-left: dashed 1px #d8dce5;
     margin-left: 19px;
     /*display: none;*/
 }
@@ -46,7 +46,7 @@
     overflow: hidden;
     width: 30px;
     height: 1px;
-    border-bottom: dashed 1px #333;
+    border-bottom: dashed 1px #d8dce5;
     margin: 0 9px;
 }
 .model .modelCon .item .itemCon .modelList li img{margin-right: 10px}

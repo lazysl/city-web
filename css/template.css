@@ -134,106 +134,216 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     box-sizing: border-box;
 }
 html {
-    background: url("../images/template/bg.png") no-repeat center bottom;
-    background-size: 100% 100%;
+    background: #f0f2f5;
 }
 body{
     font-family: "Microsoft YaHei", arial, sans-serif;
     color: #333;
     width: 100%;
+    background: #f0f2f5;
 }
 #header{
     width: 100%;
+    height: 50px;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 99;
+    background: #fff;
+    box-shadow: 4px 4px 40px rgba(0,0,0,.05);
 }
-#header .quit{
-    position: absolute;
-    right: 0;
-    top:0;
-}
-#header .logo{
+#header .crumbsNav {
     overflow: hidden;
-    width: 100%;
-    padding: 40px;
+    margin-left: 180px;
+    position: relative;
 }
-#header .logo a{
+#main.collapse #header .crumbsNav{margin-left: 36px}
+#header .crumbsNav .itemNav{
+    overflow: hidden;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /*border-bottom: 1px solid #d8dce5;*/
+}
+#header .crumbsNav .itemNav img{padding: 0 20px;cursor: pointer}
+#header .crumbsNav .itemNav ul{
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-#header .logo p{
+#header .crumbsNav .itemNav li{
+   overflow: hidden;
+    margin-right: 10px;
+    font-size: 14px;
+}
+#header .crumbsNav .itemNav li a{
+    overflow: hidden;
+    color: #333;
+}
+#header .crumbsNav .itemNav li.check a,#header .crumbsNav .itemNav li:hover a{color: rgb(64, 158, 255)}
+#header .quit{
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+#header .quit img{width: 100%}
+#nav{
+    width: 180px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 999;
+    background: rgb(48, 65, 86);
+}
+#main.collapse #nav{width: 36px}
+#nav .logo{
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 10px;
+}
+#nav .logo.hide{display: none}
+#main.collapse #nav .logo{display: none}
+#main.collapse #nav .logo.hide{padding: 20px 8px;display: block}
+#nav .logo a{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#nav .logo p{
     overflow: hidden;
     width: 40px;
     height: 40px;
-    /*border-radius: 6px;*/
-    background: #fff;
-    margin-right: 20px;
     background: url("../images/template/icon-logo.png") no-repeat;
     background-size: 100% 100%;
 }
-#header .logo span{
+#nav .logo span{
     overflow: hidden;
     background: url("../images/template/logo.png") no-repeat;
-    width: 240px;
-    height: 30px;
+    background-size: 100% 100%;
+    width: 160px;
+    height: 20px;
 }
-#nav{
+#main.collapse #nav .logo span{
     overflow: hidden;
-    padding: 0 40px;
-    width: 300px;
-    position: fixed;
-    top: 120px;
-    left: 0;
-    /*height: 100%;*/
-    z-index: 999;
+    width: 20px;
+    height: 20px;
+    background: url("../images/template/icon-logo.png") no-repeat;
+    background-size: 100% 100%;
 }
 #nav ul li{
-    overflow: hidden;
     display: block;
-    padding: 10px 0;
+    position: relative;
 }
+#nav ul li .first{
+    overflow: hidden;
+    height: 56px;
+    line-height: 56px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#main.collapse #nav ul li .first{padding: 0 10px}
+#nav ul li:hover .first{background: rgb(38, 52, 69)}
 #nav ul li span{
     overflow: hidden;
     display: inline-block;
-    width: 35px;
-    height: 35px;
+    width: 15px;
+    height: 15px;
     background: #fff;
     margin-right: 15px;
 }
+#main.collapse #nav ul li span{margin-right: 0}
 #nav ul li span.ic1{
     background: url("../images/template/icon1.png") no-repeat center center;
+    background-size: 100% 100%;
 }
-#nav ul li.checked span.ic1{background: url("../images/template/icon1-hover.png") no-repeat center center;}
+#nav ul li.checked span.ic1,#nav ul li:hover span.ic1 {
+    background: url("../images/template/icon1-hover.png") no-repeat center center;
+    background-size: 100% 100%;
+}
 #nav ul li span.ic2{
     background: url("../images/template/icon2.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+#nav ul li.checked span.ic2,#nav ul li:hover span.ic2 {
+    background: url("../images/template/icon2-hover.png") no-repeat center center;
+    background-size: 100% 100%;
 }
 #nav ul li span.ic3{
     background: url("../images/template/icon3.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+#nav ul li.checked span.ic3,#nav ul li:hover span.ic3 {
+    background: url("../images/template/icon3-hover.png") no-repeat center center;
+    background-size: 100% 100%;
 }
 #nav ul li span.ic4{
     background: url("../images/template/icon4.png") no-repeat center center;
+    background-size: 100% 100%;
 }
-#nav ul li p{
+#nav ul li.checked span.ic4,#nav ul li:hover span.ic4 {
+    background: url("../images/template/icon4-hover.png") no-repeat center center;
+    background-size: 100% 100%;
+}
+#nav ul li a{
     overflow: hidden;
     display: inline-block;
-    color: rgba(255,255,255,.5);
-    font-size: 18px;
-    line-height: 35px;
+    color: rgb(191, 203, 217);
+    font-size: 14px;
+    line-height: 15px;
 }
-#nav ul li.checked p{color: #fff}
+#main.collapse #nav ul li a{display: none}
+#nav ul li.checked p,#nav ul li:hover a{color: rgb(64, 158, 255)}
+#main #nav ul li .item{display: none}
+#main.collapse #nav ul li:hover .item{
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: 36px;
+    width: 190%;
+}
+#main.collapse #nav ul li:last-child .item{width: 125%}
+#main.collapse #nav ul li .item::before{
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-right: 8px solid #303133;
+    border-left: 8px solid rgba(0,0,0,0);
+    border-bottom: 8px solid rgba(0,0,0,0);
+    border-top: 8px solid rgba(0,0,0,0);
+}
+#main.collapse #nav ul li .item a{
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    height: 34px;
+    line-height: 34px;
+    background: #303133;
+    margin-left: 8px;
+    border-radius: 4px;
+    width: 100%;
+    padding: 0 10px
+}
 #content{
-    padding: 128px 20px 0 300px;
+    padding: 80px 30px 0 210px;
     position: relative;
     z-index: 1;
     margin-bottom: 30px;
 }
+#main.collapse #content{padding-left: 66px}
 .layout{
     background: #fff;
     padding: 25px 45px;
-    border-radius: 10px;
+    box-shadow: 4px 4px 40px rgba(0,0,0,.05);
 }
 .title{
     overflow: hidden;
@@ -261,7 +371,7 @@ body{
     overflow: hidden;
     width: 150px;
     height: 30px;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     border-radius: 19px;
     display: flex;
     justify-content: flex-start;
@@ -283,7 +393,7 @@ body{
 }
 .select {
     min-width: 150px;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     position: relative;
 }
 .select span{
@@ -309,7 +419,7 @@ body{
 }
 .select ul{
     width: 100%;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     position: absolute;
     top: 32px;
     left: 0;
@@ -345,7 +455,7 @@ body{
 }
 .checkList .checkbox + label ,.checkbox{
     color: transparent;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -356,12 +466,12 @@ body{
 .checkList .checkbox + label img{margin: 2px auto 0;display: none}
 .checkList .checkbox:checked + label {
     color: transparent;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
 }
 .checkList .checkbox:checked + label img{display: block}
 .checkList .radio{
     color: transparent;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     width: 18px;
     height: 18px;
     font-size: 18px;
@@ -373,7 +483,7 @@ body{
 }
 .checkList input[type="radio"]:checked{
     color: transparent;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
 }
 .checkList input[type="radio"]:checked::after{
     content: '';
@@ -454,7 +564,7 @@ body{
     padding: 10px;
     color: #333;
     cursor: pointer;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     width: 50%;
 }
 .tcHide .tcCon .itemBtn {

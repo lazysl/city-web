@@ -17,23 +17,46 @@
 </head>
 <body>
 <div id="main">
-    <div id="body"></div>
-    <div id="header">
+    <div id="nav">
         <div class="logo">
             <a href="./index.html">
-                <p></p>
                 <span></span>
             </a>
         </div>
-        <img class="quit" src="images/template/icon-quit.png"/>
-    </div>
-    <div id="nav">
+        <div class="logo hide">
+            <a href="./index.html#tpye=collapse">
+                <span></span>
+            </a>
+        </div>
         <ul>
-            <li class="checked"><a href="evaluationObject.html"><span class="ic1"></span><p>考评对象</p></a></li>
-            <li><a href="evaluationModel.html"><span class="ic2"></span><p>考评模型</p></a></li>
-            <li><a href="evaluationPlan.html"><span class="ic3"></span><p>考评计划</p></a></li>
-            <li><a href="management.html"><span class="ic4"></span><p>管理</p></a></li>
+            <li>
+                <div class="first"><span class="ic1"></span><a href="evaluationObject.html">考评对象</a></div>
+                <div class="item"><a href="evaluationObject.html#tpye=collapse">考评对象</a></div>
+            </li>
+            <li>
+                <div class="first"><span class="ic2"></span><a href="evaluationModel.html">考评模型</a></div>
+                <div class="item"><a href="evaluationModel.html#tpye=collapse">考评模型</a></div>
+            </li>
+            <li>
+                <div class="first"><span class="ic3"></span><a href="evaluationPlan.html">考评计划</a></div>
+                <div class="item"><a href="evaluationPlan.html#tpye=collapse">考评计划</a></div>
+            </li>
+            <li>
+                <div class="first"><span class="ic4"></span><a href="management.html">管理</a></div>
+                <div class="item"><a href="management.html#tpye=collapse">管理</a></div>
+            </li>
         </ul>
+    </div>
+    <div id="header">
+        <div class="crumbsNav">
+            <div class="itemNav">
+                <img id="icon_nav" src="images/template/icon-nav.png"/>
+                <ul>
+                    <li class="check"><a href="index.html">首页</a></li>
+                </ul>
+            </div>
+            <div class="quit"><img src="images/template/icon-quit.png"/></div>
+        </div>
     </div>
     <div id="content" class="index">
         <div class="leftCon">
@@ -124,6 +147,7 @@
     </div>
 </div>
 </body>
+<script src="js/public.js"></script>
 <script src="js/echarts.min.js"></script>
 <script src="js/circleChart.js"></script>
 <script>
@@ -292,7 +316,7 @@
                 },
                 axisLine: {
                     lineStyle: {
-                        color: '#eaeaea',
+                        color: 'rgba(49,83,254,.5)',
                         width: .5,
                     }
                 },
@@ -306,7 +330,7 @@
                 offset: 80,
                 axisLine: {
                     lineStyle: {
-                        color: '#eaeaea',
+                        color: 'rgba(49,83,254,.5)',
                         width: .5,
                     }
                 },
@@ -321,7 +345,7 @@
                                 0, 0, 1, 1,
                                 [
                                     {offset: 0, color: 'rgba(49,83,254,.5)'},
-                                    {offset: 1, color: 'rgba(255,255,255,.5)'}
+                                    {offset: 1, color: 'rgba(49,83,254,.5)'}
                                 ]
                             )
                         },
@@ -330,7 +354,7 @@
                                 0, 0, 1, 1,
                                 [
                                     {offset: 0, color: 'rgba(49,83,254,1)'},
-                                    {offset: 1, color: 'rgba(255,255,255,1)'}
+                                    {offset: 1, color: 'rgba(49,83,254,1)'}
                                 ]
                             )
                         }

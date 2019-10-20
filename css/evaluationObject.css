@@ -100,7 +100,7 @@
 }
 .tcHide .tcCon .monitorCon .monitorItem .item{
     overflow: hidden;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     width: 40%;
     min-height: 180px;
 }

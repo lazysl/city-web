@@ -3,49 +3,38 @@
     float: left;
 }
 .index .rightCon{
-    width: 25%;
+    width: 28%;
     float: right;
-    margin-right: 2%;
 }
 .index .conList{
     overflow: hidden;
-    background: #fff;
-    border-radius: 10px;
 }
 .index .conList ul{
     overflow: hidden;
-    margin: 25px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .index .conList li{
-    width: 300px;
+    width: 31%;
     height: 130px;
     float: left;
-    margin-right: 3.5%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.index .conList li:last-child{margin-right: 0}
 .index .conList li .layout{
     width: 100%;
     display: flex;
     justify-content: flex-start;
-}
-.index .conList li:first-child .layout{
-    background: url("../images/index/li-bg1.png") no-repeat;
-}
-.index .conList li:nth-child(2) .layout{
-    background: url("../images/index/li-bg2.png") no-repeat;
-}
-.index .conList li:last-child .layout{
-    background: url("../images/index/li-bg3.png") no-repeat;
+    align-items: center;
 }
 .index .conList li .item img{width: 41px;margin-right: 25px}
 .index .conList li .item p,.index .conList li .item span{
     overflow: hidden;
     display: block;
     font-size: 16px;
-    color: #fff;
+    color: #333;
 }
 .index .conList li .item span{
     font-size: 48px;
@@ -67,16 +56,15 @@
 .index .chartCon .chartTit .item a{
     overflow: hidden;
     display: block;
-    width: 108px;
+    width: 98px;
     height: 36px;
     line-height: 36px;
     text-align: center;
     color: #333;
-    font-size: 16px;
-    border-radius: 10px;
+    font-size: 14px;
+    border-radius: 6px;
     float: left;
     margin-right: 30px;
-    font-weight: bold;
     cursor: pointer;
 }
 .index .chartCon .chartTit .item a.color1{border: solid 1px #482afe}
@@ -90,7 +78,7 @@
 #polyline{
     overflow: hidden;
     width: 100%;
-    height: 500px;
+    height: 300px;
     margin: -20px 0 0 0;
 }
 #polyline div:first-child{width: 100%!important;}
@@ -117,25 +105,15 @@
 }
 .index .tabCon table tr:last-child{border-bottom:none}
 .index .tabCon table tr td,.index .tabCon table tr th{
-    font-size: 16px;
-    padding: 5px 0;
-    font-weight: bold;
+    font-size: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid #d8dce5;
 }
 .index .tabCon table tr th{padding: 10px 0}
 .index .tabCon table tr td:first-child {
     text-align: left
 }
-.index .tabCon table tr td:nth-child(2) {
-    font-weight: bold;
-}
-.index .tabCon table tr td:nth-child(3) {
-    font-weight: bold;
-}
-.index .tabCon table tr td:last-child{
-    color: rgba(51,51,51,.5);
-}
 .index .tabCon table tbody tr:first-child td{
-    padding-top: 20px;
 }
 .index .tabCon table tr td span{
     overflow: hidden;
@@ -170,7 +148,7 @@
 #rect{
     overflow: hidden;
     width: 100%;
-    height: 670px;
+    height: 500px;
     margin: -20px 0 0 0;
 }
 #rect div:first-child{width: 100%!important;}

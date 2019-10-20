@@ -12,7 +12,7 @@
 .plan .checkCon .checkItem .itemTime input{
     width: 50px;
     height: 28px;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     resize: none;
     outline: none;
     background: transparent;
@@ -38,7 +38,7 @@
     padding: 10px;
     color: #333;
     cursor: pointer;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     min-width: 300px;
 }
 .plan .checkCon .checkItem .item .input.inputTime {

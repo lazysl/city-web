@@ -37,7 +37,7 @@
 }
 .management .manageCon .manageItem .item p img{display: inline-block;margin-left: 10px}
 .management .manageCon .manageItem .item ul{
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     min-height: 400px;
 }
 .management .manageCon .manageItem .itemCon .itemList .item ul{min-height: 180px;}
@@ -47,7 +47,7 @@
     height: 30px;
     line-height: 30px;
     padding: 0 5px;
-    border-bottom: solid 1px #fff;
+    border-bottom: solid 1px #d8dce5;
 }
 .management .manageCon .manageItem .itemPic{margin: 0 20px}
 .management .manageCon .manageItem .itemPic img{width: 24px}
@@ -76,7 +76,7 @@
     padding: 10px;
     color: #333;
     cursor: pointer;
-    border: solid 1px #333;
+    border: solid 1px #d8dce5;
     margin-right: 20px;
     min-width: 150px;
 }
