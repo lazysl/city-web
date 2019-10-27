@@ -35,7 +35,7 @@
     justify-content: center;
     align-items: center;
 }
-.management .manageCon .manageItem .item p img{display: inline-block;margin-left: 10px}
+.management .manageCon .manageItem .item p img{display: inline-block;margin-left: 10px;width: 20px}
 .management .manageCon .manageItem .item ul{
     border: solid 1px #d8dce5;
     min-height: 400px;

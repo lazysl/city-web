@@ -305,7 +305,7 @@ body{
     line-height: 15px;
 }
 #main.collapse #nav ul li a{display: none}
-#nav ul li.checked p,#nav ul li:hover a{color: rgb(64, 158, 255)}
+#nav ul li.checked a,#nav ul li:hover a{color: rgb(64, 158, 255)}
 #main #nav ul li .item{display: none}
 #main.collapse #nav ul li:hover .item{
     position: absolute;
