@@ -247,14 +247,12 @@ body{
 }
 #nav ul li .first{
     overflow: hidden;
-    height: 56px;
-    line-height: 56px;
-    padding: 0 20px;
+    padding: 0 0 0 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-#main.collapse #nav ul li .first{padding: 0 10px}
+#main.collapse #nav ul li .first{padding: 0 0 0 10px}
 #nav ul li:hover .first{background: rgb(38, 52, 69)}
 #nav ul li span{
     overflow: hidden;
@@ -264,45 +262,50 @@ body{
     background: #fff;
     margin-right: 15px;
 }
-#main.collapse #nav ul li span{margin-right: 0}
+#main.collapse #nav ul li span {
+    margin-right: 0;
+    height: 56px;
+}
 #nav ul li span.ic1{
     background: url("../images/template/icon1.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li.checked span.ic1,#nav ul li:hover span.ic1 {
     background: url("../images/template/icon1-hover.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li span.ic2{
     background: url("../images/template/icon2.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li.checked span.ic2,#nav ul li:hover span.ic2 {
     background: url("../images/template/icon2-hover.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li span.ic3{
     background: url("../images/template/icon3.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li.checked span.ic3,#nav ul li:hover span.ic3 {
     background: url("../images/template/icon3-hover.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li span.ic4{
     background: url("../images/template/icon4.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li.checked span.ic4,#nav ul li:hover span.ic4 {
     background: url("../images/template/icon4-hover.png") no-repeat center center;
-    background-size: 100% 100%;
+    background-size: 15px 15px;
 }
 #nav ul li a{
     overflow: hidden;
     display: inline-block;
     color: rgb(191, 203, 217);
     font-size: 14px;
-    line-height: 15px;
+    width: 130px;
+    height: 56px;
+    line-height: 56px;
 }
 #main.collapse #nav ul li a{display: none}
 #nav ul li.checked a,#nav ul li:hover a{color: rgb(64, 158, 255)}
