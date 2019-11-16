@@ -1,5 +1,6 @@
 .model .modelCon {
-    overflow: hidden
+    overflow: hidden;
+    margin: 0 20px;
 }
 .model .modelCon .item{
     overflow: hidden;

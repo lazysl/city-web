@@ -1,13 +1,20 @@
 .index .leftCon{
-    width: 70%;
+    width: 65%;
     float: left;
 }
 .index .rightCon{
-    width: 28%;
+    width: 33%;
     float: right;
 }
 .index .conList{
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.index .conList .layout{
+    width: 23.3%;
+    height: 122px;
+    float: left;
 }
 .index .conList ul{
     overflow: hidden;
@@ -15,145 +22,264 @@
     justify-content: space-between;
     align-items: center;
 }
-.index .conList li{
-    width: 31%;
-    height: 130px;
-    float: left;
+.index .conList .item{
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
+    padding: 10px 15px;
+    border-bottom: solid 1px #eee;
 }
-.index .conList li .layout{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.index .conList li .item img{width: 41px;margin-right: 25px}
-.index .conList li .item p,.index .conList li .item span{
+.index .conList .item img{width: 60px;}
+.index .conList .item p,.index .conList .item span{
     overflow: hidden;
     display: block;
     font-size: 16px;
     color: #333;
 }
-.index .conList li .item span{
-    font-size: 48px;
+.index .conList .item span{
+    font-size: 30px;
+    color: #02a7f4;
+    font-weight: bold;
 }
-.index .chartCon{
+.index .conList .item-1{
     overflow: hidden;
-    width: 100%;
-    margin: 30px 0;
 }
-.index .chartCon .chartTit{
+.index .conList .item-1 ul{
     overflow: hidden;
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 12px 10px;
 }
-.index .chartCon .chartTit .item{overflow: hidden;margin-bottom: 15px}
-.index .chartCon .chartTit .item span{
+.index .conList .item-1 ul li{
     overflow: hidden;
-    font-size: 16px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 20px;
 }
-.index .chartCon .chartTit .item a{
+.index .conList .item-1 img{width: 14px;margin-right: 5px}
+.index .conList .item-1 p{
     overflow: hidden;
-    display: block;
-    width: 98px;
-    height: 36px;
-    line-height: 36px;
-    text-align: center;
-    color: #333;
-    font-size: 14px;
-    border-radius: 6px;
-    float: left;
-    margin-right: 30px;
-    cursor: pointer;
+    font-size: 12px;
 }
-.index .chartCon .chartTit .item a.color1{border: solid 1px #482afe}
-.index .chartCon .chartTit .item a.color1.checked,.index .chartCon .chartTit .item a.color1:hover{background: #482afe;color: #fff}
-.index .chartCon .chartTit .item a.color2{border: solid 1px #ae7efa}
-.index .chartCon .chartTit .item a.color2.checked,.index .chartCon .chartTit .item a.color2:hover{background: #ae7efa;color: #fff}
-.index .chartCon .chartTit .item a.color3{border: solid 1px #ff0179}
-.index .chartCon .chartTit .item a.color3.checked,.index .chartCon .chartTit .item a.color3:hover{background: #ff0179;color: #fff}
-.index .chartCon .chartTit .item a.color4{border: solid 1px #fb8455}
-.index .chartCon .chartTit .item a.color4.checked,.index .chartCon .chartTit .item a.color4:hover{background: #fb8455;color: #fff}
-#polyline{
-    overflow: hidden;
-    width: 100%;
-    height: 300px;
-    margin: -20px 0 0 0;
+.index .listCon{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
-#polyline div:first-child{width: 100%!important;}
-#polyline canvas{width: 100%!important;overflow: hidden}
 .index .tabCon{
-    overflow: hidden;
-    width: 100%;
-    margin-bottom: 30px;
+    width: 57.8%;
+    margin: 25px 0;
 }
+.index .rightCon .tabCon{width: 100%}
 .index .tabCon .table{overflow: hidden;width: 100%}
 .index .tabCon table{
-    width: 96%;
+    overflow: hidden;
+    width: 100%;
     margin: 0 auto;
     max-height: 517px;
     display: table;
-    border-collapse: collapse;
-    border-spacing: 0;
 }
 .index .tabCon table thead{
-    border-bottom: solid 1px rgba(255,255,255,.5);
+    background: #eee;
 }
 .index .tabCon table tbody{
     width: 100%;
 }
 .index .tabCon table tr:last-child{border-bottom:none}
 .index .tabCon table tr td,.index .tabCon table tr th{
-    font-size: 14px;
-    padding: 10px 0;
+    font-size: 12px;
+    padding: 10px;
     border-bottom: 1px solid #d8dce5;
+    text-align: center;
 }
-.index .tabCon table tr th{padding: 10px 0}
-.index .tabCon table tr td:first-child {
-    text-align: left
-}
-.index .tabCon table tbody tr:first-child td{
-}
+.index .rightCon .tabCon table tr td:last-child,.index .rightCon .tabCon table tr th:last-child{text-align: left}
+.index .tabCon table tr th{padding: 10px;font-size: 14px;}
 .index .tabCon table tr td span{
     overflow: hidden;
-    display: block;
-    width: 26px;
-    height: 26px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
-    margin-left: 10%;
+    margin-right: 5px;
+    vertical-align: middle;
 }
 .index .tabCon table tr td span.red{
-    background: -moz-linear-gradient(top, #ff2c90, #ff0000);
-    background: -webkit-linear-gradient(top, #ff2c90, #ff0000);
-    background: -o-linear-gradient(top, #ff2c90, #ff0000);
-    background: -ms-linear-gradient(top, #ff2c90, #ff0000);
-    background: linear-gradient(to top, #ff2c90, #ff0000);
+    background: #f00
 }
 .index .tabCon table tr td span.green{
-    background: -moz-linear-gradient(top, #46cf1c, #2ea504);
-    background: -webkit-linear-gradient(top, #46cf1c, #2ea504);
-    background: -o-linear-gradient(top, #46cf1c, #2ea504);
-    background: -ms-linear-gradient(top, #46cf1c, #2ea504);
-    background: linear-gradient(to top, #46cf1c, #2ea504);
+    background: #00ff00
 }
-.circleChart{
+.index .rankCon{
+    width: 40%;
+    margin: 25px 0;
+}
+.index .rankCon .tabList{
     overflow: hidden;
-    width: 170px;
-    border-radius: 100%;
-    margin: 40px auto;
+    background: #eee;
 }
-.index .circleCon{overflow: hidden;margin-bottom: 30px}
-.index .rectCon{overflow: hidden}
-#rect{
+.index .rankCon .tabList ul{
     overflow: hidden;
-    width: 100%;
-    height: 500px;
-    margin: -20px 0 0 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    padding: 0 20px;
 }
-#rect div:first-child{width: 100%!important;}
-#rect canvas{width: 100%!important;overflow: hidden}
-
-
-
-
+.index .rankCon .tabList ul li{
+    overflow: hidden;
+    width: 25px;
+    font-size: 14px;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0 5px;
+}
+.index .rankCon .tabList ul li.checked{
+    border-bottom: solid 4px #13aaf6;
+    color: #13aaf6;
+    padding-bottom: 6px;
+}
+.index .rankCon .rankList{
+    overflow: hidden;
+}
+.index .rankCon .rankList li{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+.index .rankCon .rankList li p{
+    overflow: hidden;
+    font-size: 12px;
+    height: 16px;
+    width: 30%;
+    text-align: right;
+}
+.index .rankCon .rankList li p:last-child {
+    width: 10%;
+    text-align: left;
+}
+.index .rankCon .rankList li span{
+    overflow: hidden;
+    width: 200px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    height: 16px;
+    position: relative;
+    margin: 0 20px;
+}
+.index .rankCon .rankList li span em{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10%;
+    height: 16px;
+    border-radius: 8px;
+    background: #04e689;
+}
+.index .conList_1 .layout{height: 122px;}
+.index .conList_1 ul{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.index .conList_1 ul li{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.index .conList_1 ul li img{margin-right: 10px}
+.index .conList_1 ul li p{
+    overflow: hidden;
+    font-size: 14px;
+    text-align: center;
+}
+.index .conList_1 ul li p span{
+    color: #fd6123;
+    font-size: 12px;
+    display: block;
+}
+.index .interCon{margin-top: 25px}
+.index .interCon .layout{
+    height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.index .interCon .interLine{
+    overflow: hidden;
+    height: 240px;
+    width: 1px;
+    background: #f1f1f1;
+    margin: 0 10px;
+}
+.index .interCon .interLeft{
+    width: 33%;
+}
+.index .interCon .interLeft p,.index .interCon .interLeft span{
+    overflow: hidden;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    padding: 2.5px 0;
+}
+.index .interCon .interLeft p:first-child{font-size: 18px;font-weight: bold;}
+.index .interCon .interLeft p:nth-child(3){font-size: 14px}
+.index .interCon .interLeft p em{
+    display: inline;
+    color: #fd6123;
+}
+.index .interCon .interLeft span{
+    font-weight: bold;
+    font-size: 30px;
+    color: #fd6123;
+}
+#circle{
+    overflow: hidden;
+    display: block;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+}
+.index .interCon .interRight{
+    overflow: hidden;
+}
+.index .interCon .interRight li{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+.index .interCon .interRight li p{
+    overflow: hidden;
+    font-size: 12px;
+    height: 16px;
+    width: 30%;
+    text-align: right;
+}
+.index .interCon .interRight li p:last-child {
+    width: 10%;
+    text-align: left;
+}
+.index .interCon .interRight li span{
+    overflow: hidden;
+    width: 150px;
+    background: #f1f1f1;
+    border-radius: 8px;
+    height: 16px;
+    position: relative;
+    margin: 0 15px;
+}
+.index .interCon .interRight li span em{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10%;
+    height: 16px;
+    border-radius: 8px;
+    background: #34bbfa;
+}

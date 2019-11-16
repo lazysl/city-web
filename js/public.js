@@ -5,23 +5,9 @@ $(".select ul li").click(function () {
     var name=$(this).children("span").text();
     $(this).parents("ul").siblings("span").empty().html(name+"<i></i>")
 });
-/*
-var docHeight=document.documentElement.clientHeight;
-var mainHeight=document.getElementById("main").clientHeight;
-if (mainHeight<docHeight){
-    $("#main").css("height",docHeight)
-}*/
-$("#icon_nav").click(function () {
-    $("#main").toggleClass("collapse");
-});
-$(function () {
-    var param = window.location.hash;
-    if (param.indexOf("collapse")>-1){
-        $("#main").addClass("collapse");
-    }
-});
 var setting={
     www_url:"http://api.city.bli7.com",
+    apiKey:"f997bc19a9410ded2c0eb17f24e0690d"
 };
 $.extend({
     jsonAjax: function (options, callbackSuc, callbackErr) {
