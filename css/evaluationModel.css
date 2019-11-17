@@ -1,6 +1,6 @@
 .model .modelCon {
     overflow: hidden;
-    margin: 0 20px;
+    margin: 0 30px;
 }
 .model .modelCon .item{
     overflow: hidden;
@@ -11,6 +11,7 @@
 .model .modelCon .item p{
     overflow: hidden;
     font-size: 16px;
+    line-height: 24px;
 }
 .model .modelCon .item .input{
     overflow: hidden;
@@ -26,7 +27,23 @@
     margin: 0 10px;
 }
 .model .modelCon .item .checkList{margin: 20px 10px}
-.model .modelCon .item .itemCon{overflow: hidden;margin-bottom: 30px}
+.model .modelCon .item .itemCon {
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+.model .modelCon .item .itemCon.flex{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.model .modelCon .item .itemCon.flex em{
+    overflow: hidden;
+    width: 3px;
+    height: 14px;
+    background: #02a7f4;
+    margin-right: 5px;
+    margin-top: 3px;
+}
 .model .modelCon .item .itemCon .checkList{margin: 0 10px}
 .model .modelCon .item .itemCon .modelList{
     overflow: hidden;

@@ -3,82 +3,68 @@
     padding: 0;
     width: 100%;
 }
-.object .navTree{
+.object .navTree .treeTit{
     overflow: hidden;
-    margin: 0 20px;
-    padding-bottom: 20px;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
-.object .navTree .itemList{
+.object .navTree .treeTit span{
     overflow: hidden;
+    font-size: 14px;
+    width: 85%;
+    padding: 10px 20px;
 }
-.object .navTree .itemList .itemTit{
+.object .navTree .treeTit span:last-child{width: 15%;text-align: center;}
+.object .navTree ul{
+    display: none;
+    max-height: 517px;
+}
+.object .navTree ul li{
+    width: 100%;
+}
+.object .navTree ul li p{
+    overflow: hidden;
+    font-size: 12px;
+}
+.object .navTree ul li img{
+    width: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.object .navTree ul li .item{
     overflow: hidden;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d8dce5;
+}
+.object .navTree ul li .itemLeft{
+    overflow: hidden;
+    width: 85%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     cursor: pointer;
 }
-.object .navTree .itemList .itemTit .item{
+.object .navTree ul li .itemRight{
     overflow: hidden;
+    width: 15%;
+    padding: 10px 20px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
-.object .navTree .itemList .itemTit .item.right{
-    justify-content: flex-end;
-}
-.object .navTree .itemList .itemTit .item.right img{ margin-left: 10px}
-.object .navTree .itemList .itemTit .item span{
-    overflow: hidden;
-    font-size: 16px;
-}
-.object .navTree .itemList .itemTit .item em{
-    overflow: hidden;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    background: url("../images/template/‭icon-open.png") no-repeat;
-}
-.object .navTree .itemList .itemTit .item em.close{
-    background: url("../images/template/icon-close.png") no-repeat;
-}
-.object .navTree .itemList .itemCon,.object .navTree .itemList .itemCon .itemLast{
-    overflow: hidden;
-    border-left: dashed 1px #bbb;
-    margin-left: 9px;
-    display: none;
-}
-.object .navTree .itemList .itemCon .itemLast{margin-left: 64px}
-.object .navTree .itemList .itemCon li{
-    overflow: hidden;
-    width: 100%;
-    padding: 20px 0 0;
-}
-.object .navTree .itemList .itemCon li .itemSub,.object .navTree .itemList .itemCon .itemLast li{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.object .navTree .itemList .itemCon li .item{
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.object .navTree .itemList .itemCon li .item.clicked{cursor: pointer}
-.object .navTree .itemList .itemCon li .item i{
-    overflow: hidden;
-    width: 30px;
-    height: 1px;
-    border-bottom: dashed 1px #bbb;
-    margin: 0 9px;
-}
-.object .navTree .itemList .itemCon li .item img{margin-right: 10px}
-.object .navTree .itemList .itemCon li .item.right img{margin-left: 10px;margin-right: 0}
-.object .navTree .itemList .itemCon .itemLast li .item img{margin-right: 0}
-.object .navTree .itemList .itemCon li .item p{
-    overflow: hidden;
-    font-size: 16px;
+.object .navTree ul li .itemRight img{margin: 0 5px;}
+.object .navTree ul li .navSub{display: none;}
+.object .navTree ul li .navSub li .item{padding-left: 30px}
+.object .navTree ul li .navSub li .navThree{display: none;}
+.object .navTree ul li .navSub li .navThree li {
+    border-bottom: 1px solid #d8dce5;
+    padding: 10px 20px 10px 80px
 }
 .tcHide .tcCon .monitorCon{margin-left: 30px}
 .tcHide .tcCon .monitorCon .monitorTit{
@@ -101,7 +87,7 @@
 }
 .tcHide .tcCon .monitorCon .monitorItem .item{
     overflow: hidden;
-    border: solid 1px #d8dce5;
+    border: solid 1px #e4e4e4;
     width: 40%;
     min-height: 180px;
 }
@@ -113,8 +99,14 @@
     height: 30px;
     line-height: 30px;
     padding: 0 5px;
-    border-bottom: solid 1px #bbb;
+    border-bottom: solid 1px #e4e4e4;
 }
 .tcHide .tcCon .monitorCon .monitorItem .item li:last-child{border-bottom: none}
 .tcHide .tcCon .monitorCon .monitorItem .itemPic{margin: 0 20px}
 .tcHide .tcCon .monitorCon .monitorItem .itemPic img{width: 24px}
+.tcHide .tcCon .select.marginTop{margin-top: 30px}
+.tcHide .tcCon .btn {
+    width: 80px;
+    text-align: center;
+    margin: 30px auto;
+}

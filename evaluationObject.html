@@ -14,145 +14,140 @@
     <link rel="stylesheet" href="css/template.css">
     <link rel="stylesheet" href="css/evaluationObject.css">
     <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
 </head>
 <body>
 <div id="main">
-    <div id="header">
-        <div class="logo">
-            <a href="./index.html">
-                <p></p>
-                <span></span>
-            </a>
-        </div>
-        <div class="quit"><img src="images/template/icon-quit.png"/></div>
-    </div>
-    <div id="nav">
-        <ul>
-            <li>
-                <a href="evaluationObject.html"><div class="first"><span class="ic1"></span>考评对象</div></a>
-            </li>
-            <li>
-                <a href="evaluationModel.html"><div class="first"><span class="ic2"></span>考评模型</div></a>
-            </li>
-            <li>
-                <a href="evaluationPlan.html"><div class="first"><span class="ic3"></span>考评计划</div></a>
-            </li>
-            <li>
-                <a href="management.html"><div class="first"><span class="ic4"></span>管理</div></a>
-            </li>
-        </ul>
-    </div>
+    <div id="head"><common-head></common-head></div>
     <div id="content" class="object">
         <div class="layout">
             <div class="title">
                 <span>考评对象管理</span>
-                <a class="btn" onclick="$('#addObject').show()">新增考评对象</a>
+                <a class="btn" v-on:click="addObjectFuc">新增考评对象</a>
             </div>
             <div class="navTree">
-                <div class="itemList">
-                    <div class="itemTit">
-                        <div class="item click"><em class="open"></em><span>大数据治理应用平台</span></div>
-                        <div class="item right">
-                            <img onclick="$('#addObject').show()" src="images/template/icon-add.png"/>
-                            <img src="images/template/icon-change.png"/>
-                            <img src="images/template/icon-del.png"/>
+                <div class="treeTit">
+                    <span>名称</span>
+                    <span>操作</span>
+                </div>
+                <ul v-if="objectData.length>0" :class="objectData.length>0?'display':''">
+                    <li v-for="(item,index) in objectData">
+                        <div class="item">
+                            <div class="itemLeft" v-on:click="showSub(index)">
+                                <img v-if="item.information&&item.information.length>0&&item.information[0].name!=''" src="images/template/‭icon-open.png"/>
+                                <p>{{item.name}}</p>
+                            </div>
+                            <div class="itemRight">
+                                <img v-on:click="addSubList(item.name,index)" src="images/template/icon-add.png"/>
+                                <img v-on:click="changeObjectFuc(item.name,index)" src="images/template/icon-change.png"/>
+                                <img src="images/template/icon-del.png"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="itemCon">
-                        <ul>
-                            <li>
-                                <div class="itemSub">
-                                    <div class="item clicked"><i></i><img src="images/windows.png"/><p>大数据治理Windows服务器</p></div>
-                                    <div class="item right"><img onclick="$('#addMonitor').show()" src="images/template/icon-add.png"/><img src="images/template/icon-del.png"/></div>
+                        <ul class="navSub" v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
+                            <li v-for="itemSub in item.information" v-if="item.information.length>0&&itemSub.name!=''">
+                                <div class="item">
+                                    <div class="itemLeft" v-on:click="showThree(index)">
+                                        <img v-if="itemSub.information&&itemSub.information.length>0&&itemSub.information[0].name!=''" src="images/template/‭icon-open.png"/>
+                                        <p>{{itemSub.displayName}}</p>
+                                    </div>
+                                    <div class="itemRight">
+                                        <img src="images/template/icon-add.png"/>
+                                        <img src="images/template/icon-change.png"/>
+                                        <img src="images/template/icon-del.png"/>
+                                    </div>
                                 </div>
-                                <div class="itemLast">
-                                    <ul>
-                                        <li>
-                                            <div class="item"><i></i><p>大数据</p></div>
-                                            <div class="item"><img src="images/template/icon-del.png"/></div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <ul class="navThree" v-if="activeThreeIndex===index" :class="activeThreeIndex===index?'display':''">
+                                    <li v-for="itemThree in itemSub.information" v-if="itemSub.information.length>0&&itemThree.name!=''"><p>{{itemThree.name}}</p></li>
+                                </ul>
                             </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--新增考评对象-->
+    <div class="tcHide" v-if="addObject" :class="addObject?'display':''">
+        <div class="masking" v-on:click="addObjectFuc"></div>
+        <div class="tcCon">
+            <img v-on:click="addObjectFuc" class="off" src="images/template/icon-off.png"/>
+            <div class="tcTit"><span>新增考评对象</span></div>
+            <div class="itemList"><span>对象名称：</span><input type="text" placeholder="请输入" v-model="systemName"></div>
+            <div class="itemBtn"><a class="btn" v-on:click="submitSystem">保存</a></div>
+        </div>
+    </div>
+    <!--新增考评对象二级菜单-->
+    <div class="tcHide" v-if="isDeviceType" :class="isDeviceType?'display':''">
+        <div class="masking" v-on:click="addSubList"></div>
+        <div class="tcCon">
+            <img v-on:click="addSubList" class="off" src="images/template/icon-off.png"/>
+            <div class="tcTit"><span>选择设备类型</span></div>
+            <div class="select marginTop">
+                <span v-on:click="select">{{subTxt}}<i></i></span>
+                <ul v-if="isSelect" :class="isSelect?'display':''">
+                    <li v-for="item in subList" v-on:click="selectEquipment(item.name,item.id)"><span>{{item.name}}</span></li>
+                </ul>
+            </div>
+            <div class="btn" v-on:click="submitEquipment">保存</div>
+        </div>
+    </div>
+    <!--添加监视器-->
+    <div class="tcHide">
+        <div class="masking"></div>
+        <div class="tcCon">
+            <img onclick="$('#addMonitor').hide()" class="off" src="images/template/icon-off.png"/>
+            <div class="tcTit"><span>新增考评对象</span></div>
+            <div class="monitorCon">
+                <div class="monitorTit">
+                    <span>刷选监视器：</span>
+                    <div class="select">
+                        <span id="selected">数据库1<i></i></span>
+                        <ul>
+                            <li name="数据库1"><span>数据库1</span></li>
+                            <li name="数据库2"><span>数据库2</span></li>
+                            <li name="数据库3"><span>数据库3</span></li>
+                        </ul>
+                    </div>
+                    <div class="search">
+                        <img src="images/template/icon-search.png"/>
+                        <input type="text" placeholder="搜索"/>
+                    </div>
+                </div>
+                <div class="monitorItem">
+                    <div class="item">
+                        <ul>
+                            <li>数据库1</li>
+                            <li>数据库2</li>
+                        </ul>
+                    </div>
+                    <div class="itemPic">
+                        <img src="images/template/icon-right.png"/>
+                        <img src="images/template/icon-left.png"/>
+                    </div>
+                    <div class="item">
+                        <ul>
+                            <li>数据库3</li>
                         </ul>
                     </div>
                 </div>
             </div>
+            <div class="itemBtn"><a class="btn">保存</a></div>
         </div>
     </div>
-</div>
-<!--新增考评对象-->
-<div class="tcHide" id="addObject">
-    <div class="masking"></div>
-    <div class="tcCon">
-        <img onclick="$('#addObject').hide()" class="off" src="images/template/icon-off.png"/>
-        <div class="tcTit"><span>新增考评对象</span></div>
-        <div class="itemList"><span>对象名称：</span><input type="text" placeholder="请输入"></div>
-        <div class="itemBtn"><a class="btn">保存</a></div>
-    </div>
-</div>
-<!--添加监视器-->
-<div class="tcHide" id="addMonitor">
-    <div class="masking"></div>
-    <div class="tcCon">
-        <img onclick="$('#addMonitor').hide()" class="off" src="images/template/icon-off.png"/>
-        <div class="tcTit"><span>新增考评对象</span></div>
-        <div class="monitorCon">
-            <div class="monitorTit">
-                <span>刷选监视器：</span>
-                <div class="select">
-                    <span id="selected">数据库1<i></i></span>
-                    <ul>
-                        <li name="数据库1"><span>数据库1</span></li>
-                        <li name="数据库2"><span>数据库2</span></li>
-                        <li name="数据库3"><span>数据库3</span></li>
-                    </ul>
-                </div>
-                <div class="search">
-                    <img src="images/template/icon-search.png"/>
-                    <input type="text" placeholder="搜索"/>
-                </div>
-            </div>
-            <div class="monitorItem">
-                <div class="item">
-                    <ul>
-                        <li>数据库1</li>
-                        <li>数据库2</li>
-                    </ul>
-                </div>
-                <div class="itemPic">
-                    <img src="images/template/icon-right.png"/>
-                    <img src="images/template/icon-left.png"/>
-                </div>
-                <div class="item">
-                    <ul>
-                        <li>数据库3</li>
-                    </ul>
-                </div>
-            </div>
+    <!--接口地址-->
+    <div class="tcHide">
+        <div class="masking"></div>
+        <div class="tcCon">
+            <img onclick="$('#addApi').hide()" class="off" src="images/template/icon-off.png"/>
+            <div class="tcTit"><span>新增接口地址</span></div>
+            <div class="itemList"><span><em>物联网设备监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
+            <div class="itemList"><span><em>信息安全监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
+            <div class="itemBtn"><a class="btn">保存</a></div>
         </div>
-        <div class="itemBtn"><a class="btn">保存</a></div>
-    </div>
-</div>
-<!--接口地址-->
-<div class="tcHide" id="addApi">
-    <div class="masking"></div>
-    <div class="tcCon">
-        <img onclick="$('#addApi').hide()" class="off" src="images/template/icon-off.png"/>
-        <div class="tcTit"><span>新增接口地址</span></div>
-        <div class="itemList"><span><em>物联网设备监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
-        <div class="itemList"><span><em>信息安全监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
-        <div class="itemBtn"><a class="btn">保存</a></div>
     </div>
 </div>
 </body>
 <script src="js/public.js"></script>
-<script>
-    $('.itemTit .click').click(function () {
-        $(this).parents(".itemTit").siblings(".itemCon").slideToggle();
-    })
-    $('.itemSub .clicked').click(function () {
-        $(this).parents(".itemSub").siblings(".itemLast").slideToggle();
-    })
-</script>
+<script src="js/evaluationObject.js"></script>
 </html>

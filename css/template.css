@@ -272,8 +272,8 @@ body{
 }
 .btn{
     overflow: hidden;
-    background: #482afe;
-    border-radius: 6px;
+    background: #02a7f4;
+    border-radius: 4px;
     padding: 5px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -374,13 +374,14 @@ body{
     line-height: 18px;
     margin-right: 10px;
     background: transparent;
+    cursor: pointer;
 }
 .checkList .checkbox + label img{margin: 2px auto 0;display: none}
 .checkList .checkbox:checked + label {
     color: transparent;
     border: solid 1px #d8dce5;
 }
-.checkList .checkbox:checked + label img{display: block}
+.checkList .checkbox:checked + label img{display: block;}
 .checkList .radio{
     color: transparent;
     border: solid 1px #d8dce5;
@@ -408,7 +409,6 @@ body{
     border-radius: 100%;
 }
 .tcHide{
-    overflow: hidden;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -418,7 +418,6 @@ body{
     display: none;
 }
 .masking {
-    overflow: hidden;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -429,14 +428,14 @@ body{
     cursor: pointer;
 }
 .tcHide .tcCon{
-    overflow: hidden;
     position: relative;
     z-index: 1113;
     margin: 0 auto;
     top: 15%;
     width: 600px;
+    /*min-height: 200px;*/
     background: #fff;
-    border-radius: 10px;
+    border-radius: 2px;
     padding: 10px 15px;
 }
 .tcHide .tcCon .off{
@@ -489,3 +488,4 @@ body{
     margin: 0 auto;
     display: inline-block;
 }
+.display{display: block!important;}

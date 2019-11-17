@@ -95,7 +95,7 @@
     text-align: center;
 }
 .index .rightCon .tabCon table tr td:last-child,.index .rightCon .tabCon table tr th:last-child{text-align: left}
-.index .tabCon table tr th{padding: 10px;font-size: 14px;}
+.index .tabCon table tr th{font-size: 14px;}
 .index .tabCon table tr td span{
     overflow: hidden;
     display: inline-block;
