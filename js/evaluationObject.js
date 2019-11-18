@@ -100,15 +100,7 @@ new Vue({
         submitSystem() {
             let list = {
                 "name": this.systemName,
-                "information": [
-                    {
-                        "name":"",
-                        "displayName": "",
-                        "information": [
-                            {"name": "", "displayName": ""},
-                        ]
-                    }
-                ]
+                "information": []
             };
             if (this.systemName != "") {
                 this.objectData.push(list);
@@ -117,31 +109,21 @@ new Vue({
         },
         /*保存考评对象设备类型*/
         submitEquipment() {
-            let index = this.objectData[this.equipmentIndex].information.length-1;
+            let index = this.objectData[this.equipmentIndex].information.length;
             let equipmentList={
                 "name": this.equipmentId,
                 "displayName": this.subTxt,
                 "information": [
-                    {"name": "", "displayName": ""},
+                    /*{"name": "", "displayName": ""},*/
                 ]
             };
             let list = {
                 "name": this.objectData[this.equipmentIndex].name,
                 "information": equipmentList
             };
-            if (this.objectData[this.equipmentIndex].name!=""){
-                if (this.subTxt!="请选择"){
-                    if (index==0&&this.objectData[this.equipmentIndex].information[index].name == "") {
-                        this.objectData[this.equipmentIndex].information[index].name = this.equipmentId;
-                        if (this.objectData[this.equipmentIndex].information[index].displayName == "") {
-                            this.objectData[this.equipmentIndex].information[index].displayName = this.subTxt
-                        }
-                        this.savaObject(this.objectData);
-                    } else{
-                        this.objectData[this.equipmentIndex].information.push(list.information);
-                        this.savaObject(this.objectData);
-                    }
-                }
+            if (this.subTxt!="请选择"){
+                this.objectData[this.equipmentIndex].information.push(equipmentList);
+                this.savaObject(this.objectData);
             }
         },
     },
