@@ -35,7 +35,7 @@
                     <li v-for="(item,index) in objectData">
                         <div class="item">
                             <div class="itemLeft" v-on:click="showSub(index)">
-                                <img v-if="item.information&&item.information.length>0&&item.information[0].name!=''" src="images/template/‭icon-open.png"/>
+                                <img v-if="item.information&&item.information.length>0" src="images/template/‭icon-open.png"/>
                                 <p>{{item.name}}</p>
                             </div>
                             <div class="itemRight">
@@ -45,10 +45,10 @@
                             </div>
                         </div>
                         <ul class="navSub" v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
-                            <li v-for="itemSub in item.information" v-if="item.information.length>0&&itemSub.name!=''">
+                            <li v-for="itemSub in item.information" v-if="item.information.length>0">
                                 <div class="item">
                                     <div class="itemLeft" v-on:click="showThree(index)">
-                                        <img v-if="itemSub.information&&itemSub.information.length>0&&itemSub.information[0].name!=''" src="images/template/‭icon-open.png"/>
+                                        <img v-if="itemSub.information&&itemSub.information.length>0" src="images/template/‭icon-open.png"/>
                                         <p>{{itemSub.displayName}}</p>
                                     </div>
                                     <div class="itemRight">
@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <ul class="navThree" v-if="activeThreeIndex===index" :class="activeThreeIndex===index?'display':''">
-                                    <li v-for="itemThree in itemSub.information" v-if="itemSub.information.length>0&&itemThree.name!=''"><p>{{itemThree.name}}</p></li>
+                                    <li v-for="itemThree in itemSub.information" v-if="itemSub.information.length>0"><p>{{itemThree.name}}</p></li>
                                 </ul>
                             </li>
                         </ul>
