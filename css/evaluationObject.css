@@ -100,6 +100,7 @@
     line-height: 30px;
     padding: 0 5px;
     border-bottom: solid 1px #e4e4e4;
+    cursor: pointer;
 }
 .tcHide .tcCon .monitorCon .monitorItem .item li:last-child{border-bottom: none}
 .tcHide .tcCon .monitorCon .monitorItem .itemPic{margin: 0 20px}

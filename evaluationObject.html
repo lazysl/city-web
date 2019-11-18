@@ -24,7 +24,7 @@
         <div class="layout">
             <div class="title">
                 <span>考评对象管理</span>
-                <a class="btn" v-on:click="addObjectFuc">新增考评对象</a>
+                <a class="btn" v-on:click="addObjectFuc(-1)">新增考评对象</a>
             </div>
             <div class="navTree">
                 <div class="treeTit">
@@ -39,20 +39,20 @@
                                 <p>{{item.name}}</p>
                             </div>
                             <div class="itemRight">
-                                <img v-on:click="addSubList(item.name,index)" src="images/template/icon-add.png"/>
-                                <img v-on:click="changeObjectFuc(item.name,index)" src="images/template/icon-change.png"/>
+                                <img v-on:click="addSubList(index)" src="images/template/icon-add.png"/>
+                                <img v-on:click="addObjectFuc(index)" src="images/template/icon-change.png"/>
                                 <img src="images/template/icon-del.png"/>
                             </div>
                         </div>
                         <ul class="navSub" v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
-                            <li v-for="itemSub in item.information" v-if="item.information.length>0">
+                            <li v-for="(itemSub,indexSub) in item.information" v-if="item.information.length>0">
                                 <div class="item">
-                                    <div class="itemLeft" v-on:click="showThree(index)">
+                                    <div class="itemLeft" v-on:click="showThree(indexSub)">
                                         <img v-if="itemSub.information&&itemSub.information.length>0" src="images/template/‭icon-open.png"/>
                                         <p>{{itemSub.displayName}}</p>
                                     </div>
                                     <div class="itemRight">
-                                        <img src="images/template/icon-add.png"/>
+                                        <img v-on:click="addThreeList(indexSub,index,itemSub.name)" src="images/template/icon-add.png"/>
                                         <img src="images/template/icon-change.png"/>
                                         <img src="images/template/icon-del.png"/>
                                     </div>
@@ -72,7 +72,7 @@
         <div class="masking" v-on:click="addObjectFuc"></div>
         <div class="tcCon">
             <img v-on:click="addObjectFuc" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>新增考评对象</span></div>
+            <div class="tcTit"><span>{{objectIndex==-1?'新增':'修改'}}考评对象</span></div>
             <div class="itemList"><span>对象名称：</span><input type="text" placeholder="请输入" v-model="systemName"></div>
             <div class="itemBtn"><a class="btn" v-on:click="submitSystem">保存</a></div>
         </div>
@@ -93,13 +93,13 @@
         </div>
     </div>
     <!--添加监视器-->
-    <div class="tcHide">
-        <div class="masking"></div>
+    <div class="tcHide" v-if="isThreePop" :class="isThreePop?'display':''">
+        <div class="masking" v-on:click="closeThreePop"></div>
         <div class="tcCon">
-            <img onclick="$('#addMonitor').hide()" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>新增考评对象</span></div>
+            <img v-on:click="closeThreePop" class="off" src="images/template/icon-off.png"/>
+            <div class="tcTit"><span>新增{{subName}}</span></div>
             <div class="monitorCon">
-                <div class="monitorTit">
+                <!--<div class="monitorTit">
                     <span>刷选监视器：</span>
                     <div class="select">
                         <span id="selected">数据库1<i></i></span>
@@ -113,26 +113,25 @@
                         <img src="images/template/icon-search.png"/>
                         <input type="text" placeholder="搜索"/>
                     </div>
-                </div>
+                </div>-->
                 <div class="monitorItem">
                     <div class="item">
                         <ul>
-                            <li>数据库1</li>
-                            <li>数据库2</li>
+                            <li v-for="item in threeList" v-on:click="checkThreeName(item.displayName,item.name)">{{item.displayName}}</li>
                         </ul>
                     </div>
                     <div class="itemPic">
-                        <img src="images/template/icon-right.png"/>
-                        <img src="images/template/icon-left.png"/>
+                        <img v-on:click="addThreeName" src="images/template/icon-right.png"/>
+                        <img v-on:click="delThreeName" src="images/template/icon-left.png"/>
                     </div>
                     <div class="item">
                         <ul>
-                            <li>数据库3</li>
+                            <li v-for="(item,index) in checkedThreeList" v-on:click="checkThreeName(item.displayName,item.name,index)">{{item.displayName}}</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="itemBtn"><a class="btn">保存</a></div>
+            <div class="itemBtn"><a class="btn" v-on:click="submitThree">保存</a></div>
         </div>
     </div>
     <!--接口地址-->

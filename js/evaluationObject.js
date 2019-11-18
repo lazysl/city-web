@@ -1,22 +1,31 @@
 new Vue({
     el: '#main',
     data: {
-        objectData:"",
-        activeSubIndex:-1,
-        activeThreeIndex:-1,
-        addObject:false,
-        systemName:'',
-        isDeviceType:false,
-        isSelect:false,
-        subTxt:'请选择',
+        objectData: "",
+        activeSubIndex: -1,
+        activeThreeIndex: -1,
+        objectIndex: "",
+        addObject: false,
+        systemName: '',
+        isDeviceType: false,
+        isSelect: false,
+        subTxt: '请选择',
         subList: [
             {name: '服务器', id: "server"},
             {name: '数据库', id: "sql"},
             {name: '中间件', id: "middleware"},
             {name: '物联网设备', id: "internet"},
         ],
-        equipmentIndex:'',
-        equipmentId:''
+        subName:'',
+        equipmentIndex: '',
+        equipmentId: '',
+        isThreePop:false,
+        threeList:"",
+        threeIndex:'',
+        checkedThreeDisName:'',
+        checkedThreeName:'',
+        checkedThreeIndex:'',
+        checkedThreeList:[],
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -44,6 +53,10 @@ new Vue({
             param = $.extend(param, {"ajaxtype": "POST"});
             this.jsonAjax(param, callbackSuc, callbackErr);
         },
+        addObjectFuc(index) {
+            this.objectIndex = index;
+            this.addObject = !this.addObject;
+        },
         /*展示二级目录*/
         showSub(index) {
             this.activeSubIndex = this.activeSubIndex == index ? -1 : index;
@@ -53,7 +66,7 @@ new Vue({
             this.activeThreeIndex = this.activeThreeIndex == index ? -1 : index;
         },
         /*展示设备类型弹窗*/
-        addSubList(name, index) {
+        addSubList(index) {
             this.isDeviceType = !this.isDeviceType;
             this.equipmentIndex = index;
         },
@@ -62,37 +75,69 @@ new Vue({
             this.isSelect = !this.isSelect
         },
         /*选择具体设备类型*/
-        selectEquipment(name,id) {
+        selectEquipment(name, id) {
             this.subTxt = name;
-            this.equipmentId=id;
+            this.equipmentId = id;
             this.isSelect = false;
         },
+        /*展示三级菜单弹窗*/
+        addThreeList(indexSub,index, name) {
+            this.subName = name;
+            this.equipmentIndex = index;
+            this.threeIndex = indexSub;
+            this.isThreePop = !this.isThreePop;
+            let num;
+            if(name=="sql") num=1;
+            else if(name=="middleware") num=2;
+            else if(name=="server") num=3;
+            else if(name=="internet") num=4;
+            this.getCheckSqlList(num)
+        },
+        closeThreePop() {
+            this.isThreePop = !this.isThreePop;
+        },
+        checkThreeName(name, id, index) {
+            this.checkedThreeDisName = name;
+            this.checkedThreeName = id;
+            if (index) this.checkedThreeIndex = index;
+        },
+        addThreeName(){
+            let arrData={name:this.checkedThreeName,displayName:this.checkedThreeDisName};
+            this.checkedThreeList.push(arrData);
+        },
+        delThreeName(){
+            this.checkedThreeList.splice(this.checkedThreeIndex,1)
+        },
         /*获取考评对象*/
-        initObject () {
+        initObject() {
             var param = {url: setting.www_url + "/city/checkObject/getCheckObject?apiKey=" + setting.apiKey};
-            this.getAjax(param, (res)=> {
+            this.getAjax(param, (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.objectData = res.data;
                 }
             })
         },
-        addObjectFuc() {
-            this.addObject = !this.addObject;
-        },
-        changeObjectFuc(name, index) {
-            // this.addObject = !this.addObject;
-            // console.log(this.objectData)
+        /*获取数据库和中间件设备列表*/
+        getCheckSqlList(num) {
+            var param = {
+                url: setting.www_url + "/city/checkSql/getCheckSqlList?apiKey=" + setting.apiKey + "&type=" + num,
+            };
+            this.getAjax(param, (res) => {
+                if (res.code = 200 && res.code_desc == "success") {
+                    this.threeList = res.data;
+                }
+            })
         },
         /*保存考评对象*/
-        savaObject (data) {
+        savaObject(data) {
             var param = {
-                url: setting.www_url + "/city/checkObject/updateCheckObject?apiKey=" + setting.apiKey ,
-                list:JSON.stringify(data)
+                url: setting.www_url + "/city/checkObject/updateCheckObject?apiKey=" + setting.apiKey,
+                list: JSON.stringify(data)
             };
             this.postAjax(param, (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.addObject = false;
-                    this.isDeviceType=false;
+                    this.isDeviceType = false;
                 }
             })
         },
@@ -103,31 +148,36 @@ new Vue({
                 "information": []
             };
             if (this.systemName != "") {
-                this.objectData.push(list);
-                this.savaObject(this.objectData);
+                if (this.objectIndex == -1) {
+                    this.objectData.push(list);
+                    this.savaObject(this.objectData);
+                } else {
+                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.objectIndex].name, this.systemName));
+                    this.savaObject(this.objectData);
+                }
             }
         },
         /*保存考评对象设备类型*/
         submitEquipment() {
-            let index = this.objectData[this.equipmentIndex].information.length;
-            let equipmentList={
+            let equipmentList = {
                 "name": this.equipmentId,
                 "displayName": this.subTxt,
-                "information": [
-                    /*{"name": "", "displayName": ""},*/
-                ]
+                "information": []
             };
-            let list = {
-                "name": this.objectData[this.equipmentIndex].name,
-                "information": equipmentList
-            };
-            if (this.subTxt!="请选择"){
+            if (this.subTxt != "请选择") {
                 this.objectData[this.equipmentIndex].information.push(equipmentList);
                 this.savaObject(this.objectData);
             }
         },
+        /*保存考评对象三级目录*/
+        submitThree(){
+            if (this.checkedThreeList.length>0) {
+                this.objectData[this.equipmentIndex].information[this.threeIndex].information = this.checkedThreeList;
+                this.savaObject(this.objectData);
+            }
+        }
     },
-    mounted(){
+    mounted() {
         this.initObject();
     },
 });
