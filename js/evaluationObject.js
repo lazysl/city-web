@@ -12,7 +12,7 @@ new Vue({
         subList: [
             {name: '服务器', id: "server"},
             {name: '数据库', id: "sql"},
-            {name: '中间价', id: "tomcat"},
+            {name: '中间件', id: "middleware"},
             {name: '物联网设备', id: "internet"},
         ],
         equipmentIndex:'',
