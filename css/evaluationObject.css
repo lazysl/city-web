@@ -93,7 +93,7 @@
 }
 .tcHide .tcCon .monitorCon .monitorItem .item li{
     overflow: hidden;
-    background: #e1edff;
+    background: #fff;
     color: #333;
     font-size: 16px;
     height: 30px;
@@ -102,6 +102,7 @@
     border-bottom: solid 1px #e4e4e4;
     cursor: pointer;
 }
+.tcHide .tcCon .monitorCon .monitorItem .item li.checked,.tcHide .tcCon .monitorCon .monitorItem .item li:hover{background: #e1edff;}
 .tcHide .tcCon .monitorCon .monitorItem .item li:last-child{border-bottom: none}
 .tcHide .tcCon .monitorCon .monitorItem .itemPic{margin: 0 20px}
 .tcHide .tcCon .monitorCon .monitorItem .itemPic img{width: 24px}

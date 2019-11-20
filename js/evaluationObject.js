@@ -5,6 +5,7 @@ new Vue({
         activeSubIndex: -1,
         activeThreeIndex: -1,
         objectIndex: "",
+        subIndex: "",
         addObject: false,
         systemName: '',
         isDeviceType: false,
@@ -16,16 +17,18 @@ new Vue({
             {name: '中间件', id: "middleware"},
             {name: '物联网设备', id: "internet"},
         ],
-        subName:'',
+        subName: '',
         equipmentIndex: '',
         equipmentId: '',
-        isThreePop:false,
-        threeList:"",
-        threeIndex:'',
-        checkedThreeDisName:'',
-        checkedThreeName:'',
-        checkedThreeIndex:'',
-        checkedThreeList:[],
+        isThreePop: false,
+        threeList: "",
+        threeIndex: '',
+        checkedThreeLeftDisName: '',
+        checkedThreeLeftName: '',
+        checkedThreeIndex: -1,
+        checkedThreeRightDisName: '',
+        checkedThreeRightName: '',
+        checkedThreeList: [],
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -66,9 +69,21 @@ new Vue({
             this.activeThreeIndex = this.activeThreeIndex == index ? -1 : index;
         },
         /*展示设备类型弹窗*/
-        addSubList(index) {
+        addSubList(indexSub,index, type) {
             this.isDeviceType = !this.isDeviceType;
             this.equipmentIndex = index;
+            this.threeIndex = indexSub;
+            this.subIndex = type
+        },
+        /*删除系统*/
+        delList(index) {
+            this.objectData.splice(index, 1);
+            this.savaObject(this.objectData)
+        },
+        /*删除设备类型*/
+        delSubList(indexSub, index) {
+            this.objectData[index].information.splice(indexSub, 1);
+            this.savaObject(this.objectData)
         },
         /*选择设备类型下拉框*/
         select() {
@@ -81,32 +96,50 @@ new Vue({
             this.isSelect = false;
         },
         /*展示三级菜单弹窗*/
-        addThreeList(indexSub,index, name) {
+        addThreeList(indexSub, index, name) {
             this.subName = name;
             this.equipmentIndex = index;
-            this.threeIndex = indexSub;
             this.isThreePop = !this.isThreePop;
+            this.threeIndex = indexSub;
             let num;
-            if(name=="sql") num=1;
-            else if(name=="middleware") num=2;
-            else if(name=="server") num=3;
-            else if(name=="internet") num=4;
+            if (name == "sql") num = 1;
+            else if (name == "middleware") num = 2;
+            else if (name == "server") num = 3;
+            else if (name == "internet") num = 4;
             this.getCheckSqlList(num)
         },
         closeThreePop() {
             this.isThreePop = !this.isThreePop;
+            this.checkedThreeList = [];
+            this.checkedThreeIndex = -1;
         },
-        checkThreeName(name, id, index) {
-            this.checkedThreeDisName = name;
-            this.checkedThreeName = id;
-            if (index) this.checkedThreeIndex = index;
+        checkThreeLeftName(name, id, index) {
+            this.checkedThreeLeftDisName = name;
+            this.checkedThreeLeftName = id;
+            this.checkedThreeIndex = index;
         },
-        addThreeName(){
-            let arrData={name:this.checkedThreeName,displayName:this.checkedThreeDisName};
-            this.checkedThreeList.push(arrData);
+        checkThreeRightName(name, id, index) {
+            this.checkedThreeRightDisName = name;
+            this.checkedThreeRightName = id;
+            this.checkedThreeIndex = index;
         },
-        delThreeName(){
-            this.checkedThreeList.splice(this.checkedThreeIndex,1)
+        addThreeName() {
+            if (this.checkedThreeLeftName != '') {
+                let arrData = {name: this.checkedThreeLeftName, displayName: this.checkedThreeLeftDisName};
+                this.checkedThreeList.push(arrData);
+                this.threeList.splice(this.checkedThreeIndex, 1);
+                this.checkedThreeLeftName = "";
+                this.checkedThreeLeftDisName = ""
+            }
+        },
+        delThreeName() {
+            if (this.checkedThreeRightName != '') {
+                let arrData = {name: this.checkedThreeRightName, displayName: this.checkedThreeRightDisName};
+                this.threeList.push(arrData);
+                this.checkedThreeList.splice(this.checkedThreeIndex, 1);
+                this.checkedThreeRightName = "";
+                this.checkedThreeRightDisName = ""
+            }
         },
         /*获取考评对象*/
         initObject() {
@@ -165,13 +198,19 @@ new Vue({
                 "information": []
             };
             if (this.subTxt != "请选择") {
-                this.objectData[this.equipmentIndex].information.push(equipmentList);
-                this.savaObject(this.objectData);
+                if (this.subIndex==0){
+                    this.objectData[this.equipmentIndex].information.push(equipmentList);
+                    this.savaObject(this.objectData);
+                } else if(this.subIndex==1){
+                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].displayName,this.subTxt));
+                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].name,this.equipmentId));
+                    this.savaObject(this.objectData);
+                }
             }
         },
         /*保存考评对象三级目录*/
-        submitThree(){
-            if (this.checkedThreeList.length>0) {
+        submitThree() {
+            if (this.checkedThreeList.length > 0) {
                 this.objectData[this.equipmentIndex].information[this.threeIndex].information = this.checkedThreeList;
                 this.savaObject(this.objectData);
             }

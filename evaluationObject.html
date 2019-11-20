@@ -39,9 +39,9 @@
                                 <p>{{item.name}}</p>
                             </div>
                             <div class="itemRight">
-                                <img v-on:click="addSubList(index)" src="images/template/icon-add.png"/>
+                                <img v-on:click="addSubList(index,0)" src="images/template/icon-add.png"/>
                                 <img v-on:click="addObjectFuc(index)" src="images/template/icon-change.png"/>
-                                <img src="images/template/icon-del.png"/>
+                                <img v-on:click="delList(index)" src="images/template/icon-del.png"/>
                             </div>
                         </div>
                         <ul class="navSub" v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
@@ -53,11 +53,11 @@
                                     </div>
                                     <div class="itemRight">
                                         <img v-on:click="addThreeList(indexSub,index,itemSub.name)" src="images/template/icon-add.png"/>
-                                        <img src="images/template/icon-change.png"/>
-                                        <img src="images/template/icon-del.png"/>
+                                        <img v-on:click="addSubList(indexSub,index,1)" src="images/template/icon-change.png"/>
+                                        <img v-on:click="delSubList(indexSub,index)" src="images/template/icon-del.png"/>
                                     </div>
                                 </div>
-                                <ul class="navThree" v-if="activeThreeIndex===index" :class="activeThreeIndex===index?'display':''">
+                                <ul class="navThree" v-if="activeThreeIndex===indexSub" :class="activeThreeIndex===indexSub?'display':''">
                                     <li v-for="itemThree in itemSub.information" v-if="itemSub.information.length>0"><p>{{itemThree.name}}</p></li>
                                 </ul>
                             </li>
@@ -67,7 +67,7 @@
             </div>
         </div>
     </div>
-    <!--新增考评对象-->
+    <!--考评对象-->
     <div class="tcHide" v-if="addObject" :class="addObject?'display':''">
         <div class="masking" v-on:click="addObjectFuc"></div>
         <div class="tcCon">
@@ -77,12 +77,12 @@
             <div class="itemBtn"><a class="btn" v-on:click="submitSystem">保存</a></div>
         </div>
     </div>
-    <!--新增考评对象二级菜单-->
+    <!--考评对象二级菜单-->
     <div class="tcHide" v-if="isDeviceType" :class="isDeviceType?'display':''">
         <div class="masking" v-on:click="addSubList"></div>
         <div class="tcCon">
             <img v-on:click="addSubList" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>选择设备类型</span></div>
+            <div class="tcTit"><span>{{subIndex==0?'新增':'修改'}}设备类型</span></div>
             <div class="select marginTop">
                 <span v-on:click="select">{{subTxt}}<i></i></span>
                 <ul v-if="isSelect" :class="isSelect?'display':''">
@@ -92,7 +92,7 @@
             <div class="btn" v-on:click="submitEquipment">保存</div>
         </div>
     </div>
-    <!--添加监视器-->
+    <!--监视器-->
     <div class="tcHide" v-if="isThreePop" :class="isThreePop?'display':''">
         <div class="masking" v-on:click="closeThreePop"></div>
         <div class="tcCon">
@@ -117,7 +117,7 @@
                 <div class="monitorItem">
                     <div class="item">
                         <ul>
-                            <li v-for="item in threeList" v-on:click="checkThreeName(item.displayName,item.name)">{{item.displayName}}</li>
+                            <li v-for="(item,index) in threeList" :class="{checked:checkedThreeIndex==index}" v-on:click="checkThreeLeftName(item.displayName,item.name,index)">{{item.displayName}}</li>
                         </ul>
                     </div>
                     <div class="itemPic">
@@ -126,7 +126,7 @@
                     </div>
                     <div class="item">
                         <ul>
-                            <li v-for="(item,index) in checkedThreeList" v-on:click="checkThreeName(item.displayName,item.name,index)">{{item.displayName}}</li>
+                            <li v-for="(item,index) in checkedThreeList" :class="{checked:checkedThreeIndex==index}" v-on:click="checkThreeRightName(item.displayName,item.name,index)">{{item.displayName}}</li>
                         </ul>
                     </div>
                 </div>
