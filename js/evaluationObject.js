@@ -73,7 +73,7 @@ new Vue({
             this.isDeviceType = !this.isDeviceType;
             this.equipmentIndex = index;
             this.threeIndex = indexSub;
-            this.subIndex = type
+            this.subIndex = type;
         },
         /*删除系统*/
         delList(index) {
@@ -143,8 +143,7 @@ new Vue({
         },
         /*获取考评对象*/
         initObject() {
-            var param = {url: setting.www_url + "/city/checkObject/getCheckObject?apiKey=" + setting.apiKey};
-            this.getAjax(param, (res) => {
+            this.getAjax(this.getCheckObject(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.objectData = res.data;
                 }
@@ -152,10 +151,7 @@ new Vue({
         },
         /*获取数据库和中间件设备列表*/
         getCheckSqlList(num) {
-            var param = {
-                url: setting.www_url + "/city/checkSql/getCheckSqlList?apiKey=" + setting.apiKey + "&type=" + num,
-            };
-            this.getAjax(param, (res) => {
+            this.getAjax(this.checkSqlList(num), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.threeList = res.data;
                 }
@@ -163,11 +159,7 @@ new Vue({
         },
         /*保存考评对象*/
         savaObject(data) {
-            var param = {
-                url: setting.www_url + "/city/checkObject/updateCheckObject?apiKey=" + setting.apiKey,
-                list: JSON.stringify(data)
-            };
-            this.postAjax(param, (res) => {
+            this.postAjax(this.updateCheckObject(data), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.addObject = false;
                     this.isDeviceType = false;
@@ -195,7 +187,7 @@ new Vue({
             let equipmentList = {
                 "name": this.equipmentId,
                 "displayName": this.subTxt,
-                "information": []
+                "information": ""
             };
             if (this.subTxt != "请选择") {
                 if (this.subIndex==0){
@@ -211,8 +203,10 @@ new Vue({
         /*保存考评对象三级目录*/
         submitThree() {
             if (this.checkedThreeList.length > 0) {
-                this.objectData[this.equipmentIndex].information[this.threeIndex].information = this.checkedThreeList;
+                this.objectData[this.equipmentIndex].information[this.threeIndex].information=this.checkedThreeList
                 this.savaObject(this.objectData);
+                this.isThreePop=false;
+
             }
         }
     },
