@@ -108,6 +108,9 @@
 .index .tabCon table tr td span.red{
     background: #f00
 }
+.index .tabCon table tr td span.orange{
+    background: #fd6123
+}
 .index .tabCon table tr td span.green{
     background: #00ff00
 }

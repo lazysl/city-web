@@ -97,6 +97,8 @@ new Vue({
         },
         /*展示三级菜单弹窗*/
         addThreeList(indexSub, index, name) {
+            this.checkedThreeIndex = -1;
+            this.checkedThreeList=[];
             this.subName = name;
             this.equipmentIndex = index;
             this.isThreePop = !this.isThreePop;
