@@ -24,7 +24,7 @@
         <div class="layout">
             <div class="title">
                 <span>考评计划管理</span>
-                <a class="btn" onclick="$('#addObject').show()">保存</a>
+                <a class="btn" onclick="$.savePlan()">保存</a>
             </div>
             <div class="checkCon">
                 <div class="checkItem">
@@ -32,7 +32,7 @@
                         <input type="checkbox" class="checkbox" id="day"><label for="day"><img src="images/template/icon-check.png" alt=""></label>
                         <p>每日</p>
                     </div>
-                    <div class="itemTime"><span>时间：</span><input class="time" type="text"/></div>
+                    <div class="itemTime"><span>时间：</span><input class="time" type="text" id="dayTime"/></div>
                     <div class="item">
                         <p>报表日期：</p>
                         <div class="checkList">
@@ -46,7 +46,7 @@
                     </div>
                     <div class="item">
                         <p>接收报表的邮件地址：</p>
-                        <input class="input" type="text">
+                        <input class="input" type="email" id="dayInput" value="">
                     </div>
                 </div>
                 <div class="checkItem">
@@ -54,41 +54,41 @@
                         <input type="checkbox" class="checkbox" id="week"><label for="week"><img src="images/template/icon-check.png" alt=""></label>
                         <p>每周</p>
                     </div>
-                    <div class="itemTime"><span>时间：</span><input class="time" type="text"/></div>
+                    <div class="itemTime"><span>时间：</span><input class="time" type="text" id="weekTime"/></div>
                     <div class="item">
                         <p>报表日期：</p>
                         <div class="checkList">
-                            <input type="radio" class="radio" value="Monday" name="time">
+                            <input type="radio" class="radio" value="1" name="time" id="radioSunday">
+                            <p>周日</p>
+                        </div>
+                        <div class="checkList">
+                            <input type="radio" class="radio" value="2" name="time" id="radioMonday">
                             <p>周一</p>
                         </div>
                         <div class="checkList">
-                            <input type="radio" class="radio" value="Tuesday" name="time">
+                            <input type="radio" class="radio" value="3" name="time" id="radioTuesday">
                             <p>周二</p>
                         </div>
                         <div class="checkList">
-                            <input type="radio" class="radio" value="Wednesday" name="time">
+                            <input type="radio" class="radio" value="4" name="time" id="radioWednesday">
                             <p>周三</p>
                         </div>
                         <div class="checkList">
-                            <input type="radio" class="radio" value="Thursday" name="time">
+                            <input type="radio" class="radio" value="5" name="time" id="radioThursday">
                             <p>周四</p>
                         </div>
                         <div class="checkList">
-                            <input type="radio" class="radio" value="Friday" name="time">
+                            <input type="radio" class="radio" value="6" name="time" id="radioFriday">
                             <p>周五</p>
                         </div>
                         <div class="checkList">
-                            <input type="radio" class="radio" value="Saturday" name="time">
+                            <input type="radio" class="radio" value="7" name="time" id="radioSaturday">
                             <p>周六</p>
-                        </div>
-                        <div class="checkList">
-                            <input type="radio" class="radio" value="Sunday" name="time">
-                            <p>周日</p>
                         </div>
                     </div>
                     <div class="item">
                         <p>接收报表的邮件地址：</p>
-                        <input class="input" type="text">
+                        <input class="input" type="email" id="weekInput">
                     </div>
                 </div>
                 <div class="checkItem">
@@ -96,26 +96,27 @@
                         <input type="checkbox" class="checkbox" id="mount"><label for="mount"><img src="images/template/icon-check.png" alt=""></label>
                         <p>每月</p>
                     </div>
-                    <div class="itemTime"><span>时间：</span><input class="time" type="text"/></div>
+                    <div class="itemTime"><span>时间：</span><input class="time" type="text" id="mountTime"/></div>
                     <div class="item">
                         <p>日期：</p>
-                        <input class="input inputTime" type="text">
+                        <input class="input inputTime" type="text" id="mountDay">
                         <p>日</p>
                     </div>
                     <div class="item">
                         <p>接收报表的邮件地址：</p>
-                        <input class="input" type="text">
+                        <input class="input" type="email" id="mountInput">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/evaluationPlan.js"></script>
 <script src="js/jquery-clock-timepicker.min.js"></script>
 <script type="text/javascript">
+    $.initPlan();
     $(document).ready(function() {
         $('.time').clockTimePicker({});
     });

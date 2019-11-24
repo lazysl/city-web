@@ -44,3 +44,22 @@ Vue.prototype.updateCheckMode = function (data) {
         list: JSON.stringify(data)
     }
 };
+function getCheckPlan() {
+    return {url: setting.www_url + "/city/checkPlan/getCheckPlan?apiKey=" + setting.apiKey}
+}
+function updateCheckPlan(data) {
+    return {
+        url: setting.www_url + "/city/checkPlan/updateCheckPlan?apiKey=" + setting.apiKey,
+        list: JSON.stringify(data)
+    }
+}
+function getEmailProperties() {
+    return {url: setting.www_url + "/city/email/getEmailProperties?apiKey=" + setting.apiKey}
+}
+function saveEmailProperties(data) {
+    return {
+        url: setting.www_url + "/city/checkPlan/saveEmailProperties?apiKey=" + setting.apiKey,
+        list: JSON.stringify(data)
+    }
+
+}
