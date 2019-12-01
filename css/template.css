@@ -242,6 +242,10 @@ body{
     background: url("../images/template/icon4.png") no-repeat center center;
     background-size: 60px 67px;
 }
+#nav ul li span.ic5{
+    background: url("../images/template/icon5.png") no-repeat center center;
+    background-size: 65px 65px;
+}
 #content{
     padding: 110px 30px 0 215px;
     position: relative;

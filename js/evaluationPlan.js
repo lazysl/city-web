@@ -131,8 +131,8 @@ $.extend({
             }
             $.postAjax(updateCheckPlan(list), function (res) {
                 if (res.code = 200 && res.code_desc == "success") {
-
-                }
+                    alert("保存成功")
+                }else alert("保存失败")
             })
         }
     }

@@ -1,7 +1,98 @@
 .model .modelCon {
     overflow: hidden;
-    margin: 0 30px;
 }
+.model .modelCon .tabList{
+    overflow: hidden;
+    background: #eee;
+}
+.model .modelCon .tabList ul{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    padding: 0 20px;
+}
+.model .modelCon .tabList ul li{
+    overflow: hidden;
+    font-size: 14px;
+    padding: 10px 0;
+    text-align: center;
+    margin: 0 30px 0 0;
+}
+.model .modelCon .tabList ul li.checked{
+    border-bottom: solid 4px #13aaf6;
+    color: #13aaf6;
+    padding-bottom: 6px;
+}
+.model .modelCon .table{overflow: hidden;width: 100%}
+.model .modelCon table{
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    max-height: 517px;
+    display: table;
+}
+.model .modelCon table thead{
+    background: #eee;
+}
+.model .modelCon table tbody{
+    width: 100%;
+}
+.model .modelCon table tr:last-child{border-bottom:none}
+.model .modelCon table tr td,.model .modelCon table tr th{
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #d8dce5;
+    text-align: center;
+}
+.model .modelCon table tr th{font-size: 14px;}
+.model .modelCon table tr td span{
+    overflow: hidden;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.model .modelCon table tr td span.red{
+    background: #f00
+}
+.model .modelCon table tr td span.orange{
+    background: #fd6123
+}
+.model .modelCon table tr td span.green{
+    background: #00ff00
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .model .modelCon .item{
     overflow: hidden;
     width: 50%;
