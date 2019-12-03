@@ -24,7 +24,6 @@
         <div class="layout">
             <div class="title">
                 <span>考评模型管理</span>
-                <a class="btn">保存</a>
             </div>
             <div class="modelCon">
                 <div class="tabList">
@@ -34,24 +33,52 @@
                         <li><span>月评模型</span></li>
                         <li><span>年评模型</span></li>
                     </ul>
+                    <a class="btn">保存</a>
                 </div>
                 <div class="table">
                     <table>
-                        <tbody id="alarms">
                         <tr>
-                            <td rowspan="4">性能告警</td>
-                            <td>服务器</td>
+                            <td colspan="4">可用性<input placeholder="70%"><img src="images/template/icon-change.png"/></td>
                         </tr>
                         <tr>
-                            <td>中间件</td>
+                            <td>服务器可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                            <td>中间件可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                            <td>服务器可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                            <td>物联设备可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td colspan="4">性能告警<input placeholder="20%"><img src="images/template/icon-change.png"/></td>
                         </tr>
                         <tr>
-                            <td>服务器</td>
+                            <td>服务器<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>中间件<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>服务器<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
                         </tr>
                         <tr>
-                            <td>物联设备</td>
+                            <td>严重告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>严重告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>严重告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
                         </tr>
-                        </tbody>
+                        <tr>
+                            <td>故障告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>故障告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>故障告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>其他告警率<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
+                            <td>其他告警率<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
+                            <td>其他告警率<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td colspan="4">数据质量<input placeholder="10%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>综合评分<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -60,5 +87,10 @@
 </div>
 <script src="js/public.js"></script>
 <script src="js/evaluationModel.js"></script>
+<script>
+    $(".tabList li").click(function () {
+        $(this).addClass("checked").siblings("li").removeClass("checked")
+    })
+</script>
 </body>
 </html>

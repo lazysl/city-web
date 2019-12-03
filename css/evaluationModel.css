@@ -4,6 +4,10 @@
 .model .modelCon .tabList{
     overflow: hidden;
     background: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
 }
 .model .modelCon .tabList ul{
     overflow: hidden;
@@ -15,16 +19,20 @@
 .model .modelCon .tabList ul li{
     overflow: hidden;
     font-size: 14px;
-    padding: 10px 0;
+    padding: 15px 0;
     text-align: center;
     margin: 0 30px 0 0;
+    border-bottom: solid 4px transparent;
 }
 .model .modelCon .tabList ul li.checked{
     border-bottom: solid 4px #13aaf6;
     color: #13aaf6;
-    padding-bottom: 6px;
 }
-.model .modelCon .table{overflow: hidden;width: 100%}
+.model .modelCon .table{
+    overflow: hidden;
+    width: 100%;
+    margin: 10px 0;
+}
 .model .modelCon table{
     overflow: hidden;
     width: 100%;
@@ -36,16 +44,36 @@
     background: #eee;
 }
 .model .modelCon table tbody{
+    overflow: hidden;
     width: 100%;
 }
-.model .modelCon table tr:last-child{border-bottom:none}
+.model .modelCon table tr:last-child{border-bottom: 1px solid #d8dce5;}
+.model .modelCon table:last-child tr:last-child{border-bottom: none}
 .model .modelCon table tr td,.model .modelCon table tr th{
     font-size: 12px;
-    padding: 10px;
-    border-bottom: 1px solid #d8dce5;
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px dashed #d8dce5;
+    padding: 0 20px 0 60px
+}
+.model .modelCon table:last-child tr:last-child td{border-bottom: none}
+.model .modelCon table tr:first-child td{font-weight: bold;padding: 0 20px 0 20px;font-size: 13px}
+.model .modelCon table tr:nth-child(2) td{padding: 0 20px 0 40px}
+.model .modelCon table tr td:nth-child(2),.model .modelCon table tr td:nth-child(3){text-align: center}
+.model .modelCon table tr td:last-child{text-align: right}
+.model .modelCon table tr td:first-child{text-align: left}
+.model .modelCon table tr th{font-size: 14px;}
+.model .modelCon table tr td img {
+    display: inline;
+    vertical-align: middle;
+    width: 14px;
+}
+.model .modelCon table tr td input{
+    display: inline-block;
+    border: none;
+    width: 50px;
     text-align: center;
 }
-.model .modelCon table tr th{font-size: 14px;}
 .model .modelCon table tr td span{
     overflow: hidden;
     display: inline-block;
