@@ -91,6 +91,10 @@
     $(".tabList li").click(function () {
         $(this).addClass("checked").siblings("li").removeClass("checked")
     })
+    $(function () {
+        var docHeight = document.documentElement.clientHeight;
+        $(".modelCon").css("min-height", docHeight - 197);
+    });
 </script>
 </body>
 </html>

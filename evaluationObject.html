@@ -26,44 +26,49 @@
                 <span>考评对象管理</span>
                 <a class="btn" v-on:click="addObjectFuc(-1)">新增考评对象</a>
             </div>
-            <div class="navTree">
+            <div class="navTree" id="navTree">
                 <div class="treeTit">
                     <span>名称</span>
                     <span>操作</span>
                 </div>
-                <ul v-if="objectData.length>0" :class="objectData.length>0?'display':''">
-                    <li v-for="(item,index) in objectData">
-                        <div class="item">
-                            <div class="itemLeft" v-on:click="showSub(index)">
-                                <img v-if="item.information&&item.information.length>0" src="images/template/‭icon-open.png"/>
-                                <p>{{item.name}}</p>
-                            </div>
-                            <div class="itemRight">
-                                <img v-on:click="addSubList(-1,index,0)" src="images/template/icon-add.png"/>
-                                <img v-on:click="addObjectFuc(index)" src="images/template/icon-change.png"/>
-                                <img v-on:click="delList(index)" src="images/template/icon-del.png"/>
-                            </div>
-                        </div>
-                        <ul class="navSub" v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
-                            <li v-for="(itemSub,indexSub) in item.information" v-if="item.information.length>0">
-                                <div class="item">
-                                    <div class="itemLeft" v-on:click="showThree(indexSub)">
-                                        <img v-if="itemSub.information&&itemSub.information.length>0" src="images/template/‭icon-open.png"/>
-                                        <p>{{itemSub.displayName}}</p>
-                                    </div>
-                                    <div class="itemRight">
-                                        <img v-on:click="addThreeList(indexSub,index,itemSub.name)" src="images/template/icon-add.png"/>
-                                        <img v-on:click="addSubList(indexSub,index,1)" src="images/template/icon-change.png"/>
-                                        <img v-on:click="delSubList(indexSub,index)" src="images/template/icon-del.png"/>
-                                    </div>
+                <div id="ulHeight">
+                    <ul v-if="objectData.length>0" :class="objectData.length>0?'display':''">
+                        <li v-for="(item,index) in objectData">
+                            <div class="item">
+                                <div class="itemLeft" v-on:click="showSub(index)">
+                                    <img v-if="item.information&&item.information.length>0" src="images/template/‭icon-open.png"/>
+                                    <p>{{item.name}}</p>
                                 </div>
-                                <ul class="navThree" v-if="activeThreeIndex===indexSub" :class="activeThreeIndex===indexSub?'display':''">
-                                    <li v-for="itemThree in itemSub.information" v-if="itemSub.information.length>0"><p>{{itemThree.name}}</p><img v-on:click="delList(index)" src="images/template/icon-del.png"/></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                                <div class="itemRight">
+                                    <img v-on:click="addSubList(-1,index,0)" src="images/template/icon-add.png"/>
+                                    <img v-on:click="addObjectFuc(index)" src="images/template/icon-change.png"/>
+                                    <img v-on:click="delList(index)" src="images/template/icon-del.png"/>
+                                </div>
+                            </div>
+                            <ul class="navSub" v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
+                                <li v-for="(itemSub,indexSub) in item.information" v-if="item.information.length>0">
+                                    <div class="item">
+                                        <div class="itemLeft" v-on:click="showThree(indexSub)">
+                                            <img v-if="itemSub.information&&itemSub.information.length>0" src="images/template/‭icon-open.png"/>
+                                            <p>{{itemSub.displayName}}</p>
+                                        </div>
+                                        <div class="itemRight">
+                                            <img v-on:click="addThreeList(indexSub,index,itemSub.name)" src="images/template/icon-add.png"/>
+                                            <img v-on:click="addSubList(indexSub,index,1)" src="images/template/icon-change.png"/>
+                                            <img v-on:click="delSubList(indexSub,index)" src="images/template/icon-del.png"/>
+                                        </div>
+                                    </div>
+                                    <ul class="navThree" v-if="activeThreeIndex===indexSub" :class="activeThreeIndex===indexSub?'display':''">
+                                        <li v-for="(itemThree,indexThree) in itemSub.information" v-if="itemSub.information.length>0">
+                                            <p>{{itemThree.name}}</p>
+                                            <img v-on:click="delThreeList(indexThree,indexSub,index)" src="images/template/icon-del.png"/>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

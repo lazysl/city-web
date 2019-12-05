@@ -120,5 +120,9 @@
     $(document).ready(function() {
         $('.time').clockTimePicker({});
     });
+    $(function () {
+        var docHeight = document.documentElement.clientHeight;
+        $(".checkCon").css("min-height", docHeight - 205);
+    });
 </script>
 </html>

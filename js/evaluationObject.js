@@ -56,6 +56,11 @@ new Vue({
             param = $.extend(param, {"ajaxtype": "POST"});
             this.jsonAjax(param, callbackSuc, callbackErr);
         },
+        docHeight() {
+            let docHeight = window.innerHeight || document.documentElement.clientHeight;
+            document.getElementById("ulHeight").style.maxHeight = (docHeight - 240)+"px";
+            document.getElementById("navTree").style.height = (docHeight - 205)+"px"
+        },
         addObjectFuc(index) {
             this.objectIndex = index;
             this.addObject = !this.addObject;
@@ -83,6 +88,11 @@ new Vue({
         /*删除设备类型*/
         delSubList(indexSub, index) {
             this.objectData[index].information.splice(indexSub, 1);
+            this.savaObject(this.objectData)
+        },
+        /*删除数据*/
+        delThreeList(indexThree,indexSub, index) {
+            this.objectData[index].information[indexSub].information.splice(indexThree, 1);
             this.savaObject(this.objectData)
         },
         /*选择设备类型下拉框*/
@@ -214,5 +224,8 @@ new Vue({
     },
     mounted() {
         this.initObject();
+        this.$nextTick(()=>{
+            this.docHeight()
+        })
     },
 });

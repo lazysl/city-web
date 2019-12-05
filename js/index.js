@@ -66,7 +66,7 @@ $.extend({
                         '                        </ul>\n' +
                         '                    </div>\n' +
                         '                </div>'
-                    $("#waring").append(html)
+                    $("#waring").empty().append(html)
                 }
             }
         })

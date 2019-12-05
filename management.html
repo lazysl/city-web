@@ -69,5 +69,11 @@
 </div>
 <script src="js/public.js"></script>
 <script src="js/management.js"></script>
+<script>
+    $(function () {
+        var docHeight = document.documentElement.clientHeight;
+        $(".manageCon").css("min-height", docHeight - 205);
+    });
+</script>
 </body>
 </html>

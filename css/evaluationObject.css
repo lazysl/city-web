@@ -3,6 +3,10 @@
     padding: 0;
     width: 100%;
 }
+.object .navTree {
+    overflow: hidden;
+    background: #fff;
+}
 .object .navTree .treeTit{
     overflow: hidden;
     background: #eee;
@@ -18,11 +22,13 @@
     padding: 10px 20px;
 }
 .object .navTree .treeTit span:last-child{width: 15%;text-align: center;}
-.object .navTree ul{
+.object #ulHeight {
     overflow-x: hidden;
     overflow-y: scroll;
+}
+.object .navTree ul{
+    overflow: hidden;
     display: none;
-    max-height: 517px;
 }
 .object .navTree ul li{
     width: 100%;
