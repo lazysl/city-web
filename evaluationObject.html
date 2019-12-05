@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <ul class="navThree" v-if="activeThreeIndex===indexSub" :class="activeThreeIndex===indexSub?'display':''">
-                                    <li v-for="itemThree in itemSub.information" v-if="itemSub.information.length>0"><p>{{itemThree.name}}</p></li>
+                                    <li v-for="itemThree in itemSub.information" v-if="itemSub.information.length>0"><p>{{itemThree.name}}</p><img v-on:click="delList(index)" src="images/template/icon-del.png"/></li>
                                 </ul>
                             </li>
                         </ul>

@@ -7,8 +7,10 @@ $(".select ul li").click(function () {
 });
 var setting = {
     // www_url:"http://api.city.bli7.com",
-    www_url: "http://localhost:8080",
-    beiHang_url:'http://192.168.1.72:8060',
+   /* www_url: "/cityapi/",
+    beiHang_url:'/serverapi/',*/
+    www_url: "http://192.168.1.79:8080/",
+    /*beiHang_url:'http://192.168.1.72:8060',*/
     apiKey: "f997bc19a9410ded2c0eb17f24e0690d"
 };
 new Vue({

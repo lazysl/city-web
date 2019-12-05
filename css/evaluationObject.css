@@ -19,6 +19,8 @@
 }
 .object .navTree .treeTit span:last-child{width: 15%;text-align: center;}
 .object .navTree ul{
+    overflow-x: hidden;
+    overflow-y: scroll;
     display: none;
     max-height: 517px;
 }
@@ -43,7 +45,6 @@
 }
 .object .navTree ul li .itemLeft{
     overflow: hidden;
-    width: 85%;
     padding: 10px 20px;
     display: flex;
     justify-content: flex-start;
@@ -52,7 +53,6 @@
 }
 .object .navTree ul li .itemRight{
     overflow: hidden;
-    width: 15%;
     padding: 10px 20px;
     display: flex;
     justify-content: center;
@@ -64,8 +64,12 @@
 .object .navTree ul li .navSub li .navThree{display: none;}
 .object .navTree ul li .navSub li .navThree li {
     border-bottom: 1px solid #d8dce5;
-    padding: 10px 20px 10px 80px
+    padding: 10px 25px 10px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.object .navTree ul li .navSub li .navThree li img{margin: 0}
 .tcHide .tcCon .monitorCon{margin-left: 30px}
 .tcHide .tcCon .monitorCon .monitorTit{
     display: flex;
