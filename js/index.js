@@ -53,7 +53,20 @@ $.extend({
                             '         </div>\n' +
                             '     </div>';
                     }
-                    $("#waring").empty().append(html)
+                    html = html + '<div class="layout">\n' +
+                        '                    <div class="item">\n' +
+                        '                        <p><span>153</span>工单</p>\n' +
+                        '                        <img src="images/index/icon4.png"/>\n' +
+                        '                    </div>\n' +
+                        '                    <div class="item-1">\n' +
+                        '                        <ul>\n' +
+                        '                            <li><img src="images/index/icon12.png"/><p>10</p></li>\n' +
+                        '                            <li><img src="images/index/icon13.png"/><p>3</p></li>\n' +
+                        '                            <li><img src="images/index/icon14.png"/><p>140</p></li>\n' +
+                        '                        </ul>\n' +
+                        '                    </div>\n' +
+                        '                </div>'
+                    $("#waring").append(html)
                 }
             }
         })

@@ -58,10 +58,8 @@ function updateCheckPlan(data) {
 function getEmailProperties() {
     return {url: setting.www_url + "/city/email/getEmailProperties?apiKey=" + setting.apiKey}
 }
-function saveEmailProperties(data) {
+function saveEmailProperties(fromEmail,port,host,username,password) {
     return {
-        url: setting.www_url + "/city/checkPlan/saveEmailProperties?apiKey=" + setting.apiKey,
-        list: JSON.stringify(data)
+        url: setting.www_url + "/city/email/saveEmailProperties?apiKey=" + setting.apiKey+'&fromEmai='+fromEmail+'&port='+port+'&host='+host+'&username='+username+'&password='+password,
     }
-
 }

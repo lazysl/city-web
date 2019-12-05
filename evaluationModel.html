@@ -24,168 +24,62 @@
         <div class="layout">
             <div class="title">
                 <span>考评模型管理</span>
-                <a class="btn">保存</a>
             </div>
             <div class="modelCon">
-                <div class="item">
-                    <div class="itemCon flex"><em></em><p>日评模型</p></div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="start1"><label for="start1"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>启用</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="day1"><label for="day1"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>可用性好评，达标条件：></p>
-                        <input class="input" type="text">
-                        <p>%</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="day2"><label for="day2"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>性能考评，达标条件：<</p>
-                        <input class="input" type="text">
-                        <p>个性能故障</p>
-                    </div>
-                    <div class="itemCon">
-                        <div class="checkList">
-                            <input type="checkbox" class="checkbox" id="day3"><label for="day3"><img src="images/template/icon-check.png" alt=""></label>
-                            <p>数据质量考评，达标条件：></p>
-                            <input class="input" type="text">
-                            <p>分（综合评分）</p>
-                        </div>
-                        <div class="modelList">
-                            <ul>
-                                <li>
-                                    <i></i>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="day4"><label for="day4"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>逻辑检查评分：></p>
-                                        <input class="input" type="text">
-                                        <p>分</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="tabList">
+                    <ul>
+                        <li class="checked"><span>日评模型</span></li>
+                        <li><span>周评模型</span></li>
+                        <li><span>月评模型</span></li>
+                        <li><span>年评模型</span></li>
+                    </ul>
+                    <a class="btn">保存</a>
                 </div>
-                <div class="item">
-                    <div class="itemCon flex"><em></em><p>周评模型</p></div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="start2"><label for="start2"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>启用</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="week1"><label for="week1"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>可用性好评，达标条件：></p>
-                        <input class="input" type="text">
-                        <p>%</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="week2"><label for="week2"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>性能考评，达标条件：<</p>
-                        <input class="input" type="text">
-                        <p>个性能故障</p>
-                    </div>
-                    <div class="itemCon">
-                        <div class="checkList">
-                            <input type="checkbox" class="checkbox" id="week3"><label for="week3"><img src="images/template/icon-check.png" alt=""></label>
-                            <p>数据质量考评，达标条件：></p>
-                            <input class="input" type="text">
-                            <p>分（综合评分）</p>
-                        </div>
-                        <div class="modelList">
-                            <ul>
-                                <li>
-                                    <i></i>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="week4"><label for="week4"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>逻辑检查评分：></p>
-                                        <input class="input" type="text">
-                                        <p>分</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="itemCon flex"><em></em><p>月评模型</p></div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="start3"><label for="start3"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>启用</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="mount1"><label for="mount1"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>可用性好评，达标条件：></p>
-                        <input class="input" type="text">
-                        <p>%</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="mount2"><label for="mount2"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>性能考评，达标条件：<</p>
-                        <input class="input" type="text">
-                        <p>个性能故障</p>
-                    </div>
-                    <div class="itemCon">
-                        <div class="checkList">
-                            <input type="checkbox" class="checkbox" id="mount3"><label for="mount3"><img src="images/template/icon-check.png" alt=""></label>
-                            <p>数据质量考评，达标条件：></p>
-                            <input class="input" type="text">
-                            <p>分（综合评分）</p>
-                        </div>
-                        <div class="modelList">
-                            <ul>
-                                <li>
-                                    <i></i>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="mount4"><label for="mount4"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>逻辑检查评分：></p>
-                                        <input class="input" type="text">
-                                        <p>分</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="itemCon flex"><em></em><p>年评模型</p></div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="start4"><label for="start1"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>启用</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="year1"><label for="year1"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>可用性好评，达标条件：></p>
-                        <input class="input" type="text">
-                        <p>%</p>
-                    </div>
-                    <div class="checkList">
-                        <input type="checkbox" class="checkbox" id="year2"><label for="year2"><img src="images/template/icon-check.png" alt=""></label>
-                        <p>性能考评，达标条件：<</p>
-                        <input class="input" type="text">
-                        <p>个性能故障</p>
-                    </div>
-                    <div class="itemCon">
-                        <div class="checkList">
-                            <input type="checkbox" class="checkbox" id="year3"><label for="year3"><img src="images/template/icon-check.png" alt=""></label>
-                            <p>数据质量考评，达标条件：></p>
-                            <input class="input" type="text">
-                            <p>分（综合评分）</p>
-                        </div>
-                        <div class="modelList">
-                            <ul>
-                                <li>
-                                    <i></i>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="year4"><label for="year4"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>逻辑检查评分：></p>
-                                        <input class="input" type="text">
-                                        <p>分</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="table">
+                    <table>
+                        <tr>
+                            <td colspan="4">可用性<input placeholder="70%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>服务器可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                            <td>中间件可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                            <td>服务器可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                            <td>物联设备可用性<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td colspan="4">性能告警<input placeholder="20%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>服务器<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>中间件<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>服务器<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>严重告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>严重告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>严重告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>故障告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>故障告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                            <td>故障告警率<input placeholder="35%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>其他告警率<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
+                            <td>其他告警率<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
+                            <td>其他告警率<input placeholder="30%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td colspan="4">数据质量<input placeholder="10%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                        <tr>
+                            <td>综合评分<input placeholder="25%"><img src="images/template/icon-change.png"/></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -193,5 +87,10 @@
 </div>
 <script src="js/public.js"></script>
 <script src="js/evaluationModel.js"></script>
+<script>
+    $(".tabList li").click(function () {
+        $(this).addClass("checked").siblings("li").removeClass("checked")
+    })
+</script>
 </body>
 </html>
