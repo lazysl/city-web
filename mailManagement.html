@@ -37,7 +37,7 @@
                     </div>
                     <div class="itemList1">
                         <div class="checkList checked">
-<!--                            <input type="checkbox" class="checkbox" checked id="mailCode"><label for="mailCode"><img src="images/template/icon-check.png" alt=""></label>-->
+                            <!--<input type="checkbox" class="checkbox" checked id="mailCode"><label for="mailCode"><img src="images/template/icon-check.png" alt=""></label>-->
                             <p>发送邮件需要验证</p>
                         </div>
                     </div>
@@ -57,8 +57,8 @@
 </body>
 <script>
     $(function () {
-        var docHeight = document.documentElement.clientHeight;
-        $(".management .layout").css("min-height", docHeight - 142);
+        var docHeight = window.innerHeight || document.documentElement.clientHeight;
+        $(".management .layout").css("height", docHeight - 142);
     });
     $.initMail();
 </script>

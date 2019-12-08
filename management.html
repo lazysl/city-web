@@ -32,32 +32,31 @@
                     <div class="item">
                         <p>用户列表<img src="images/template/icon-flash.png"/></p>
                         <ul>
-                            <li>数据库1</li>
-                            <li>数据库2</li>
+                            <li v-for="(item,index) in userList" :class="{checked:userIndex==index}" v-on:click="checkUser(item.id,index,item)">{{item.user}}</li>
                         </ul>
                     </div>
                     <div class="itemCon">
                         <div class="itemList">
                             <div class="itemPic">
-                                <img src="images/template/icon-right.png"/>
-                                <img src="images/template/icon-left.png"/>
+                                <img v-on:click="addUser(1)" src="images/template/icon-right.png"/>
+                                <img v-on:click="delAdminUser(1)" src="images/template/icon-left.png"/>
                             </div>
                             <div class="item">
                                 <p>管理员用户</p>
                                 <ul>
-                                    <li>数据库3</li>
+                                    <li v-for="(item,index) in adminList" :class="{checked:adminIndex==index}" v-on:click="checkAdmin(item.id,index,item)">{{item.user}}</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="itemList">
                             <div class="itemPic">
-                                <img src="images/template/icon-right.png"/>
-                                <img src="images/template/icon-left.png"/>
+                                <img v-on:click="addUser(2)" src="images/template/icon-right.png"/>
+                                <img v-on:click="delAdminUser(2)" src="images/template/icon-left.png"/>
                             </div>
                             <div class="item">
                                 <p>普通用户</p>
                                 <ul>
-                                    <li>数据库3</li>
+                                    <li v-for="(item,index) in generalList" :class="{checked:generalIndex==index}" v-on:click="checkGeneral(item.id,index,item)">{{item.user}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -71,8 +70,9 @@
 <script src="js/management.js"></script>
 <script>
     $(function () {
-        var docHeight = document.documentElement.clientHeight;
-        $(".manageCon").css("min-height", docHeight - 205);
+        var docHeight = window.innerHeight || document.documentElement.clientHeight;
+        $("#content .layout").css("height", docHeight - 142);
+        $("#userList").css("max-height", docHeight - 300);
     });
 </script>
 </body>

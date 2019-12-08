@@ -39,7 +39,7 @@ new Vue({
                 async: true,
                 data: options,
                 dataType: "json",
-                headers: {'token': ''},
+                headers: {'token': options.token},
                 success: function (data) {
                     if ($.isFunction(callbackSuc)) callbackSuc(data);
                 },
@@ -58,7 +58,7 @@ new Vue({
         },
         docHeight() {
             let docHeight = window.innerHeight || document.documentElement.clientHeight;
-            document.getElementById("ulHeight").style.maxHeight = (docHeight - 240)+"px";
+            document.getElementById("content").children[0].style.height = (docHeight - 142)+"px";
             document.getElementById("navTree").style.height = (docHeight - 205)+"px"
         },
         addObjectFuc(index) {

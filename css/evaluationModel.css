@@ -30,7 +30,8 @@
     color: #13aaf6;
 }
 .model .modelCon .table{
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     width: 100%;
     margin: 10px 0;
 }

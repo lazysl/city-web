@@ -1,0 +1,87 @@
+#main {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background: url("../images/template/bg.png") center;
+}
+#login{
+    overflow: hidden;
+    width: 40%;
+    margin: 0 auto;
+}
+#login .layout{
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    border-radius: 4px;
+    padding: 20px 0 30px;
+}
+#login .item{
+    overflow: hidden;
+    width: 70%;
+    margin: 0 auto;
+}
+#login .item input{
+    overflow: hidden;
+    display: inline-block;
+    float: right;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background: #fff;
+    border: solid 1px #d5d5d5;
+    color: #575961;
+    font-size: 14px;
+    padding: 0 14px;
+}
+#login .item input::-webkit-input-placeholder{
+    color: #575961;
+    font-size: 14px;
+    background: transparent
+}
+#login .item input:-webkit-autofill, #login .item input:-webkit-autofill:hover, #login .item input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #575961 !important;
+    -webkit-box-shadow: inset 0 0 0 1000px #fff!important;
+    box-shadow: inset 0 0 0 1000px #fff!important;
+}
+#login .item a{
+    overflow: hidden;
+    display: block;
+    background: #02a7f4;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 4px;
+    margin-top: 10px;
+	cursor: pointer
+}
+#login .item span{
+    overflow: hidden;
+    display: block;
+    color: #575961;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+#login .errInfo{
+    overflow: hidden;
+    width: 70%;
+    height: 30px;
+    margin: 0 auto;
+}
+#login .errInfo span{
+    overflow: hidden;
+    display: none;
+    line-height: 30px;
+    color: #f00;
+    font-size: 14px;
+
+}

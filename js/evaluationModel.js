@@ -15,7 +15,7 @@ new Vue({
                 async: true,
                 data: options,
                 dataType: "json",
-                headers: {'token': ''},
+                headers: {'token': options.token},
                 success: function (data) {
                     if ($.isFunction(callbackSuc)) callbackSuc(data);
                 },

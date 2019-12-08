@@ -37,8 +37,10 @@
 }
 .management .manageCon .manageItem .item p img{display: inline-block;margin-left: 10px;width: 20px;cursor: pointer}
 .management .manageCon .manageItem .item ul{
-    border: solid 1px #d8dce5;
+    overflow-x: hidden;
+    overflow-y: scroll;
     min-height: 400px;
+    border: solid 1px #d8dce5;
 }
 .management .manageCon .manageItem .itemCon .itemList .item ul{min-height: 180px;}
 .management .manageCon .manageItem .item li{
@@ -48,6 +50,9 @@
     line-height: 30px;
     padding: 0 5px;
     border-bottom: solid 1px #d8dce5;
+}
+.management .manageCon .manageItem .item li:hover,.management .manageCon .manageItem .item li.checked{
+    background: #e1edff;
 }
 .management .manageCon .manageItem .itemPic{margin: 0 20px}
 .management .manageCon .manageItem .itemPic img{width: 24px;cursor: pointer}

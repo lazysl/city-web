@@ -208,7 +208,7 @@
     $.initModeAnaly();
     $.initAlarms();
     $(function () {
-        var docHeight = document.documentElement.clientHeight;
+        var docHeight = window.innerHeight || document.documentElement.clientHeight;
         $(".tabCon table,.rankList").css("max-height", docHeight - 340);
     });
 </script>

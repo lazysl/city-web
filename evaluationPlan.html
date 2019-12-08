@@ -121,8 +121,8 @@
         $('.time').clockTimePicker({});
     });
     $(function () {
-        var docHeight = document.documentElement.clientHeight;
-        $(".checkCon").css("min-height", docHeight - 205);
+        var docHeight = window.innerHeight || document.documentElement.clientHeight;
+        $("#content .layout").css("height", docHeight - 142);
     });
 </script>
 </html>

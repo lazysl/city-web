@@ -92,8 +92,9 @@
         $(this).addClass("checked").siblings("li").removeClass("checked")
     })
     $(function () {
-        var docHeight = document.documentElement.clientHeight;
-        $(".modelCon").css("min-height", docHeight - 197);
+        var docHeight = window.innerHeight || document.documentElement.clientHeight;
+        $("#content .layout").css("height", docHeight - 142);
+        $(".table").css("max-height", docHeight - 280);
     });
 </script>
 </body>

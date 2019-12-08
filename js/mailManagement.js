@@ -5,9 +5,9 @@ $.extend({
             type: options.ajaxtype,
             url: options.url,
             async: true,
-            data: options,
+            data: options.data,
             dataType: "json",
-            headers: {'token': ''},
+            headers: {'token': options.token},
             success: function (data) {
                 if ($.isFunction(callbackSuc)) callbackSuc(data);
             },
@@ -37,9 +37,16 @@ $.extend({
         })
     },
     saveMail: function () {
-        if ($("#host").val() != '' && $("#fromEmail").val() != '' && $("#username").val() != '' && $("#password").val() != '') {
-            var fromEmail = $("#fromEmail").val(), port = $("#port").val(), host = $("#host").val(), username = $("#username").val(), password = $("#password").val();
-            $.getAjax(saveEmailProperties(fromEmail, port, host, username, password), function (res) {
+        var fromEmail = $("#fromEmail").val(), port = $("#port").val(), host = $("#host").val(), username = $("#username").val(), password = $("#password").val();
+        if (host != '' && fromEmail != '' && username != '' && password != '') {
+            var data = {
+                fromEmail: fromEmail,
+                port: port,
+                host: host,
+                username: username,
+                password: password,
+            };
+            $.getAjax(saveEmailProperties(data), function (res) {
                 if (res.code = 200 && res.code_desc == "success") {
                     alert("保存成功")
                 } else alert("保存失败")
