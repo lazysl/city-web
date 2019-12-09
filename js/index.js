@@ -78,19 +78,23 @@ $.extend({
                 var html = '';
                 if (data) {
                     for (var i in data) {
-                        if (data[i].information != {} && data[i].information.server && data[i].information.sql && data[i].information.middleware && data[i].information.internet) {
-                            var serverStyle = (data[i].information.server).indexOf('0/') > -1 ? 'green' : 'red';
-                            var sqlStyle = (data[i].information.sql).indexOf('0/') > -1 ? 'green' : 'red';
-                            var middlewareStyle = (data[i].information.middleware).indexOf('0/') > -1 ? 'green' : 'red';
-                            var internetStyle = (data[i].information.internet).indexOf('0/') > -1 ? 'green' : 'red';
-                            html += '<tr>\n' +
-                                '       <td>' + data[i].name + '</td>\n' +
-                                '       <td><span class="' + serverStyle + '"></span>' + data[i].information.server + '</td>\n' +
-                                '       <td><span class="' + sqlStyle + '"></span>' + data[i].information.sql + '</td>\n' +
-                                '       <td><span class="' + middlewareStyle + '"></span>' + data[i].information.middleware + '</td>\n' +
-                                '       <td><span class="' + internetStyle + '"></span>' + data[i].information.internet + '</td>\n' +
-                                '     </tr>'
+                        if (Object.keys(data[i].information).length < 4) {
+                            if (typeof (data[i].information.server) == "undefined") data[i].information.server = "-/-";
+                            if (typeof data[i].information.sql == "undefined") data[i].information.sql = "-/-";
+                            if (typeof data[i].information.middleware == "undefined") data[i].information.middleware = "-/-";
+                            if (typeof data[i].information.internet == "undefined") data[i].information.internet = "-/-";
                         }
+                        var serverStyle = (data[i].information.server).indexOf('0/') > -1 || data[i].information.server == "-/-" ? 'green' : 'red';
+                        var sqlStyle = (data[i].information.sql).indexOf('0/') > -1 || data[i].information.sql == "-/-" ? 'green' : 'red';
+                        var middlewareStyle = (data[i].information.middleware).indexOf('0/') > -1 || data[i].information.middleware == "-/-" ? 'green' : 'red';
+                        var internetStyle = (data[i].information.internet).indexOf('0/') > -1 || data[i].information.internet == "-/-" ? 'green' : 'red';
+                        html += '<tr>\n' +
+                            '       <td>' + data[i].name + '</td>\n' +
+                            '       <td><span class="' + serverStyle + '"></span>' + data[i].information.server + '</td>\n' +
+                            '       <td><span class="' + sqlStyle + '"></span>' + data[i].information.sql + '</td>\n' +
+                            '       <td><span class="' + middlewareStyle + '"></span>' + data[i].information.middleware + '</td>\n' +
+                            '       <td><span class="' + internetStyle + '"></span>' + data[i].information.internet + '</td>\n' +
+                            '     </tr>'
                     }
                     $("#table").empty().append(html)
                 }
