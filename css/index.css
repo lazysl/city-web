@@ -33,7 +33,7 @@
 .index .conList .item p,.index .conList .item span{
     overflow: hidden;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     color: #333;
 }
 .index .conList .item span{
@@ -107,7 +107,11 @@
     width: 17.5%;
 }
 .index .tabCon table tr th:first-child,.index .tabCon table tr td:first-child{width: 30%}
-.index .rightCon .tabCon table tr td:last-child,.index .rightCon .tabCon table tr th:last-child{text-align: left}
+.index .rightCon .tabCon table tr td:last-child,.index .rightCon .tabCon table tr th:last-child {
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .index .tabCon table tr th{font-size: 14px;}
 .index .tabCon table tr td span{
     overflow: hidden;
@@ -127,6 +131,75 @@
 .index .tabCon table tr td span.green{
     background: #00ff00
 }
+.index .tabCon .table ul li,.index .tabCon .table .tabTit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.index .tabCon .table ul li span,.index .tabCon .table .tabTit span{
+    overflow: hidden;
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #d8dce5;
+    text-align: center;
+    width: 30%;
+}
+.index .tabCon .table ul li span:first-child, .index .tabCon .table .tabTit span:first-child {
+    width: 10%
+}
+.index .tabCon .table ul li span:last-child, .index .tabCon .table .tabTit span:last-child {
+    width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+.index .tabCon .table .tabTit{
+    background: #eee;
+    padding-right: 3.5%;
+}
+.index .tabCon .table .tabTit span{font-size: 14px}
+.index .tabCon .table ul{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.index .tabCon .table ul li em{
+    overflow: hidden;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.index .tabCon .table ul li em.red{
+    background: #f00
+}
+.index .tabCon .table ul li em.orange{
+    background: #fd6123
+}
+.index .tabCon .table ul li em.green{
+    background: #00ff00
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .index .rankCon{
     width: 40%;
     margin: 25px 0;

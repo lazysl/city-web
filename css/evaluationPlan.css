@@ -1,5 +1,28 @@
+.plan{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+.plan .layoutList{
+    width: 49%;
+}
 .plan .checkCon{margin: 0 20px;padding-bottom: 30px}
-.plan .checkCon .checkItem{margin-bottom: 60px}
+.plan .checkCon .checkItem {
+    margin: 60px 0;
+    border: dashed 1px #d8dce5;
+    padding: 10px 0;
+    position: relative;
+}
+.plan .checkCon .checkItem:first-child{margin-top: 10px}
+.plan .checkCon .checkItem.marginBottom{margin-bottom: 30px}
+.plan .checkCon .checkItem.noBorder{border: none}
+.plan .checkCon .checkItem .position{
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background: #fff;
+    padding: 0 10px;
+}
 .plan .checkCon .checkItem .itemTime {
     display: flex;
     justify-content: flex-start;
@@ -8,11 +31,12 @@
 }
 .plan .checkCon .checkItem .itemTime span{
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
 }
 .plan .checkCon .checkItem .itemTime input{
     width: 70px;
-    height: 28px;
+    height: 24px;
+    line-height: 24px;
     border: solid 1px #d8dce5;
     resize: none;
     outline: none;
@@ -27,16 +51,17 @@
     align-items: center;
     margin: 20px 10px;
 }
+.plan .checkCon .checkItem .item:last-child{margin-bottom: 0}
 .plan .checkCon .checkItem .item p{
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
 }
 .plan .checkCon .checkItem .item .input{
     overflow: hidden;
     resize: none;
     outline: none;
     background: transparent;
-    padding: 10px;
+    padding: 6px 10px;
     color: #333;
     cursor: pointer;
     border: solid 1px #d8dce5;
@@ -49,3 +74,39 @@
     margin-right: 10px;
     text-align: center;
 }
+.plan .checkCon .checkItem .itemList1{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 10px 0;
+    width: 100%;
+}
+.plan .checkCon .checkItem .itemList1 span{
+    overflow: hidden;
+    font-size: 14px;
+    width: 150px;
+}
+.plan .checkCon .checkItem .itemList1.account span{
+    margin-left: 50px;
+    width: 100px;
+}
+.plan .checkCon .checkItem .itemList1 input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    margin-right: 20px;
+    min-width: 150px;
+}
+.plan .checkCon .checkItem .itemList1 input.width{
+    min-width: 50px;
+    width: 50px;
+    text-align: center;
+}
+.plan .checkCon .checkItem .itemList1 .checkList{margin: 15px 0;width: 100%}
+.plan .checkCon .checkItem .itemList1 .btn{margin-left: 50px}

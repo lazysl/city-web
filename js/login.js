@@ -27,12 +27,11 @@ $.extend({
         var data = {
             userName: userName,
             password: password,
-            // code: "",
         };
-        $.postAjax(login(data), function (data) {
-            if (res.code = 200 && res.code_desc == "success"){
-                var user = data.username;
-                $.cookie("user", user,{ expires: 1, path: '/' });
+        $.postAjax(login(data), function (res) {
+            if (res.code = 200){
+                localStorage.setItem("token",res.code_desc);
+                $.cookie("user", res.username,{ expires: 1, path: '/' });
                 window.location.href="./index.html"
             }else $(".submit span").show();
         });

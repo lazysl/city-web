@@ -1,7 +1,7 @@
 .management .manageCon{margin: 0 20px;padding-bottom: 10px}
 .management .manageCon .itemTit{
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
 }
 .management .manageCon .manageItem {
     overflow: hidden;
@@ -13,7 +13,7 @@
 }
 .management .manageCon .manageItem .itemCon{
     overflow: hidden;
-    width: 60%;
+    width: 50%;
 }
 .management .manageCon .manageItem .itemCon .itemList{
     overflow: hidden;
@@ -23,11 +23,12 @@
 }
 .management .manageCon .manageItem .item{
     overflow: hidden;
-    width: 40%;
+    width: 50%;
 }
+.management .manageCon .manageItem .itemCon .itemList .item{width: 100%}
 .management .manageCon .manageItem .item p{
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     line-height: 20px;
     margin: 10px 0;
@@ -45,16 +46,17 @@
 .management .manageCon .manageItem .itemCon .itemList .item ul{min-height: 180px;}
 .management .manageCon .manageItem .item li{
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
     height: 30px;
     line-height: 30px;
     padding: 0 5px;
     border-bottom: solid 1px #d8dce5;
 }
+.management .manageCon .manageItem .item li:last-child{border-bottom: none}
 .management .manageCon .manageItem .item li:hover,.management .manageCon .manageItem .item li.checked{
     background: #e1edff;
 }
-.management .manageCon .manageItem .itemPic{margin: 0 20px}
+.management .manageCon .manageItem .itemPic{margin: 25px 20px 0}
 .management .manageCon .manageItem .itemPic img{width: 24px;cursor: pointer}
 .management .manageCon .manageItem .itemList1{
     overflow: hidden;
@@ -66,7 +68,7 @@
 }
 .management .manageCon .manageItem .itemList1 span{
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
     width: 150px;
 }
 .management .manageCon .manageItem .itemList1.account span{

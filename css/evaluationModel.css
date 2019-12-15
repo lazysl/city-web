@@ -30,61 +30,109 @@
     color: #13aaf6;
 }
 .model .modelCon .table{
-    overflow-x: hidden;
-    overflow-y: scroll;
     width: 100%;
     margin: 10px 0;
 }
-.model .modelCon table{
+.model .modelCon .table .tabCon{
+    border-bottom: 1px solid #d8dce5;
+}
+.model .modelCon .table .tabCon:last-child{border-bottom: none}
+.model .modelCon .table .tabTit{
     overflow: hidden;
-    width: 100%;
-    margin: 0 auto;
-    max-height: 517px;
-    display: table;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.model .modelCon table thead{
-    background: #eee;
-}
-.model .modelCon table tbody{
+.model .modelCon .table .tabTit span{
     overflow: hidden;
-    width: 100%;
+    float: left;
+    font-size: 14px;
 }
-.model .modelCon table tr:last-child{border-bottom: 1px solid #d8dce5;}
-.model .modelCon table:last-child tr:last-child{border-bottom: none}
-.model .modelCon table tr td,.model .modelCon table tr th{
-    font-size: 12px;
-    height: 36px;
-    line-height: 36px;
-    border-bottom: 1px dashed #d8dce5;
-    padding: 0 20px 0 60px
+.model .modelCon .table .tabTit i{
+    background: url(../images/template/arrow-right.png) no-repeat center center;
+    background-size: 7px 12px;
+    width: 12px;
+    height: 12px;
+    float: right;
+    cursor: pointer;
+    margin-top: 4px;
 }
-.model .modelCon table:last-child tr:last-child td{border-bottom: none}
-.model .modelCon table tr:first-child td{font-weight: bold;padding: 0 20px 0 20px;font-size: 13px}
-.model .modelCon table tr:nth-child(2) td{padding: 0 20px 0 40px}
-.model .modelCon table tr td:nth-child(2),.model .modelCon table tr td:nth-child(3){text-align: center}
-.model .modelCon table tr td:last-child{text-align: right}
-.model .modelCon table tr td:first-child{text-align: left}
-.model .modelCon table tr th{font-size: 14px;}
-.model .modelCon table tr td img {
+.model .modelCon .table .tabCon.checked .tabTit i{
+    background: url(../images/template/arrow-bottom.png) no-repeat center center;
+    background-size: 11px 6px;
+}
+.model .modelCon .table .tabTit img {
     display: inline;
     vertical-align: middle;
     width: 14px;
 }
-.model .modelCon table tr td input{
+.model .modelCon .table .tabTit input{
     display: inline-block;
     border: none;
-    width: 50px;
+    width: 40px;
     text-align: center;
+    margin: 0 5px;
 }
-.model .modelCon table tr td span{
+.model .modelCon .table .tabCon .conList{
     overflow: hidden;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    margin-right: 5px;
-    vertical-align: middle;
+    display: none;
 }
+.model .modelCon .table .tabCon.checked .conList{display: block}
+.model .modelCon .table .conList ul{
+    overflow: hidden;
+    width: 96%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.model .modelCon .table .conList ul li .itemList{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.model .modelCon .table .conList ul li img {
+    width: 14px;
+}
+.model .modelCon .table .conList ul li input{
+    border: none;
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+}
+.model .modelCon .table .conList ul li span{
+    overflow: hidden;
+    font-size: 12px;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 5px
+}
+.model .modelCon .table .conList ul li .navSub{
+    display: block;
+    width: 100%;
+}
+.model .modelCon .table .conList ul li .navSub li{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .model .modelCon table tr td span.red{
     background: #f00
 }
@@ -131,7 +179,7 @@
 }
 .model .modelCon .item p{
     overflow: hidden;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
 }
 .model .modelCon .item .input{

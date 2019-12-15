@@ -1,15 +1,15 @@
 new Vue({
     el: '#main',
     data: {
-        userList: [],
+        userList: "",
         userIndex: -1,
         userId: '',
         user: '',
-        adminList: [],
+        adminList: "",
         adminIndex: -1,
         adminId: '',
         admin: '',
-        generalList: [],
+        generalList: "",
         generalIndex: -1,
         generalId: '',
         general: '',
@@ -43,18 +43,22 @@ new Vue({
         initUserList() {
             this.getAjax(this.getUserList(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
+                    let arrUser = [], arrAdmin = [], arrGeneral = [];
                     for (let i in res.data) {
-                        if (res.data[i].auth == 0) this.userList.push(res.data[i]);
-                        if (res.data[i].auth == 1) this.adminList.push(res.data[i]);
-                        if (res.data[i].auth == 2) this.generalList.push(res.data[i])
+                        if (res.data[i].auth == 0) arrUser.push(res.data[i]);
+                        if (res.data[i].auth == 1) arrAdmin.push(res.data[i]);
+                        if (res.data[i].auth == 2) arrGeneral.push(res.data[i]);
                     }
+                    this.userList = arrUser;
+                    this.adminList = arrAdmin;
+                    this.generalList = arrGeneral;
                 }
             })
         },
         checkUser(id, index, data) {
             this.userId = id;
             this.userIndex = index;
-            this.user = data
+            this.user = data;
         },
         checkAdmin(id, index, data) {
             this.adminId = id;
@@ -71,25 +75,25 @@ new Vue({
                 this.userList.splice(this.userIndex, 1);
                 if (auth == 1) this.adminList.push(this.user);
                 if (auth == 2) this.generalList.push(this.user)
+                this.setUserAuth(auth, this.userId)
             }
             this.userIndex = -1;
-            this.setUserAuth(auth, this.userId)
         },
         delAdminUser(auth) {
             if (auth == 1) {
                 if (this.adminIndex > -1) {
                     this.userList.push(this.admin);
                     this.adminList.splice(this.adminIndex, 1);
+                    this.setUserAuth(0, this.adminId)
                 }
                 this.adminIndex = -1;
-                this.setUserAuth(0, this.adminId)
             } else if (auth == 2) {
                 if (this.generalIndex > -1) {
                     this.userList.push(this.general);
                     this.generalList.splice(this.generalIndex, 1);
+                    this.setUserAuth(0, this.generalId)
                 }
                 this.generalIndex = -1;
-                this.setUserAuth(0, this.generalId)
             }
         },
         setUserAuth(auth, id) {
@@ -102,7 +106,10 @@ new Vue({
                     alert("保存成功")
                 } else alert("保存失败")
             })
-        }
+        },
+        flashData(){
+            this.initUserList()
+        },
     },
     mounted() {
         this.initUserList()

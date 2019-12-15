@@ -135,5 +135,34 @@ $.extend({
                 }else alert("保存失败")
             })
         }
+    },
+    initMail: function () {
+        $.getAjax(getEmailProperties(), function (res) {
+            if (res.code = 200 && res.code_desc == "success") {
+                var data = res.data;
+                $("#fromEmail").val(data.fromEmail);
+                $("#host").val(data.host);
+                $("#username").val(data.username);
+                $("#password").val(data.password);
+                $("#port").val(data.port)
+            }
+        })
+    },
+    saveMail: function () {
+        var fromEmail = $("#fromEmail").val(), port = $("#port").val(), host = $("#host").val(), username = $("#username").val(), password = $("#password").val();
+        if (host != '' && fromEmail != '' && username != '' && password != '') {
+            var data = {
+                fromEmail: fromEmail,
+                port: port,
+                host: host,
+                username: username,
+                password: password,
+            };
+            $.getAjax(saveEmailProperties(data), function (res) {
+                if (res.code = 200 && res.code_desc == "success") {
+                    alert("保存成功")
+                } else alert("保存失败")
+            })
+        }
     }
 });

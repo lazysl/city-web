@@ -109,14 +109,14 @@ $.extend({
                 if (data) {
                     for (var i in data) {
                         var severity = data[i].severity;
-                        if (data[i].severity.indexOf("服务停止") > -1) severity = "red";
-                        else if (data[i].severity.indexOf("危急") > -1) severity = "orange";
+                        if (data[i].severity.indexOf("危急") > -1) severity = "red";
+                        else if (data[i].severity.indexOf("故障") > -1) severity = "orange";
                         else severity = "green";
-                        html += '<tr>\n' +
-                            '        <td>' + (Number(i) + 1) + '</td>\n' +
-                            '        <td>' + data[i].modTime + '</td>\n' +
-                            '        <td><span class="' + severity + '"></span>' + data[i].message + '</td>\n' +
-                            '     </tr>'
+                        html += '<li>\n' +
+                            '        <span>' + (Number(i) + 1) + '</span>\n' +
+                            '        <span>' + data[i].modTime + '</span>\n' +
+                            '        <span><em class="' + severity + '"></em>' + data[i].message + '</span>\n' +
+                            '     </li>'
                     }
                     $("#alarms").empty().append(html)
                 }

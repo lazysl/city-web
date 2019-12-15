@@ -170,22 +170,8 @@
                 <div class="layout">
                     <div class="title"><span>告警</span><p>更多 >></p></div>
                     <div class="table">
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>序号</th>
-                                <th>时间</th>
-                                <th>标题</th>
-                            </tr>
-                            </thead>
-                            <tbody id="alarms">
-                            <!--<tr>
-                                <td>1</td>
-                                <td>18:18</td>
-                                <td><span class="green"></span>大数据治理应用平台</td>
-                            </tr>-->
-                            </tbody>
-                        </table>
+                        <div class="tabTit"><span>序号</span><span>时间</span><span>标题</span></div>
+                        <ul id="alarms"></ul>
                     </div>
                 </div>
             </div>
@@ -203,6 +189,7 @@
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
         $("#table,.rankList").css("max-height", docHeight - 382);
+        $("#alarms").css("max-height", docHeight - 720);
     });
 </script>
 </html>
