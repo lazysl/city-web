@@ -16,13 +16,6 @@ $(".select ul li").click(function () {
 });
 new Vue({
     el: document.getElementById("head")?"#head":'',
-    method:{
-        quit(){
-            delCookie("user");
-            localStorage.clear();
-            window.location.href = "./login.html"
-        },
-    },
 });
 $(function () {
     var docHeight = window.innerHeight || document.documentElement.clientHeight;

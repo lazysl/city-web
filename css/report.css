@@ -1,0 +1,112 @@
+.report .title{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+}
+.report .title .item{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 20px;
+}
+.report .title .item span{
+    overflow: hidden;
+    font-size: 14px;
+    margin-right: 10px;
+}
+.report .title .item input{
+    overflow: hidden;
+    width: 200px;
+    height: 28px;
+    line-height: 28px;
+    border: solid 1px #d8dce5;
+    resize: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    color: #333;
+    text-align: center;
+}
+.report .tabCon{
+    overflow: hidden;
+    width: 100%
+}
+.report .tabCon table{
+    width: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.report .tabCon table thead{
+    background: #eee;
+    width: 100%;
+    display: block;
+    padding-right: 1%;
+}
+.report .tabCon table tbody{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: block;
+    width: 100%;
+}
+.report .tabCon table tr:last-child{border-bottom:none}
+.report .tabCon table tr{
+    display: flex;
+    justify-content: space-between;
+}
+.report .tabCon table tr td,.report .tabCon table tr th{
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #d8dce5;
+    text-align: center;
+    width: 19%;
+}
+.report .tabCon table tr th:first-child,.report .tabCon table tr td:first-child{width: 5%}
+.index .rightCon .tabCon table tr td:last-child,.index .rightCon .tabCon table tr th:last-child {
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.report .tabCon table tr th{font-size: 14px;}
+.report .tabCon table tr td span{
+    overflow: hidden;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.report .tabCon table tr td span.red{
+    background: #f00
+}
+.report .tabCon table tr td span.orange{
+    background: #fd6123
+}
+.report .tabCon table tr td span.green{
+    background: #00ff00
+}
+.report .tabCon .table ul li,.report .tabCon .table .tabTit{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.report .tabCon .table ul li span,.report .tabCon .table .tabTit span{
+    overflow: hidden;
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #d8dce5;
+    text-align: center;
+    width: 30%;
+}
+.report .tabCon .table ul li span:first-child, .report .tabCon .table .tabTit span:first-child {
+    width: 10%
+}
+.report .tabCon .table ul li span:last-child, .report .tabCon .table .tabTit span:last-child {
+    width: 60%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+}
