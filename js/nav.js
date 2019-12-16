@@ -7,7 +7,7 @@ Vue.component('common-head',{
         '                       <span></span>' +
         '                   </a>' +
         '               </div>' +
-        '               <div class="quit" id="quit"><img src="images/template/icon-quit.png"/></div>' +
+        '               <div class="quit" id="quit" onclick="quit"><img src="images/template/icon-quit.png"/></div>' +
         '           </div>' +
         '           <div id="nav">' +
         '               <ul>' +
@@ -18,5 +18,14 @@ Vue.component('common-head',{
         '                   <li><a href="management.html"><div class="first"><span class="ic4"></span>管理</div></a></li>' +
         '               </ul>' +
         '           </div>' +
-        '       </div>'
+        '       </div>',
+    method:{
+        quit(){
+            this.$nextTick(function () {
+                delCookie("user");
+                localStorage.clear();
+                window.location.href = "./login.html"
+            })
+        }
+    }
 });

@@ -136,8 +136,3 @@ if (href.indexOf("login.html") < 0) {
         // window.location.href = "./login.html"
     }
 }
-$("#quit").click(function () {
-    delCookie("user");
-    localStorage.clear();
-    window.location.href = "./login.html"
-});
