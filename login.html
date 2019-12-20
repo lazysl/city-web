@@ -35,41 +35,46 @@
 <script src="js/public.js"></script>
 <script src="js/login.js"></script>
 <script>
-    var docHeight=$('#main').height();
-    var loginH=$('#login').height();
-    var result=(docHeight-loginH)/2.5;
-    $('#login').css("margin-top",result+"px");
-    var userName,password;
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = decodeURI(window.location.search.substr(1)).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    if (getQueryString("code")!=''&&getQueryString("code")!=null&&typeof getQueryString("code")!="undefined"){
+        $.initLogin(getQueryString("code"));
+    }
+    var docHeight = $('#main').height();
+    var loginH = $('#login').height();
+    var result = (docHeight - loginH) / 2.5;
+    $('#login').css("margin-top", result + "px");
+    var userName = $("#userName"), password = $("#password");
     $("#submit").click(function () {
-        userName = $("#userName").val();
-        password = $("#password").val();
-        if (userName == "") {
-			$(".errInfo.userName span").show();
-		}
-		else if (password == "") {
+        if (userName.val() == "") {
+            $(".errInfo.userName span").show();
+        } else if (password.val() == "") {
             $(".errInfo.password span").show();
-        }
-		else {
+        } else {
             $(".errInfo span").hide();
-            $.initLogin(userName, password);
+            var data = {
+                userName: userName.val(),
+                password: password.val()
+            };
+            $.initLogin(data);
         }
     });
-    $("#userName").blur(function () {
-        userName = $("#userName").val();
-        if (userName == "") $(".userName span").show();
+    userName.blur(function () {
+        if (userName.val() == "") $(".userName span").show();
         else $(".userName span").hide()
     });
-    $("#userName").focus(function () {
-        userName = $("#userName").val();
+    userName.focus(function () {
         $(".userName span").hide();
     });
-    $("#password").blur(function () {
-        password = $("#password").val();
-        if (password == "") $(".password span").show();
+    password.blur(function () {
+        if (password.val() == "") $(".password span").show();
         else $(".password span").hide()
     });
-    $("#password").focus(function () {
-        password = $("#password").val();
+    password.focus(function () {
         $(".password span").hide();
     });
 </script>

@@ -23,11 +23,16 @@ $.extend({
         param = $.extend(param, {"ajaxtype": "POST"});
         $.jsonAjax(param, callbackSuc, callbackErr);
     },
-    initLogin:function (userName,password) {
-        var data = {
-            userName: userName,
-            password: password,
-        };
+    initLogin:function (obj) {
+        var data;
+        if (getQueryString("code") != '' && getQueryString("code") != null && typeof getQueryString("code") != "undefined") {
+            data = obj
+        } else {
+            data = {
+                userName: obj.userName,
+                password: obj.password,
+            };
+        }
         $.postAjax(login(data), function (res) {
             if (res.code = 200){
                 localStorage.setItem("token",res.code_desc);
