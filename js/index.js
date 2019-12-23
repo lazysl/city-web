@@ -24,21 +24,32 @@ $.extend({
         param = $.extend(param, {"ajaxtype": "POST"});
         this.jsonAjax(param, callbackSuc, callbackErr);
     },
-    initWaring(){
-        $.getAjax(getWaring(),function (res) {
+    initWaring() {
+        $.getAjax(getWaring(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
-                var html='';
+                var html = '', name, pic1 = "icon9", pic2 = "icon10", pic3 = "icon10";
                 if (data) {
                     for (var i in data) {
                         var totalRecords = data[i].totalRecords ? data[i].totalRecords : "--";
                         var clear = data[i].clear/* ? data[i].clear : "--"*/;
                         var critical = data[i].critical/* ? data[i].critical : "--"*/;
                         var warning = data[i].warning/* ? data[i].warning : "--"*/;
-                        var name;
-                        if (i == 'middleware') name = '中间件';
-                        else if (i == 'server') name = '服务器';
-                        else if (i == 'sql') name = '数据库';
+                        if (i == 'middleware') {
+                            name = '中间件';
+                        } else if (i == 'server') {
+                            name = '服务器';
+                        } else if (i == 'sql') {
+                            name = '数据库';
+                        } else if (i == 'order') {
+                            name = '工单';
+                            critical = data[i].open;
+                            warning = data[i].resolved;
+                            clear = data[i].closed;
+                            pic1 = "icon12";
+                            pic2 = "icon13";
+                            pic3 = "icon14";
+                        }
                         html += '<div class="layout">\n' +
                             '         <div class="item">\n' +
                             '               <p><span>' + (clear + critical + warning) + '</span>' + name + '</p>\n' +
@@ -46,26 +57,13 @@ $.extend({
                             '         </div>\n' +
                             '         <div class="item-1">\n' +
                             '              <ul>\n' +
-                            '                  <li><img src="images/index/icon9.png"/><p>' + critical + '</p></li>\n' +
-                            '                  <li><img src="images/index/icon10.png"/><p>' + warning + '</p></li>\n' +
-                            '                  <li><img src="images/index/icon11.png"/><p>' + clear + '</p></li>\n' +
+                            '                  <li><img src="images/index/' + pic1 + '.png"/><p>' + critical + '</p></li>\n' +
+                            '                  <li><img src="images/index/' + pic2 + '.png"/><p>' + warning + '</p></li>\n' +
+                            '                  <li><img src="images/index/' + pic3 + '.png"/><p>' + clear + '</p></li>\n' +
                             '              </ul>\n' +
                             '         </div>\n' +
                             '     </div>';
                     }
-                    html = html + '<div class="layout">\n' +
-                        '                    <div class="item">\n' +
-                        '                        <p><span>153</span>工单</p>\n' +
-                        '                        <img src="images/index/icon4.png"/>\n' +
-                        '                    </div>\n' +
-                        '                    <div class="item-1">\n' +
-                        '                        <ul>\n' +
-                        '                            <li><img src="images/index/icon12.png"/><p>10</p></li>\n' +
-                        '                            <li><img src="images/index/icon13.png"/><p>3</p></li>\n' +
-                        '                            <li><img src="images/index/icon14.png"/><p>140</p></li>\n' +
-                        '                        </ul>\n' +
-                        '                    </div>\n' +
-                        '                </div>'
                     $("#waring").empty().append(html)
                 }
             }
