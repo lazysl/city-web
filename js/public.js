@@ -133,6 +133,6 @@ function delCookie(name) {
 var href = window.location.href;
 if (href.indexOf("login.html") < 0) {
     if (getCookie("user") == null) {
-        // window.location.href = "./login.html"
+        window.location.href = "./login.html"
     }
 }
