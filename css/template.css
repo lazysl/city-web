@@ -446,6 +446,7 @@ body{
     border-radius: 2px;
     padding: 10px 15px;
 }
+ .tcHide.report .tcCon{padding: 0;width: 1000px}
 .tcHide .tcCon .off{
     position: absolute;
     right: 15px;

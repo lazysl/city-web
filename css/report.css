@@ -60,15 +60,11 @@
     font-size: 12px;
     padding: 10px;
     border-bottom: 1px solid #d8dce5;
-    text-align: center;
-    width: 19%;
-}
-.report .tabCon table tr th:first-child,.report .tabCon table tr td:first-child{width: 5%}
-.index .rightCon .tabCon table tr td:last-child,.index .rightCon .tabCon table tr th:last-child {
     text-align: left;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    width: 70%;
 }
+.report .tabCon table tr th:first-child,.report .tabCon table tr td:first-child{width: 10%;text-align: center}
+.report .tabCon table tr th:first-child,.report .tabCon table tr td:nth-child(2){width: 20%}
 .report .tabCon table tr th{font-size: 14px;}
 .report .tabCon table tr td span{
     overflow: hidden;
@@ -110,3 +106,113 @@
     text-overflow: ellipsis;
     text-align: left;
 }
+.report .tabList{
+    overflow: hidden;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+.report .tabList ul{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    padding: 0 20px;
+}
+.report .tabList ul li{
+    overflow: hidden;
+    font-size: 14px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 0 30px 0 0;
+    border-bottom: solid 4px transparent;
+    cursor: pointer;
+}
+.report .tabList ul li.checked{
+    border-bottom: solid 4px #13aaf6;
+    color: #13aaf6;
+}
+.report .navTree {
+    overflow: hidden;
+    background: #fff;
+}
+.report .navTree .treeTit{
+    overflow: hidden;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 1%;
+}
+.report .navTree .treeTit span{
+    overflow: hidden;
+    font-size: 14px;
+    width: 17.5%;
+    padding: 10px 20px;
+    text-align: center;
+}
+.report .navTree .treeTit span:first-child{width: 30%;text-align: left}
+.report #ulHeight {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.report .navTree ul{
+    overflow: hidden;
+}
+.report .navTree ul li{
+    width: 100%;
+}
+.report .navTree ul li p,.report .navTree ul li span{
+    overflow: hidden;
+    font-size: 12px;
+}
+.report .navTree ul li span {
+    text-decoration: underline;
+    width: 17.5%;
+    padding: 10px 20px;
+    text-align: center;
+    color: #02a7f4;
+    cursor: pointer;
+}
+.report .navTree ul li img{
+    width: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.report .navTree ul li .item{
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d8dce5;
+}
+.report .navTree ul li .item p{
+    width: 17.5%;
+    padding: 10px 20px;
+    text-align: center;
+}
+.report .navTree ul li .itemLeft{
+    overflow: hidden;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    width: 30%;
+}
+.report .navTree ul li .itemLeft p{padding: 0;text-align: left}
+.report .navTree ul li .navSub{display: none;}
+.report .navTree ul li .navSub li .itemLeft{padding-left: 55px}
+.report .navTree ul li .navSub li .navThree{display: none;}
+.report .navTree ul li .navSub li .navThree li {
+    border-bottom: 1px solid #d8dce5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.report .navTree ul li .navSub li .navThree li p{width: 17.5%;text-align: center;padding: 10px 20px;}
+.report .navTree ul li .navSub li .navThree li p:first-child{width: 30%;text-align: left;padding-left: 80px}
+.report .navTree ul li .navSub li .navThree li img{margin: 0}
