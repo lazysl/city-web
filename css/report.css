@@ -12,6 +12,7 @@
     align-items: center;
     margin-right: 20px;
 }
+.report .title .select{margin-right: 20px;}
 .report .title .item span{
     overflow: hidden;
     font-size: 14px;
@@ -203,7 +204,7 @@
     cursor: pointer;
     width: 30%;
 }
-.report .navTree ul li .itemLeft p{padding: 0;text-align: left}
+.report .navTree ul li .itemLeft p{padding: 0;text-align: left;width: auto}
 .report .navTree ul li .navSub{display: none;}
 .report .navTree ul li .navSub li .itemLeft{padding-left: 55px}
 .report .navTree ul li .navSub li .navThree{display: none;}
@@ -216,3 +217,4 @@
 .report .navTree ul li .navSub li .navThree li p{width: 17.5%;text-align: center;padding: 10px 20px;}
 .report .navTree ul li .navSub li .navThree li p:first-child{width: 30%;text-align: left;padding-left: 80px}
 .report .navTree ul li .navSub li .navThree li img{margin: 0}
+.report .listCon{overflow: hidden;display: none}

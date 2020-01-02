@@ -27,140 +27,199 @@
             </div>
             <div class="tabList">
                 <ul>
-                    <li class="checked"><span>日报表</span></li>
-                    <li><span>周报表</span></li>
-                    <li><span>月报表</span></li>
-                    <li><span>年报表</span></li>
+                    <li class="checked" title="#one"><span>编辑</span></li>
+                    <li title="#report"><span>报表</span></li>
                 </ul>
             </div>
-            <div class="title">
-                <div class="item"><span>开始时间</span><input></div>
-                <div class="item"><span>结束时间</span><input></div>
-                <a class="btn">查询</a>
-            </div>
-            <div class="navTree" id="navTree">
-                <div class="treeTit">
-                    <span>考评对象</span>
-                    <span>时间</span>
-                    <span>评分</span>
-                    <span>是否合格</span>
-                    <span>修改人</span>
+            <div class="listCon">
+                <div class="title">
+                    <div class="select">
+                        <span>日报表<i></i></span>
+                        <ul>
+                            <li><span>日报表</span></li>
+                            <li><span>周报表</span></li>
+                            <li><span>月报表</span></li>
+                            <li><span>年报表</span></li>
+                        </ul>
+                    </div>
+                    <div class="item"><span>开始时间</span><input></div>
+                    <div class="item"><span>结束时间</span><input></div>
+                    <a class="btn">生成</a>
                 </div>
-                <div id="ulHeight">
-                    <ul>
-                        <li>
-                            <div class="item">
-                                <div class="itemLeft firstSub">
-                                    <img src="images/template/‭icon-open.png"/>
-                                    <p>综合执法平台</p>
-                                </div>
-                                <p>2019-12-16</p>
-                                <p>50</p>
-                                <p>否</p>
-                                <p>--</p>
-                            </div>
-                            <ul class="navSub">
-                                <li>
-                                    <div class="item secItem">
-                                        <div class="itemLeft secSub">
-                                            <img src="images/template/‭icon-open.png"/>
-                                            <p>中间件</p>
-                                        </div>
-                                        <p>2019-12-16</p>
-                                        <p>50</p>
-                                        <span class="buttonDetail">详情</span>
-                                        <p>--</p>
+                <div class="navTree">
+                    <div class="treeTit">
+                        <span>考评对象</span>
+                        <span>时间</span>
+                        <span>评分</span>
+                        <span>是否合格</span>
+                        <span>修改人</span>
+                    </div>
+                    <div class="ulHeight">
+                        <ul>
+                            <li>
+                                <div class="item">
+                                    <div class="itemLeft firstSub">
+                                        <img src="images/template/‭icon-open.png"/>
+                                        <p>综合执法平台</p>
                                     </div>
-                                    <ul class="navThree">
-                                        <li>
-                                            <p>服务器</p>
+                                    <p>2019-12-16</p>
+                                    <p>50</p>
+                                    <p>否</p>
+                                    <p>--</p>
+                                </div>
+                                <ul class="navSub">
+                                    <li>
+                                        <div class="item secItem">
+                                            <div class="itemLeft secSub">
+                                                <img src="images/template/‭icon-open.png"/>
+                                                <p>中间件</p>
+                                            </div>
                                             <p>2019-12-16</p>
                                             <p>50</p>
                                             <span class="buttonDetail">详情</span>
                                             <p>--</p>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="item">
-                                <div class="itemLeft firstSub">
-                                    <img src="images/template/‭icon-open.png"/>
-                                    <p>大数据治理平台</p>
-                                </div>
-                                <p>2019-12-16</p>
-                                <p>50</p>
-                                <p>否</p>
-                                <p>--</p>
-                            </div>
-                            <ul class="navSub">
-                                <li>
-                                    <div class="item secItem">
-                                        <div class="itemLeft secSub">
-                                            <img src="images/template/‭icon-open.png"/>
-                                            <p>中间件</p>
                                         </div>
-                                        <p>2019-12-16</p>
-                                        <p>50</p>
-                                        <span class="buttonDetail">详情</span>
-                                        <p>--</p>
+                                        <ul class="navThree">
+                                            <li>
+                                                <p>服务器</p>
+                                                <p>2019-12-16</p>
+                                                <p>50</p>
+                                                <span class="buttonDetail">详情</span>
+                                                <p>--</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <div class="itemLeft firstSub">
+                                        <img src="images/template/‭icon-open.png"/>
+                                        <p>大数据治理平台</p>
                                     </div>
-                                    <ul class="navThree">
-                                        <li>
-                                            <p>服务器</p>
+                                    <p>2019-12-16</p>
+                                    <p>50</p>
+                                    <p>否</p>
+                                    <p>--</p>
+                                </div>
+                                <ul class="navSub">
+                                    <li>
+                                        <div class="item secItem">
+                                            <div class="itemLeft secSub">
+                                                <img src="images/template/‭icon-open.png"/>
+                                                <p>中间件</p>
+                                            </div>
                                             <p>2019-12-16</p>
                                             <p>50</p>
                                             <span class="buttonDetail">详情</span>
                                             <p>--</p>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+                                        </div>
+                                        <ul class="navThree">
+                                            <li>
+                                                <p>服务器</p>
+                                                <p>2019-12-16</p>
+                                                <p>50</p>
+                                                <span class="buttonDetail">详情</span>
+                                                <p>--</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <!--<div class="tabCon">
-                <table>
-                    <thead>
-                    <tr>
-                        <td>序号</td>
-                        <td>考评对象</td>
-                        <td>时间</td>
-                        <td>评分</td>
-                        <td>是否合格</td>
-                        <td>修改人</td>
-                    </tr>
-                    </thead>
-                    <tbody id="table">
-                    <tr>
-                        <td>1</td>
-                        <td>综合执法平台</td>
-                        <td>2019-12-16</td>
-                        <td>50</td>
-                        <td>否</td>
-                        <td>&#45;&#45;</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>环卫综合管理系统</td>
-                        <td>2019-11-26</td>
-                        <td>90</td>
-                        <td>是</td>
-                        <td>&#45;&#45;</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>大数据治理平台</td>
-                        <td>2019-10-06</td>
-                        <td>70</td>
-                        <td>是</td>
-                        <td>&#45;&#45;</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>-->
+            <div class="listCon">
+                <div class="title">
+                    <div class="item"><span>开始时间</span><input></div>
+                    <div class="item"><span>结束时间</span><input></div>
+                    <a class="btn">查询</a>
+                </div>
+                <div class="navTree">
+                    <div class="treeTit">
+                        <span>考评对象</span>
+                        <span>时间</span>
+                        <span>评分</span>
+                        <span>是否合格</span>
+                        <span>修改人</span>
+                    </div>
+                    <div class="ulHeight">
+                        <ul>
+                            <li>
+                                <div class="item">
+                                    <div class="itemLeft firstSub">
+                                        <img src="images/template/‭icon-open.png"/>
+                                        <p>综合执法平台</p>
+                                    </div>
+                                    <p>2019-12-16</p>
+                                    <p>50</p>
+                                    <p>否</p>
+                                    <p>--</p>
+                                </div>
+                                <ul class="navSub">
+                                    <li>
+                                        <div class="item secItem">
+                                            <div class="itemLeft secSub">
+                                                <img src="images/template/‭icon-open.png"/>
+                                                <p>中间件</p>
+                                            </div>
+                                            <p>2019-12-16</p>
+                                            <p>50</p>
+                                            <span class="buttonDetail">详情</span>
+                                            <p>--</p>
+                                        </div>
+                                        <ul class="navThree">
+                                            <li>
+                                                <p>服务器</p>
+                                                <p>2019-12-16</p>
+                                                <p>50</p>
+                                                <span class="buttonDetail">详情</span>
+                                                <p>--</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="item">
+                                    <div class="itemLeft firstSub">
+                                        <img src="images/template/‭icon-open.png"/>
+                                        <p>大数据治理平台</p>
+                                    </div>
+                                    <p>2019-12-16</p>
+                                    <p>50</p>
+                                    <p>否</p>
+                                    <p>--</p>
+                                </div>
+                                <ul class="navSub">
+                                    <li>
+                                        <div class="item secItem">
+                                            <div class="itemLeft secSub">
+                                                <img src="images/template/‭icon-open.png"/>
+                                                <p>中间件</p>
+                                            </div>
+                                            <p>2019-12-16</p>
+                                            <p>50</p>
+                                            <span class="buttonDetail">详情</span>
+                                            <p>--</p>
+                                        </div>
+                                        <ul class="navThree">
+                                            <li>
+                                                <p>服务器</p>
+                                                <p>2019-12-16</p>
+                                                <p>50</p>
+                                                <span class="buttonDetail">详情</span>
+                                                <p>--</p>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="tcHide report" id="buttonDetail">
@@ -199,10 +258,13 @@
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
         $("#content .layout").css("height", docHeight - 142);
     });
+    $(".listCon").eq(0).show();
     $(".tabList li").click(function () {
-        $(this).addClass("checked").siblings("li").removeClass("checked")
+        $(this).addClass("checked").siblings("li").removeClass("checked");
+        var indx=$(".tabList li").index($(this));
+        $(".listCon").eq(indx).show().siblings(".listCon").hide();
     });
-    $("#ulHeight li .firstSub").click(function () {
+    $(".ulHeight li .firstSub").click(function () {
         $(".navThree").hide();
         $(this).parents(".item").siblings(".navSub").toggle().end().parents("li").siblings("li").children(".navSub").hide();
     });
