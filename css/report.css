@@ -156,7 +156,7 @@
     text-align: center;
 }
 .report .navTree .treeTit span:first-child{width: 30%;text-align: left}
-.report #ulHeight {
+.report .ulHeight {
     overflow-x: hidden;
     overflow-y: scroll;
 }
