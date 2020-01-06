@@ -171,8 +171,8 @@ new Vue({
         },
         /*保存考评对象*/
         savaObject(data) {
-            for (let obj in data){
-                if (!obj.displayName || obj.displayName == "") obj.displayName = obj.name;
+            for (let i in data){
+                if (!data[i].displayName || data[i].displayName == "") data[i].displayName = data[i].name;
             }
             this.postAjax(this.updateCheckObject(data), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
