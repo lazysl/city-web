@@ -171,6 +171,9 @@ new Vue({
         },
         /*保存考评对象*/
         savaObject(data) {
+            for (let obj in data){
+                if (!obj.displayName || obj.displayName == "") obj.displayName = obj.name;
+            }
             this.postAjax(this.updateCheckObject(data), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.addObject = false;
@@ -186,6 +189,7 @@ new Vue({
             };
             if (this.systemName != "") {
                 if (this.objectIndex == -1) {
+                    list.displayName = this.systemName;
                     this.objectData.push(list);
                     this.savaObject(this.objectData);
                 } else {
