@@ -58,8 +58,8 @@ new Vue({
         },
         docHeight() {
             let docHeight = window.innerHeight || document.documentElement.clientHeight;
-            document.getElementById("content").children[0].style.height = (docHeight - 142)+"px";
-            document.getElementById("navTree").style.height = (docHeight - 205)+"px"
+            document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
+            document.getElementById("navTree").style.height = (docHeight - 205) + "px"
         },
         addObjectFuc(index) {
             this.objectIndex = index;
@@ -74,7 +74,7 @@ new Vue({
             this.activeThreeIndex = this.activeThreeIndex == index ? -1 : index;
         },
         /*展示设备类型弹窗*/
-        addSubList(indexSub,index, type) {
+        addSubList(indexSub, index, type) {
             this.isDeviceType = !this.isDeviceType;
             this.equipmentIndex = index;
             this.threeIndex = indexSub;
@@ -91,7 +91,7 @@ new Vue({
             this.savaObject(this.objectData)
         },
         /*删除数据*/
-        delThreeList(indexThree,indexSub, index) {
+        delThreeList(indexThree, indexSub, index) {
             this.objectData[index].information[indexSub].information.splice(indexThree, 1);
             this.savaObject(this.objectData)
         },
@@ -108,7 +108,7 @@ new Vue({
         /*展示三级菜单弹窗*/
         addThreeList(indexSub, index, name) {
             this.checkedThreeIndex = -1;
-            this.checkedThreeList=[];
+            this.checkedThreeList = [];
             this.subName = name;
             this.equipmentIndex = index;
             this.isThreePop = !this.isThreePop;
@@ -171,7 +171,7 @@ new Vue({
         },
         /*保存考评对象*/
         savaObject(data) {
-            for (let i in data){
+            for (let i in data) {
                 if (!data[i].displayName || data[i].displayName == "") data[i].displayName = data[i].name;
             }
             this.postAjax(this.updateCheckObject(data), (res) => {
@@ -203,15 +203,15 @@ new Vue({
             let equipmentList = {
                 "name": this.equipmentId,
                 "displayName": this.subTxt,
-                "information": ""
+                "information": []
             };
             if (this.subTxt != "请选择") {
-                if (this.subIndex==0){
+                if (this.subIndex == 0) {
                     this.objectData[this.equipmentIndex].information.push(equipmentList);
                     this.savaObject(this.objectData);
-                } else if(this.subIndex==1){
-                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].displayName,this.subTxt));
-                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].name,this.equipmentId));
+                } else if (this.subIndex == 1) {
+                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].displayName, this.subTxt));
+                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].name, this.equipmentId));
                     this.savaObject(this.objectData);
                 }
             }
@@ -219,16 +219,16 @@ new Vue({
         /*保存考评对象三级目录*/
         submitThree() {
             if (this.checkedThreeList.length > 0) {
-                this.objectData[this.equipmentIndex].information[this.threeIndex].information=this.checkedThreeList
+                this.objectData[this.equipmentIndex].information[this.threeIndex].information = this.checkedThreeList
                 this.savaObject(this.objectData);
-                this.isThreePop=false;
+                this.isThreePop = false;
 
             }
         }
     },
     mounted() {
         this.initObject();
-        this.$nextTick(()=>{
+        this.$nextTick(() => {
             this.docHeight()
         })
     },
