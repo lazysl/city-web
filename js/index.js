@@ -31,10 +31,10 @@ $.extend({
                 var html = '', name, pic1 = "icon9", pic2 = "icon10", pic3 = "icon10";
                 if (data) {
                     for (var i in data) {
-                        var totalRecords = data[i].totalRecords ? data[i].totalRecords : "--";
-                        var clear = data[i].clear/* ? data[i].clear : "--"*/;
-                        var critical = data[i].critical/* ? data[i].critical : "--"*/;
-                        var warning = data[i].warning/* ? data[i].warning : "--"*/;
+                        var totalRecords = data[i].totalRecords;
+                        var clear = data[i].clear;
+                        var critical = data[i].critical;
+                        var warning = data[i].warning;
                         if (i == 'middleware') {
                             name = '中间件';
                         } else if (i == 'server') {
@@ -52,7 +52,7 @@ $.extend({
                         }
                         html += '<div class="layout">\n' +
                             '         <div class="item">\n' +
-                            '               <p><span>' + (clear + critical + warning) + '</span>' + name + '</p>\n' +
+                            '               <p><span>' + totalRecords + '</span>' + name + '</p>\n' +
                             '               <img src="images/index/icon-' + i + '.png"/>\n' +
                             '         </div>\n' +
                             '         <div class="item-1">\n' +
