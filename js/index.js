@@ -73,7 +73,7 @@ $.extend({
         $.getAjax(getCheckModeAnaly(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
-                var html = '';
+                var html = '',rankHtml='';
                 if (data) {
                     for (var i in data) {
                         if (Object.keys(data[i].information).length < 4) {
@@ -92,9 +92,16 @@ $.extend({
                             '       <td><span class="' + sqlStyle + '"></span>' + data[i].information.sql + '</td>\n' +
                             '       <td><span class="' + middlewareStyle + '"></span>' + data[i].information.middleware + '</td>\n' +
                             '       <td><span class="' + internetStyle + '"></span>' + data[i].information.internet + '</td>\n' +
-                            '     </tr>'
+                            '     </tr>';
+                        var percent = ((data[i].information.server).indexOf('0/') > -1 || (data[i].information.sql).indexOf('0/') > -1 || (data[i].information.middleware).indexOf('0/') > -1 || (data[i].information.internet).indexOf('0/') > -1)?"20%":"0%"
+                        rankHtml += '<li>\n' +
+                            '       <p>' + data[i].name + '</p>\n' +
+                            '       <span><em style="width: '+percent+'"></em></span>\n' +
+                            '       <p>'+percent+'</p>\n' +
+                            '      </li>'
                     }
-                    $("#table").empty().append(html)
+                    $("#table").empty().append(html);
+                    $("#rankList ul").empty().append(rankHtml)
                 }
             }
         })
