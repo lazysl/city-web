@@ -68,12 +68,19 @@
     vertical-align: middle;
     width: 14px;
 }
-.model .modelCon .table .tabTit input{
+.model .modelCon .table .tabTit p{
+    overflow: hidden;
     display: inline-block;
     border: none;
-    width: 40px;
     text-align: center;
-    margin: 0 5px;
+    padding: 0 10px;
+    font-size: 12px;
+}
+.model .modelCon .table .tabTit .leftTit{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 .model .modelCon .table .tabCon .conList{
     overflow: hidden;
@@ -97,11 +104,12 @@
 .model .modelCon .table .conList ul li img {
     width: 14px;
 }
-.model .modelCon .table .conList ul li input{
+.model .modelCon .table .conList ul li p{
+    overflow: hidden;
     border: none;
-    width: 40px;
     text-align: center;
-    margin: 0 5px;
+    padding: 0 10px;
+    font-size: 12px;
 }
 .model .modelCon .table .conList ul li span{
     overflow: hidden;

@@ -62,6 +62,7 @@
 .index .conList .item-1 p{
     overflow: hidden;
     font-size: 12px;
+    line-height: 14px;
 }
 .index .listCon{
     display: flex;

@@ -28,7 +28,7 @@ $.extend({
         $.getAjax(getWaring(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
-                var html = '', name, pic1 = "icon9", pic2 = "icon10", pic3 = "icon10";
+                var html = '', name, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11";
                 if (data) {
                     for (var i in data) {
                         var totalRecords = data[i].totalRecords;

@@ -28,86 +28,111 @@
             <div class="modelCon">
                 <div class="tabList">
                     <ul>
-                        <li class="checked"><span>日评模型</span></li>
-                        <li><span>周评模型</span></li>
-                        <li><span>月评模型</span></li>
-                        <li><span>年评模型</span></li>
+                        <li v-for="(day,index) in tabList" :class="{checked:dayIndex==index}" v-on:click="tabClick(day,index)"><span>{{day.name}}</span></li>
                     </ul>
-                    <a class="btn">保存</a>
+                    <a class="btn" v-on:click="saveMode(dayId)">保存</a>
                 </div>
                 <div class="table">
                     <div class="tabCon checked">
-                        <div class="tabTit"><span>可用性<input placeholder="10%"><img src="images/template/icon-change.png"/></span><i></i></div>
+                        <div class="tabTit">
+                            <div class="leftTit">
+                                <span>可用性</span>
+                                <p>{{usability.total}}%</p>
+                                <img v-on:click="changePercent(1,'可用性')" src="images/template/icon-change.png"/>
+                            </div>
+                            <i></i>
+                        </div>
                         <div class="conList">
                             <ul>
-                                <li><div class="itemList"><span>服务器可用性</span><input placeholder="25%"><img src="images/template/icon-change.png"/></div></li>
-                                <li><div class="itemList"><span>中间件可用性</span><input placeholder="25%"><img src="images/template/icon-change.png"/></div></li>
-                                <li><div class="itemList"><span>服务器可用性</span><input placeholder="25%"><img src="images/template/icon-change.png"/></div></li>
-                                <li><div class="itemList"><span>物联设备可用性</span><input placeholder="25%"><img src="images/template/icon-change.png"/></div></li>
+                                <li><div class="itemList"><span>服务器可用性</span><p>{{usability.project.server}}%</p><img v-on:click="changePercent(1_0,'服务器可用性')" src="images/template/icon-change.png"/></div></li>
+                                <li><div class="itemList"><span>中间件可用性</span><p>{{usability.project.middleware}}%</p><img v-on:click="changePercent(1_1,'中间件可用性')" src="images/template/icon-change.png"/></div></li>
+                                <li><div class="itemList"><span>数据库可用性</span><p>{{usability.project.sql}}%</p><img v-on:click="changePercent(1_2,'数据库可用性')" src="images/template/icon-change.png"/></div></li>
+                                <li><div class="itemList"><span>物联设备可用性</span><p>{{usability.project.internet}}%</p><img v-on:click="changePercent(1_3,'物联设备可用性')" src="images/template/icon-change.png"/></div></li>
                             </ul>
                         </div>
                     </div>
                     <div class="tabCon">
-                        <div class="tabTit"><span>性能告警<input placeholder="30%"><img src="images/template/icon-change.png"/></span><i></i></div>
-                        <div class="conList">
-                            <ul>
-                                <li>
-                                    <div class="itemList"><span>服务器</span><input placeholder="35%"><img src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="itemList"><span>中间件</span><input placeholder="35%"><img src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="itemList"><span>服务器</span><input placeholder="35%"><img src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                    </ul>
-                                </li>
-                            </ul>
+                        <div class="tabTit">
+                            <div class="leftTit">
+                                <span>性能告警</span>
+                                <p>{{capability.total}}%</p>
+                                <img v-on:click="changePercent(2,'性能告警')" src="images/template/icon-change.png"/>
+                            </div>
+                            <i></i>
                         </div>
-                    </div>
-                    <div class="tabCon">
-                        <div class="tabTit"><span>信息安全<input placeholder="40%"><img src="images/template/icon-change.png"/></span><i></i></div>
                         <div class="conList">
                             <ul>
                                 <li>
-                                    <div class="itemList"><span>服务器</span><input placeholder="35%"><img src="images/template/icon-change.png"/></div>
+                                    <div class="itemList"><span>服务器</span><p>{{capability.project.server.total}}%</p><img v-on:click="changePercent(2_0,'服务器')" src="images/template/icon-change.png"/></div>
                                     <ul class="navSub">
-                                        <li><span>严重告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
+                                        <li><span>严重告警率</span><p>{{capability.project.server.level.critical}}%</p><img v-on:click="changePercent(2_0_0,'严重告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{capability.project.server.level.malfunction}}%</p><img v-on:click="changePercent(2_0_1,'故障告警率')" src="images/template/icon-change.png"/></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="itemList"><span>中间件</span><input placeholder="35%"><img src="images/template/icon-change.png"/></div>
+                                    <div class="itemList"><span>中间件</span><p>{{capability.project.middleware.total}}%</p><img v-on:click="changePercent(2_1,'中间件')" src="images/template/icon-change.png"/></div>
                                     <ul class="navSub">
-                                        <li><span>严重告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
+                                        <li><span>严重告警率</span><p>{{capability.project.middleware.level.critical}}%</p><img v-on:click="changePercent(2_1_0,'严重告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{capability.project.middleware.level.malfunction}}%</p><img v-on:click="changePercent(2_1_1,'故障告警率')" src="images/template/icon-change.png"/></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="itemList"><span>服务器</span><input placeholder="35%"><img src="images/template/icon-change.png"/></div>
+                                    <div class="itemList"><span>数据库</span><p>{{capability.project.sql.total}}%</p><img v-on:click="changePercent(2_2,'数据库')" src="images/template/icon-change.png"/></div>
                                     <ul class="navSub">
-                                        <li><span>严重告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><input placeholder="35%"><img src="images/template/icon-change.png"/></li>
+                                        <li><span>严重告警率</span><p>{{capability.project.sql.level.critical}}%</p><img v-on:click="changePercent(2_2_0,'严重告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{capability.project.sql.level.malfunction}}%</p><img v-on:click="changePercent(2_2_1,'故障告警率')" src="images/template/icon-change.png"/></li>
                                     </ul>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="tabCon">
-                        <div class="tabTit"><span>数据质量<input placeholder="20%"><img src="images/template/icon-change.png"/></span><i></i></div>
+                        <div class="tabTit">
+                            <div class="leftTit">
+                                <span>数据质量</span>
+                                <p>{{quality.total}}%</p>
+                                <img v-on:click="changePercent(3,'数据质量')" src="images/template/icon-change.png"/>
+                            </div>
+                            <i></i>
+                        </div>
                         <div class="conList">
                             <ul>
-                                <li><div class="itemList"><span>综合评分</span><input placeholder="100%"><img src="images/template/icon-change.png"/></div></li>
+                                <li><div class="itemList"><span>综合评分</span><p>{{quality.complex}}%</p><img v-on:click="changePercent(3_0,'综合评分')" src="images/template/icon-change.png"/></div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tabCon">
+                        <div class="tabTit">
+                            <div class="leftTit">
+                                <span>信息安全</span>
+                                <p>{{information.total}}%</p>
+                                <img v-on:click="changePercent(4,'信息安全')" src="images/template/icon-change.png"/>
+                            </div>
+                            <i></i>
+                        </div>
+                        <div class="conList">
+                            <ul>
+                                <li>
+                                    <div class="itemList"><span>服务器</span><p>{{information.project.server.total}}%</p><img v-on:click="changePercent(4_0,'服务器')" src="images/template/icon-change.png"/></div>
+                                    <ul class="navSub">
+                                        <li><span>严重告警率</span><p>{{information.project.server.level.critical}}%</p><img v-on:click="changePercent(4_0_0,'严重告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{information.project.server.level.malfunction}}%</p><img v-on:click="changePercent(4_0_1,'故障告警率')" src="images/template/icon-change.png"/></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="itemList"><span>中间件</span><p>{{information.project.middleware.total}}%</p><img v-on:click="changePercent(4_1,'中间件')" src="images/template/icon-change.png"/></div>
+                                    <ul class="navSub">
+                                        <li><span>严重告警率</span><p>{{information.project.middleware.level.critical}}%</p><img v-on:click="changePercent(4_1_0,'严重告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{information.project.middleware.level.malfunction}}%</p><img v-on:click="changePercent(4_1_1,'故障告警率')" src="images/template/icon-change.png"/></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div class="itemList"><span>数据库</span><p>{{information.project.sql.total}}%</p><img v-on:click="changePercent(4_2,'数据库')" src="images/template/icon-change.png"/></div>
+                                    <ul class="navSub">
+                                        <li><span>严重告警率</span><p>{{information.project.sql.level.critical}}%</p><img v-on:click="changePercent(4_2_0,'严重告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{information.project.sql.level.malfunction}}%</p><img v-on:click="changePercent(4_2_1,'故障告警率')" src="images/template/icon-change.png"/></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -115,14 +140,19 @@
             </div>
         </div>
     </div>
+    <div class="tcHide" v-if="isPop" :class="isPop?'display':''">
+        <div class="masking" v-on:click="changePercent(0)"></div>
+        <div class="tcCon">
+            <img class="off" src="images/template/icon-off.png" v-on:click="changePercent(0)"/>
+            <div class="itemList"><span>{{name}}修改：</span><input type="text" v-model="changeTxt"></div>
+            <div class="itemBtn"><a class="btn" v-on:click="savePercent(num)">保存</a></div>
+        </div>
+    </div>
 </div>
 <script src="js/public.js"></script>
 <script src="js/evaluationModel.js"></script>
 <script>
-    $(".tabList li").click(function () {
-        $(this).addClass("checked").siblings("li").removeClass("checked")
-    });
-    $(".tabTit").click(function () {
+    $(".tabTit i,.tabTit .leftTit span,.tabTit .leftTit p").click(function () {
         $(this).parents(".tabCon").toggleClass("checked").siblings(".tabCon").removeClass("checked");
     });
     $(function () {
