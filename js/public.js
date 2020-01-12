@@ -1,9 +1,9 @@
 var setting = {
     www_url: "http://localhost:8080",
-    /*www_url: "/cityapi",
-    beiHang_url: '/serverapi',*/
-    /*www_url: "http://192.168.1.79:8080",
-    beiHang_url:'http://192.168.1.72:8060',*/
+    www_url: "/cityapi",
+    beiHang_url: '/serverapi',
+    www_url: "http://192.168.1.79:8080",
+    beiHang_url:'http://192.168.1.72:8060',
     apiKey: "f997bc19a9410ded2c0eb17f24e0690d",
 };
 document.write("<script type='text/javascript' src='js/jquery.cookie.min.js'></script>");
@@ -73,7 +73,7 @@ Vue.prototype.getCheckMode = function () {
 Vue.prototype.updateCheckMode = function (data) {
     return {
         url: setting.www_url + "/city/checkMode/updateCheckMode?apiKey=" + setting.apiKey,
-        list: JSON.stringify(data),
+        data: data,
         token:localStorage.getItem("token")
     }
 };
