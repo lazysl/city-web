@@ -36,7 +36,7 @@
                         <li v-for="(item,index) in objectData">
                             <div class="item">
                                 <div class="itemLeft" v-on:click="showSub(index)">
-                                    <em v-if="item.information&&item.information.length>0" :classe="activeSubIndex===index?'checked':''"></em>
+                                    <em v-if="item.information&&item.information.length>0" :class="activeSubIndex===index?'checked':''"></em>
                                     <p>{{item.name}}</p>
                                 </div>
                                 <div class="itemRight">
@@ -49,7 +49,7 @@
                                 <li v-for="(itemSub,indexSub) in item.information" v-if="item.information.length>0">
                                     <div class="item">
                                         <div class="itemLeft" v-on:click="showThree(indexSub)">
-                                            <em v-if="itemSub.information&&itemSub.information.length>0" :classe="activeThreeIndex===indexSub?'checked':''"></em>
+                                            <em v-if="itemSub.information&&itemSub.information.length>0" :class="activeThreeIndex===indexSub?'checked':''"></em>
                                             <p>{{itemSub.displayName}}</p>
                                         </div>
                                         <div class="itemRight">
