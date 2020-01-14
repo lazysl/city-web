@@ -17,7 +17,6 @@
     float: left;
 }
 .index .conList ul{
-    overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,22 +40,18 @@
     color: #02a7f4;
     font-weight: bold;
 }
-.index .conList .item-1{
-    overflow: hidden;
-}
 .index .conList .item-1 ul{
-    overflow: hidden;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin: 12px 10px;
 }
 .index .conList .item-1 ul li{
-    overflow: hidden;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-right: 20px;
+    padding-right: 20px;
+    position: relative;
 }
 .index .conList .item-1 img{width: 14px;margin-right: 5px}
 .index .conList .item-1 p{
@@ -64,6 +59,18 @@
     font-size: 12px;
     line-height: 14px;
 }
+.index .conList .item-1 ul li em{
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background: rgba(0,0,0,.5);
+    border-radius: 3px;
+    color: #fff;
+    padding: 2px 5px;
+    font-size: 10px;
+    display: none;
+}
+.index .conList .item-1 ul li:hover em{display: block}
 .index .listCon{
     display: flex;
     justify-content: space-between;
@@ -231,6 +238,10 @@
 }
 .index .rankCon .rankList{
     overflow: hidden;
+}
+.index .rankCon .rankList ul{
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .index .rankCon .rankList li{
     overflow: hidden;

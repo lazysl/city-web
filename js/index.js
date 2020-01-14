@@ -28,7 +28,7 @@ $.extend({
         $.getAjax(getWaring(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
-                var html = '', name, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11";
+                var html = '', name, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11",explain1="严重",explain2="一般",explain3="正常";
                 if (data) {
                     for (var i in data) {
                         var totalRecords = data[i].totalRecords;
@@ -49,6 +49,9 @@ $.extend({
                             pic1 = "icon12";
                             pic2 = "icon13";
                             pic3 = "icon14";
+                            explain1 = "运行";
+                            explain2 = "已解决";
+                            explain3 = "已关闭";
                         }
                         html += '<div class="layout">\n' +
                             '         <div class="item">\n' +
@@ -57,9 +60,9 @@ $.extend({
                             '         </div>\n' +
                             '         <div class="item-1">\n' +
                             '              <ul>\n' +
-                            '                  <li><img src="images/index/' + pic1 + '.png"/><p>' + critical + '</p></li>\n' +
-                            '                  <li><img src="images/index/' + pic2 + '.png"/><p>' + warning + '</p></li>\n' +
-                            '                  <li><img src="images/index/' + pic3 + '.png"/><p>' + clear + '</p></li>\n' +
+                            '                  <li><img src="images/index/' + pic1 + '.png"/><p>' + critical + '</p><em>'+explain1+'</em></li>\n' +
+                            '                  <li><img src="images/index/' + pic2 + '.png"/><p>' + warning + '</p><em>'+explain2+'</em></li>\n' +
+                            '                  <li><img src="images/index/' + pic3 + '.png"/><p>' + clear + '</p><em>'+explain3+'</em></li>\n' +
                             '              </ul>\n' +
                             '         </div>\n' +
                             '     </div>';
