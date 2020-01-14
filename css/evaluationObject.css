@@ -42,6 +42,20 @@
     margin-right: 10px;
     cursor: pointer;
 }
+.object .navTree ul li em{
+    overflow: hidden;
+    display: block;
+    background: url("../images/template/‭icon-open.png") no-repeat;
+    background-size: 100% 100%;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.object .navTree ul li em.checked{
+    background: url("../images/template/icon-close.png") no-repeat;
+    background-size: 100% 100%;
+}
 .object .navTree ul li .item{
     overflow: hidden;
     display: flex;
