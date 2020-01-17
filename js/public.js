@@ -57,6 +57,12 @@ Vue.prototype.checkSqlList = function (num) {
         token:localStorage.getItem("token")
     }
 };
+function js_checkSqlList(type, waringType) {
+    return {
+        url: setting.www_url + "/city/checkSql/getCheckSqlList?apiKey=" + setting.apiKey + "&type=" + type + "&waringType=" + waringType,
+        token: localStorage.getItem("token")
+    }
+};
 Vue.prototype.updateCheckObject = function (data) {
     return {
         url: setting.www_url + "/city/checkObject/updateCheckObject?apiKey=" + setting.apiKey,

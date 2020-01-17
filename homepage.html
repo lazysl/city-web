@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>智能考评系统</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="wap-font-scale" content="no">
+    <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" href="css/homepage.css">
+    <script src="js/jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<div id="main" class="home">
+    <div class="logo">
+        <span><img src="images/template/icon-logo.png"/>深圳市城市管理和综合执法局</span>
+        <p onclick="quit()"><img src="images/template/icon-quit.png"/>退出</p>
+    </div>
+    <div class="homeCon">
+        <div class="leftItem">
+            <a class="item">
+                <span><img src="images/homepage/icon1.png"/>考评管理子系统</span>
+                <p>点击进入>></p>
+            </a>
+            <a class="item">
+                <span><img src="images/homepage/icon2.png"/>考评监测子系统</span>
+                <p>点击进入>></p>
+            </a>
+            <a class="item" href="index.html">
+                <span><img src="images/homepage/icon3.png"/>考评</span>
+                <p>点击进入>></p>
+            </a>
+        </div>
+        <div class="rightItem"><img src="images/homepage/bg.png"/></div>
+    </div>
+</div>
+</body>
+<script src="js/public.js"></script>
+<script>
+    $(function () {
+        var docHeight = window.innerHeight || document.documentElement.clientHeight;
+        $(".home .homeCon .item").css("height", docHeight/4);
+        $(".home .homeCon .rightItem").css("height", docHeight-300);
+    });
+    function quit(){
+        delCookie("user");
+        localStorage.clear();
+        window.location.href = "./login.html"
+    }
+</script>
+</html>

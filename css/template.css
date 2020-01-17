@@ -496,4 +496,19 @@ body{
     margin: 0 auto;
     display: inline-block;
 }
+.tcHide .tcCon .ul_list{
+    overflow-y: scroll;
+    border-top: solid 1px #d8dce5;
+    min-height: 200px;
+    max-height: 500px;
+}
+.tcHide .tcCon .ul_list li{
+    font-size: 14px;
+    padding: 10px 5px;
+    border-bottom: solid 1px #d8dce5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tcHide .tcCon .ul_list li:last-child{border-bottom: none}
 .display{display: block!important;}

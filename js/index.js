@@ -28,7 +28,7 @@ $.extend({
         $.getAjax(getWaring(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
-                var html = '', name, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11",explain1="严重",explain2="一般",explain3="正常";
+                var html = '', name,type, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11",explain1="严重",explain2="一般",explain3="正常";
                 if (data) {
                     for (var i in data) {
                         var totalRecords = data[i].totalRecords;
@@ -37,12 +37,16 @@ $.extend({
                         var warning = data[i].warning;
                         if (i == 'middleware') {
                             name = '中间件';
+                            type = 2;
                         } else if (i == 'server') {
                             name = '服务器';
+                            type = 3;
                         } else if (i == 'sql') {
                             name = '数据库';
+                            type = 1;
                         } else if (i == 'order') {
                             name = '工单';
+                            type = 5;
                             critical = data[i].open;
                             warning = data[i].resolved;
                             clear = data[i].closed;
@@ -55,14 +59,14 @@ $.extend({
                         }
                         html += '<div class="layout">\n' +
                             '         <div class="item">\n' +
-                            '               <p><span>' + totalRecords + '</span>' + name + '</p>\n' +
+                            '               <p onclick="$.getDetail('+type+')"><span>' + totalRecords + '</span>' + name + '</p>\n' +
                             '               <img src="images/index/icon-' + i + '.png"/>\n' +
                             '         </div>\n' +
                             '         <div class="item-1">\n' +
                             '              <ul>\n' +
-                            '                  <li><img src="images/index/' + pic1 + '.png"/><p>' + critical + '</p><em>'+explain1+'</em></li>\n' +
-                            '                  <li><img src="images/index/' + pic2 + '.png"/><p>' + warning + '</p><em>'+explain2+'</em></li>\n' +
-                            '                  <li><img src="images/index/' + pic3 + '.png"/><p>' + clear + '</p><em>'+explain3+'</em></li>\n' +
+                            '                  <li onclick="$.getDetail('+type+',1)"><img src="images/index/' + pic1 + '.png"/><p>' + critical + '</p><em>'+explain1+'</em></li>\n' +
+                            '                  <li onclick="$.getDetail('+type+',2)"><img src="images/index/' + pic2 + '.png"/><p>' + warning + '</p><em>'+explain2+'</em></li>\n' +
+                            '                  <li onclick="$.getDetail('+type+',3)"><img src="images/index/' + pic3 + '.png"/><p>' + clear + '</p><em>'+explain3+'</em></li>\n' +
                             '              </ul>\n' +
                             '         </div>\n' +
                             '     </div>';
@@ -127,6 +131,32 @@ $.extend({
                             '     </li>'
                     }
                     $("#alarms").empty().append(html)
+                }
+            }
+        })
+    },
+    getDetail(type, waringType) {
+        var html="",explain
+        if (typeof waringType == "undefined") waringType = "";
+        $.getAjax(js_checkSqlList(type, waringType), function (res) {
+            if (res.code = 200 && res.code_desc == "success") {
+                $(".tcHide").show();
+                var data = res.data;
+                if (data) {
+                    for (var i in data) {
+                        if (type == 5) {
+                            if (data[i].STATUS == "Resolved") explain = "运行";
+                            if (data[i].STATUS == "Open") explain = "已解决";
+                            if (data[i].STATUS == "closed") explain = "已关闭";
+                            html += '<li><span>' + data[i].SUBJECT + '</span><span>' + explain + '</span></li>'
+                        } else {
+                            if (data[i].status == "critical") explain = "严重";
+                            if (data[i].status == "warning") explain = "一般";
+                            if (data[i].status == "clear") explain = "正常";
+                            html += '<li><span>' + data[i].name + '</span><span>' + explain + '</span></li>'
+                        }
+                    }
+                    $(".tcHide ul").empty().append(html)
                 }
             }
         })

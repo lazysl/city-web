@@ -1,0 +1,67 @@
+#main {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    background: url("../images/template/bg.png") no-repeat center;
+    background-size: 100% 100%;
+}
+.home .logo{
+    overflow: hidden;
+    margin: 50px 55px 0 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+.home .logo span,.home .logo p{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 700;
+}
+.home .logo p{font-size: 20px}
+.home .logo img{margin-right: 20px}
+.home .homeCon{
+    overflow: hidden;
+    width: 80%;
+    margin: 80px auto 0;
+    background: #4694dc;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.home .homeCon .leftItem,.home .homeCon .rightItem{
+    overflow: hidden;
+    width: 50%;
+}
+.home .homeCon .item{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50%;
+    padding: 0 20px;
+}
+.home .homeCon .item:first-child{background: #1dcac6}
+.home .homeCon .item:nth-child(2){background: #4fad6e;margin-left: 50%}
+.home .homeCon .item:nth-child(3){background: #2b50a1}
+.home .homeCon .item span,.home .homeCon .item p{
+    overflow: hidden;
+    display: block;
+    color: #fff;
+    width: 100%;
+}
+.home .homeCon .item p{font-size: 16px;margin-top: 10px}
+.home .homeCon .item span {
+    font-size: 22px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.home .homeCon .item span img{width: 28px;margin-right: 10px}
+.home .homeCon .rightItem img{width: 100%;height: 100%}
