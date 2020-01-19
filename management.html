@@ -71,8 +71,12 @@
 <script>
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
+        var docWidth = window.innerWidth || document.documentElement.clientWidth;
         $("#content .layout").css("height", docHeight - 142);
         $("#userList").css("max-height", docHeight - 300);
+        if (docWidth <= 1366) {
+            $(".management .manageCon .manageItem .item ul").css("min-height", docHeight - 500);
+        }
     });
 </script>
 </body>

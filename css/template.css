@@ -512,3 +512,36 @@ body{
 }
 .tcHide .tcCon .ul_list li:last-child{border-bottom: none}
 .display{display: block!important;}
+@media screen and (max-width: 1366px){
+    #header,#header .logo a{height: 60px}
+    #header .quit{top: 18px}
+    #content{padding-top: 85px}
+    #nav{width: 80px;top: 85px}
+    #nav ul li span{width: 50px;height: 50px}
+    #nav ul li a{font-size: 12px}
+    #content{padding-left: 135px}
+    .title{padding: 10px 15px!important;}
+    .title span,.index .interCon .interLeft p:first-child{font-size: 14px!important;}
+    .index .conList .layout,.index .conList_1 .layout{height: 90px!important;}
+    .index .conList .item img{width: 40px!important;}
+    .index .conList .item p, .index .conList .item span{font-size: 12px!important;}
+    .index .conList .item span,.index .interCon .interLeft span{font-size: 20px!important;}
+    .index .conList .item-1 ul{margin: 5px!important;}
+    .index .tabCon table tr th{font-size: 12px!important;padding: 5px!important;}
+    .index .tabCon table tr td, .index .tabCon table tr th{font-size: 10px!important;}
+    .index .rankCon .tabList ul li{padding: 4px 0!important;font-size: 10px!important;}
+    .index .rankCon .rankList li{padding: 5px 6px!important;}
+    .index .rankCon .rankList li span{width: 105px!important;margin:5px!important;}
+    .index .rankCon .rankList li p {font-size: 12px !important;}
+    .index .rankCon .rankList li p:first-child,
+    .index .interCon .interRight li p:first-child{text-overflow: ellipsis;white-space: nowrap;}
+    .index .conList_1 ul li p{font-size: 10px!important;}
+    .index .interCon .interRight li span{width: 80px!important;margin: 0 5px!important;}
+    .index .interCon .interRight li p{font-size: 10px!important;}
+    .index .interCon .interRight li p:last-child{width: 20%!important;}
+    .index .tabCon .table .tabTit span{font-size: 12px!important;}
+    .index .tabCon .table ul li span:first-child, .index .tabCon .table .tabTit span:first-child{width: 20%!important;}
+    .index .tabCon .table ul li span, .index .tabCon .table .tabTit span{text-overflow: ellipsis;white-space: nowrap;}
+    .index .interCon .layout{height: 230px!important;}
+    #circle{margin: -10% 0!important;}
+}

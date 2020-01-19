@@ -158,7 +158,11 @@
     });
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
+        var docWidth = window.innerWidth || document.documentElement.clientWidth;
         $("#content .layout").css("height", docHeight - 142);
+        if (docWidth <= 1366) {
+            $(".checkCon").css("max-height", docHeight - 182);
+        }
     });
 </script>
 </html>

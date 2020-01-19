@@ -143,18 +143,22 @@ $.extend({
                 $(".tcHide").show();
                 var data = res.data;
                 if (data) {
-                    for (var i in data) {
-                        if (type == 5) {
-                            if (data[i].STATUS == "Resolved") explain = "运行";
-                            if (data[i].STATUS == "Open") explain = "已解决";
-                            if (data[i].STATUS == "closed") explain = "已关闭";
-                            html += '<li><span>' + data[i].SUBJECT + '</span><span>' + explain + '</span></li>'
-                        } else {
-                            if (data[i].status == "critical") explain = "严重";
-                            if (data[i].status == "warning") explain = "一般";
-                            if (data[i].status == "clear") explain = "正常";
-                            html += '<li><span>' + data[i].name + '</span><span>' + explain + '</span></li>'
+                    if (data.length>0){
+                        for (var i in data) {
+                            if (type == 5) {
+                                if (data[i].STATUS == "Resolved") explain = "运行";
+                                if (data[i].STATUS == "Open") explain = "已解决";
+                                if (data[i].STATUS == "closed") explain = "已关闭";
+                                html += '<li><span>' + data[i].SUBJECT + '</span><span>' + explain + '</span></li>'
+                            } else {
+                                if (data[i].status == "critical") explain = "严重";
+                                if (data[i].status == "warning") explain = "一般";
+                                if (data[i].status == "Clear"||data[i].status == "clear") explain = "正常";
+                                html += '<li><span>' + data[i].name + '</span><span>' + explain + '</span></li>'
+                            }
                         }
+                    }else {
+                        html='<li><span>暂无数据</span></li>'
                     }
                     $(".tcHide ul").empty().append(html)
                 }

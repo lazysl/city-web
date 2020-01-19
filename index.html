@@ -198,8 +198,13 @@
     $.initAlarms();
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
-        $("#table,.rankList ul").css("max-height", docHeight - 382);
-        $("#alarms").css("max-height", docHeight - 720);
+        var docWidth = window.innerWidth || document.documentElement.clientWidth;
+        if (docWidth <= 1366) {
+            $("#table,.rankList ul").css("max-height", docHeight - 282);
+        } else {
+            $("#table,.rankList ul").css("max-height", docHeight - 382);
+            $("#alarms").css("max-height", docHeight - 720);
+        }
     });
 </script>
 </html>

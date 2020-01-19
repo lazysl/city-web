@@ -13,6 +13,7 @@
     <meta name="wap-font-scale" content="no">
     <link rel="stylesheet" href="css/template.css">
     <link rel="stylesheet" href="css/homepage.css">
+    <script src="js/vue.js"></script>
     <script src="js/jquery-2.2.3.min.js"></script>
 </head>
 <body>
@@ -45,7 +46,7 @@
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
         $(".home .homeCon .item").css("height", docHeight/4);
-        $(".home .homeCon .rightItem").css("height", docHeight-300);
+        $(".home .homeCon .rightItem").css("height", docHeight/4*3);
     });
     function quit(){
         delCookie("user");

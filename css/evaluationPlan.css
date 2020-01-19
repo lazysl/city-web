@@ -6,7 +6,12 @@
 .plan .layoutList{
     width: 49%;
 }
-.plan .checkCon{margin: 0 20px;padding-bottom: 30px}
+.plan .checkCon {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0 20px;
+    padding-bottom: 30px;
+}
 .plan .checkCon .checkItem {
     margin: 60px 0;
     border: dashed 1px #d8dce5;

@@ -17,9 +17,25 @@ $(".select ul li").click(function () {
 new Vue({
     el: document.getElementById("head")?"#head":'',
 });
+function pageScale() {
+    var winH = $(window).width();
+    var myScale = (winH) / 1366;
+    if (myScale <= 1) {
+        $('#circle').css({'transform': 'scale(.7)'});
+    }
+}
+pageScale();
+$(window).resize(function () {
+    pageScale();
+});
 $(function () {
     var docHeight = window.innerHeight || document.documentElement.clientHeight;
-    if (document.getElementById("nav")) document.getElementById("nav").style.minHeight = (docHeight - 142)+"px";
+    var docWidth = window.innerWidth || document.documentElement.clientWidth;
+    if (docWidth <= 1366) {
+        if (document.getElementById("nav")) document.getElementById("nav").style.minHeight = (docHeight - 102)+"px";
+    }else {
+        if (document.getElementById("nav")) document.getElementById("nav").style.minHeight = (docHeight - 142)+"px";
+    }
 });
 function login(data) {
     return {
