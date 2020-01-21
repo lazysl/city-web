@@ -144,7 +144,8 @@
         <div class="masking" v-on:click="changePercent(0)"></div>
         <div class="tcCon">
             <img class="off" src="images/template/icon-off.png" v-on:click="changePercent(0)"/>
-            <div class="itemList"><span>{{name}}修改：</span><input type="text" v-model="changeTxt"></div>
+            <div class="itemList"><span>{{name}}修改：</span><input type="number" v-model="changeTxt" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+\.\d+/,'');}).call(this)" onblur="this.v();"></div>
+            <div class="itemErr"><span>{{errMessage}}</span></div>
             <div class="itemBtn"><a class="btn" v-on:click="savePercent(num)">保存</a></div>
         </div>
     </div>

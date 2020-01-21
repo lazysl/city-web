@@ -60,6 +60,7 @@
                                     </div>
                                     <ul class="navThree" v-if="activeThreeIndex===indexSub" :class="activeThreeIndex===indexSub?'display':''">
                                         <li v-for="(itemThree,indexThree) in itemSub.information" v-if="itemSub.information.length>0">
+                                            <i></i>
                                             <p>{{itemThree.name}}</p>
                                             <img v-on:click="delThreeList(indexThree,indexSub,index)" src="images/template/icon-del.png"/>
                                         </li>

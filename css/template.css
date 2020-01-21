@@ -486,6 +486,14 @@ body{
     border: solid 1px #d8dce5;
     width: 70%;
 }
+.tcHide .tcCon .itemErr{
+    overflow: hidden;
+    display: block;
+    font-size: 12px;
+    color: #f00;
+    text-align: center;
+    margin-top: 10px;
+}
 .tcHide .tcCon .itemBtn {
     overflow: hidden;
     margin: 30px 0;

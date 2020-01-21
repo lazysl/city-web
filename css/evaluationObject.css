@@ -81,15 +81,25 @@
 .object .navTree ul li .itemRight img{margin: 0 5px;}
 .object .navTree ul li .navSub{display: none;}
 .object .navTree ul li .navSub li .item{padding-left: 30px}
-.object .navTree ul li .navSub li .navThree{display: none;}
+.object .navTree ul li .navSub li .navThree{display: none;border-bottom: 1px solid #d8dce5;}
 .object .navTree ul li .navSub li .navThree li {
-    border-bottom: 1px solid #d8dce5;
-    padding: 10px 25px 10px 80px;
+    padding: 10px 25px 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-left: 1px solid #d8dce5;
+    margin-left: 58px;
+    position: relative;
 }
 .object .navTree ul li .navSub li .navThree li img{margin: 0}
+.object .navTree ul li .navSub li .navThree li i{
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 15px;
+    height: 1px;
+    background: #d8dce5;
+}
 .tcHide .tcCon .monitorCon{margin-left: 30px}
 .tcHide .tcCon .monitorCon .monitorTit{
     display: flex;
