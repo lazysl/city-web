@@ -10,7 +10,7 @@
 }
 .home .logo{
     overflow: hidden;
-    margin: 50px 55px 0 55px;
+    margin: 40px 55px 0 55px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +28,7 @@
 .home .homeCon{
     overflow: hidden;
     width: 80%;
-    margin: 80px auto 0;
+    margin: 60px auto 0;
     background: #4694dc;
     display: flex;
     justify-content: flex-start;
