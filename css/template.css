@@ -510,6 +510,18 @@ body{
     min-height: 200px;
     max-height: 500px;
 }
+.tcHide .tcCon .ul_list .ul_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px #d8dce5;
+    padding: 10px 5px;
+}
+.tcHide .tcCon .ul_list .ul_title span,.tcHide .tcCon .ul_list li span{
+    width: 40%;
+    font-size: 14px;
+}
+.tcHide .tcCon .ul_list .ul_title span:last-child,.tcHide .tcCon .ul_list li span:last-child{width: 20%;text-align: right}
 .tcHide .tcCon .ul_list li{
     font-size: 14px;
     padding: 10px 5px;
@@ -519,6 +531,9 @@ body{
     align-items: center;
 }
 .tcHide .tcCon .ul_list li:last-child{border-bottom: none}
+.tcHide .tcCon .ul_list li span.critical{color: #f00}
+.tcHide .tcCon .ul_list li span.warning{color: #fd6123}
+.tcHide .tcCon .ul_list li span.clear{color: #1E6E2D}
 .display{display: block!important;}
 @media screen and (max-width: 1366px){
     #header,#header .logo a{height: 60px}

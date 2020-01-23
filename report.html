@@ -50,7 +50,7 @@
                             <li>
                                 <div class="item">
                                     <div class="itemLeft firstSub">
-                                        <img src="images/template/‭icon-open.png"/>
+                                        <em></em>
                                         <p>综合执法平台</p>
                                     </div>
                                     <p>2019-12-16</p>
@@ -62,7 +62,7 @@
                                     <li>
                                         <div class="item secItem">
                                             <div class="itemLeft secSub">
-                                                <img src="images/template/‭icon-open.png"/>
+                                                <em></em>
                                                 <p>中间件</p>
                                             </div>
                                             <p>2019-12-16</p>
@@ -85,7 +85,7 @@
                             <li>
                                 <div class="item">
                                     <div class="itemLeft firstSub">
-                                        <img src="images/template/‭icon-open.png"/>
+                                        <em></em>
                                         <p>大数据治理平台</p>
                                     </div>
                                     <p>2019-12-16</p>
@@ -97,7 +97,7 @@
                                     <li>
                                         <div class="item secItem">
                                             <div class="itemLeft secSub">
-                                                <img src="images/template/‭icon-open.png"/>
+                                                <em></em>
                                                 <p>中间件</p>
                                             </div>
                                             <p>2019-12-16</p>
@@ -162,9 +162,11 @@
     $(".ulHeight li .firstSub").click(function () {
         $(".navThree").hide();
         $(this).parents(".item").siblings(".navSub").toggle().end().parents("li").siblings("li").children(".navSub").hide();
+        $(this).children("em").toggleClass("checked")
     });
     $(".navSub li .secSub").click(function () {
         $(this).parents(".secItem").siblings(".navThree").toggle();
+        $(this).children("em").toggleClass("checked")
     })
     $(".buttonDetail").click(function () {
       $("#buttonDetail").show()
