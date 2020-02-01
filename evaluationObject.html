@@ -88,7 +88,7 @@
         <div class="masking" v-on:click="addSubList"></div>
         <div class="tcCon">
             <img v-on:click="addSubList" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>{{subIndex==0?'新增':'修改'}}设备类型</span></div>
+            <div class="tcTit"><span>{{subIndex==0?'新增':'修改'}}设备项目</span></div>
             <div class="select marginTop">
                 <span v-on:click="select">{{subTxt}}<i></i></span>
                 <ul v-if="isSelect" :class="isSelect?'display':''">
@@ -103,7 +103,7 @@
         <div class="masking" v-on:click="closeThreePop"></div>
         <div class="tcCon">
             <img v-on:click="closeThreePop" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>新增{{subName}}</span></div>
+            <div class="tcTit"><span>新增考评主体</span></div>
             <div class="monitorCon">
                 <!--<div class="monitorTit">
                     <span>刷选监视器：</span>

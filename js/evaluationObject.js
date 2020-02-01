@@ -17,7 +17,6 @@ new Vue({
             {name: '中间件', id: "middleware"},
             {name: '物联网设备', id: "internet"},
         ],
-        subName: '',
         equipmentIndex: '',
         equipmentId: '',
         isThreePop: false,
@@ -110,7 +109,6 @@ new Vue({
         addThreeList(indexSub, index, name) {
             this.checkedThreeIndex = -1;
             this.checkedThreeList = [];
-            this.subName = name;
             this.equipmentIndex = index;
             this.isThreePop = !this.isThreePop;
             this.threeIndex = indexSub;
