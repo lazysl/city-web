@@ -79,6 +79,7 @@ new Vue({
             this.equipmentIndex = index;
             this.threeIndex = indexSub;
             this.subIndex = type;
+            this.isSelect = false;
         },
         /*删除系统*/
         delList(index) {
@@ -205,24 +206,41 @@ new Vue({
                 "displayName": this.subTxt,
                 "information": []
             };
-            if (this.subTxt != "请选择") {
-                if (this.subIndex == 0) {
-                    this.objectData[this.equipmentIndex].information.push(equipmentList);
-                    this.savaObject(this.objectData);
-                } else if (this.subIndex == 1) {
-                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].displayName, this.subTxt));
-                    this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].name, this.equipmentId));
-                    this.savaObject(this.objectData);
-                }
+           if (this.subTxt != "请选择") {
+               if (this.subIndex == 0) {
+                   let arrData = [], data = this.objectData[this.equipmentIndex].information;
+                   for (let i in data) {
+                       if (data[i].name == this.equipmentId) arrData.push(data[i].name)
+                   }
+                   if (arrData.indexOf(this.equipmentId) > -1) alert("请勿添加重复数据");
+                   else {
+                       this.objectData[this.equipmentIndex].information.push(equipmentList);
+                       this.savaObject(this.objectData);
+                   }
+               } else if (this.subIndex == 1) {
+                   this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].displayName, this.subTxt));
+                   this.objectData = JSON.parse(JSON.stringify(this.objectData).replace(this.objectData[this.equipmentIndex].information[this.threeIndex].name, this.equipmentId));
+                   this.savaObject(this.objectData);
+               }
             }
         },
         /*保存考评对象三级目录*/
         submitThree() {
             if (this.checkedThreeList.length > 0) {
-                this.objectData[this.equipmentIndex].information[this.threeIndex].information = this.checkedThreeList
-                this.savaObject(this.objectData);
-                this.isThreePop = false;
-
+                let data = this.objectData[this.equipmentIndex].information[this.threeIndex].information, arrData = []
+                for (let i in this.checkedThreeList) {
+                    for (let k in data) {
+                        if (data[k].name == this.checkedThreeList[i].name) arrData.push(data[k].name)
+                    }
+                }
+                if (arrData.length > 0) alert("请勿添加重复数据");
+                else {
+                    for (let j in this.checkedThreeList) {
+                        this.objectData[this.equipmentIndex].information[this.threeIndex].information.push(this.checkedThreeList[j])
+                    }
+                    this.savaObject(this.objectData);
+                    this.isThreePop = false;
+                }
             }
         }
     },

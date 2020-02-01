@@ -179,7 +179,9 @@ $.extend({
                                     explain = "正常";
                                     color = "clear"
                                 }
-                                html += '<li><span>' + data[i].name + '</span><span>' + data[i].displayName + '</span><span class="' + color + '">' + explain + '</span></li>'
+                                if (typeof (data[i].type) == 'undefined') data[i].type = '';
+                                else data[i].type = data[i].type;
+                                html += '<li><span>' + data[i].displayName + '</span><span>' + data[i].type + '</span><span class="' + color + '">' + explain + '</span></li>'
                             }
                         }
                     } else {

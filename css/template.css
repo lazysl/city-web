@@ -246,10 +246,6 @@ body{
     background: url("../images/template/icon5.png") no-repeat center center;
     background-size: 60%;
 }
-#nav ul li span.ic6{
-    background: url("../images/template/icon6.png") no-repeat center center;
-    background-size: 60%;
-}
 #content{
     padding: 110px 30px 0 185px;
     position: relative;
