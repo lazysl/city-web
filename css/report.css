@@ -28,7 +28,7 @@
     background: transparent;
     cursor: pointer;
     color: #333;
-    text-align: center;
+    padding: 0 10px;
 }
 .report .tabCon{
     overflow: hidden;

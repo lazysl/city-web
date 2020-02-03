@@ -24,12 +24,129 @@
         <div class="layout">
             <div class="title">
                 <span>系统管理</span>
-                <!--<a class="btn">保存</a>-->
             </div>
             <div class="manageCon">
-                <div class="itemTit">用户权限管理</div>
-                <div class="manageItem">
+                <div class="tabList">
+                    <ul>
+                        <li v-for="(item,index) in tabList" :class="{checked:typeIndex==index}" v-on:click="tabClick(item,index)"><span>{{item.name}}</span></li>
+                    </ul>
+                </div>
+                <div class="userCon" v-if="typeIndex==0">
                     <div class="item">
+                        <span>用户名称</span>
+                        <input placeholder="请输入用户名称"/>
+                        <span>登录名</span>
+                        <input placeholder="请输入登录名"/>
+                        <a class="btn">查询</a>
+                        <a class="btn">同步</a>
+                        <a class="btn">新增</a>
+                        <a class="btn">删除</a>
+                    </div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="userTitle">
+                                        <label for="userTitle"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>序号</p>
+                                    </div>
+                                </th>
+                                <th>用户名称</th>
+                                <th>登录名</th>
+                                <th>用户邮箱</th>
+                                <th>手机号</th>
+                                <th>办公电话</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="user1">
+                                        <label for="user1"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>1</p>
+                                    </div>
+                                </td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="pageNum">
+                            <ul>
+                                <li>
+                                    <em><img src="images/template/arrow-left.png"/></em>
+                                    <span>1</span>
+                                    <em><img src="images/template/arrow-right.png"/></em>
+                                    <p>共1条</p>
+                                </li>
+                                <li><p>前往</p><input type="text"/><p>页</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="userCon" v-if="typeIndex==1">
+                    <div class="item">
+                        <span>部门名称</span>
+                        <input placeholder="请输入部门名称"/>
+                        <a class="btn">查询</a>
+                        <a class="btn">同步</a>
+                        <a class="btn">新增</a>
+                        <a class="btn">删除</a>
+                    </div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="departmentTitle">
+                                        <label for="departmentTitle"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>序号</p>
+                                    </div>
+                                </th>
+                                <th>部门名称</th>
+                                <th>上级部门</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="department1">
+                                        <label for="department1"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>1</p>
+                                    </div>
+                                </td>
+                                <td>民治</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="pageNum">
+                            <ul>
+                                <li>
+                                    <em><img src="images/template/arrow-left.png"/></em>
+                                    <span>1</span>
+                                    <em><img src="images/template/arrow-right.png"/></em>
+                                    <p>共1条</p>
+                                </li>
+                                <li><p>前往</p><input type="text"/><p>页</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="userCon" v-if="typeIndex==2">
+                    <!--<div class="item">
                         <p>用户列表<img v-on:click="flashData" src="images/template/icon-flash.png"/></p>
                         <ul>
                             <li v-for="(item,index) in userList" :class="{checked:userIndex==index}" v-on:click="checkUser(item.id,index,item)">{{item.username}}</li>
@@ -60,6 +177,118 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>-->
+                    <div class="item">
+                        <span>角色名称</span>
+                        <input placeholder="请输入角色名称"/>
+                        <span>角色ID</span>
+                        <input placeholder="请输入角色ID"/>
+                        <a class="btn">查询</a>
+                        <a class="btn">同步</a>
+                        <a class="btn">新增</a>
+                        <a class="btn">删除</a>
+                    </div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="roleTitle">
+                                        <label for="roleTitle"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>序号</p>
+                                    </div>
+                                </th>
+                                <th>角色名称</th>
+                                <th>角色ID</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="role1">
+                                        <label for="role1"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>1</p>
+                                    </div>
+                                </td>
+                                <td>民治</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="pageNum">
+                            <ul>
+                                <li>
+                                    <em><img src="images/template/arrow-left.png"/></em>
+                                    <span>1</span>
+                                    <em><img src="images/template/arrow-right.png"/></em>
+                                    <p>共1条</p>
+                                </li>
+                                <li><p>前往</p><input type="text"/><p>页</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="userCon" v-if="typeIndex==3">
+                    <div class="item">
+                        <span>权限名称</span>
+                        <input placeholder="请输入权限名称"/>
+                        <span>权限编码</span>
+                        <input placeholder="请输入权限编码"/>
+                        <a class="btn">查询</a>
+                        <a class="btn">同步</a>
+                        <a class="btn">新增</a>
+                        <a class="btn">删除</a>
+                    </div>
+                    <div class="table">
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="purviewTitle">
+                                        <label for="purviewTitle"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>序号</p>
+                                    </div>
+                                </th>
+                                <th>权限名称</th>
+                                <th>权限编码</th>
+                                <th>上级权限</th>
+                                <th>地址</th>
+                                <th>备注</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="checkList">
+                                        <input type="checkbox" class="checkbox" id="purview1">
+                                        <label for="purview1"><img src="images/template/icon-check.png" alt=""></label>
+                                        <p>1</p>
+                                    </div>
+                                </td>
+                                <td>admin</td>
+                                <td>admin</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="pageNum">
+                            <ul>
+                                <li>
+                                    <em><img src="images/template/arrow-left.png"/></em>
+                                    <span>1</span>
+                                    <em><img src="images/template/arrow-right.png"/></em>
+                                    <p>共1条</p>
+                                </li>
+                                <li><p>前往</p><input type="text"/><p>页</p></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -78,6 +307,13 @@
             $(".management .manageCon .manageItem .item ul").css("min-height", docHeight - 500);
             $(".management .manageCon .manageItem .itemCon .itemList .item ul").css("min-height", (docHeight - 540)/2);
         }
+    });
+    $(".select").click(function () {
+        $(this).find("ul").slideToggle();
+    });
+    $(".select ul li").click(function () {
+        var name = $(this).children("span").text();
+        $(this).parents("ul").siblings("span").empty().html(name + "<i></i>")
     });
 </script>
 </body>

@@ -43,15 +43,15 @@ new Vue({
             project: {
                 server: {
                     total: '--',
-                    level: {critical: '--', malfunction: '--'}
+                    level: {critical: '--', malfunction: '--',moderate:'--'}
                 },
                 middleware: {
                     total: '--',
-                    level: {critical: '--', malfunction: '--'}
+                    level: {critical: '--', malfunction: '--',moderate:'--'}
                 },
                 sql: {
                     total: '--',
-                    level: {critical: '--', malfunction: '--'}
+                    level: {critical: '--', malfunction: '--',moderate:'--'}
                 }
             }
         },
@@ -104,7 +104,7 @@ new Vue({
                 let total;
                 if (parseFloat(this.changeTxt) > 100) this.errMessage = "设置比例不能大于100%";
                 else {
-                    if (num == 1) {
+                    /*if (num == 1) {
                         if (this.capability.total >= 0 && this.quality.total >= 0 && this.information.total >= 0) {
                             total = parseFloat(this.capability.total) + parseFloat(this.quality.total) + parseFloat(this.information.total) + parseFloat(this.changeTxt);
                             if (total != 100) this.errMessage = "可用性、性能警告、数据质量、信息安全总比之和必须为100%";
@@ -498,6 +498,35 @@ new Vue({
                             this.information.project.sql.level.malfunction = this.changeTxt;
                         }
                     }
+                    this.changeTxt="";*/
+                    this.isPop = false;
+                    if (num == 1) this.usability.total = this.changeTxt;
+                    if (num == 1_0) this.usability.project.server = this.changeTxt;
+                    if (num == 1_1) this.usability.project.middleware = this.changeTxt;
+                    if (num == 1_2) this.usability.project.sql = this.changeTxt;
+                    if (num == 1_3) this.usability.project.internet = this.changeTxt;
+                    if (num == 2) this.capability.total = this.changeTxt;
+                    if (num == 2_0) this.capability.project.server.total = this.changeTxt;
+                    if (num == 2_0_0) this.capability.project.server.level.critical = this.changeTxt;
+                    if (num == 2_0_1) this.capability.project.server.level.malfunction = this.changeTxt;
+                    if (num == 2_1) this.capability.project.middleware.total = this.changeTxt;
+                    if (num == 2_1_0) this.capability.project.middleware.level.critical = this.changeTxt;
+                    if (num == 2_1_1) this.capability.project.middleware.level.malfunction = this.changeTxt;
+                    if (num == 2_2) this.capability.project.sql.total = this.changeTxt;
+                    if (num == 2_2_0) this.capability.project.sql.level.critical = this.changeTxt;
+                    if (num == 2_2_1) this.capability.project.sql.level.malfunction = this.changeTxt;
+                    if (num == 3) this.quality.total = this.changeTxt;
+                    if (num == 3_0) this.quality.complex = this.changeTxt;
+                    if (num == 4) this.information.total = this.changeTxt;
+                    if (num == 4_0) this.information.project.server.total = this.changeTxt;
+                    if (num == 4_0_0) this.information.project.server.level.critical = this.changeTxt;
+                    if (num == 4_0_1) this.information.project.server.level.malfunction = this.changeTxt;
+                    if (num == 4_1) this.information.project.middleware.total = this.changeTxt;
+                    if (num == 4_1_0) this.information.project.middleware.level.critical = this.changeTxt;
+                    if (num == 4_1_1) this.information.project.middleware.level.malfunction = this.changeTxt;
+                    if (num == 4_2) this.information.project.sql.total = this.changeTxt;
+                    if (num == 4_2_0) this.information.project.sql.level.critical = this.changeTxt;
+                    if (num == 4_2_1) this.information.project.sql.level.malfunction = this.changeTxt;
                     this.changeTxt="";
                 }
             }
@@ -572,80 +601,104 @@ new Vue({
         /*保存*/
         saveMode(dayId) {
             let data,rule;
-            rule = {
-                usability: {
-                    total: this.usability.total,
-                    project: {
-                        server: this.usability.project.server,
-                        middleware: this.usability.project.middleware,
-                        sql: this.usability.project.sql,
-                        internet: this.usability.project.internet
-                    }
-                },
-                capability: {
-                    total: this.capability.total,
-                    project: {
-                        server: {
-                            total: this.capability.project.server.total,
-                            level: {
-                                critical: this.capability.project.server.level.critical,
-                                malfunction: this.capability.project.server.level.malfunction
-                            }
-                        },
-                        middleware: {
-                            total: this.capability.project.middleware.total,
-                            level: {
-                                critical: this.capability.project.server.level.critical,
-                                malfunction: this.capability.project.server.level.malfunction
-                            }
-                        },
-                        sql: {
-                            total: this.capability.project.sql.total,
-                            level: {
-                                critical: this.capability.project.server.level.critical,
-                                malfunction: this.capability.project.server.level.malfunction
+            let total = parseFloat(this.capability.total) + parseFloat(this.quality.total) + parseFloat(this.information.total) + parseFloat(this.usability.total);
+            let subTotal_1 = parseFloat(this.usability.project.middleware) + parseFloat(this.usability.project.sql) + parseFloat(this.usability.project.internet) + parseFloat(this.usability.project.server);
+            let subTotal_2 = parseFloat(this.capability.project.middleware.total) + parseFloat(this.capability.project.sql.total) + parseFloat(this.capability.project.server.total);
+            let threeTotal_2_0 = parseFloat(this.capability.project.server.level.malfunction) + parseFloat(this.capability.project.server.level.critical);
+            let threeTotal_2_1 = parseFloat(this.capability.project.middleware.level.malfunction) + parseFloat(this.capability.project.middleware.level.critical);
+            let threeTotal_2_2 = parseFloat(this.capability.project.sql.level.malfunction) + parseFloat(this.capability.project.sql.level.critical);
+            let subTotal_3 = parseFloat(this.quality.complex);
+            let subTotal_4 = parseFloat(this.information.project.middleware.total) + parseFloat(this.information.project.sql.total) + parseFloat(this.information.project.server.total);
+            let threeTotal_4_0 = parseFloat(this.information.project.server.level.malfunction) + parseFloat(this.information.project.server.level.critical) + parseFloat(this.information.project.server.level.moderate);
+            let threeTotal_4_1 = parseFloat(this.information.project.middleware.level.malfunction) + parseFloat(this.information.project.middleware.level.critical) + parseFloat(this.information.project.middleware.level.moderate);
+            let threeTotal_4_2 = parseFloat(this.information.project.sql.level.malfunction) + parseFloat(this.information.project.sql.level.critical) + parseFloat(this.information.project.sql.level.moderate);
+            if(total!=100){alert("可用性、性能警告、数据质量、信息安全总比之和必须为100%")}
+            else if (subTotal_1!=100) {alert("可用性的服务器可用性、中间件可用性、数据库可用性、物联设备可用性总比之和必须为100%")}
+            else if (subTotal_2!=100) {alert("性能告警的服务器可用性、中间件可用性、数据库可用性可用性总比之和必须为100%")}
+            else if (subTotal_3!=100) {alert("数据质量的综合评分必须为100%")}
+            else if (subTotal_4!=100) {alert("信息安全的服务器可用性、中间件可用性、数据库可用性可用性总比之和必须为100%")}
+            else if (threeTotal_2_0!=100) {alert("性能告警的服务器严重告警率、故障告警率总比之和必须为100%")}
+            else if (threeTotal_2_1!=100) {alert("性能告警的中间件严重告警率、故障告警率总比之和必须为100%")}
+            else if (threeTotal_2_2!=100) {alert("性能告警的数据库严重告警率、故障告警率总比之和必须为100%")}
+            else if (threeTotal_4_0!=100) {alert("信息安全的服务器危急告警率、高风险告警率、中风险告警率总比之和必须为100%")}
+            else if (threeTotal_4_1!=100) {alert("信息安全的中间件危急告警率、高风险告警率、中风险告警率总比之和必须为100%")}
+            else if (threeTotal_4_2!=100) {alert("信息安全的数据库危急告警率、高风险告警率、中风险告警率总比之和必须为100%")}
+            else {
+                rule = {
+                    usability: {
+                        total: this.usability.total,
+                        project: {
+                            server: this.usability.project.server,
+                            middleware: this.usability.project.middleware,
+                            sql: this.usability.project.sql,
+                            internet: this.usability.project.internet
+                        }
+                    },
+                    capability: {
+                        total: this.capability.total,
+                        project: {
+                            server: {
+                                total: this.capability.project.server.total,
+                                level: {
+                                    critical: this.capability.project.server.level.critical,
+                                    malfunction: this.capability.project.server.level.malfunction
+                                }
+                            },
+                            middleware: {
+                                total: this.capability.project.middleware.total,
+                                level: {
+                                    critical: this.capability.project.server.level.critical,
+                                    malfunction: this.capability.project.server.level.malfunction
+                                }
+                            },
+                            sql: {
+                                total: this.capability.project.sql.total,
+                                level: {
+                                    critical: this.capability.project.server.level.critical,
+                                    malfunction: this.capability.project.server.level.malfunction
+                                }
                             }
                         }
-                    }
-                },
-                quality: {total: this.quality.total, complex: this.quality.complex},
-                information: {
-                    total: this.information.total,
-                    project: {
-                        server: {
-                            total: this.information.project.sql.total,
-                            level: {
-                                critical: this.information.project.server.level.critical,
-                                malfunction: this.information.project.server.level.malfunction
-                            }
-                        },
-                        middleware: {
-                            total: this.information.project.sql.total,
-                            level: {
-                                critical: this.information.project.server.level.critical,
-                                malfunction: this.information.project.server.level.malfunction
-                            }
-                        },
-                        sql: {
-                            total: this.information.project.sql.total,
-                            level: {
-                                critical: this.information.project.server.level.critical,
-                                malfunction: this.information.project.server.level.malfunction
+                    },
+                    quality: {total: this.quality.total, complex: this.quality.complex},
+                    information: {
+                        total: this.information.total,
+                        project: {
+                            server: {
+                                total: this.information.project.sql.total,
+                                level: {
+                                    critical: this.information.project.server.level.critical,
+                                    malfunction: this.information.project.server.level.malfunction
+                                }
+                            },
+                            middleware: {
+                                total: this.information.project.sql.total,
+                                level: {
+                                    critical: this.information.project.server.level.critical,
+                                    malfunction: this.information.project.server.level.malfunction
+                                }
+                            },
+                            sql: {
+                                total: this.information.project.sql.total,
+                                level: {
+                                    critical: this.information.project.server.level.critical,
+                                    malfunction: this.information.project.server.level.malfunction
+                                }
                             }
                         }
-                    }
-                },
+                    },
+                }
+                data = {
+                    id: this.dayId,
+                    status: 1,
+                    rule: JSON.stringify(rule)
+                };
+                this.postAjax(this.updateCheckMode(data), (res) => {
+                    if (res.code = 200 && res.code_desc == "success") {
+                        alert("保存成功")
+                    } else alert("保存失败")
+                })
             }
-            data = {
-                id: this.dayId,
-                status: 1,
-                rule: JSON.stringify(rule)
-            };
-            this.postAjax(this.updateCheckMode(data), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
-                    alert("保存成功")
-                } else alert("保存失败")
-            })
         },
     },
     mounted() {

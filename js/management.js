@@ -1,6 +1,14 @@
 new Vue({
     el: '#main',
     data: {
+        tabList: [
+            {name: "用户", id: "1"},
+            {name: "部门", id: "2"},
+            {name: "角色", id: "3"},
+            {name: "资源", id: "4"}
+        ],
+        typeIndex:0,
+        typeId:'',
         userList: "",
         userIndex: -1,
         userId: '',
@@ -39,6 +47,10 @@ new Vue({
         postAjax(param, callbackSuc, callbackErr) {
             param = $.extend(param, {"ajaxtype": "POST"});
             this.jsonAjax(param, callbackSuc, callbackErr);
+        },
+        tabClick(obj, index) {
+            this.typeIndex = index;
+            this.typeId = obj.id;
         },
         initUserList() {
             this.getAjax(this.getUserList(), (res) => {

@@ -18,10 +18,13 @@
 .object .navTree .treeTit span{
     overflow: hidden;
     font-size: 14px;
-    width: 85%;
     padding: 10px 20px;
 }
-.object .navTree .treeTit span:last-child{width: 15%;text-align: center;}
+.object .navTree .treeTit span:last-child{
+    width: 145px;
+    text-align: center;
+    padding-right: 2%;
+}
 .object #ulHeight {
     overflow-x: hidden;
     overflow-y: scroll;

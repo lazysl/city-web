@@ -115,22 +115,25 @@
                                 <li>
                                     <div class="itemList"><span>服务器</span><p>{{information.project.server.total}}%</p><img v-on:click="changePercent(4_0,'服务器')" src="images/template/icon-change.png"/></div>
                                     <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{information.project.server.level.critical}}%</p><img v-on:click="changePercent(4_0_0,'严重告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{information.project.server.level.malfunction}}%</p><img v-on:click="changePercent(4_0_1,'故障告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>危急告警率</span><p>{{information.project.server.level.critical}}%</p><img v-on:click="changePercent(4_0_0,'危急告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>高风险告警率</span><p>{{information.project.server.level.malfunction}}%</p><img v-on:click="changePercent(4_0_1,'高风险告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>中风险告警率</span><p>{{information.project.server.level.moderate}}%</p><img v-on:click="changePercent(4_0_2,'中风险告警率')" src="images/template/icon-change.png"/></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <div class="itemList"><span>中间件</span><p>{{information.project.middleware.total}}%</p><img v-on:click="changePercent(4_1,'中间件')" src="images/template/icon-change.png"/></div>
                                     <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{information.project.middleware.level.critical}}%</p><img v-on:click="changePercent(4_1_0,'严重告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{information.project.middleware.level.malfunction}}%</p><img v-on:click="changePercent(4_1_1,'故障告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>严重告警率</span><p>{{information.project.middleware.level.critical}}%</p><img v-on:click="changePercent(4_1_0,'危急告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{information.project.middleware.level.malfunction}}%</p><img v-on:click="changePercent(4_1_1,'高风险告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>中风险告警率</span><p>{{information.project.middleware.level.moderate}}%</p><img v-on:click="changePercent(4_1_2,'中风险告警率')" src="images/template/icon-change.png"/></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <div class="itemList"><span>数据库</span><p>{{information.project.sql.total}}%</p><img v-on:click="changePercent(4_2,'数据库')" src="images/template/icon-change.png"/></div>
                                     <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{information.project.sql.level.critical}}%</p><img v-on:click="changePercent(4_2_0,'严重告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{information.project.sql.level.malfunction}}%</p><img v-on:click="changePercent(4_2_1,'故障告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>严重告警率</span><p>{{information.project.sql.level.critical}}%</p><img v-on:click="changePercent(4_2_0,'危急告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>故障告警率</span><p>{{information.project.sql.level.malfunction}}%</p><img v-on:click="changePercent(4_2_1,'高风险告警率')" src="images/template/icon-change.png"/></li>
+                                        <li><span>中风险告警率</span><p>{{information.project.sql.level.moderate}}%</p><img v-on:click="changePercent(4_2_2,'中风险告警率')" src="images/template/icon-change.png"/></li>
                                     </ul>
                                 </li>
                             </ul>

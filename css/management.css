@@ -1,32 +1,61 @@
-.management .manageCon{margin: 0 20px;padding-bottom: 10px}
+.management .manageCon{padding-bottom: 10px}
+.management .manageCon .tabList{
+    overflow: hidden;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+}
+.management .manageCon .tabList ul{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    padding: 0 20px;
+}
+.management .manageCon .tabList ul li{
+    overflow: hidden;
+    font-size: 14px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 0 30px 0 0;
+    border-bottom: solid 4px transparent;
+    cursor: pointer;
+}
+.management .manageCon .tabList ul li.checked{
+    border-bottom: solid 4px #13aaf6;
+    color: #13aaf6;
+}
 .management .manageCon .itemTit{
     overflow: hidden;
     font-size: 14px;
+    margin: 0 20px;
 }
-.management .manageCon .manageItem {
+.management .manageCon .roleCon {
     overflow: hidden;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    margin: 15px 10px 30px;
+    margin: 15px 20px 30px;
 }
-.management .manageCon .manageItem .itemCon{
+.management .manageCon .roleCon .itemCon{
     overflow: hidden;
     width: 50%;
 }
-.management .manageCon .manageItem .itemCon .itemList{
+.management .manageCon .roleCon .itemCon .itemList{
     overflow: hidden;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.management .manageCon .manageItem .item{
+.management .manageCon .roleCon .item{
     overflow: hidden;
     width: 50%;
 }
-.management .manageCon .manageItem .itemCon .itemList .item{width: 100%}
-.management .manageCon .manageItem .item p{
+.management .manageCon .roleCon .itemCon .itemList .item{width: 100%}
+.management .manageCon .roleCon .item p{
     overflow: hidden;
     font-size: 14px;
     text-align: center;
@@ -36,15 +65,15 @@
     justify-content: center;
     align-items: center;
 }
-.management .manageCon .manageItem .item p img{display: inline-block;margin-left: 10px;width: 20px;cursor: pointer}
-.management .manageCon .manageItem .item ul{
+.management .manageCon .roleCon .item p img{display: inline-block;margin-left: 10px;width: 20px;cursor: pointer}
+.management .manageCon .roleCon .item ul{
     overflow-x: hidden;
     overflow-y: scroll;
     min-height: 400px;
     border: solid 1px #d8dce5;
 }
-.management .manageCon .manageItem .itemCon .itemList .item ul{min-height: 180px;}
-.management .manageCon .manageItem .item li{
+.management .manageCon .roleCon .itemCon .itemList .item ul{min-height: 180px;}
+.management .manageCon .roleCon .item li{
     overflow: hidden;
     font-size: 14px;
     height: 30px;
@@ -52,13 +81,13 @@
     padding: 0 5px;
     border-bottom: solid 1px #d8dce5;
 }
-.management .manageCon .manageItem .item li:last-child{border-bottom: none}
-.management .manageCon .manageItem .item li:hover,.management .manageCon .manageItem .item li.checked{
+.management .manageCon .roleCon .item li:last-child{border-bottom: none}
+.management .manageCon .roleCon .item li:hover,.management .manageCon .roleCon .item li.checked{
     background: #e1edff;
 }
-.management .manageCon .manageItem .itemPic{margin: 25px 20px 0}
-.management .manageCon .manageItem .itemPic img{width: 24px;cursor: pointer}
-.management .manageCon .manageItem .itemList1{
+.management .manageCon .roleCon .itemPic{margin: 25px 20px 0}
+.management .manageCon .roleCon .itemPic img{width: 24px;cursor: pointer}
+.management .manageCon .roleCon .itemList1{
     overflow: hidden;
     display: flex;
     justify-content: flex-start;
@@ -66,16 +95,16 @@
     margin: 15px 0 0 0;
     width: 100%;
 }
-.management .manageCon .manageItem .itemList1 span{
+.management .manageCon .roleCon .itemList1 span{
     overflow: hidden;
     font-size: 14px;
     width: 150px;
 }
-.management .manageCon .manageItem .itemList1.account span{
+.management .manageCon .roleCon .itemList1.account span{
     margin-left: 50px;
     width: 100px;
 }
-.management .manageCon .manageItem .itemList1 input{
+.management .manageCon .roleCon .itemList1 input{
     overflow: hidden;
     resize: none;
     outline: none;
@@ -87,9 +116,82 @@
     margin-right: 20px;
     min-width: 150px;
 }
-.management .manageCon .manageItem .itemList1 input.width{
+.management .manageCon .roleCon .itemList1 input.width{
     min-width: 50px;
     width: 50px;
     text-align: center;
 }
-.management .manageCon .manageItem .itemList1 .checkList{margin: 15px 0;width: 100%}
+.management .manageCon .roleCon .itemList1 .checkList{margin: 15px 0;width: 100%}
+.management .manageCon .userCon .item{overflow: hidden;padding: 20px;}
+.management .manageCon .userCon .item span{
+    overflow: hidden;
+    font-size: 14px;
+}
+.management .manageCon .userCon .item input{
+    overflow: hidden;
+    width: 200px;
+    height: 28px;
+    line-height: 28px;
+    border: solid 1px #d8dce5;
+    resize: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    color: #333;
+    padding: 0 10px;
+    margin: 0 10px
+}
+.management .manageCon .userCon .item a{margin: 0 10px}
+.management .manageCon .userCon .table {
+    width: 100%
+}
+.management .manageCon .userCon .table table{
+    width: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.management .manageCon .userCon .table table thead{
+    background: #eee;
+    width: 100%;
+}
+.management .manageCon .userCon .table table tr:last-child{border-bottom:none}
+.management .manageCon .userCon .table table tr td,.management .manageCon .userCon .table table tr th{
+    font-size: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #d8dce5;
+}
+.management .manageCon .userCon .table table tr th{font-size: 14px;}
+.management .manageCon .userCon .table table tr th:first-child,.management .manageCon .userCon .table table tr td:first-child{width: 150px}
+first-child,.management .manageCon .userCon .table table tr td:first-child p{font-size: 12px}
+.management .manageCon .userCon .table table tr td span{
+    overflow: hidden;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.management .manageCon .userCon .table table tr td span.red{
+    background: #f00
+}
+.management .manageCon .userCon .table table tr td span.orange{
+    background: #fd6123
+}
+.management .manageCon .userCon .table table tr td span.green{
+    background: #00ff00
+}
+.management .checkList .checkbox + label, .checkbox{background: #fff}
+.management .manageCon .userCon .table .pageNum{margin: 20px}
+
+
+
+
+
+
+
+
+
+
+
+
