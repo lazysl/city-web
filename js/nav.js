@@ -4,7 +4,7 @@ Vue.component('common-head',{
         '               <div class="logo">' +
         '                   <a href="./index.html">' +
         '                       <p></p>' +
-        '                       <span>深圳市城市管理和综合执法局</span>' +
+        '                       <span>智能考评管理子系统</span>' +
         '                   </a>' +
         '               </div>' +
         '               <div class="quit"><a href="./homepage.html"><img src="images/template/icon-home.png"/></a></div>' +
