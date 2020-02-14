@@ -58,7 +58,7 @@ new Vue({
         docHeight() {
             let docHeight = window.innerHeight || document.documentElement.clientHeight;
             document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
-            document.getElementById("table").style.height = (docHeight - 205) + "px"
+            document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
         },
     },
     mounted() {

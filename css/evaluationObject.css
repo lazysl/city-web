@@ -9,22 +9,37 @@
 .object .table table{
     width: 100%;
     margin: 0 auto;
-    display: table;
+    /*display: table;*/
 }
 .object .table table thead{
+    display: block;
     background: #eee;
     width: 100%;
+    padding-right: 20px;
 }
-.object .table table tr:last-child{border-bottom:none}
+.object .table table tbody{
+    overflow-y: scroll;
+    display: block;
+}
+.object .table table tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d8dce5;
+}
 .object .table table tr td,.object .table table tr th{
     font-size: 12px;
     padding: 10px;
-    border-bottom: 1px solid #d8dce5;
     text-align: center;
+    width: 16%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+.object .table table tr td:first-child, .object .table table tr th:first-child, .object .table table tr td:last-child, .object .table table tr th:last-child{width: 26%}
+.object .table table tr td:first-child, .object .table table tr th:first-child{justify-content: flex-start;}
 .object .table table tr th{font-size: 14px;}
-.object .table table tr th:first-child,.object .table table tr td:first-child{width: 150px}
-.object .table table tr td:first-child p{font-size: 12px}
+.object .table table tr th:first-child{padding-left: 25px}
 .object .table table tr td.red{
     color: #f00;
     font-weight: bold;
@@ -33,4 +48,53 @@
     color: #36cfc9;
     font-weight: bold;
 }
-.object .table table tr th a,.object .table table tr td a{margin: 0 10px}
+.object .table table tr th a,.object .table table tr td a {
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    cursor: pointer;
+}
+.object .table table tr th span,.object .table table tr td span{margin: 0 10px;}
+.object .table table tr th img,.object .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}
+.object .table table tr td.paddingLeft{
+    padding-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.object .securityCon{overflow: hidden;}
+.tcHide .tcCon .itemList .checkList{margin: 0}
+.tcHide .tcCon .itemList .checkTree{width: 60%;}
+.tcHide .tcCon .itemList .checkTree ul li{margin: 5px 0}
+.tcHide .tcCon .itemList .checkTree ul li ul{margin-left: 25px}
+.tcHide .tcCon .itemList .checkTree ul li ul li ul{margin-left: 25px}
+.tcHide .tcCon .monitorItem {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 10px 15px;
+}
+.tcHide .tcCon .monitorItem .item{
+    overflow: hidden;
+    border: solid 1px #e4e4e4;
+    width: 40%;
+    min-height: 180px;
+}
+.tcHide .tcCon .monitorItem .item li{
+    overflow: hidden;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border-bottom: solid 1px #e4e4e4;
+    cursor: pointer;
+}
+.tcHide .tcCon .monitorItem .item li.checked,.tcHide .tcCon .monitorItem .item li:hover{background: #e1edff;}
+.tcHide .tcCon .monitorItem .item li:last-child{border-bottom: none}
+.tcHide .tcCon .monitorItem .itemPic{margin: 0 20px}
+.tcHide .tcCon .monitorItem .itemPic img{width: 24px}

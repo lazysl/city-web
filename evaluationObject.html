@@ -34,19 +34,61 @@
                         <th>上次考评对象</th>
                         <th>上次考评结果</th>
                         <th>考评结果接收邮箱</th>
-                        <th><a class="btn">一键全部考评</a><a class="btn1">总体考评结果</a></th>
+                        <th><span class="btn">一键全部考评</span><span class="btn1">总体考评结果</span></th>
                     </tr>
                     </thead>
                     <tbody id="table">
                     <tr>
-                        <td>大数据治理应用平台</td>
+                        <td><a href="evaluationObject1.html"><img src="images/template/‭icon-open.png"/>大数据治理应用平台</a></td>
                         <td>2020-02-14</td>
                         <td class="green">达标</td>
                         <td>56253715@qq.com</td>
-                        <td></td>
+                        <td>
+                            <img onclick="$('.tcHide').show()" src="images/template/icon-change.png"/>
+                            <img src="images/template/icon-del.png"/>
+                            <span class="btn">手动考评</span>
+                            <span class="btn1">考评结果</span>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <!--新增或编辑考评对象-->
+    <div class="tcHide">
+        <div class="masking" onclick="$('.tcHide').hide()"></div>
+        <div class="tcCon">
+            <div class="tcTit"><span>考评对象管理</span></div>
+            <div class="itemList special"><span>业务系统名称：</span><input type="text"/></div>
+            <div class="itemList special"><span>考评结果接收邮件地址：<i>* 可填多个地址，以英文逗号分隔</i></span><input type="text"/></div>
+            <div class="itemList special">
+                <span>启用考评结果自动审批：</span>
+                <div class="checkList"><input type="checkbox" class="checkbox" id="auto"><label for="auto"><img src="images/template/icon-check.png" alt=""></label></div>
+            </div>
+            <div class="itemList special flexStart">
+                <span>考评项目：</span>
+                <div class="checkTree">
+                    <ul>
+                        <li>
+                            <div class="checkList"><input type="checkbox" class="checkbox" id="pro1"><label for="pro1"><img src="images/template/icon-check.png" alt=""></label><p>业务考评</p></div>
+                            <ul>
+                                <li>
+                                    <div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1"><label for="pro1_1"><img src="images/template/icon-check.png" alt=""></label><p>业务健康度</p></div>
+                                    <ul>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_1"><label for="pro1_1_1"><img src="images/template/icon-check.png" alt=""></label><p>页面可用性</p></div></li>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_2"><label for="pro1_1_2"><img src="images/template/icon-check.png" alt=""></label><p>页面健康度</p></div></li>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_3"><label for="pro1_1_3"><img src="images/template/icon-check.png" alt=""></label><p>数据质量</p></div></li>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_4"><label for="pro1_1_4"><img src="images/template/icon-check.png" alt=""></label><p>数据共享</p></div></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="itemList paddingLeft">
+                <a class="btn">保存</a><a class="btn1" onclick="$('.tcHide').hide()">取消</a>
             </div>
         </div>
     </div>
