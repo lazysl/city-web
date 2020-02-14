@@ -3,152 +3,34 @@
     padding: 0;
     width: 100%;
 }
-.object .navTree {
-    overflow: hidden;
-    background: #fff;
+.object .table {
+    width: 100%
 }
-.object .navTree .treeTit{
-    overflow: hidden;
+.object .table table{
+    width: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.object .table table thead{
     background: #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
 }
-.object .navTree .treeTit span{
-    overflow: hidden;
-    font-size: 14px;
-    padding: 10px 20px;
-}
-.object .navTree .treeTit span:last-child{
-    width: 145px;
-    text-align: center;
-    padding-right: 2%;
-}
-.object #ulHeight {
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-.object .navTree ul{
-    overflow: hidden;
-    display: none;
-}
-.object .navTree ul li{
-    width: 100%;
-}
-.object .navTree ul li p{
-    overflow: hidden;
+.object .table table tr:last-child{border-bottom:none}
+.object .table table tr td,.object .table table tr th{
     font-size: 12px;
-}
-.object .navTree ul li img{
-    width: 16px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-.object .navTree ul li em{
-    overflow: hidden;
-    display: block;
-    background: url("../images/template/‭icon-open.png") no-repeat;
-    background-size: 100% 100%;
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-.object .navTree ul li em.checked{
-    background: url("../images/template/icon-close.png") no-repeat;
-    background-size: 100% 100%;
-}
-.object .navTree ul li .item{
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 10px;
     border-bottom: 1px solid #d8dce5;
-}
-.object .navTree ul li .itemLeft{
-    overflow: hidden;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: pointer;
-}
-.object .navTree ul li .itemRight{
-    overflow: hidden;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.object .navTree ul li .itemRight img{margin: 0 5px;}
-.object .navTree ul li .navSub{display: none;}
-.object .navTree ul li .navSub li .item{padding-left: 30px}
-.object .navTree ul li .navSub li .navThree {
-    display: none;
-    border-bottom: 1px solid #d8dce5;
-    padding-left: 58px;
-}
-.object .navTree ul li .navSub li .navThree li {
-    padding: 10px 25px 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-left: 1px solid #d8dce5;
-    position: relative;
-}
-.object .navTree ul li .navSub li .navThree li img{margin: 0}
-.object .navTree ul li .navSub li .navThree li i{
-    position: absolute;
-    left: 0;
-    top: 18px;
-    width: 15px;
-    height: 1px;
-    background: #d8dce5;
-}
-.tcHide .tcCon .monitorCon{margin-left: 30px}
-.tcHide .tcCon .monitorCon .monitorTit{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.tcHide .tcCon .monitorCon .monitorTit span{
-    overflow: hidden;
-    font-size: 14px;
-    color: #333;
-}
-.tcHide .tcCon .monitorCon .monitorTit .search{margin-left: 20px}
-.tcHide .tcCon .monitorCon .monitorItem {
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 15px 10px 15px;
-}
-.tcHide .tcCon .monitorCon .monitorItem .item{
-    overflow: hidden;
-    border: solid 1px #e4e4e4;
-    width: 40%;
-    min-height: 180px;
-}
-.tcHide .tcCon .monitorCon .monitorItem .item li{
-    overflow: hidden;
-    background: #fff;
-    color: #333;
-    font-size: 14px;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 5px;
-    border-bottom: solid 1px #e4e4e4;
-    cursor: pointer;
-}
-.tcHide .tcCon .monitorCon .monitorItem .item li.checked,.tcHide .tcCon .monitorCon .monitorItem .item li:hover{background: #e1edff;}
-.tcHide .tcCon .monitorCon .monitorItem .item li:last-child{border-bottom: none}
-.tcHide .tcCon .monitorCon .monitorItem .itemPic{margin: 0 20px}
-.tcHide .tcCon .monitorCon .monitorItem .itemPic img{width: 24px}
-.tcHide .tcCon .select.marginTop{margin-top: 30px}
-.tcHide .tcCon .btn {
-    width: 80px;
     text-align: center;
-    margin: 30px auto;
 }
+.object .table table tr th{font-size: 14px;}
+.object .table table tr th:first-child,.object .table table tr td:first-child{width: 150px}
+.object .table table tr td:first-child p{font-size: 12px}
+.object .table table tr td.red{
+    color: #f00;
+    font-weight: bold;
+}
+.object .table table tr td.green{
+    color: #36cfc9;
+    font-weight: bold;
+}
+.object .table table tr th a,.object .table table tr td a{margin: 0 10px}

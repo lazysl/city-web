@@ -284,6 +284,15 @@ body{
     cursor: pointer;
     color: #fff;
 }
+.btn1{
+    overflow: hidden;
+    color: #02a7f4;
+    border:solid 1px #02a7f4;
+    border-radius: 4px;
+    padding: 5px 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
 .search{
     overflow: hidden;
     width: 150px;

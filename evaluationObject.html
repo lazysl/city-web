@@ -24,131 +24,30 @@
         <div class="layout">
             <div class="title">
                 <span>考评对象管理</span>
-                <a class="btn" v-on:click="addObjectFuc(-1)">新增考评对象</a>
+                <a class="btn">新增考评对象</a>
             </div>
-            <div class="navTree" id="navTree">
-                <div class="treeTit">
-                    <span>名称</span>
-                    <span>操作</span>
-                </div>
-                <div id="ulHeight">
-                    <ul v-if="objectData.length>0" :class="objectData.length>0?'display':''">
-                        <li v-for="(item,index) in objectData">
-                            <div class="item">
-                                <div class="itemLeft" v-on:click="showSub(index)">
-                                    <em v-if="item.information&&item.information.length>0" :class="activeSubIndex===index?'checked':''"></em>
-                                    <p>{{item.name}}</p>
-                                </div>
-                                <div class="itemRight">
-                                    <img v-on:click="addSubList(-1,index,0)" src="images/template/icon-add.png"/>
-                                    <img v-on:click="addObjectFuc(index)" src="images/template/icon-change.png"/>
-                                    <img v-on:click="delList(index)" src="images/template/icon-del.png"/>
-                                </div>
-                            </div>
-                            <ul class="navSub" v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
-                                <li v-for="(itemSub,indexSub) in item.information" v-if="item.information.length>0">
-                                    <div class="item">
-                                        <div class="itemLeft" v-on:click="showThree(indexSub)">
-                                            <em v-if="itemSub.information&&itemSub.information.length>0" :class="activeThreeIndex===indexSub?'checked':''"></em>
-                                            <p>{{itemSub.displayName}}</p>
-                                        </div>
-                                        <div class="itemRight">
-                                            <img v-on:click="addThreeList(indexSub,index,itemSub.name)" src="images/template/icon-add.png"/>
-                                            <img v-on:click="addSubList(indexSub,index,1)" src="images/template/icon-change.png"/>
-                                            <img v-on:click="delSubList(indexSub,index)" src="images/template/icon-del.png"/>
-                                        </div>
-                                    </div>
-                                    <ul class="navThree" v-if="activeThreeIndex===indexSub" :class="activeThreeIndex===indexSub?'display':''">
-                                        <li v-for="(itemThree,indexThree) in itemSub.information" v-if="itemSub.information.length>0">
-                                            <i></i>
-                                            <p>{{itemThree.displayName}}</p>
-                                            <img v-on:click="delThreeList(indexThree,indexSub,index)" src="images/template/icon-del.png"/>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>业务系统名称</th>
+                        <th>上次考评对象</th>
+                        <th>上次考评结果</th>
+                        <th>考评结果接收邮箱</th>
+                        <th><a class="btn">一键全部考评</a><a class="btn1">总体考评结果</a></th>
+                    </tr>
+                    </thead>
+                    <tbody id="table">
+                    <tr>
+                        <td>大数据治理应用平台</td>
+                        <td>2020-02-14</td>
+                        <td class="green">达标</td>
+                        <td>56253715@qq.com</td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-        </div>
-    </div>
-    <!--考评对象-->
-    <div class="tcHide" v-if="addObject" :class="addObject?'display':''">
-        <div class="masking" v-on:click="addObjectFuc"></div>
-        <div class="tcCon">
-            <img v-on:click="addObjectFuc" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>{{objectIndex==-1?'新增':'修改'}}考评对象</span></div>
-            <div class="itemList"><span>对象名称：</span><input type="text" placeholder="请输入" v-model="systemName"></div>
-            <div class="itemBtn"><a class="btn" v-on:click="submitSystem">保存</a></div>
-        </div>
-    </div>
-    <!--考评对象二级菜单-->
-    <div class="tcHide" v-if="isDeviceType" :class="isDeviceType?'display':''">
-        <div class="masking" v-on:click="addSubList"></div>
-        <div class="tcCon">
-            <img v-on:click="addSubList" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>{{subIndex==0?'新增':'修改'}}设备项目</span></div>
-            <div class="select marginTop">
-                <span v-on:click="select">{{subTxt}}<i></i></span>
-                <ul v-if="isSelect" :class="isSelect?'display':''">
-                    <li v-for="item in subList" v-on:click="selectEquipment(item.name,item.id)"><span>{{item.name}}</span></li>
-                </ul>
-            </div>
-            <div class="btn" v-on:click="submitEquipment">保存</div>
-        </div>
-    </div>
-    <!--监视器-->
-    <div class="tcHide" v-if="isThreePop" :class="isThreePop?'display':''">
-        <div class="masking" v-on:click="closeThreePop"></div>
-        <div class="tcCon">
-            <img v-on:click="closeThreePop" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>新增考评主体</span></div>
-            <div class="monitorCon">
-                <!--<div class="monitorTit">
-                    <span>刷选监视器：</span>
-                    <div class="select">
-                        <span id="selected">数据库1<i></i></span>
-                        <ul>
-                            <li name="数据库1"><span>数据库1</span></li>
-                            <li name="数据库2"><span>数据库2</span></li>
-                            <li name="数据库3"><span>数据库3</span></li>
-                        </ul>
-                    </div>
-                    <div class="search">
-                        <img src="images/template/icon-search.png"/>
-                        <input type="text" placeholder="搜索"/>
-                    </div>
-                </div>-->
-                <div class="monitorItem">
-                    <div class="item">
-                        <ul>
-                            <li v-for="(item,index) in threeList" :class="{checked:checkedThreeIndex==index}" v-on:click="checkThreeLeftName(item.displayName,item.name,index)">{{item.displayName}}</li>
-                        </ul>
-                    </div>
-                    <div class="itemPic">
-                        <img v-on:click="addThreeName" src="images/template/icon-right.png"/>
-                        <img v-on:click="delThreeName" src="images/template/icon-left.png"/>
-                    </div>
-                    <div class="item">
-                        <ul>
-                            <li v-for="(item,index) in checkedThreeList" :class="{checked:checkedThreeIndex==index}" v-on:click="checkThreeRightName(item.displayName,item.name,index)">{{item.displayName}}</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="itemBtn"><a class="btn" v-on:click="submitThree">保存</a></div>
-        </div>
-    </div>
-    <!--接口地址-->
-    <div class="tcHide">
-        <div class="masking"></div>
-        <div class="tcCon">
-            <img onclick="$('#addApi').hide()" class="off" src="images/template/icon-off.png"/>
-            <div class="tcTit"><span>新增接口地址</span></div>
-            <div class="itemList"><span><em>物联网设备监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
-            <div class="itemList"><span><em>信息安全监控</em>接口地址：</span><input type="text" placeholder="请输入"></div>
-            <div class="itemBtn"><a class="btn">保存</a></div>
         </div>
     </div>
 </div>

@@ -162,7 +162,7 @@
 }
 .management .manageCon .userCon .table table tr th{font-size: 14px;}
 .management .manageCon .userCon .table table tr th:first-child,.management .manageCon .userCon .table table tr td:first-child{width: 150px}
-first-child,.management .manageCon .userCon .table table tr td:first-child p{font-size: 12px}
+.management .manageCon .userCon .table table tr td:first-child p{font-size: 12px}
 .management .manageCon .userCon .table table tr td span{
     overflow: hidden;
     display: inline-block;
