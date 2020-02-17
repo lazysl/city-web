@@ -64,7 +64,55 @@
     justify-content: flex-start;
     align-items: center;
 }
-.object .securityCon{overflow: hidden;}
+.object .securityCon{margin: 0 20px}
+.object .securityCon .itemCon {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+.object .securityCon .itemCon .itemLeft{
+    overflow: hidden;
+    width: 10%;
+    font-size: 14px;
+}
+.object .securityCon .itemCon .itemRight{
+    overflow: hidden;
+    width: 70%;
+}
+.object .securityCon .itemCon .itemRight ul li{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.object .securityCon .itemCon .itemRight ul li .item{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    margin: 10px 10% 10px 0;
+}
+.object .securityCon .itemCon .itemRight ul li .item.marginRight{margin-right: 5%}
+.object .securityCon .itemCon .itemRight ul li .item span,.object .securityCon .itemCon .itemRight ul li .item p{
+    overflow: hidden;
+    font-size: 14px;
+}
+.object .securityCon .itemCon .itemRight ul li .item input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    width: 50px;
+    font-size: 14px;
+    margin: 0 10px;
+}
+.object .securityCon .btnList{margin: 30px 0}
+.object .securityCon .btnList a{margin-right: 30px}
 .tcHide .tcCon .itemList .checkList{margin: 0}
 .tcHide .tcCon .itemList .checkTree{width: 60%;}
 .tcHide .tcCon .itemList .checkTree ul li{margin: 5px 0}
