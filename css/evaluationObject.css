@@ -6,6 +6,11 @@
 .object .table {
     width: 100%
 }
+.object .table .btnList {
+    overflow: hidden;
+    margin: 0 20px 10px
+}
+.object .table .btnList span{margin-right: 20px}
 .object .table table{
     width: 100%;
     margin: 0 auto;

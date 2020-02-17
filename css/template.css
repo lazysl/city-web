@@ -277,6 +277,7 @@ body{
 }
 .btn{
     overflow: hidden;
+    display: inline-block;
     background: #02a7f4;
     border-radius: 4px;
     padding: 5px 20px;
@@ -286,6 +287,7 @@ body{
 }
 .btn1{
     overflow: hidden;
+    display: inline-block;
     color: #02a7f4;
     border:solid 1px #02a7f4;
     border-radius: 4px;
