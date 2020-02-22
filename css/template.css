@@ -195,7 +195,6 @@ body{
     position: fixed;
     top: 110px;
     left: 25px;
-    /*height: 85%;*/
     z-index: 999;
     background: #fff;
     border-radius: 2px;
@@ -246,6 +245,10 @@ body{
 }
 #nav ul li span.ic5{
     background: url("../images/template/icon5.png") no-repeat center center;
+    background-size: 60%;
+}
+#nav ul li span.ic6{
+    background: url("../images/template/icon6.png") no-repeat center center;
     background-size: 60%;
 }
 #content{

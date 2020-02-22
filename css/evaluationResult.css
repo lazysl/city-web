@@ -1,0 +1,69 @@
+#main{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.result .nameList{overflow: hidden;margin: 0 20px 10px}
+.result .nameList ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.result .nameList ul li{
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+}
+.result .nameList ul li p{color: #02a7f4;}
+.result .nameList ul li p.green{color: #36cfc9;}
+.result .nameList ul li p.red{color: #f00;}
+.result .nameList ul li a{margin: 0 10px;}
+.result .table {
+    width: 100%
+}
+.result .table .btnList {
+    overflow: hidden;
+    margin: 0 20px 10px
+}
+.result .table .btnList span{margin-right: 20px}
+.result .table table{
+    width: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.result .table table thead{
+    background: #eee;
+    width: 100%;
+    padding-right: 20px;
+}
+.result .table table tbody{
+    overflow-y: scroll;
+}
+.result .table table tr td,.result .table table tr th{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+.result .table table tr td{border-bottom: 1px solid #d8dce5;}
+.result .table table tr th{font-size: 14px;}
+.result .table table tr td.red{
+    color: #f00;
+    font-weight: bold;
+}
+.result .table table tr td.green{
+    color: #36cfc9;
+    font-weight: bold;
+}
+.result .table table tr th a,.result .table table tr td a {
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    cursor: pointer;
+}
+.result .table table tr th span,.result .table table tr td span{margin: 0 10px;}
+.result .table table tr th img,.result .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}

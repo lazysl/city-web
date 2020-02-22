@@ -1,10 +1,7 @@
-.plan{
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-}
-.plan .layoutList{
-    width: 49%;
+#main{
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 .plan .checkCon {
     overflow-x: hidden;
@@ -115,3 +112,50 @@
 }
 .plan .checkCon .checkItem .itemList1 .checkList{margin: 15px 0;width: 100%}
 .plan .checkCon .checkItem .itemList1 .btn{margin-left: 50px}
+.plan .table {
+    width: 100%
+}
+.plan .table .btnList {
+    overflow: hidden;
+    margin: 0 20px 10px
+}
+.plan .table .btnList span{margin-right: 20px}
+.plan .table table{
+    width: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.plan .table table thead{
+    background: #eee;
+    width: 100%;
+    padding-right: 20px;
+}
+.plan .table table tbody{
+    overflow-y: scroll;
+}
+.plan .table table tr td,.plan .table table tr th{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+.plan .table table tr td{border-bottom: 1px solid #d8dce5;}
+.plan .table table tr th{font-size: 14px;}
+.plan .table table tr td.red{
+    color: #f00;
+    font-weight: bold;
+}
+.plan .table table tr td.green{
+    color: #36cfc9;
+    font-weight: bold;
+}
+.plan .table table tr th a,.plan .table table tr td a {
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    cursor: pointer;
+}
+.plan .table table tr th span,.plan .table table tr td span{margin: 0 10px;}
+.plan .table table tr th img,.plan .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}
