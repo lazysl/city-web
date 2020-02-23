@@ -58,12 +58,12 @@
     font-weight: bold;
 }
 .result .table table tr th a,.result .table table tr td a {
-    margin: 0 10px;
+    margin: 0 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #333;
     cursor: pointer;
 }
-.result .table table tr th span,.result .table table tr td span{margin: 0 10px;}
+.result .table table tr th span,.result .table table tr td span{margin: 0 5px;}
 .result .table table tr th img,.result .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}

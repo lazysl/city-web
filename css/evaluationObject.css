@@ -54,14 +54,14 @@
     font-weight: bold;
 }
 .object .table table tr th a,.object .table table tr td a {
-    margin: 0 10px;
+    margin: 0 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #333;
     cursor: pointer;
 }
-.object .table table tr th span,.object .table table tr td span{margin: 0 10px;}
+.object .table table tr th span,.object .table table tr td span{margin: 0 5px;}
 .object .table table tr th img,.object .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}
 .object .table table tr td.paddingLeft{
     padding-left: 20px;

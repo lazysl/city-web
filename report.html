@@ -23,131 +23,90 @@
     <div id="content" class="report">
         <div class="layout">
             <div class="listCon">
-                <div class="title">
-                    <div class="select">
-                        <span>日报表<i></i></span>
-                        <ul>
-                            <li><span>日报表</span></li>
-                            <li><span>周报表</span></li>
-                            <li><span>月报表</span></li>
-                            <li><span>年报表</span></li>
-                        </ul>
-                    </div>
-                    <div class="item"><span>开始时间</span><input></div>
-                    <div class="item"><span>结束时间</span><input></div>
-                    <a class="btn">查询</a>
-                </div>
-                <div class="navTree">
-                    <div class="treeTit">
-                        <span>考评对象</span>
-                        <span>时间</span>
-                        <span>评分</span>
-                        <span>是否合格</span>
-                        <span>修改人</span>
-                    </div>
-                    <div class="ulHeight">
-                        <ul>
-                            <li>
-                                <div class="item">
-                                    <div class="itemLeft firstSub">
-                                        <em></em>
-                                        <p>综合执法平台</p>
-                                    </div>
-                                    <p>2019-12-16</p>
-                                    <p>50</p>
-                                    <p>否</p>
-                                    <p>--</p>
-                                </div>
-                                <ul class="navSub">
-                                    <li>
-                                        <div class="item secItem">
-                                            <div class="itemLeft secSub">
-                                                <em></em>
-                                                <p>中间件</p>
-                                            </div>
-                                            <p>2019-12-16</p>
-                                            <p>50</p>
-                                            <span class="buttonDetail">详情</span>
-                                            <p>--</p>
-                                        </div>
-                                        <ul class="navThree">
-                                            <li>
-                                                <p>服务器</p>
-                                                <p>2019-12-16</p>
-                                                <p>50</p>
-                                                <span class="buttonDetail">详情</span>
-                                                <p>--</p>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <div class="item">
-                                    <div class="itemLeft firstSub">
-                                        <em></em>
-                                        <p>大数据治理平台</p>
-                                    </div>
-                                    <p>2019-12-16</p>
-                                    <p>50</p>
-                                    <p>否</p>
-                                    <p>--</p>
-                                </div>
-                                <ul class="navSub">
-                                    <li>
-                                        <div class="item secItem">
-                                            <div class="itemLeft secSub">
-                                                <em></em>
-                                                <p>中间件</p>
-                                            </div>
-                                            <p>2019-12-16</p>
-                                            <p>50</p>
-                                            <span class="buttonDetail">详情</span>
-                                            <p>--</p>
-                                        </div>
-                                        <ul class="navThree">
-                                            <li>
-                                                <p>服务器</p>
-                                                <p>2019-12-16</p>
-                                                <p>50</p>
-                                                <span class="buttonDetail">详情</span>
-                                                <p>--</p>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="title"><span>考评报表管理</span></div>
+                <div class="table">
+                    <div class="btnList"><a class="btn">新建报表</a></div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>报表名称</th>
+                            <th>创建时间</th>
+                            <th>创建人</th>
+                            <th>报表计划</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="table">
+                        <tr>
+                            <td>大数据治理应用平台</td>
+                            <td>2020-01-01</td>
+                            <td>admin</td>
+                            <td>每天9:00，每周一10:00，每月1日10:30</td>
+                            <td>
+                                <a href="evaluationPlanDetail.html"><img src="images/template/icon-time.png"/></a>
+                                <img onclick="$('.tcHide').show()" src="images/template/icon-change.png"/>
+                                <img src="images/template/icon-del.png"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <div class="tcHide report" id="buttonDetail">
-        <div class="masking" onclick="$('#buttonDetail').hide()"></div>
+    <!--新建报表-->
+    <div class="tcHide">
+        <div class="masking" onclick="$('.tcHide').hide()"></div>
         <div class="tcCon">
-            <div class="title">
-                <div class="item"><span>开始时间</span><input></div>
-                <div class="item"><span>结束时间</span><input></div>
-                <a class="btn">查询</a>
+            <div class="tcTit"><span>考评报表管理</span></div>
+            <div class="itemList special"><span>报表名称：</span><input type="text"/></div>
+            <div class="itemList special">
+                <span>时间范围：</span>
+                <div class="select">
+                    <span>当天<i></i></span>
+                    <ul>
+                        <li><span>当天</span></li>
+                        <li><span>整周</span></li>
+                        <li><span>整月</span></li>
+                        <li><span>整年</span></li>
+                    </ul>
+                </div>
             </div>
-            <div class="tabCon">
-                <table>
-                    <thead>
-                    <tr>
-                        <td>序号</td>
-                        <td>时间</td>
-                        <td>原因</td>
-                    </tr>
-                    </thead>
-                    <tbody id="table">
-                    <tr>
-                        <td>1</td>
-                        <td>2019-12-16</td>
-                        <td>故障</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="itemList special flexStart">
+                <span>考评项目：</span>
+                <div class="checkTree">
+                    <div><a class="btn1">全选</a><a class="btn1">取消全选</a></div>
+                    <ul>
+                        <li>
+                            <div class="checkList"><input type="checkbox" class="checkbox" id="pro1"><label for="pro1"><img src="images/template/icon-check.png" alt=""></label><p>业务考评</p></div>
+                            <ul>
+                                <li>
+                                    <div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1"><label for="pro1_1"><img src="images/template/icon-check.png" alt=""></label><p>业务健康度</p></div>
+                                    <ul>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_1"><label for="pro1_1_1"><img src="images/template/icon-check.png" alt=""></label><p>页面可用性</p></div></li>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_2"><label for="pro1_1_2"><img src="images/template/icon-check.png" alt=""></label><p>页面健康度</p></div></li>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_3"><label for="pro1_1_3"><img src="images/template/icon-check.png" alt=""></label><p>数据质量</p></div></li>
+                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_4"><label for="pro1_1_4"><img src="images/template/icon-check.png" alt=""></label><p>数据共享</p></div></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="itemList special flexStart">
+                <span>业务系统：</span>
+                <div class="checkTree">
+                    <div><a class="btn1">全选</a><a class="btn1">取消全选</a></div>
+                    <ul>
+                        <li>
+                            <div class="checkList"><input type="checkbox" class="checkbox" id="sys1"><label for="pro1"><img src="images/template/icon-check.png" alt=""></label><p>大数据治理应用平台</p></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="itemList paddingLeft">
+                <a class="btn">保存</a><a class="btn1" onclick="$('.tcHide').hide()">取消</a>
             </div>
         </div>
     </div>
@@ -157,19 +116,8 @@
 <script>
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
-        $("#content .layout").css("height", docHeight - 142);
+        document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
+        document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
     });
-    $(".ulHeight li .firstSub").click(function () {
-        $(".navThree").hide();
-        $(this).parents(".item").siblings(".navSub").toggle().end().parents("li").siblings("li").children(".navSub").hide();
-        $(this).children("em").toggleClass("checked")
-    });
-    $(".navSub li .secSub").click(function () {
-        $(this).parents(".secItem").siblings(".navThree").toggle();
-        $(this).children("em").toggleClass("checked")
-    })
-    $(".buttonDetail").click(function () {
-      $("#buttonDetail").show()
-    })
 </script>
 </html>

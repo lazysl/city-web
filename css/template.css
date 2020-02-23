@@ -283,7 +283,7 @@ body{
     display: inline-block;
     background: #02a7f4;
     border-radius: 4px;
-    padding: 5px 20px;
+    padding: 5px 15px;
     font-size: 14px;
     cursor: pointer;
     color: #fff;
@@ -294,7 +294,7 @@ body{
     color: #02a7f4;
     border:solid 1px #02a7f4;
     border-radius: 4px;
-    padding: 5px 20px;
+    padding: 5px 15px;
     font-size: 14px;
     cursor: pointer;
 }
@@ -543,7 +543,6 @@ body{
     margin: 10px 0 20px;
 }
 .tcHide .tcCon .itemList{
-    overflow: hidden;
     display: flex;
     justify-content: flex-start;
     align-items: center;

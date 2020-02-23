@@ -112,6 +112,34 @@
 }
 .plan .checkCon .checkItem .itemList1 .checkList{margin: 15px 0;width: 100%}
 .plan .checkCon .checkItem .itemList1 .btn{margin-left: 50px}
+.plan .nameList{overflow: hidden;margin: 0 20px 10px}
+.plan .nameList ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.plan .nameList ul li{
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+}
+.plan .nameList ul li p{color: #02a7f4;}
+.plan .nameList ul li p.green{color: #36cfc9;}
+.plan .nameList ul li p.red{color: #f00;}
+.plan .nameList ul li a,.plan .nameList ul li img{margin: 0 10px;}
+.plan .nameList ul li input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    min-width: 100px;
+}
 .plan .table {
     width: 100%
 }
@@ -150,12 +178,12 @@
     font-weight: bold;
 }
 .plan .table table tr th a,.plan .table table tr td a {
-    margin: 0 10px;
+    margin: 0 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #333;
     cursor: pointer;
 }
-.plan .table table tr th span,.plan .table table tr td span{margin: 0 10px;}
+.plan .table table tr th span,.plan .table table tr td span{margin: 0 5px;}
 .plan .table table tr th img,.plan .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}

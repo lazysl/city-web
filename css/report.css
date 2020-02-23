@@ -1,232 +1,87 @@
-.report .title{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 20px;
-}
-.report .title .item{
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 20px;
-}
-.report .title .select{margin-right: 20px;}
-.report .title .item span{
-    overflow: hidden;
-    font-size: 14px;
-    margin-right: 10px;
-}
-.report .title .item input{
-    overflow: hidden;
-    width: 200px;
-    height: 28px;
-    line-height: 28px;
-    border: solid 1px #d8dce5;
-    resize: none;
-    outline: none;
-    background: transparent;
-    cursor: pointer;
-    color: #333;
-    padding: 0 10px;
-}
-.report .tabCon{
-    overflow: hidden;
+.report .table {
     width: 100%
 }
-.report .tabCon table{
+.report .table .btnList {
+    overflow: hidden;
+    margin: 0 20px 10px
+}
+.report .table .btnList span{margin-right: 20px}
+.report .table table{
     width: 100%;
     margin: 0 auto;
     display: table;
 }
-.report .tabCon table thead{
+.report .table table thead{
     background: #eee;
     width: 100%;
-    display: block;
-    padding-right: 1%;
-}
-.report .tabCon table tbody{
-    overflow-x: hidden;
-    overflow-y: scroll;
-    display: block;
-    width: 100%;
-}
-.report .tabCon table tr:last-child{border-bottom:none}
-.report .tabCon table tr{
-    display: flex;
-    justify-content: space-between;
-}
-.report .tabCon table tr td,.report .tabCon table tr th{
-    font-size: 12px;
-    padding: 10px;
-    border-bottom: 1px solid #d8dce5;
-    text-align: left;
-    width: 70%;
-}
-.report .tabCon table tr th:first-child,.report .tabCon table tr td:first-child{width: 10%;text-align: center}
-.report .tabCon table tr th:first-child,.report .tabCon table tr td:nth-child(2){width: 20%}
-.report .tabCon table tr th{font-size: 14px;}
-.report .tabCon table tr td span{
-    overflow: hidden;
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 100%;
-    margin-right: 5px;
-    vertical-align: middle;
-}
-.report .tabCon table tr td span.red{
-    background: #f00
-}
-.report .tabCon table tr td span.orange{
-    background: #fd6123
-}
-.report .tabCon table tr td span.green{
-    background: #00ff00
-}
-.report .tabCon .table ul li,.report .tabCon .table .tabTit{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.report .tabCon .table ul li span,.report .tabCon .table .tabTit span{
-    overflow: hidden;
-    font-size: 12px;
-    padding: 10px;
-    border-bottom: 1px solid #d8dce5;
-    text-align: center;
-    width: 30%;
-}
-.report .tabCon .table ul li span:first-child, .report .tabCon .table .tabTit span:first-child {
-    width: 10%
-}
-.report .tabCon .table ul li span:last-child, .report .tabCon .table .tabTit span:last-child {
-    width: 60%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: left;
-}
-.report .tabList{
-    overflow: hidden;
-    background: #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding-right: 20px;
 }
-.report .tabList ul{
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-    padding: 0 20px;
-}
-.report .tabList ul li{
-    overflow: hidden;
-    font-size: 14px;
-    padding: 15px 0;
-    text-align: center;
-    margin: 0 30px 0 0;
-    border-bottom: solid 4px transparent;
-    cursor: pointer;
-}
-.report .tabList ul li.checked{
-    border-bottom: solid 4px #13aaf6;
-    color: #13aaf6;
-}
-.report .navTree {
-    overflow: hidden;
-    background: #fff;
-}
-.report .navTree .treeTit{
-    overflow: hidden;
-    background: #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding-right: 1%;
-}
-.report .navTree .treeTit span{
-    overflow: hidden;
-    font-size: 14px;
-    width: 17.5%;
-    padding: 10px 20px;
-    text-align: center;
-}
-.report .navTree .treeTit span:first-child{width: 30%;text-align: left}
-.report .ulHeight {
-    overflow-x: hidden;
+.report .table table tbody{
     overflow-y: scroll;
 }
-.report .navTree ul{
-    overflow: hidden;
-}
-.report .navTree ul li{
-    width: 100%;
-}
-.report .navTree ul li p,.report .navTree ul li span{
-    overflow: hidden;
+.report .table table tr td,.report .table table tr th{
     font-size: 12px;
-}
-.report .navTree ul li span {
-    text-decoration: underline;
-    width: 17.5%;
-    padding: 10px 20px;
+    padding: 10px;
     text-align: center;
-    color: #02a7f4;
+    border-bottom: 1px solid #fff;
+}
+.report .table table tr td{border-bottom: 1px solid #d8dce5;}
+.report .table table tr th{font-size: 14px;}
+.report .table table tr td.red{
+    color: #f00;
+    font-weight: bold;
+}
+.report .table table tr td.green{
+    color: #36cfc9;
+    font-weight: bold;
+}
+.report .table table tr th a,.report .table table tr td a {
+    margin: 0 5px;
+    display: inline-block;
+    color: #333;
     cursor: pointer;
 }
-.report .navTree ul li img{
-    width: 16px;
-    margin-right: 10px;
+.report .table table tr th span,.report .table table tr td span{margin: 0 5px;}
+.report .table table tr th img,.report .table table tr td img {
+    display: inline-block;
+    margin: 0 5px;
     cursor: pointer;
+    width: 20px;
 }
-.report .navTree ul li em{
+.report .table table tr th a img,.report .table table tr td a img{margin: 0}
+.tcHide .tcCon .itemList .checkList{margin: 0}
+.tcHide .tcCon .itemList .checkTree{width: 60%;}
+.tcHide .tcCon .itemList .checkTree a{margin: 0 5px 0 0}
+.tcHide .tcCon .itemList .checkTree ul{max-height: 200px;overflow-y: scroll}
+.tcHide .tcCon .itemList .checkTree ul li{margin: 5px 0}
+.tcHide .tcCon .itemList .checkTree ul li ul{margin-left: 25px;overflow: hidden;}
+.tcHide .tcCon .itemList .checkTree ul li ul li ul{margin-left: 25px;overflow: hidden}
+.tcHide .tcCon .itemList.special .select span{width: 100%}
+.tcHide .tcCon .monitorItem {
     overflow: hidden;
-    display: block;
-    background: url("../images/template/‭icon-open.png") no-repeat;
-    background-size: 100% 100%;
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    cursor: pointer;
-}
-.report .navTree ul li em.checked{
-    background: url("../images/template/icon-close.png") no-repeat;
-    background-size: 100% 100%;
-}
-.report .navTree ul li .item{
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #d8dce5;
-}
-.report .navTree ul li .item p{
-    width: 17.5%;
-    padding: 10px 20px;
-    text-align: center;
-}
-.report .navTree ul li .itemLeft{
-    overflow: hidden;
-    padding: 10px 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin: 15px 10px 15px;
+}
+.tcHide .tcCon .monitorItem .item{
+    overflow: hidden;
+    border: solid 1px #e4e4e4;
+    width: 40%;
+    min-height: 180px;
+}
+.tcHide .tcCon .monitorItem .item li{
+    overflow: hidden;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border-bottom: solid 1px #e4e4e4;
     cursor: pointer;
-    width: 30%;
 }
-.report .navTree ul li .itemLeft p{padding: 0;text-align: left;width: auto}
-.report .navTree ul li .navSub{display: none;}
-.report .navTree ul li .navSub li .itemLeft{padding-left: 55px}
-.report .navTree ul li .navSub li .navThree{display: none;}
-.report .navTree ul li .navSub li .navThree li {
-    border-bottom: 1px solid #d8dce5;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.report .navTree ul li .navSub li .navThree li p{width: 17.5%;text-align: center;padding: 10px 20px;}
-.report .navTree ul li .navSub li .navThree li p:first-child{width: 30%;text-align: left;padding-left: 80px}
-.report .navTree ul li .navSub li .navThree li img{margin: 0}
+.tcHide .tcCon .monitorItem .item li.checked,.tcHide .tcCon .monitorItem .item li:hover{background: #e1edff;}
+.tcHide .tcCon .monitorItem .item li:last-child{border-bottom: none}
+.tcHide .tcCon .monitorItem .itemPic{margin: 0 20px}
+.tcHide .tcCon .monitorItem .itemPic img{width: 24px}
