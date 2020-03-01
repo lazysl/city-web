@@ -61,9 +61,11 @@ function listAlarms(){
         token:localStorage.getItem("token")
     }
 }
-Vue.prototype.getCheckObject = function () {
+/*新增考评设备*/
+Vue.prototype.addCheckDevice = function (data) {
     return {
-        url: setting.www_url + "/city/checkObject/getCheckObject?apiKey=" + setting.apiKey,
+        url: setting.www_url + "/city/checkInfo/addCheckDevice?apiKey=" + setting.apiKey,
+        data: data,
         token:localStorage.getItem("token")
     }
 };

@@ -118,11 +118,15 @@
 }
 .object .securityCon .btnList{margin: 30px 0}
 .object .securityCon .btnList a{margin-right: 30px}
-.tcHide .tcCon .itemList .checkList{margin: 0}
+.tcHide .tcCon .itemList .checkboxList{margin: 0}
 .tcHide .tcCon .itemList .checkTree{width: 60%;}
+.tcHide .tcCon .itemList .checkTree ul{
+    overflow-y: scroll;
+    max-height: 200px;
+}
 .tcHide .tcCon .itemList .checkTree ul li{margin: 5px 0}
-.tcHide .tcCon .itemList .checkTree ul li ul{margin-left: 25px}
-.tcHide .tcCon .itemList .checkTree ul li ul li ul{margin-left: 25px}
+.tcHide .tcCon .itemList .checkTree ul li ul{margin-left: 25px;overflow: hidden}
+.tcHide .tcCon .itemList .checkTree ul li ul li ul{margin-left: 25px;overflow: hidden}
 .tcHide .tcCon .monitorItem {
     overflow: hidden;
     display: flex;

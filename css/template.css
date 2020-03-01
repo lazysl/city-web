@@ -364,6 +364,29 @@ body{
     margin-bottom: 0;
     border: none;
 }
+.checkboxList {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 10px;
+}
+.checkboxList .checkbox{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px #d8dce5;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    background: transparent;
+}
+.checkboxList .checkbox img{display: none}
+.checkboxList .checkbox.checked img{display: block}
+.checkboxList p{font-size: 14px}
 .checkList {
     overflow: hidden;
     position: relative;
@@ -507,6 +530,7 @@ body{
     z-index: 1111;
     display: none;
 }
+.tcHide.display{display: block;}
 .masking {
     position: fixed;
     height: 100%;

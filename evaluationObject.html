@@ -24,7 +24,7 @@
         <div class="layout">
             <div class="title">
                 <span>考评对象管理</span>
-                <a class="btn">新增考评对象</a>
+                <a class="btn" v-on:click="objectInfo(0)">新增考评对象</a>
             </div>
             <div class="table">
                 <div class="btnList"><span class="btn">一键全部考评</span><span class="btn1">总体考评结果</span></div>
@@ -45,7 +45,7 @@
                         <td class="green">达标</td>
                         <td>56253715@qq.com</td>
                         <td>
-                            <img onclick="$('.tcHide').show()" src="images/template/icon-change.png"/>
+                            <img v-on:click="objectInfo(2)" src="images/template/icon-change.png"/>
                             <img src="images/template/icon-del.png"/>
                             <span class="btn">手动考评</span>
                             <span class="btn1">考评结果</span>
@@ -57,30 +57,38 @@
         </div>
     </div>
     <!--新增或编辑考评对象-->
-    <div class="tcHide">
-        <div class="masking" onclick="$('.tcHide').hide()"></div>
+    <div class="tcHide" v-if="isObjectInfoPop" :class="isObjectInfoPop?'display':''">
+        <div class="masking" v-on:click="objectInfo(0)"></div>
         <div class="tcCon">
             <div class="tcTit"><span>考评对象管理</span></div>
-            <div class="itemList special"><span>业务系统名称：</span><input type="text"/></div>
-            <div class="itemList special"><span>考评结果接收邮件地址：<i>* 可填多个地址，以英文逗号分隔</i></span><input type="text"/></div>
+            <div class="itemList special"><span>业务系统名称：</span><input type="text" v-model="objectName"/></div>
+            <div class="itemList special"><span>考评结果接收邮件地址：<i>* 可填多个地址，以英文逗号分隔</i></span><input type="email" v-model="objectEmail"/></div>
             <div class="itemList special">
                 <span>启用考评结果自动审批：</span>
-                <div class="checkList"><input type="checkbox" class="checkbox" id="auto"><label for="auto"><img src="images/template/icon-check.png" alt=""></label></div>
+                <div class="checkboxList"><div class="checkbox" v-on:click="autoEvaluation" :class="isAutoEvaluation?'checked':''"><img src="images/template/icon-check.png" alt=""></div></div>
             </div>
             <div class="itemList special flexStart">
                 <span>考评项目：</span>
                 <div class="checkTree">
                     <ul>
-                        <li>
-                            <div class="checkList"><input type="checkbox" class="checkbox" id="pro1"><label for="pro1"><img src="images/template/icon-check.png" alt=""></label><p>业务考评</p></div>
-                            <ul>
-                                <li>
-                                    <div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1"><label for="pro1_1"><img src="images/template/icon-check.png" alt=""></label><p>业务健康度</p></div>
-                                    <ul>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_1"><label for="pro1_1_1"><img src="images/template/icon-check.png" alt=""></label><p>页面可用性</p></div></li>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_2"><label for="pro1_1_2"><img src="images/template/icon-check.png" alt=""></label><p>页面健康度</p></div></li>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_3"><label for="pro1_1_3"><img src="images/template/icon-check.png" alt=""></label><p>数据质量</p></div></li>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_4"><label for="pro1_1_4"><img src="images/template/icon-check.png" alt=""></label><p>数据共享</p></div></li>
+                        <li v-for="(item,index) in objectList">
+                            <div class="checkboxList">
+                                <div class="checkbox" v-on:click="checkButton" :class=""><img src="images/template/icon-check.png" alt=""></div>
+                                <p>{{item.firstName}}</p>
+                            </div>
+                            <ul v-if="item.secList">
+                                <li v-for="(secItem,secIndex) in item.secList">
+                                    <div class="checkboxList">
+                                        <div class="checkbox" v-on:click="checkButton"><img src="images/template/icon-check.png" alt=""></div>
+                                        <p>{{secItem.secName}}</p>
+                                    </div>
+                                    <ul v-if="secItem.thirdList">
+                                        <li v-for="(thirdItem,thirdIndex) in secItem.thirdList">
+                                            <div class="checkboxList">
+                                                <div class="checkbox" v-on:click="checkButton"><img src="images/template/icon-check.png" alt=""></div>
+                                                <p>{{thirdItem.thirdName}}</p>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -89,7 +97,8 @@
                 </div>
             </div>
             <div class="itemList paddingLeft">
-                <a class="btn">保存</a><a class="btn1" onclick="$('.tcHide').hide()">取消</a>
+                <a class="btn" v-on:click="objectInfo(1)">保存</a>
+                <a class="btn1" v-on:click="objectInfo(0)">取消</a>
             </div>
         </div>
     </div>
