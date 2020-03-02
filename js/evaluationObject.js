@@ -11,33 +11,41 @@ new Vue({
                 secList: [
                     {
                         secName: "业务健康度",
-                        id: "1",
+                        id: "health",
                         thirdList: [
-                            {thirdName: '页面可用性', id: '1'},
-                            {thirdName: '页面健康度', id: '2'},
-                            {thirdName: '数据质量', id: '3'},
-                            {thirdName: '数据共享', id: '4'},
+                            {thirdName: '页面可用性', id: 'pageUsability'},
+                            {thirdName: '页面健康度', id: 'pageHealth'},
+                            {thirdName: '数据质量', id: 'quality'},
+                            {thirdName: '数据共享', id: 'shared'},
                         ]
                     },
-                    {secName: "信息安全", id: "2"},
-                    {secName: "物联设备状态", id: "3"},
+                    {secName: "信息安全", id: "security"},
+                    {secName: "物联设备状态", id: "things"},
                 ]
             },
             {
                 firstName: "技术考评",
                 id: "2",
                 secList: [
-                    {secName: '服务器', id: '1'},
-                    {secName: '数据库', id: '2'},
-                    {secName: '中间件', id: '3'},
-                    {secName: '网络设备', id: '4'},
+                    {secName: '服务器', id: 'server'},
+                    {secName: '数据库', id: 'sql'},
+                    {secName: '中间件', id: 'middleware'},
+                    {secName: '网络设备', id: 'Internet'},
                 ]
             },
         ],
         isAutoEvaluation:false,
-        isFirstCheck:-1,
-        isSecCheck:-1,
-        isThirdCheck:-1,
+    },
+    computed:{
+        firstCheckArr:{
+            get(){
+                let firstCheckData = [];
+                for (let i in this.objectList) {
+                    firstCheckData.push(i);
+                }
+                return firstCheckData
+            }
+        }
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -77,9 +85,35 @@ new Vue({
         autoEvaluation() {
             this.isAutoEvaluation = !this.isAutoEvaluation
         },
-        checkButton(){},
+        firstCheckButton(index) {
+            let indx = this.firstCheckArr.indexOf(index.toString());
+            if (this.$refs.liFirst[indx].className == 'checkbox item-first') {
+                this.$refs.liFirst[indx].className = 'checkbox item-first checked';
+            } else {
+                this.$refs.liFirst[indx].className = 'checkbox item-first';
+            }
+        },
+        /*展示二级目录*/
+        secCheckButton(secIndex, index) {
+            let id = document.getElementById(index + "_" + secIndex);
+            if (id.className == 'checkbox item-sec') {
+                id.className = 'checkbox item-sec checked';
+            } else {
+                id.className = 'checkbox item-sec';
+            }
+        },
+        /*展示三级目录*/
+        thirdCheckButton(thirdIndex, secIndex, index) {
+            let id = document.getElementById(index + "_" + secIndex + '_' + thirdIndex);
+            if (id.className == 'checkbox item-third') {
+                id.className = 'checkbox item-third checked';
+            } else {
+                id.className = 'checkbox item-third';
+            }
+        },
         addObjectInfo() {
-            this.postAjax(this.addCheckDevice(), (res) => {
+            let data={}
+            this.postAjax(this.addCheckDevice(data), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                 }
             })
@@ -89,6 +123,5 @@ new Vue({
         this.$nextTick(() => {
             this.docHeight()
         })
-        console.log(this.objectList)
     },
 });
