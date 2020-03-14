@@ -37,9 +37,9 @@
                     <tr><th>考评主体名称</th></tr>
                     </thead>
                     <tbody id="table">
-                    <tr><td class="paddingLeft">业务检测<img onclick="$('.tcHide').show()" src="images/template/icon-change.png"/></td></tr>
-                    <tr><td class="paddingLeft">数据质量<img src="images/template/icon-change.png"/></td></tr>
-                    <tr><td class="paddingLeft">数据共享<img src="images/template/icon-change.png"/></td></tr>
+                    <tr v-for="(item,index) in objectNavList" v-if="item.parentId==urlParams('parentId')">
+                        <td class="paddingLeft">{{item.name}}<img onclick="$('.tcHide').show()" src="images/template/icon-change.png"/></td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -73,6 +73,7 @@
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/evaluationObject.js"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;
     document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";

@@ -33,8 +33,11 @@
                     <tr><th>设备名称</th></tr>
                     </thead>
                     <tbody id="table">
-                    <tr><td><a href="evaluationObject2.html"><img src="images/template/‭icon-open.png"/>业务考评</a></td></tr>
-                    <tr><td><a href="JavaScript:;"><img src="images/template/‭icon-open.png"/>技术考评</a></td></tr>
+                    <tr v-for="(item,index) in objectNavList" v-if="item.parentId==urlParams('parentId')">
+                        <td :class="item.isLast==0?'':paddingLeft">
+                            <a :href="item.isLast==0?'evaluationObject2.html?parentId='+item.id:''"><img v-if="item.isLast==0" src="images/template/‭icon-open.png"/>{{item.name}}</a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -43,6 +46,7 @@
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/evaluationObject.js"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;
     document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";

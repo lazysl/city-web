@@ -35,9 +35,11 @@
                     <tr><th>考评主体名称</th></tr>
                     </thead>
                     <tbody id="table">
-                    <tr><td><a href="evaluationObject3.html"><img src="images/template/‭icon-open.png"/>业务健康度</a></td></tr>
-                    <tr><td class="paddingLeft"><a href="infoSecurity.html">信息安全</a></td></tr>
-                    <tr><td class="paddingLeft"><a href="JavaScript:;">物联设备状态</a></td></tr>
+                    <tr v-for="(item,index) in objectNavList" v-if="item.parentId==urlParams('parentId')">
+                        <td :class="item.isLast==0||item.name=='信息安全'?'':'paddingLeft'">
+                            <a :href="item.isLast==0?'evaluationObject3.html?parentId='+item.id:item.name=='信息安全'?'infoSecurity.html':''"><img v-if="item.isLast==0||item.name=='信息安全'" src="images/template/‭icon-open.png"/>{{item.name}}</a>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
@@ -46,6 +48,7 @@
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/evaluationObject.js"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;
     document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";

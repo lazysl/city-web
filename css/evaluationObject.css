@@ -69,6 +69,125 @@
     justify-content: flex-start;
     align-items: center;
 }
+.object .table .treeTit{
+    overflow: hidden;
+    background: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 20px;
+}
+.object .table .treeTit span{
+    overflow: hidden;
+    font-size: 14px;
+    padding: 10px;
+    width: 16%;
+    text-align: center;
+}
+.object .table .treeTit span:first-child,.object .table .treeTit span:last-child{
+    width: 26%;
+}
+.object .table .treeTit span:first-child{padding-left: 25px;text-align: left;}
+.object .table #ulHeight {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.object .table ul{
+    overflow: hidden;
+    /*display: none;*/
+}
+.object .table ul li{
+    border-bottom: 1px solid #d8dce5;
+}
+.object .table ul li p,.object .table ul li a{
+    overflow: hidden;
+    font-size: 12px;
+    width: 16%;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+.object .table ul li p:first-child {
+    width: 26%;
+    justify-content: flex-start;
+    padding-left: 20px;
+    cursor: pointer;
+}
+.object .table ul li p.paddingLeft{padding-left: 20px}
+.object .table ul li a{width: auto}
+.object .table ul li img{
+    width: 20px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.object .table ul li em{
+    overflow: hidden;
+    display: block;
+    background: url("../images/template/‭icon-open.png") no-repeat;
+    background-size: 100% 100%;
+    width: 16px;
+    height: 16px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.object .table ul li em.checked{
+    background: url("../images/template/icon-close.png") no-repeat;
+    background-size: 100% 100%;
+}
+.object .table ul li i{
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 15px;
+    height: 1px;
+    background: #d8dce5;
+}
+.object .table ul li .item{
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    position: relative;
+    /*border-bottom: 1px solid #d8dce5;*/
+}
+.object .table ul li .item .manipulate{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26%;
+}
+.object .table ul li .item .manipulate span{margin: 0 5px;}
+.object .table ul li ul{display: none;margin-top: -15px}
+.object .table ul li ul li {
+    margin-left: 32px;
+    border: none;
+    border-left: 1px solid #d8dce5;
+}
+.object .table ul li ul li:first-child{padding-top: 10px}
+.object .table ul li ul li:last-child{padding-bottom: 10px}
+.object .table ul li ul li p {
+    width: auto;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.object .table ul li ul li .item{border: none;padding: 0}
+.object .table ul li ul li ul{margin: -12px 0}
+.object .table ul li ul li ul li{margin-left: 22px;}
+
+
+
+
+
+
+
+
 .object .securityCon{margin: 0 20px}
 .object .securityCon .itemCon {
     overflow: hidden;

@@ -1,8 +1,8 @@
 var setting = {
     // www_url: "http://localhost:8080",
-    // www_url: "/cityapi",
+    www_url: "/cityapi",
     beiHang_url: '/serverapi',
-    www_url: "http://192.168.1.75:8080",
+    // www_url: "http://192.168.1.75:8080",
     // beiHang_url:'http://192.168.1.72:8060',
     apiKey: "f997bc19a9410ded2c0eb17f24e0690d",
 };
@@ -61,14 +61,55 @@ function listAlarms(){
         token:localStorage.getItem("token")
     }
 }
-/*新增考评设备*/
-Vue.prototype.addCheckDevice = function (data) {
+function urlParams(key) {
+    var value = "";
+    var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) value = unescape(r[2]);
+    return value;
+}
+/*获取考评菜单*/
+Vue.prototype.getCheckMenu = function (data) {
     return {
-        url: setting.www_url + "/city/checkInfo/addCheckDevice?apiKey=" + setting.apiKey,
+        url: setting.www_url + "/city/checkMenu/getCheckMenu?apiKey=" + setting.apiKey,
+        token:localStorage.getItem("token")
+    }
+};
+/*新增考评设备*/
+Vue.prototype.addCheckInfo = function (data) {
+    return {
+        url: setting.www_url + "/city/checkInfo/addCheckInfo?apiKey=" + setting.apiKey,
         data: data,
         token:localStorage.getItem("token")
     }
 };
+/*获取考评对象信息*/
+Vue.prototype.getCheckInfo = function () {
+    return {
+        url: setting.www_url + "/city/checkInfo/getCheckInfo?apiKey=" + setting.apiKey,
+        token:localStorage.getItem("token")
+    }
+};
+/*修改考评对象信息*/
+Vue.prototype.updateCheckInfo = function (data) {
+    return {
+        url: setting.www_url + "/city/checkInfo/updateCheckInfo?apiKey=" + setting.apiKey,
+        data: data,
+        token:localStorage.getItem("token")
+    }
+};
+/*删除考评对象信息或考评设备*/
+Vue.prototype.deleteCheckInfo = function (id) {
+    return {
+        url: setting.www_url + "/city/checkInfo/deleteCheckInfo?apiKey=" + setting.apiKey+"&id="+id,
+        token:localStorage.getItem("token")
+    }
+};
+
+
+
+
+
 Vue.prototype.checkSqlList = function (num) {
     return {
         url: setting.www_url + "/city/checkSql/getCheckSqlList?apiKey=" + setting.apiKey + "&type=" + num,

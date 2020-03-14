@@ -28,7 +28,54 @@
             </div>
             <div class="table">
                 <div class="btnList"><span class="btn">一键全部考评</span><span class="btn1">总体考评结果</span></div>
-                <table>
+                <div class="treeTit">
+                    <span>业务系统名称</span>
+                    <span>上次考评对象</span>
+                    <span>上次考评结果</span>
+                    <span>考评结果接收邮箱</span>
+                    <span>操作</span>
+                </div>
+                <div id="ulHeight">
+                    <ul>
+                        <li v-for="(item,index) in objectList">
+                            <div class="item">
+                                <p @click="showSub(index)"><em :class="activeSubIndex===index?'checked':''"></em>{{item.name}}</p>
+                                <p>2020-02-14</p>
+                                <p class="green">达标</p>
+                                <p>{{item.email}}</p>
+                                <div class="manipulate">
+                                    <img @click="objectInfo(1,index,item.id)" src="images/template/icon-change.png"/>
+                                    <img @click="delObjectInfo(item.id,index)" src="images/template/icon-del.png"/>
+                                    <span class="btn">手动考评</span>
+                                    <span class="btn1">考评结果</span>
+                                </div>
+                            </div>
+                            <ul v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''" class="subNav">
+                                <li v-for="(item,firstIndex) in objectNavList" v-if="item.parentId==0">
+                                    <div class="item">
+                                        <i></i>
+                                        <p @click="showThree(firstIndex)" :class="item.isLast==0?'':'paddingLeft'"><em :class="activeThreeIndex===firstIndex?'checked':''"></em>{{item.name}}</p>
+                                    </div>
+                                    <ul v-if="activeThreeIndex===firstIndex" :class="activeThreeIndex===firstIndex?'display':''" class="threeNav">
+                                        <li v-for="(secItem,secIndex) in objectNavList" v-if="item.id==secItem.parentId">
+                                            <div class="item">
+                                                <i></i>
+                                                <a v-if="secItem.name=='信息安全'" :href="'infoSecurity.html?id='+secItem.id"><em></em>{{secItem.name}}</a>
+                                                <p v-else @click="showFour(secIndex,secItem.isLast)" :class="secItem.isLast==0?'':'paddingLeft'"><em v-if="secItem.isLast==0" :class="activeFourIndex===secIndex?'checked':''"></em>{{secItem.name}}<img v-if="secItem.type!=0" onclick="$('.tcHide').show()" src="images/template/icon-change.png"/></p>
+                                            </div>
+                                            <ul v-if="activeFourIndex===secIndex" :class="activeFourIndex===secIndex?'display':''">
+                                                <li v-for="(thirdItem,thirdIndex) in objectNavList" v-if="secItem.id==thirdItem.parentId">
+                                                    <div class="item"><i></i><p class="paddingLeft">{{thirdItem.name}}<img src="images/template/icon-change.png"/></p></div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--<table>
                     <thead>
                     <tr>
                         <th>业务系统名称</th>
@@ -39,20 +86,20 @@
                     </tr>
                     </thead>
                     <tbody id="table">
-                    <tr>
-                        <td><a href="evaluationObject1.html"><img src="images/template/‭icon-open.png"/>大数据治理应用平台</a></td>
+                    <tr v-for="(item,index) in objectList">
+                        <td><a :href="'evaluationObject1.html?parentId='+item.parentId"><img src="images/template/‭icon-open.png"/>{{item.name}}</a></td>
                         <td>2020-02-14</td>
                         <td class="green">达标</td>
-                        <td>56253715@qq.com</td>
+                        <td>{{item.email}}</td>
                         <td>
-                            <img v-on:click="objectInfo(2)" src="images/template/icon-change.png"/>
-                            <img src="images/template/icon-del.png"/>
+                            <img @click="objectInfo(1,index,item.id)" src="images/template/icon-change.png"/>
+                            <img @click="delObjectInfo(item.id,index)" src="images/template/icon-del.png"/>
                             <span class="btn">手动考评</span>
                             <span class="btn1">考评结果</span>
                         </td>
                     </tr>
                     </tbody>
-                </table>
+                </table>-->
             </div>
         </div>
     </div>
@@ -71,22 +118,22 @@
                 <span>考评项目：</span>
                 <div class="checkTree">
                     <ul>
-                        <li v-for="(item,index) in objectList">
+                        <li v-for="(item,index) in objectNavList" v-if="item.parentId==0">
                             <div class="checkboxList">
-                                <div @click="firstCheckButton(index)" class="checkbox item-first checked" ref="liFirst"><img src="images/template/icon-check.png" alt=""></div>
-                                <p>{{item.firstName}}</p>
+                                <div @click="checkButton(item.id,index)" :class="needIdList!=''&&needIdList!=null&&needIdList.includes(item.id)?'checkbox item-check checked':'checkbox item-check'" :id="item.id"><img src="images/template/icon-check.png" alt=""></div>
+                                <p>{{item.name}}</p>
                             </div>
-                            <ul v-if="item.secList">
-                                <li v-for="(secItem,secIndex) in item.secList">
+                            <ul>
+                                <li v-for="(secItem,secIndex) in objectNavList" v-if="item.id==secItem.parentId">
                                     <div class="checkboxList">
-                                        <div @click="secCheckButton(secIndex,index)" class="checkbox item-sec checked" :id="index+'_'+secIndex"><img src="images/template/icon-check.png" alt=""></div>
-                                        <p>{{secItem.secName}}</p>
+                                        <div @click="checkButton(secItem.id,secIndex)" :class="needIdList!=''&&needIdList!=null&&needIdList.includes(secItem.id)?'checkbox item-check checked':'checkbox item-check'" :id="secItem.id"><img src="images/template/icon-check.png" alt=""></div>
+                                        <p>{{secItem.name}}</p>
                                     </div>
-                                    <ul v-if="secItem.thirdList">
-                                        <li v-for="(thirdItem,thirdIndex) in secItem.thirdList">
+                                    <ul>
+                                        <li v-for="(thirdItem,thirdIndex) in objectNavList" v-if="secItem.id==thirdItem.parentId">
                                             <div class="checkboxList">
-                                                <div @click="thirdCheckButton(thirdIndex,secIndex,index)" class="checkbox item-third checked" :id="index+'_'+secIndex+'_'+thirdIndex"><img src="images/template/icon-check.png" alt=""></div>
-                                                <p>{{thirdItem.thirdName}}</p>
+                                                <div @click="checkButton(thirdItem.id,thirdIndex)" :class="needIdList!=''&&needIdList!=null&&needIdList.includes(thirdItem.id)?'checkbox item-check checked':'checkbox item-check'" :id="thirdItem.id"><img src="images/template/icon-check.png" alt=""></div>
+                                                <p>{{thirdItem.name}}</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -97,9 +144,35 @@
                 </div>
             </div>
             <div class="itemList paddingLeft">
-                <a class="btn" v-on:click="objectInfo(1)">保存</a>
-                <a class="btn1" v-on:click="objectInfo(0)">取消</a>
+                <a v-if="isEdit" class="btn" @click="saveObjectInfo">保存</a>
+                <a v-else class="btn" @click="changeObjectInfo">保存</a>
+                <a class="btn1" @click="objectInfo(0)">取消</a>
             </div>
+        </div>
+    </div>
+    <!--编辑考评主体-->
+    <div class="tcHide">
+        <div class="masking" onclick="$('.tcHide').hide()"></div>
+        <div class="tcCon">
+            <div class="tcTit"><span>考评主体管理</span></div>
+            <div class="monitorItem">
+                <div class="item">
+                    <ul>
+                        <li>业务监视器1</li>
+                        <li>业务监视器2</li>
+                    </ul>
+                </div>
+                <div class="itemPic">
+                    <img src="images/template/icon-right.png"/>
+                    <img src="images/template/icon-left.png"/>
+                </div>
+                <div class="item">
+                    <ul>
+                        <li>业务监视器3</li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
