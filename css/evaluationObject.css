@@ -95,7 +95,6 @@
 }
 .object .table ul{
     overflow: hidden;
-    /*display: none;*/
 }
 .object .table ul li{
     border-bottom: 1px solid #d8dce5;

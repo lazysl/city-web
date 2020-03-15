@@ -50,13 +50,13 @@
                                     <span class="btn1">考评结果</span>
                                 </div>
                             </div>
-                            <ul v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''" class="subNav">
+                            <ul v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
                                 <li v-for="(firstItem,firstIndex) in objectNavList" v-if="firstItem.parentId==0">
                                     <div class="item">
                                         <i></i>
                                         <p @click="showThree(firstIndex)" :class="firstItem.isLast==0?'':'paddingLeft'"><em :class="activeThreeIndex===firstIndex?'checked':''"></em>{{firstItem.name}}</p>
                                     </div>
-                                    <ul v-if="activeThreeIndex===firstIndex" :class="activeThreeIndex===firstIndex?'display':''" class="threeNav">
+                                    <ul v-if="activeThreeIndex===firstIndex" :class="activeThreeIndex===firstIndex?'display':''">
                                         <li v-for="(secItem,secIndex) in objectNavList" v-if="firstItem.id==secItem.parentId">
                                             <div class="item">
                                                 <i></i>

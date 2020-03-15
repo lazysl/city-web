@@ -1,5 +1,5 @@
 .model .modelCon {
-    overflow: hidden;
+    overflow-y: scroll;
 }
 .model .modelCon .tabList{
     overflow: hidden;
@@ -76,6 +76,19 @@
     padding: 0 10px;
     font-size: 12px;
 }
+.model .modelCon .table .tabTit input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    width: 50px;
+    font-size: 14px;
+    margin: 0 10px;
+}
 .model .modelCon .table .tabTit .leftTit{
     overflow: hidden;
     display: flex;
@@ -87,161 +100,109 @@
     display: none;
 }
 .model .modelCon .table .tabCon.checked .conList{display: block}
-.model .modelCon .table .conList ul{
+.model .modelCon .table .tabCon .conList ul{
     overflow: hidden;
-    width: 96%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.model .modelCon .table .conList ul li .itemList{
-    overflow: hidden;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.model .modelCon .table .conList ul li img {
-    width: 14px;
-}
-.model .modelCon .table .conList ul li p{
-    overflow: hidden;
-    border: none;
-    text-align: center;
-    padding: 0 10px;
-    font-size: 12px;
-}
-.model .modelCon .table .conList ul li span{
-    overflow: hidden;
-    font-size: 12px;
-    height: 36px;
-    line-height: 36px;
-    padding: 0 5px
-}
-.model .modelCon .table .conList ul li .navSub{
-    display: block;
     width: 100%;
 }
-.model .modelCon .table .conList ul li .navSub li{
+.model .modelCon .table .tabCon .conList ul li p,.model .modelCon .table .tabCon .conList ul li a{
+    overflow: hidden;
+    font-size: 12px;
+    width: 16%;
+    padding: 10px;
+    text-align: center;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+    color: #333;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.model .modelCon table tr td span.red{
-    background: #f00
+.model .modelCon .table .tabCon .conList ul li p:first-child {
+    width: 26%;
+    justify-content: flex-start;
+    padding-left: 20px;
+    cursor: pointer;
 }
-.model .modelCon table tr td span.orange{
-    background: #fd6123
+.model .modelCon .table .tabCon .conList ul li p.paddingLeft{padding-left: 20px}
+.model .modelCon .table .tabCon .conList ul li a{width: auto}
+.model .modelCon .table .tabCon .conList ul li img{
+    width: 20px;
+    margin: 0 5px;
+    cursor: pointer;
 }
-.model .modelCon table tr td span.green{
-    background: #00ff00
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.model .modelCon .item{
+.model .modelCon .table .tabCon .conList ul li em{
     overflow: hidden;
-    width: 50%;
-    float: left;
-    margin-bottom: 30px;
+    display: block;
+    background: url("../images/template/‭icon-open.png") no-repeat;
+    background-size: 100% 100%;
+    width: 16px;
+    height: 16px;
+    margin: 0 5px;
+    cursor: pointer;
 }
-.model .modelCon .item p{
-    overflow: hidden;
-    font-size: 14px;
-    line-height: 24px;
+.model .modelCon .table .tabCon .conList ul li em.checked{
+    background: url("../images/template/icon-close.png") no-repeat;
+    background-size: 100% 100%;
 }
-.model .modelCon .item .input{
+.model .modelCon .table .tabCon .conList ul li i{
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 15px;
+    height: 1px;
+    background: #d8dce5;
+}
+.model .modelCon .table .tabCon .conList ul li ul li ul li ul li i,.model .modelCon .table .tabCon .conList ul li i.top{top: 25px}
+.model .modelCon .table .tabCon .conList ul li input{
     overflow: hidden;
     resize: none;
     outline: none;
     background: transparent;
-    padding: 10px;
+    padding: 6px 10px;
     color: #333;
     cursor: pointer;
     border: solid 1px #d8dce5;
-    min-width: 100px;
-    width: 100px;
+    width: 50px;
+    font-size: 14px;
     margin: 0 10px;
 }
-.model .modelCon .item .checkList{margin: 20px 10px}
-.model .modelCon .item .itemCon {
-    overflow: hidden;
-    margin-bottom: 30px;
-}
-.model .modelCon .item .itemCon.flex{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-.model .modelCon .item .itemCon.flex em{
-    overflow: hidden;
-    width: 3px;
-    height: 14px;
-    background: #02a7f4;
-    margin-right: 5px;
-    margin-top: 3px;
-}
-.model .modelCon .item .itemCon .checkList{margin: 0 10px}
-.model .modelCon .item .itemCon .modelList{
-    overflow: hidden;
-    border-left: dashed 1px #d8dce5;
-    margin-left: 19px;
-    /*display: none;*/
-}
-.model .modelCon .item .itemCon .modelList .checkList{margin: 0}
-.model .modelCon .item .itemCon .modelList li{
+.model .modelCon .table .tabCon .conList ul li .item{
     overflow: hidden;
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    position: relative;
+}
+.model .modelCon .table .tabCon .conList ul li .item .manipulate{
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 26%;
+}
+.model .modelCon .table .tabCon .conList ul li .item .manipulate span{margin: 0 5px;}
+.model .modelCon .table .tabCon .conList ul li ul {
+    display: none;
+    margin-top: -15px
+}
+.model .modelCon .table .tabCon .conList ul li ul li {
+    margin-left: 32px;
+    border: none;
+    border-left: 1px solid #d8dce5;
+}
+.model .modelCon .table .tabCon .conList ul li ul li:first-child{padding-top: 10px}
+.model .modelCon .table .tabCon .conList ul li ul li:last-child{padding-bottom: 10px}
+.model .modelCon .table .tabCon .conList ul li ul li p {
+    width: auto;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+.model .modelCon .table .tabCon .conList ul li ul li p span{
+    display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px 0 0;
+    margin: 0 5px;
 }
-.model .modelCon .item .itemCon .modelList li i{
-    overflow: hidden;
-    width: 30px;
-    height: 1px;
-    border-bottom: dashed 1px #d8dce5;
-    margin: 0 9px;
-}
-.model .modelCon .item .itemCon .modelList li img{margin-right: 10px}
+.model .modelCon .table .tabCon .conList ul li ul li .item{border: none;padding: 0}
+.model .modelCon .table .tabCon .conList ul li ul li ul{margin: -12px 0}
+.model .modelCon .table .tabCon .conList ul li ul li ul li{margin-left: 22px;}

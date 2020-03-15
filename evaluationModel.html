@@ -25,115 +25,157 @@
             <div class="title">
                 <span>考评模型管理</span>
             </div>
-            <div class="modelCon">
-                <div class="tabList">
-                    <ul>
-                        <li v-for="(day,index) in tabList" :class="{checked:dayIndex==index}" v-on:click="tabClick(day,index)"><span>{{day.name}}</span></li>
-                    </ul>
-                    <a class="btn" v-on:click="saveMode(dayId)">保存</a>
-                </div>
+            <div class="modelCon" id="modelCon">
                 <div class="table">
                     <div class="tabCon checked">
                         <div class="tabTit">
                             <div class="leftTit">
-                                <span>可用性</span>
-                                <p>{{usability.total}}%</p>
-                                <img v-on:click="changePercent(1,'可用性')" src="images/template/icon-change.png"/>
+                                <span>业务系统考评总体达标条件：总分≥</span>
+                                <input type="text" v-model="objectTotal" oninput = "value=value.replace(/[^\d]/g,'')">
                             </div>
-                            <i></i>
-                        </div>
-                        <div class="conList">
-                            <ul>
-                                <li><div class="itemList"><span>服务器可用性</span><p>{{usability.project.server}}%</p><img v-on:click="changePercent(1_0,'服务器可用性')" src="images/template/icon-change.png"/></div></li>
-                                <li><div class="itemList"><span>中间件可用性</span><p>{{usability.project.middleware}}%</p><img v-on:click="changePercent(1_1,'中间件可用性')" src="images/template/icon-change.png"/></div></li>
-                                <li><div class="itemList"><span>数据库可用性</span><p>{{usability.project.sql}}%</p><img v-on:click="changePercent(1_2,'数据库可用性')" src="images/template/icon-change.png"/></div></li>
-                                <li><div class="itemList"><span>物联设备可用性</span><p>{{usability.project.internet}}%</p><img v-on:click="changePercent(1_3,'物联设备可用性')" src="images/template/icon-change.png"/></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tabCon">
-                        <div class="tabTit">
-                            <div class="leftTit">
-                                <span>性能告警</span>
-                                <p>{{capability.total}}%</p>
-                                <img v-on:click="changePercent(2,'性能告警')" src="images/template/icon-change.png"/>
-                            </div>
-                            <i></i>
+                            <!--<i></i>-->
                         </div>
                         <div class="conList">
                             <ul>
                                 <li>
-                                    <div class="itemList"><span>服务器</span><p>{{capability.project.server.total}}%</p><img v-on:click="changePercent(2_0,'服务器')" src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{capability.project.server.level.critical}}%</p><img v-on:click="changePercent(2_0_0,'严重告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{capability.project.server.level.malfunction}}%</p><img v-on:click="changePercent(2_0_1,'故障告警率')" src="images/template/icon-change.png"/></li>
+                                    <div class="item"><p @click="showSub(1)"><em :class="activeSubIndex===1?'checked':''"></em>业务考评（40）</p></div>
+                                    <ul v-if="activeSubIndex===1" :class="activeSubIndex===1?'display':''">
+                                        <li>
+                                            <div class="item"><i></i><p @click="showThree(1)"><em :class="activeThreeIndex===1?'checked':''"></em>业务健康（60）</p></div>
+                                            <ul v-if="activeThreeIndex===1" :class="activeThreeIndex===1?'display':''">
+                                                <li>
+                                                    <div class="item"><i></i><p @click="showFour(1)"><em :class="activeFourIndex===1?'checked':''"></em>页面可用性（5）</p></div>
+                                                    <ul v-if="activeFourIndex===1" :class="activeFourIndex===1?'display':''">
+                                                        <li>
+                                                            <div class="item"><i></i><p class="paddingLeft">达标条件：页面状态为<span class="btn">正常</span></p></div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p @click="showFour(2)"><em :class="activeFourIndex===2?'checked':''"></em>页面响应时间（3）</p></div>
+                                                    <ul v-if="activeFourIndex===2" :class="activeFourIndex===2?'display':''">
+                                                        <li>
+                                                            <div class="item"><i></i><p class="paddingLeft">达标条件：响应时间的健康状态为<span class="btn">正常</span></p></div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p @click="showFour(3)"><em :class="activeFourIndex===3?'checked':''"></em>数据质量（10）</p></div>
+                                                    <ul v-if="activeFourIndex===3" :class="activeFourIndex===3?'display':''">
+                                                        <li>
+                                                            <div class="item"><i></i><p class="paddingLeft">达标条件：数据质量综合评分≥<input type="text" oninput = "value=value.replace(/[^\d]/g,'')"></p></div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p @click="showFour(4)"><em :class="activeFourIndex===4?'checked':''"></em>数据共享（10）</p></div>
+                                                    <ul v-if="activeFourIndex===4" :class="activeFourIndex===4?'display':''">
+                                                        <li>
+                                                            <div class="item"><i></i><p class="paddingLeft">达标条件：数据共享状态为<span class="btn">正常</span></p></div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="item"><i></i><p @click="showThree(2)"><em :class="activeThreeIndex===2?'checked':''"></em></em>信息安全（20）</p></div>
+                                            <ul v-if="activeThreeIndex===2" :class="activeThreeIndex===2?'display':''">
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>安全漏洞（5）</p></div>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="item">
+                                                                <i></i>
+                                                                <p class="paddingLeft">
+                                                                    达标条件：加固比率≥<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">% &nbsp; &nbsp; &nbsp;
+                                                                    危急漏洞≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    高风险漏洞≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    中风险漏洞≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>病毒攻击（5）</p></div>
+                                                    <ul>
+                                                        <li>
+                                                            <div class="item">
+                                                                <i></i>
+                                                                <p class="paddingLeft">
+                                                                    达标条件：查杀比率≥<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">% &nbsp; &nbsp; &nbsp;
+                                                                    病毒数量≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个
+                                                                </p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>端口扫描（0）</p></div>
+                                                    <ul>
+                                                        <li><div class="item"><i></i><p class="paddingLeft">达标条件：端口扫描数≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>强力攻击（0）</p></div>
+                                                    <ul>
+                                                        <li><div class="item"><i></i><p class="paddingLeft">达标条件：强力攻击数≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>木马后门攻击（0）</p></div>
+                                                    <ul>
+                                                        <li><div class="item"><i></i><p class="paddingLeft">达标条件：木马后门攻击数≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>拒绝访问攻击（0）</p></div>
+                                                    <ul>
+                                                        <li><div class="item"><i></i><p class="paddingLeft">达标条件：拒绝访问攻击数≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>缓冲区溢出攻击（0）</p></div>
+                                                    <ul>
+                                                        <li><div class="item"><i></i><p class="paddingLeft">达标条件：缓冲区溢出攻击数≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>网络蠕虫攻击（0）</p></div>
+                                                    <ul>
+                                                        <li><div class="item"><i></i><p class="paddingLeft">达标条件：网络蠕虫攻击数≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <div class="item"><i></i><p><em ></em>IP碎片攻击（0）</p></div>
+                                                    <ul>
+                                                        <li><div class="item"><i></i><p class="paddingLeft">达标条件：IP碎片攻击数≤<input type="text" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="item"><i></i><p><em ></em>物联网设备状态（20）</p></div>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="itemList"><span>中间件</span><p>{{capability.project.middleware.total}}%</p><img v-on:click="changePercent(2_1,'中间件')" src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{capability.project.middleware.level.critical}}%</p><img v-on:click="changePercent(2_1_0,'严重告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{capability.project.middleware.level.malfunction}}%</p><img v-on:click="changePercent(2_1_1,'故障告警率')" src="images/template/icon-change.png"/></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="itemList"><span>数据库</span><p>{{capability.project.sql.total}}%</p><img v-on:click="changePercent(2_2,'数据库')" src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{capability.project.sql.level.critical}}%</p><img v-on:click="changePercent(2_2_0,'严重告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{capability.project.sql.level.malfunction}}%</p><img v-on:click="changePercent(2_2_1,'故障告警率')" src="images/template/icon-change.png"/></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tabCon">
-                        <div class="tabTit">
-                            <div class="leftTit">
-                                <span>数据质量</span>
-                                <p>{{quality.total}}%</p>
-                                <img v-on:click="changePercent(3,'数据质量')" src="images/template/icon-change.png"/>
-                            </div>
-                            <i></i>
-                        </div>
-                        <div class="conList">
-                            <ul>
-                                <li><div class="itemList"><span>综合评分</span><p>{{quality.complex}}%</p><img v-on:click="changePercent(3_0,'综合评分')" src="images/template/icon-change.png"/></div></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="tabCon">
-                        <div class="tabTit">
-                            <div class="leftTit">
-                                <span>信息安全</span>
-                                <p>{{information.total}}%</p>
-                                <img v-on:click="changePercent(4,'信息安全')" src="images/template/icon-change.png"/>
-                            </div>
-                            <i></i>
-                        </div>
-                        <div class="conList">
-                            <ul>
-                                <li>
-                                    <div class="itemList"><span>服务器</span><p>{{information.project.server.total}}%</p><img v-on:click="changePercent(4_0,'服务器')" src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>危急告警率</span><p>{{information.project.server.level.critical}}%</p><img v-on:click="changePercent(4_0_0,'危急告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>高风险告警率</span><p>{{information.project.server.level.malfunction}}%</p><img v-on:click="changePercent(4_0_1,'高风险告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>中风险告警率</span><p>{{information.project.server.level.moderate}}%</p><img v-on:click="changePercent(4_0_2,'中风险告警率')" src="images/template/icon-change.png"/></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="itemList"><span>中间件</span><p>{{information.project.middleware.total}}%</p><img v-on:click="changePercent(4_1,'中间件')" src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{information.project.middleware.level.critical}}%</p><img v-on:click="changePercent(4_1_0,'危急告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{information.project.middleware.level.malfunction}}%</p><img v-on:click="changePercent(4_1_1,'高风险告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>中风险告警率</span><p>{{information.project.middleware.level.moderate}}%</p><img v-on:click="changePercent(4_1_2,'中风险告警率')" src="images/template/icon-change.png"/></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <div class="itemList"><span>数据库</span><p>{{information.project.sql.total}}%</p><img v-on:click="changePercent(4_2,'数据库')" src="images/template/icon-change.png"/></div>
-                                    <ul class="navSub">
-                                        <li><span>严重告警率</span><p>{{information.project.sql.level.critical}}%</p><img v-on:click="changePercent(4_2_0,'危急告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>故障告警率</span><p>{{information.project.sql.level.malfunction}}%</p><img v-on:click="changePercent(4_2_1,'高风险告警率')" src="images/template/icon-change.png"/></li>
-                                        <li><span>中风险告警率</span><p>{{information.project.sql.level.moderate}}%</p><img v-on:click="changePercent(4_2_2,'中风险告警率')" src="images/template/icon-change.png"/></li>
+                                    <div class="item"><p @click="showSub(2)"><em :class="activeSubIndex===2?'checked':''"></em>技术考评（60）</p></div>
+                                    <ul v-if="activeSubIndex===2" :class="activeSubIndex===2?'display':''">
+                                        <li v-for="(item,index) in deviceTxt">
+                                            <div class="item"><i></i><p @click="showThree(index)"><em :class="activeThreeIndex===index?'checked':''"></em>{{item.name}}</p></div>
+                                            <ul v-if="activeThreeIndex===index" :class="activeThreeIndex===index?'display':''">
+                                                <li>
+                                                    <div class="item">
+                                                        <i class="top"></i>
+                                                        <p class="paddingLeft">
+                                                            达标条件：严重告警数≤<input type="text" v-model="item.maxHeight" oninput="value=value.replace(/[^\d]/g,'')">个&nbsp; &nbsp; &nbsp;
+                                                            故障告警数≤<input type="text" v-model="item.midHeight" oninput="value=value.replace(/[^\d]/g,'')">个
+                                                        </p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -143,27 +185,13 @@
             </div>
         </div>
     </div>
-    <div class="tcHide" v-if="isPop" :class="isPop?'display':''">
-        <div class="masking" v-on:click="changePercent(0)"></div>
-        <div class="tcCon">
-            <img class="off" src="images/template/icon-off.png" v-on:click="changePercent(0)"/>
-            <div class="itemList"><span>{{name}}修改：</span><input type="number" v-model="changeTxt" onkeyup="(this.v=function(){this.value=this.value.replace(/[^0-9-]+\.\d+/,'');}).call(this)" onblur="this.v();"></div>
-            <div class="itemErr"><span>{{errMessage}}</span></div>
-            <div class="itemBtn"><a class="btn" v-on:click="savePercent(num)">保存</a></div>
-        </div>
-    </div>
 </div>
 <script src="js/public.js"></script>
 <script src="js/evaluationModel.js"></script>
 <script>
-    $(".tabTit i,.tabTit .leftTit span,.tabTit .leftTit p").click(function () {
+    /*$(".tabTit i,.tabTit .leftTit span,.tabTit .leftTit p").click(function () {
         $(this).parents(".tabCon").toggleClass("checked").siblings(".tabCon").removeClass("checked");
-    });
-    $(function () {
-        var docHeight = window.innerHeight || document.documentElement.clientHeight;
-        $("#content .layout").css("height", docHeight - 142);
-        $(".table").css("max-height", docHeight - 280);
-    });
+    });*/
 </script>
 </body>
 </html>
