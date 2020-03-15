@@ -12,6 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="wap-font-scale" content="no">
     <link rel="stylesheet" href="css/template.css">
+    <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
     <link rel="stylesheet" href="css/evaluationPlan.css">
     <script src="js/jquery-2.2.3.min.js"></script>
     <script src="js/vue.js"></script>
@@ -27,10 +28,11 @@
             </div>
             <div class="nameList">
                 <ul>
-                    <li><span>考评对象名称：</span><p>大数据治理应用平台</p></li>
-                    <li><span>起始日期：</span><input/><img src="images/template/icon-time.png"/></li>
-                    <li><span>结束日期：</span><input/><img src="images/template/icon-time.png"/></li>
-                    <li><a class="btn">保存</a></li>
+                    <li id="objectName"><span>考评对象名称：</span><p></p></li>
+                    <!--<li><span>起始日期：</span><input/><img src="images/template/icon-time.png"/></li>
+                    <li><span>结束日期：</span><input/><img src="images/template/icon-time.png"/></li>-->
+                    <li><span>日期：</span><input id="demo"/></li>
+                    <li><a class="btn" onclick="$.savePlan()">保存</a></li>
                 </ul>
             </div>
             <div class="checkCon">
@@ -40,7 +42,7 @@
                         <p>每日</p>
                     </div>
                     <div class="itemTime"><span>时间：</span><input class="time" type="text" id="dayTime"/></div>
-                    <div class="item">
+                    <!--<div class="item">
                         <p>报表日期：</p>
                         <div class="checkList">
                             <input type="checkbox" class="checkbox" id="Saturday"><label for="Saturday"><img src="images/template/icon-check.png" alt=""></label>
@@ -50,11 +52,7 @@
                             <input type="checkbox" class="checkbox" id="Sunday"><label for="Sunday"><img src="images/template/icon-check.png" alt=""></label>
                             <p>周日</p>
                         </div>
-                    </div>
-                    <div class="item">
-                        <p>接收报表的邮件地址：</p>
-                        <input class="input" type="email" id="dayInput" value="">
-                    </div>
+                    </div>-->
                 </div>
                 <div class="checkItem">
                     <div class="checkList position checked">
@@ -93,10 +91,6 @@
                             <p>周六</p>
                         </div>
                     </div>
-                    <div class="item">
-                        <p>接收报表的邮件地址：</p>
-                        <input class="input" type="email" id="weekInput">
-                    </div>
                 </div>
                 <div class="checkItem marginBottom">
                     <div class="checkList position checked">
@@ -109,23 +103,18 @@
                         <input class="input inputTime" type="text" id="mountDay">
                         <p>日</p>
                     </div>
-                    <div class="item">
-                        <p>接收报表的邮件地址：</p>
-                        <input class="input" type="email" id="mountInput">
-                    </div>
                 </div>
-                <a class="btn" onclick="$.savePlan()">保存</a>
             </div>
         </div>
     </div>
 </div>
 </body>
 <script src="js/public.js"></script>
-<script src="js/evaluationPlan.js"></script>
 <script src="js/jquery-clock-timepicker.min.js"></script>
+<script type="text/javascript" src="js/moment.min.js"></script>
+<script type="text/javascript" src="js/daterangepicker.min.js"></script>
+<script src="js/evaluationPlanDetail.js"></script>
 <script type="text/javascript">
-    $.initPlan();
-    $.initMail();
     $(document).ready(function() {
         $('.time').clockTimePicker({});
     });
@@ -136,6 +125,8 @@
         if (docWidth <= 1366) {
             $(".checkCon").css("max-height", docHeight - 182);
         }
+        if (urlParams("id")==0) $("#objectName").hide()
     });
+    $.initPlan();
 </script>
 </html>

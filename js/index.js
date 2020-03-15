@@ -48,9 +48,17 @@ $.extend({
                         } else if (i == 'order') {
                             name = '工单';
                             type = 5;
-                            critical = data[i].open;
-                            warning = data[i].resolved;
-                            clear = data[i].closed;
+                            if (JSON.stringify(data[i]) == "{}") {
+                                totalRecords = 0;
+                                critical = 0;
+                                warning = 0;
+                                clear = 0
+                            } else {
+                                totalRecords = data[i].totalRecords;
+                                critical = data[i].open;
+                                warning = data[i].resolved;
+                                clear = data[i].closed;
+                            }
                             pic1 = "icon12";
                             pic2 = "icon13";
                             pic3 = "icon14";
@@ -189,39 +197,39 @@ $.extend({
                     }
                     $(".tcHide ul").empty().append(html)
                     if (type == 1) {
-                        if (waringTypes==''){
+                        if (waringTypes == '') {
                             $(".tcHide .tcTit span").empty().append("数据库概览")
-                        }else {
-                            if (waringTypes==1) $(".tcHide .tcTit span").empty().append("数据库-严重告警");
-                            if (waringTypes==2) $(".tcHide .tcTit span").empty().append("数据库-一般告警");
-                            if (waringTypes==3) $(".tcHide .tcTit span").empty().append("数据库-正常告警")
+                        } else {
+                            if (waringTypes == 1) $(".tcHide .tcTit span").empty().append("数据库-严重告警");
+                            if (waringTypes == 2) $(".tcHide .tcTit span").empty().append("数据库-一般告警");
+                            if (waringTypes == 3) $(".tcHide .tcTit span").empty().append("数据库-正常告警")
                         }
                     }
                     if (type == 2) {
-                        if (waringTypes==''){
+                        if (waringTypes == '') {
                             $(".tcHide .tcTit span").empty().append("中间件概览")
-                        }else {
-                            if (waringTypes==1) $(".tcHide .tcTit span").empty().append("中间件-严重告警");
-                            if (waringTypes==2) $(".tcHide .tcTit span").empty().append("中间件-一般告警");
-                            if (waringTypes==3) $(".tcHide .tcTit span").empty().append("中间件-正常告警")
+                        } else {
+                            if (waringTypes == 1) $(".tcHide .tcTit span").empty().append("中间件-严重告警");
+                            if (waringTypes == 2) $(".tcHide .tcTit span").empty().append("中间件-一般告警");
+                            if (waringTypes == 3) $(".tcHide .tcTit span").empty().append("中间件-正常告警")
                         }
                     }
                     if (type == 3) {
-                        if (waringTypes==''){
+                        if (waringTypes == '') {
                             $(".tcHide .tcTit span").empty().append("服务器概览")
-                        }else {
-                            if (waringTypes==1) $(".tcHide .tcTit span").empty().append("服务器-严重告警");
-                            if (waringTypes==2) $(".tcHide .tcTit span").empty().append("服务器-一般告警");
-                            if (waringTypes==3) $(".tcHide .tcTit span").empty().append("服务器-正常告警")
+                        } else {
+                            if (waringTypes == 1) $(".tcHide .tcTit span").empty().append("服务器-严重告警");
+                            if (waringTypes == 2) $(".tcHide .tcTit span").empty().append("服务器-一般告警");
+                            if (waringTypes == 3) $(".tcHide .tcTit span").empty().append("服务器-正常告警")
                         }
                     }
                     if (type == 5) {
-                        if (waringTypes==''){
+                        if (waringTypes == '') {
                             $(".tcHide .tcTit span").empty().append("工单概览")
-                        }else {
-                            if (waringTypes==1) $(".tcHide .tcTit span").empty().append("工单-正在运行");
-                            if (waringTypes==2) $(".tcHide .tcTit span").empty().append("工单-已解决");
-                            if (waringTypes==3) $(".tcHide .tcTit span").empty().append("工单-已关闭")
+                        } else {
+                            if (waringTypes == 1) $(".tcHide .tcTit span").empty().append("工单-正在运行");
+                            if (waringTypes == 2) $(".tcHide .tcTit span").empty().append("工单-已解决");
+                            if (waringTypes == 3) $(".tcHide .tcTit span").empty().append("工单-已关闭")
                         }
                     }
                 }

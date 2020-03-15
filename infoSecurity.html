@@ -24,36 +24,22 @@
         <div class="layout">
             <div class="crumbs">
                 <ul>
-                    <li><a href="evaluationObject.html">大数据治理应用平台</a></li>
+                    <li><a href="evaluationObject.html">{{objectName}}</a></li>
                     <li><span> >> </span></li>
-                    <li><a href="evaluationObject1.html">业务考评</a></li>
-                    <li><span> >> </span></li>
-                    <li><a href="evaluationObject2.html">信息安全</a></li>
+                    <li><a>信息安全</a></li>
                 </ul>
             </div>
-            <div class="securityCon">
+            <div class="securityCon" id="securityCon">
                 <div class="itemCon">
                     <div class="itemLeft"><span>安全漏洞</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>安全漏洞加固比率</span><input><span>%</span></div></li>
-                            <li>
-                                <div class="item marginRight"><p>服务器：</p></div>
-                                <div class="item"><span>危急</span><input><span>个</span></div>
-                                <div class="item"><span>高风险</span><input><span>个</span></div>
-                                <div class="item"><span>中风险</span><input><span>个</span></div>
-                            </li>
-                            <li>
-                                <div class="item marginRight"><p>数据库：</p></div>
-                                <div class="item"><span>危急</span><input><span>个</span></div>
-                                <div class="item"><span>高风险</span><input><span>个</span></div>
-                                <div class="item"><span>中风险</span><input><span>个</span></div>
-                            </li>
-                            <li>
-                                <div class="item marginRight"><p>中间件：</p></div>
-                                <div class="item"><span>危急</span><input><span>个</span></div>
-                                <div class="item"><span>高风险</span><input><span>个</span></div>
-                                <div class="item"><span>中风险</span><input><span>个</span></div>
+                            <li><div class="item"><span>安全漏洞加固比率</span><input type="text" v-model="leakPercent" oninput = "value=value.replace(/[^\d]/g,'')"><span>%</span></div></li>
+                            <li v-for="item in deviceTxt">
+                                <div class="item marginRight"><p>{{item.name}}:</p></div>
+                                <div class="item"><span>危急</span><input type="text" v-model="item.maxHeight" oninput = "value=value.replace(/[^\d]/g,'')"><span>个</span></div>
+                                <div class="item"><span>高风险</span><input type="text" v-model="item.midHeight" oninput = "value=value.replace(/[^\d]/g,'')"><span>个</span></div>
+                                <div class="item"><span>中风险</span><input type="text" v-model="item.minHeight" oninput = "value=value.replace(/[^\d]/g,'')"><span>个</span></div>
                             </li>
                         </ul>
                     </div>
@@ -62,8 +48,8 @@
                     <div class="itemLeft"><span>病毒攻击</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>病毒查杀比例</span><input><span>%</span></div></li>
-                            <li><div class="item"><span>病毒数量</span><input><span>个</span></div></li>
+                            <li><div class="item"><span>病毒查杀比率</span><input type="text" v-model="virusPercent" oninput = "value=value.replace(/[^\d]/g,'')"><span>%</span></div></li>
+                            <li><div class="item"><span>病毒数量</span><input type="text" v-model="virusNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>个</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -71,7 +57,7 @@
                     <div class="itemLeft"><span>端口扫描</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>端口扫描数</span><input><span>次</span></div></li>
+                            <li><div class="item"><span>端口扫描数</span><input type="text" v-model="portNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>次</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -79,7 +65,7 @@
                     <div class="itemLeft"><span>强力攻击</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>强力攻击数</span><input><span>次</span></div></li>
+                            <li><div class="item"><span>强力攻击数</span><input type="text" v-model="strongNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>次</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -87,7 +73,7 @@
                     <div class="itemLeft"><span>木马后门攻击</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>木马后门攻击数</span><input><span>次</span></div></li>
+                            <li><div class="item"><span>木马后门攻击数</span><input type="text" v-model="trojanNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>次</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -95,7 +81,7 @@
                     <div class="itemLeft"><span>拒绝访问攻击</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>拒绝访问攻击数</span><input><span>次</span></div></li>
+                            <li><div class="item"><span>拒绝访问攻击数</span><input type="text" v-model="refuseNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>次</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -103,7 +89,7 @@
                     <div class="itemLeft"><span>缓冲区溢出攻击</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>缓冲区溢出攻击数</span><input><span>次</span></div></li>
+                            <li><div class="item"><span>缓冲区溢出攻击数</span><input type="text" v-model="bufferNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>次</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -111,7 +97,7 @@
                     <div class="itemLeft"><span>网络蠕虫攻击</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>网络蠕虫攻击数</span><input><span>次</span></div></li>
+                            <li><div class="item"><span>网络蠕虫攻击数</span><input type="text" v-model="wormNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>次</span></div></li>
                         </ul>
                     </div>
                 </div>
@@ -119,20 +105,16 @@
                     <div class="itemLeft"><span>IP碎片攻击</span></div>
                     <div class="itemRight">
                         <ul>
-                            <li><div class="item"><span>IP碎片攻击数</span><input><span>次</span></div></li>
+                            <li><div class="item"><span>IP碎片攻击数</span><input type="text" v-model="ipNum" oninput = "value=value.replace(/[^\d]/g,'')"><span>次</span></div></li>
                         </ul>
                     </div>
                 </div>
-                <div class="btnList"><a class="btn">保存</a><a class="btn1">取消</a></div>
+                <div class="btnList"><a class="btn" @click="infoSecurity">保存</a><a class="btn1" @click="cancel">取消</a></div>
             </div>
         </div>
     </div>
 </div>
 </body>
 <script src="js/public.js"></script>
-<script>
-    let docHeight = window.innerHeight || document.documentElement.clientHeight;
-    document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
-    document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
-</script>
+<script src="js/infoSecurity.js"></script>
 </html>

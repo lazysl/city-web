@@ -154,7 +154,6 @@
     align-items: center;
     padding: 5px 0;
     position: relative;
-    /*border-bottom: 1px solid #d8dce5;*/
 }
 .object .table ul li .item .manipulate{
     overflow: hidden;
@@ -177,18 +176,19 @@
     justify-content: flex-start;
     cursor: pointer;
 }
+.object .table ul li ul li p span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .object .table ul li ul li .item{border: none;padding: 0}
 .object .table ul li ul li ul{margin: -12px 0}
 .object .table ul li ul li ul li{margin-left: 22px;}
-
-
-
-
-
-
-
-
-.object .securityCon{margin: 0 20px}
+/*信息安全*/
+.object .securityCon {
+    margin: 0 20px;
+    overflow-y: scroll;
+}
 .object .securityCon .itemCon {
     overflow: hidden;
     display: flex;
@@ -249,7 +249,7 @@
 .tcHide .tcCon .monitorItem {
     overflow: hidden;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     margin: 15px 10px 15px;
 }

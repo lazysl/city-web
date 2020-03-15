@@ -1,20 +1,31 @@
 new Vue({
     el: '#main',
     data: {
-        isObjectInfoPop:false,
-        objectName:"",
-        objectEmail:"",
+        isObjectInfoPop: false,
+        objectName: "",
+        objectEmail: "",
         objectNavList: [],   //考评菜单
-        isAutoEvaluation:false,
-        idList:[],   //考评菜单ID
-        needIdList:[],   //需要的考评菜单ID
+        isAutoEvaluation: false,
+        idList: [],   //考评菜单ID
+        needIdList: [],   //需要的考评菜单ID
         objectList: [],   //考评对象
-        isEdit:true,
-        objectID:'',
-        objectIndex:'',
+        isEdit: true,
+        objectID: '',
         activeSubIndex: -1,
         activeThreeIndex: -1,
         activeFourIndex: -1,
+        isDevicePop: false,
+        objectDeviceList: [],   //考评对象设备
+        deviceList: [],   //考评设备
+        selectedDeviceList: [],   //选中考评设备
+        deviceIndex: -1,   //设备索引
+        checkedLeftDeviceDisName: '',
+        checkedLeftDeviceName: '',
+        checkedRightDeviceDisName: '',
+        checkedRightDeviceName: '',
+        selectedObjectIndex: -1,  //选择考评对象的索引
+        deviceType: "",
+        deviceId: "",
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -63,10 +74,10 @@ new Vue({
             this.activeThreeIndex = this.activeThreeIndex == index ? -1 : index;
         },
         /*展示四级目录*/
-        showFour(index,isLast) {
-            if (isLast==0) this.activeFourIndex = this.activeFourIndex == index ? -1 : index;
+        showFour(index, isLast, type, device) {
+            if (isLast == 0 || (type != 0 && device && device.length > 0)) this.activeFourIndex = this.activeFourIndex == index ? -1 : index;
         },
-        objectInfo(obj, index, id) {
+        objectInfo(obj,index, id) {
             if (obj == 0) {
                 this.isAutoEvaluation = false;
                 this.isObjectInfoPop = !this.isObjectInfoPop;
@@ -81,7 +92,6 @@ new Vue({
                 this.objectName = this.objectList[index].name;
                 this.isAutoEvaluation = this.objectList[index].automatic == 0 ? false : true;
                 this.objectID = id;
-                this.objectIndex = index;
                 this.idList = JSON.parse(this.objectList[index].checkItems);
                 if (this.idList == null || this.idList == "") this.idList = [];
                 this.needIdList = JSON.parse(this.objectList[index].checkItems);
@@ -115,58 +125,135 @@ new Vue({
             this.getAjax(this.getCheckMenu(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.objectNavList = res.data;
-                    for (let i in res.data){
+                    for (let i in res.data) {
                         this.idList.push(res.data[i].id)
                     }
                 }
             })
         },
         addObjectInfo() {
-            let data={
-                "automatic":this.isAutoEvaluation?1:0,
-                "email":this.objectEmail,
-                "name":this.objectName,
-                "checkItems":JSON.stringify(this.idList),
+            let data = {
+                "automatic": this.isAutoEvaluation ? 1 : 0,
+                "email": this.objectEmail,
+                "name": this.objectName,
+                "checkItems": JSON.stringify(this.idList),
             };
             this.postAjax(this.addCheckInfo(data), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
                     this.initInfo()
-                }else alert(res.code_desc);
+                } else alert(res.code_desc);
             })
         },
-        saveObjectInfo(){
+        saveObjectInfo() {
             if (this.objectName != '') {
-                this.isEdit=true;
+                this.isEdit = true;
                 this.isObjectInfoPop = false;
                 this.addObjectInfo();
             } else this.isObjectInfoPop = true;
         },
-        changeObjectInfo(){
+        changeObjectInfo() {
             this.isObjectInfoPop = false;
-            let data={
-                "automatic":this.isAutoEvaluation?1:0,
-                "email":this.objectEmail,
-                "name":this.objectName,
-                "checkItems":JSON.stringify(this.idList),
-                "id":this.objectID,
+            let data = {
+                "automatic": this.isAutoEvaluation ? 1 : 0,
+                "email": this.objectEmail,
+                "name": this.objectName,
+                "checkItems": JSON.stringify(this.idList),
+                "id": this.objectID,
             };
             this.postAjax(this.updateCheckInfo(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
-                    this.objectList[this.objectIndex].name=this.objectName;
-                    this.objectList[this.objectIndex].email=this.objectEmail;
-                    this.objectList[this.objectIndex].automatic=this.isAutoEvaluation?1:0;
                     this.initInfo()
-                }else alert(res.code_desc);
+                } else alert(res.code_desc);
             })
         },
-        delObjectInfo(id,index){
+        delObjectInfo(id, index) {
             this.postAjax(this.deleteCheckInfo(id), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
-                    this.objectList.splice(index,1)
+                    this.objectList.splice(index, 1)
                     this.initInfo()
-                }else alert(res.code_desc);
+                } else alert(res.code_desc);
             })
         },
+        deviceInfo(obj, type, index, id) {
+            this.isDevicePop = !this.isDevicePop;
+            if (obj == 0) this.selectedDeviceList = [];
+            else if (obj == 1) {
+                this.selectedObjectIndex = index;
+                this.deviceType = type;
+                this.deviceId = id;
+                this.initDevice(type);
+            }
+        },
+        initDevice(type) {
+            this.getAjax(this.getCheckSqlList(type), (res) => {
+                if (res.code = 200 && res.code_desc == "success") {
+                    this.deviceList = res.data;
+                }
+            })
+        },
+        checkLeftDevice(name, id, index) {
+            this.checkedLeftDeviceDisName = name;
+            this.checkedLeftDeviceName = id;
+            this.deviceIndex = index;
+        },
+        checkRightDevice(name, id, index) {
+            this.checkedRightDeviceDisName = name;
+            this.checkedRightDeviceName = id;
+            this.deviceIndex = index;
+        },
+        addDevice() {
+            if (this.checkedLeftDeviceName != '') {
+                let arrData = {name: this.checkedLeftDeviceName, displayName: this.checkedLeftDeviceDisName};
+                this.selectedDeviceList.push(arrData);
+                this.deviceList.splice(this.deviceIndex, 1);
+                this.checkedLeftDeviceName = "";
+                this.checkedLeftDeviceDisName = ""
+            }
+        },
+        delDevice() {
+            if (this.checkedRightDeviceDisName != '') {
+                let arrData = {name: this.checkedRightDeviceName, displayName: this.checkedRightDeviceDisName};
+                this.deviceList.push(arrData);
+                this.selectedDeviceList.splice(this.deviceIndex, 1);
+                this.checkedRightDeviceName = "";
+                this.checkedRightDeviceDisName = ""
+            }
+        },
+        addObjectDevice(deviceData) {
+            let names = "", displayNames = "";
+            for (let i in deviceData) {
+                names += deviceData[i].name + ",";
+                displayNames += deviceData[i].displayName + ","
+            }
+            names = names.slice(0, names.length - 1);
+            displayNames = displayNames.slice(0, displayNames.length - 1);
+            let data = {
+                "displayName": names,
+                "name": displayNames,
+                "parentId": this.deviceId,
+                "type": this.deviceType,
+            };
+            this.postAjax(this.addCheckDevice(data), (res) => {
+                if (res.code == 200 || res.code_desc == "success") {
+                    this.initInfo()
+                } else alert(res.code_desc);
+            })
+        },
+        submitDevice() {
+            if (this.selectedDeviceList.length > 0) {
+                let data = this.objectList[this.selectedObjectIndex].deviceList[this.deviceType], arrData = [];
+                for (let i in this.selectedDeviceList) {
+                    for (let k in data) {
+                        if (data[k].name == this.selectedDeviceList[i].name) arrData.push(data[k].name)
+                    }
+                }
+                if (arrData.length > 0) alert("请勿添加重复数据");
+                else {
+                    this.addObjectDevice(this.selectedDeviceList);
+                    this.isDevicePop = false;
+                }
+            }
+        }
     },
     mounted() {
         this.$nextTick(() => {

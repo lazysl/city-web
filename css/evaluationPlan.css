@@ -4,7 +4,6 @@
     width: 100%;
 }
 .plan .checkCon {
-    overflow-x: hidden;
     overflow-y: scroll;
     margin: 0 20px;
     padding-bottom: 30px;
@@ -36,7 +35,7 @@
     font-size: 14px;
 }
 .plan .checkCon .checkItem .itemTime input{
-    width: 70px;
+    width: 100px;
     height: 24px;
     line-height: 24px;
     border: solid 1px #d8dce5;
@@ -75,6 +74,11 @@
     padding: 5px 10px;
     margin-right: 10px;
     text-align: center;
+}
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #333 !important;
+    -webkit-box-shadow: inset 0 0 0 1000px transparent!important;
+    box-shadow: inset 0 0 0 1000px #fff!important;
 }
 .plan .checkCon .checkItem .itemList1{
     overflow: hidden;
@@ -117,6 +121,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
 }
 .plan .nameList ul li{
     font-size: 14px;
@@ -124,11 +129,12 @@
     justify-content: flex-start;
     align-items: center;
     margin-right: 5%;
+    margin-bottom: 10px;
 }
 .plan .nameList ul li p{color: #02a7f4;}
 .plan .nameList ul li p.green{color: #36cfc9;}
 .plan .nameList ul li p.red{color: #f00;}
-.plan .nameList ul li a,.plan .nameList ul li img{margin: 0 10px;}
+.plan .nameList ul li img{margin: 0 10px;}
 .plan .nameList ul li input{
     overflow: hidden;
     resize: none;
