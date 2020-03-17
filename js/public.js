@@ -1,8 +1,8 @@
 var setting = {
     // www_url: "http://localhost:8080",
-    // www_url: "/cityapi",
+    www_url: "/znkp/cityapi",
     beiHang_url: '/serverapi',
-    www_url: "http://192.168.1.75:8080",
+    // www_url: "http://192.168.1.75:8080",
     // beiHang_url:'http://192.168.1.72:8060',
     apiKey: "f997bc19a9410ded2c0eb17f24e0690d",
 };
@@ -93,7 +93,10 @@ function delCookie(name) {
 
 var href = window.location.href;
 if (href.indexOf("login.html") < 0) {
-    if (getCookie("user") == null) {
+    /*if (getCookie("user") == null) {
+        window.location.href = "./login.html"
+    }*/
+    if (localStorage.getItem("user") == null) {
         window.location.href = "./login.html"
     }
 }

@@ -36,7 +36,8 @@ $.extend({
         $.postAjax(login(data), function (res) {
             if (res.code = 200){
                 localStorage.setItem("token",res.code_desc);
-                $.cookie("user", res.data.username,{ expires: 1, path: '/' });
+                // $.cookie("user", res.data.username,{ expires: 1, path: '/' });
+                localStorage.setItem("user", res.data.username);
                 window.location.href="./homepage.html"
             }else $(".submit span").show();
         });
