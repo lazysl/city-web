@@ -18,6 +18,7 @@ new Vue({
         bufferNum: '',   //缓冲区溢出攻击数
         wormNum: '',   //网络蠕虫攻击数
         ipNum: '',   //IP碎片攻击数
+        informationSecurity: ""
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -63,7 +64,23 @@ new Vue({
                     for (let i in res.data) {
                         if (res.data[i].id == this.urlParams("id")) {
                             this.objectName = res.data[i].name;
+                            this.informationSecurity = JSON.parse(res.data[i].informationSecurity)
                         }
+                    }
+                    this.leakPercent = this.informationSecurity[0].leakPercent;
+                    this.virusPercent = this.informationSecurity[0].virusPercent;
+                    this.virusNum = this.informationSecurity[0].virusNum;
+                    this.portNum = this.informationSecurity[0].portNum;
+                    this.strongNum = this.informationSecurity[0].strongNum;
+                    this.trojanNum = this.informationSecurity[0].trojanNum;
+                    this.refuseNum = this.informationSecurity[0].refuseNum;
+                    this.bufferNum = this.informationSecurity[0].bufferNum;
+                    this.wormNum = this.informationSecurity[0].wormNum;
+                    this.ipNum = this.informationSecurity[0].ipNum;
+                    for (let i in this.deviceTxt) {
+                        this.deviceTxt[i].maxHeight = this.informationSecurity[0].deviceTxt[i].maxHeight;
+                        this.deviceTxt[i].midHeight = this.informationSecurity[0].deviceTxt[i].midHeight;
+                        this.deviceTxt[i].minHeight = this.informationSecurity[0].deviceTxt[i].minHeight;
                     }
                 }
             })
@@ -95,18 +112,18 @@ new Vue({
                 })
             }
             let informationSecurity = [{
-                    leakPercent: this.leakPercent,   //安全漏洞比率
-                    virusPercent: this.virusPercent,   //病毒数比率
-                    virusNum: this.virusNum,   //病毒数
-                    portNum: this.portNum,   //端口数
-                    strongNum: this.strongNum,   //强力攻击数
-                    trojanNum: this.trojanNum,   //木马攻击数
-                    refuseNum: this.refuseNum,   //拒绝访问攻击数
-                    bufferNum: this.bufferNum,   //缓冲区溢出攻击数
-                    wormNum: this.wormNum,   //网络蠕虫攻击数
-                    ipNum: this.ipNum,   //IP碎片攻击数
-                    deviceTxt: deviceData,
-                }];
+                leakPercent: this.leakPercent,   //安全漏洞比率
+                virusPercent: this.virusPercent,   //病毒数比率
+                virusNum: this.virusNum,   //病毒数
+                portNum: this.portNum,   //端口数
+                strongNum: this.strongNum,   //强力攻击数
+                trojanNum: this.trojanNum,   //木马攻击数
+                refuseNum: this.refuseNum,   //拒绝访问攻击数
+                bufferNum: this.bufferNum,   //缓冲区溢出攻击数
+                wormNum: this.wormNum,   //网络蠕虫攻击数
+                ipNum: this.ipNum,   //IP碎片攻击数
+                deviceTxt: deviceData,
+            }];
             let data = {
                 id: this.urlParams("id"),
                 informationSecurity: JSON.stringify(informationSecurity)
