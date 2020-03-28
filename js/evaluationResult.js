@@ -1,17 +1,7 @@
 new Vue({
     el: '#main',
     data: {
-        tabList: [
-            {name: "用户", id: "1"},
-            {name: "部门", id: "2"},
-            {name: "角色", id: "3"},
-            {name: "资源", id: "4"}
-        ],
-        typeIndex:0,
-        typeId:'',
-        userList:'',  //用户
-        organizationList:'',  //部门
-        roleList:'',  //角色
+        resultList:""
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -39,35 +29,16 @@ new Vue({
             param = $.extend(param, {"ajaxtype": "POST"});
             this.jsonAjax(param, callbackSuc, callbackErr);
         },
-        tabClick(obj, index) {
-            this.typeIndex = index;
-            this.typeId = obj.id;
-        },
-        initUserList(){
-            this.getAjax(this.getUserList(), (res) => {
+        initResult(){
+            this.getAjax(this.getCheckResult(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
-                    this.userList = res.data;
-                }
-            })
-        },
-        initOrganization(){
-            this.postAjax(this.getOrganization(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
-                    this.organizationList = res.data;
-                }
-            })
-        },
-        initRoleList(){
-            this.getAjax(this.getRoleList(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
-                    this.roleList = res.data;
+                    this.resultList = res.data;
+                    console.log(this.resultList)
                 }
             })
         }
     },
     mounted() {
-        this.initUserList();
-        this.initOrganization();
-        this.initRoleList();
+        this.initResult()
     },
 });

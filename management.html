@@ -31,7 +31,7 @@
                         <li v-for="(item,index) in tabList" :class="{checked:typeIndex==index}" v-on:click="tabClick(item,index)"><span>{{item.name}}</span></li>
                     </ul>
                 </div>
-                <div class="userCon" v-if="typeIndex==0">
+                <div class="userCon" v-if="typeIndex==0" :class="typeIndex==0?'display':''">
                     <div class="item">
                         <span>用户名称</span>
                         <input placeholder="请输入用户名称"/>
@@ -62,16 +62,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr v-for="(item,index) in userList">
                                 <td>
                                     <div class="checkList">
                                         <input type="checkbox" class="checkbox" id="user1">
                                         <label for="user1"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>1</p>
+                                        <p>{{index+1}}</p>
                                     </div>
                                 </td>
-                                <td>admin</td>
-                                <td>admin</td>
+                                <td>{{item.username}}</td>
+                                <td>{{item.fullname}}</td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -92,7 +92,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="userCon" v-if="typeIndex==1">
+                <div class="userCon" v-if="typeIndex==1" :class="typeIndex==1?'display':''">
                     <div class="item">
                         <span>部门名称</span>
                         <input placeholder="请输入部门名称"/>
@@ -118,15 +118,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr v-for="(item,index) in organizationList">
                                 <td>
                                     <div class="checkList">
                                         <input type="checkbox" class="checkbox" id="department1">
                                         <label for="department1"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>1</p>
+                                        <p>{{index+1}}</p>
                                     </div>
                                 </td>
-                                <td>民治</td>
+                                <td>{{item.organization}}</td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -145,39 +145,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="userCon" v-if="typeIndex==2">
-                    <!--<div class="item">
-                        <p>用户列表<img v-on:click="flashData" src="images/template/icon-flash.png"/></p>
-                        <ul>
-                            <li v-for="(item,index) in userList" :class="{checked:userIndex==index}" v-on:click="checkUser(item.id,index,item)">{{item.username}}</li>
-                        </ul>
-                    </div>
-                    <div class="itemCon">
-                        <div class="itemList">
-                            <div class="itemPic">
-                                <img v-on:click="addUser(1)" src="images/template/icon-right.png"/>
-                                <img v-on:click="delAdminUser(1)" src="images/template/icon-left.png"/>
-                            </div>
-                            <div class="item">
-                                <p>管理员用户</p>
-                                <ul>
-                                    <li v-for="(item,index) in adminList" :class="{checked:adminIndex==index}" v-on:click="checkAdmin(item.id,index,item)">{{item.username}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="itemList">
-                            <div class="itemPic">
-                                <img v-on:click="addUser(2)" src="images/template/icon-right.png"/>
-                                <img v-on:click="delAdminUser(2)" src="images/template/icon-left.png"/>
-                            </div>
-                            <div class="item">
-                                <p>普通用户</p>
-                                <ul>
-                                    <li v-for="(item,index) in generalList" :class="{checked:generalIndex==index}" v-on:click="checkGeneral(item.id,index,item)">{{item.username}}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>-->
+                <div class="userCon" v-if="typeIndex==2" :class="typeIndex==2?'display':''">
                     <div class="item">
                         <span>角色名称</span>
                         <input placeholder="请输入角色名称"/>
@@ -186,6 +154,7 @@
                         <a class="btn">查询</a>
                         <a class="btn">同步</a>
                         <a class="btn">新增</a>
+                        <a class="btn">编辑</a>
                         <a class="btn">删除</a>
                     </div>
                     <div class="table">
@@ -205,17 +174,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <tr v-for="(item,index) in roleList">
                                 <td>
                                     <div class="checkList">
                                         <input type="checkbox" class="checkbox" id="role1">
                                         <label for="role1"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>1</p>
+                                        <p>{{index+1}}</p>
                                     </div>
                                 </td>
-                                <td>民治</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.id}}</td>
+                                <td>{{item.remark}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -232,7 +201,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="userCon" v-if="typeIndex==3">
+                <div class="userCon" v-if="typeIndex==3" :class="typeIndex==3?'display':''">
                     <div class="item">
                         <span>权限名称</span>
                         <input placeholder="请输入权限名称"/>
@@ -307,13 +276,6 @@
             $(".management .manageCon .manageItem .item ul").css("min-height", docHeight - 500);
             $(".management .manageCon .manageItem .itemCon .itemList .item ul").css("min-height", (docHeight - 540)/2);
         }
-    });
-    $(".select").click(function () {
-        $(this).find("ul").slideToggle();
-    });
-    $(".select ul li").click(function () {
-        var name = $(this).children("span").text();
-        $(this).parents("ul").siblings("span").empty().html(name + "<i></i>")
     });
 </script>
 </body>

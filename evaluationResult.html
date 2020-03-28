@@ -47,16 +47,16 @@
                     </tr>
                     </thead>
                     <tbody id="table">
-                    <tr>
-                        <td><a href="evaluationResultDetail.html">大数据治理应用平台</a></td>
-                        <td class="green">达标</td>
-                        <td class="green">达标</td>
-                        <td class="red">不达标</td>
-                        <td class="green">达标</td>
-                        <td class="green">达标</td>
-                        <td class="green">达标</td>
-                        <td class="green">达标</td>
-                        <td class="green">达标</td>
+                    <tr v-for="item in resultList">
+                        <td><a :href="'evaluationResultDetail.html?checkId='+item.checkId">{{item.name}}</a></td>
+                        <td :class="item.result==0?'red':'green'">{{item.result==0?'未达标':'达标'}}</td>
+                        <td :class="item.health==0?'red':'green'">{{item.health==0?'未达标':'达标'}}</td>
+                        <td :class="item.safe==0?'red':'green'">{{item.safe==0?'未达标':'达标'}}</td>
+                        <td :class="item.iot==0?'red':'green'">{{item.iot==0?'未达标':'达标'}}</td>
+                        <td :class="item.serverDevice==0?'red':'green'">{{item.serverDevice==0?'未达标':'达标'}}</td>
+                        <td :class="item.sqlDevice==0?'red':'green'">{{item.sqlDevice==0?'未达标':'达标'}}</td>
+                        <td :class="item.middleware==0?'red':'green'">{{item.middleware==0?'未达标':'达标'}}</td>
+                        <td :class="item.internet==0?'red':'green'">{{item.internet==0?'未达标':'达标'}}</td>
                         <td><img src="images/template/icon-change.png"/><img src="images/template/icon-issue.png"/></td>
                     </tr>
                     </tbody>
@@ -67,6 +67,7 @@
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/evaluationResult.js"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;
     document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";

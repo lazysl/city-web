@@ -207,9 +207,34 @@ Vue.prototype.updateCheckMode = function (data) {
         token: localStorage.getItem("token")
     }
 };
-
-
-
+/*获取考评结果*/
+Vue.prototype.getCheckResult = function (data) {
+    return {
+        url: setting.www_url + "/city/checkResult/getCheckResult?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+};
+/*获取所有部门*/
+Vue.prototype.getOrganization = function (data) {
+    return {
+        url: setting.www_url + "/city/organization/getOrganization?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+};
+/*获取所有用户*/
+Vue.prototype.getUserList = function (data) {
+    return {
+        url: setting.www_url + "/city/user/getUserList?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+};
+/*获取所有角色*/
+Vue.prototype.getRoleList = function (data) {
+    return {
+        url: setting.www_url + "/city/role/getRoleList?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+};
 
 
 
