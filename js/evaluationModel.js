@@ -2,12 +2,14 @@ new Vue({
     el: '#main',
     data: {
         objectTotal: 100,
-        technology: [
-            {name: "服务器", id: 0, maxHeight: "", minHeight: "",},
-            {name: "数据库", id: 1, maxHeight: "", minHeight: "",},
-            {name: "中间件", id: 2, maxHeight: "", minHeight: "",},
-        ],
-        technologyTotal: 60,
+        technology: {
+            technologyTotal: 60,
+            deviceTxt: [
+                {name: "服务器", id: 0, maxHeight: "", minHeight: "", fraction: 15},
+                {name: "数据库", id: 1, maxHeight: "", minHeight: "", fraction: 10},
+                {name: "中间件", id: 2, maxHeight: "", minHeight: "", fraction: 35},
+            ]
+        },
         business: {
             businessTotal: 40,
             health: [
@@ -99,7 +101,7 @@ new Vue({
                         if (res.data[i].id == 1) {
                             rule = JSON.parse(res.data[i].rule);
                             this.objectTotal = rule.objectTotal;
-                            this.technologyTotal = rule.technologyTotal;
+                            this.technology.technologyTotal = rule.technology.technologyTotal;
                             this.business.businessTotal = rule.business.businessTotal;
                             this.business.healthTotal = rule.business.healthTotal;
                             this.business.securityTotal = rule.business.securityTotal;
@@ -126,9 +128,10 @@ new Vue({
                                 this.business.internet[h].num = rule.business.internet[h].num;
                                 this.business.internet[h].fraction = rule.business.internet[h].fraction;
                             }
-                            for (let k in rule.technology) {
-                                this.technology[k].maxHeight = rule.technology[k].maxHeight;
-                                this.technology[k].minHeight = rule.technology[k].minHeight;
+                            for (let k in rule.technology.deviceTxt) {
+                                this.technology.deviceTxt[k].maxHeight = rule.technology.deviceTxt[k].maxHeight;
+                                this.technology.deviceTxt[k].minHeight = rule.technology.deviceTxt[k].minHeight;
+                                this.technology.deviceTxt[k].fraction = rule.technology.deviceTxt[k].fraction;
                             }
                         }
                     }
@@ -178,12 +181,12 @@ new Vue({
                     fraction: this.business.internet[h].fraction,
                 })
             }
-            for (let k in this.technology) {
+            for (let k in this.technology.deviceTxt) {
                 technologyData.push({
                     id: k,
-                    maxHeight: this.technology[k].maxHeight,
-                    minHeight: this.technology[k].minHeight,
-                    fraction: this.technology[k].fraction,
+                    maxHeight: this.technology.deviceTxt[k].maxHeight,
+                    minHeight: this.technology.deviceTxt[k].minHeight,
+                    fraction: this.technology.deviceTxt[k].fraction,
                 })
             }
             rule = {
@@ -196,8 +199,10 @@ new Vue({
                     internet: internetData,
                     internetTotal: this.business.internetTotal,
                 },
-                technology: technologyData,
-                technologyTotal: this.technologyTotal,
+                technology: {
+                    technologyTotal: this.technology.technologyTotal,
+                    deviceTxt: technologyData
+                },
                 objectTotal: this.objectTotal
             };
             data = {

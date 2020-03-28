@@ -251,10 +251,10 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="item first"><p><em></em>技术考评（{{technologyTotal}}）</p></div>
+                                    <div class="item first"><p><em></em>技术考评（{{technology.technologyTotal}}）</p></div>
                                     <ul>
-                                        <li v-for="(item,index) in technology">
-                                            <div class="item"><i></i><p @click="showThree(index)"><em :class="activeThreeIndex===index?'checked':''"></em>{{item.name}}</p></div>
+                                        <li v-for="(item,index) in technology.deviceTxt">
+                                            <div class="item"><i></i><p @click="showThree(index)"><em :class="activeThreeIndex===index?'checked':''"></em>{{item.name}}({{item.fraction}})</p></div>
                                             <ul v-if="activeThreeIndex===index" :class="activeThreeIndex===index?'display':''">
                                                 <li>
                                                     <div class="item">
@@ -280,6 +280,7 @@
 <script src="js/public.js"></script>
 <script src="js/evaluationModel.js"></script>
 <script>
+    $(".conList li:eq(0)").children("ul").show();
     $(".first p").click(function () {
         $(this).parents("li").siblings().children("ul").hide();
         $(this).parents("li").siblings().children(".first").find("em").removeClass("checked");
