@@ -2,12 +2,12 @@ new Vue({
     el: '#main',
     data: {
         objectTotal: 100,
-        technologyTotal: 60,
         technology: [
             {name: "服务器", id: 0, maxHeight: "", minHeight: "",},
             {name: "数据库", id: 1, maxHeight: "", minHeight: "",},
             {name: "中间件", id: 2, maxHeight: "", minHeight: "",},
         ],
+        technologyTotal: 60,
         business: {
             businessTotal: 40,
             health: [
@@ -98,7 +98,6 @@ new Vue({
                         let rule = "";
                         if (res.data[i].id == 1) {
                             rule = JSON.parse(res.data[i].rule);
-                            console.log(rule)
                             this.objectTotal = rule.objectTotal;
                             this.technologyTotal = rule.technologyTotal;
                             this.business.businessTotal = rule.business.businessTotal;
