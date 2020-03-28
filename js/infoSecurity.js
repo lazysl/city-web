@@ -104,7 +104,7 @@ new Vue({
         },
         infoSecurity() {
             let deviceData = [];
-            for (var i in this.deviceTxt) {
+            for (let i in this.deviceTxt) {
                 deviceData.push({
                     maxHeight: this.deviceTxt[i].maxHeight,
                     midHeight: this.deviceTxt[i].midHeight,

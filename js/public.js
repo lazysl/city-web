@@ -192,6 +192,27 @@ function updateCheckPlan(data) {
         token: localStorage.getItem("token")
     }
 }
+/*获取考评模型*/
+Vue.prototype.getCheckMode = function () {
+    return {
+        url: setting.www_url + "/city/checkMode/getCheckMode?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    };
+};
+/*保存考评模型*/
+Vue.prototype.updateCheckMode = function (data) {
+    return {
+        url: setting.www_url + "/city/checkMode/updateCheckMode?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
+
+
+
+
+
+
 
 
 /*获取邮箱服务配置*/
@@ -224,16 +245,4 @@ Vue.prototype.setAuth = function (data) {
         token: localStorage.getItem("token")
     }
 }
-Vue.prototype.getCheckMode = function () {
-    return {
-        url: setting.www_url + "/city/checkMode/getCheckMode?apiKey=" + setting.apiKey,
-        token: localStorage.getItem("token")
-    };
-};
-Vue.prototype.updateCheckMode = function (data) {
-    return {
-        url: setting.www_url + "/city/checkMode/updateCheckMode?apiKey=" + setting.apiKey,
-        data: data,
-        token: localStorage.getItem("token")
-    }
-};
+
