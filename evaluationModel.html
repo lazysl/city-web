@@ -39,13 +39,13 @@
                         <div class="conList">
                             <ul>
                                 <li>
-                                    <div class="item first"><p><em></em>业务考评（40）</p></div>
+                                    <div class="item first"><p><em></em>业务考评（{{business.businessTotal}}）</p></div>
                                     <ul>
                                         <li class="sec_li">
-                                            <div class="item second"><i></i><p><em></em>业务健康（60）</p></div>
+                                            <div class="item second"><i></i><p><em></em>业务健康（{{business.healthTotal}}）</p></div>
                                             <ul>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>页面可用性（5）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>页面可用性（{{business.health[0].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：页面状态为<span class="btn">{{business.health[0].qualification}}</span></p></div>
@@ -53,7 +53,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>页面响应时间（3）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>页面响应时间（{{business.health[1].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：响应时间的健康状态为<span class="btn">{{business.health[1].qualification}}</span></p></div>
@@ -61,7 +61,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>数据质量（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>数据质量（{{business.health[2].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：数据质量综合评分≥<input type="text" v-model="business.health[2].qualification" oninput = "value=value.replace(/[^\d]/g,'')"></p></div>
@@ -69,7 +69,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>数据共享（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>数据共享（{{business.health[3].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：数据共享状态为<span class="btn">{{business.health[3].qualification}}</span></p></div>
@@ -79,10 +79,10 @@
                                             </ul>
                                         </li>
                                         <li class="sec_li">
-                                            <div class="item second"><i></i><p><em></em>信息安全（20）</p></div>
+                                            <div class="item second"><i></i><p><em></em>信息安全（{{business.securityTotal}}）</p></div>
                                             <ul>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>安全漏洞（5）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>安全漏洞（{{business.security[0].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item">
@@ -98,7 +98,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>病毒攻击（5）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>病毒攻击（{{business.security[1].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item">
@@ -112,43 +112,43 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>端口扫描（0）</p></div>
+                                                    <div class="item third"><i></i><p><em ></em>端口扫描（{{business.security[2].fraction}}）</p></div>
                                                     <ul>
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：端口扫描数≤<input type="text" v-model="business.security[2].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>强力攻击（0）</p></div>
+                                                    <div class="item third"><i></i><p><em ></em>强力攻击（{{business.security[3].fraction}}）</p></div>
                                                     <ul>
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：强力攻击数≤<input type="text" v-model="business.security[3].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>木马后门攻击（0）</p></div>
+                                                    <div class="item third"><i></i><p><em ></em>木马后门攻击（{{business.security[4].fraction}}）</p></div>
                                                     <ul>
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：木马后门攻击数≤<input type="text" v-model="business.security[4].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>拒绝访问攻击（0）</p></div>
+                                                    <div class="item third"><i></i><p><em ></em>拒绝访问攻击（{{business.security[5].fraction}}）</p></div>
                                                     <ul>
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：拒绝访问攻击数≤<input type="text" v-model="business.security[5].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>缓冲区溢出攻击（0）</p></div>
+                                                    <div class="item third"><i></i><p><em ></em>缓冲区溢出攻击（{{business.security[6].fraction}}）</p></div>
                                                     <ul>
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：缓冲区溢出攻击数≤<input type="text" v-model="business.security[6].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>网络蠕虫攻击（0）</p></div>
+                                                    <div class="item third"><i></i><p><em ></em>网络蠕虫攻击（{{business.security[7].fraction}}）</p></div>
                                                     <ul>
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：网络蠕虫攻击数≤<input type="text" v-model="business.security[7].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>IP碎片攻击（0）</p></div>
+                                                    <div class="item third"><i></i><p><em ></em>IP碎片攻击（{{business.security[8].fraction}}）</p></div>
                                                     <ul>
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：IP碎片攻击数≤<input type="text" v-model="business.security[8].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
@@ -156,10 +156,10 @@
                                             </ul>
                                         </li>
                                         <li class="sec_li">
-                                            <div class="item second"><i></i><p><em></em>物联网设备状态（20）</p></div>
+                                            <div class="item second"><i></i><p><em></em>物联网设备状态（{{business.internetTotal}}）</p></div>
                                             <ul>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>执法车（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>执法车（{{business.internet[0].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[0].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -167,7 +167,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>绿化车辆（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>绿化车辆（{{business.internet[1].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[1].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -175,7 +175,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>环卫车（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>环卫车（{{business.internet[2].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[2].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -183,7 +183,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>摄像头（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>摄像头（{{business.internet[3].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[3].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -191,7 +191,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>执法仪（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>执法仪（{{business.internet[4].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[4].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -199,7 +199,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>对讲机（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>对讲机（{{business.internet[5].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[5].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -207,7 +207,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>环卫工牌（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>环卫工牌（{{business.internet[6].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[6].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -215,7 +215,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>公厕一体机（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>公厕一体机（{{business.internet[7].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[7].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -223,7 +223,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>果壳箱监测仪（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>果壳箱监测仪（{{business.internet[8].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[8].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -231,7 +231,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>气体监测仪（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>气体监测仪（{{business.internet[9].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[9].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -239,7 +239,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>避险设备（10）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>避险设备（{{business.internet[10].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[10].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
@@ -251,7 +251,7 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="item first"><p><em></em>技术考评（60）</p></div>
+                                    <div class="item first"><p><em></em>技术考评（{{technologyTotal}}）</p></div>
                                     <ul>
                                         <li v-for="(item,index) in technology">
                                             <div class="item"><i></i><p @click="showThree(index)"><em :class="activeThreeIndex===index?'checked':''"></em>{{item.name}}</p></div>
