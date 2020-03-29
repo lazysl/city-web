@@ -27,7 +27,7 @@
                 <a class="btn" @click="objectInfo(0)">新增考评对象</a>
             </div>
             <div class="table">
-                <div class="btnList"><span class="btn">一键全部考评</span><span class="btn1">总体考评结果</span></div>
+                <div class="btnList"><span class="btn" @click="startEvaluation(0)">一键全部考评</span><span class="btn1">总体考评结果</span></div>
                 <div class="treeTit">
                     <span>业务系统名称</span>
                     <span>上次考评对象</span>
@@ -46,7 +46,7 @@
                                 <div class="manipulate">
                                     <img @click="objectInfo(1,index,item.id)" src="images/template/icon-change.png"/>
                                     <img @click="delObjectInfo(item.id,index)" src="images/template/icon-del.png"/>
-                                    <span class="btn">手动考评</span>
+                                    <span class="btn" @click="startEvaluation(item.id)">手动考评</span>
                                     <span class="btn1">考评结果</span>
                                 </div>
                             </div>

@@ -253,7 +253,14 @@ new Vue({
                     this.isDevicePop = false;
                 }
             }
-        }
+        },
+        startEvaluation(id){
+            this.getAjax(this.startCheck(id), (res) => {
+                if (res.code == 200 || res.code_desc == "success") {
+                    this.initInfo()
+                } else alert(res.code_desc);
+            })
+        },
     },
     mounted() {
         this.$nextTick(() => {

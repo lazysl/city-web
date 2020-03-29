@@ -168,6 +168,13 @@ Vue.prototype.updateCheckInfoSecurity = function (data) {
         token: localStorage.getItem("token")
     }
 };
+/*手动考评*/
+Vue.prototype.startCheck = function (id) {
+    return {
+        url: setting.www_url + "/city/checkResult/startCheck?apiKey=" + setting.apiKey+"&id="+id,
+        token: localStorage.getItem("token")
+    }
+};
 /*获取考评计划*/
 Vue.prototype.getCheckPlan_v = function () {
     return {
