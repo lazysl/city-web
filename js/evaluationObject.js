@@ -257,6 +257,7 @@ new Vue({
         startEvaluation(id){
             this.getAjax(this.startCheck(id), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
+                    alert("保存成功");
                     this.initInfo()
                 } else alert(res.code_desc);
             })
