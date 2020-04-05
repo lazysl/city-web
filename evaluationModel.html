@@ -53,7 +53,7 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>页面响应时间（{{business.health[1].fraction}}）</p></div>
+                                                    <div class="item third"><i></i><p><em></em>页面监测（{{business.health[1].fraction}}）</p></div>
                                                     <ul>
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：响应时间的健康状态为<span class="btn">{{business.health[1].qualification}}</span></p></div>
@@ -88,10 +88,22 @@
                                                             <div class="item">
                                                                 <i></i>
                                                                 <p class="paddingLeft">
-                                                                    达标条件：加固比率≥<input type="text" v-model="business.security[0].percent" oninput = "value=value.replace(/[^\d]/g,'')">% &nbsp; &nbsp; &nbsp;
-                                                                    危急漏洞≤<input type="text" v-model="business.security[0].maxHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
-                                                                    高风险漏洞≤<input type="text" v-model="business.security[0].midHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
-                                                                    中风险漏洞≤<input type="text" v-model="business.security[0].minHeight" oninput = "value=value.replace(/[^\d]/g,'')">个
+                                                                    达标条件：加固比率≥<input type="text" v-model="business.security[0].percent" oninput = "value=value.replace(/[^\d]/g,'')">%
+                                                                </p>
+                                                                <p class="paddingLeft1">
+                                                                    服务器：危急漏洞≤<input type="text" v-model="business.security[0].deviceTxt[0].maxHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    高风险漏洞≤<input type="text" v-model="business.security[0].deviceTxt[0].midHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    中风险漏洞≤<input type="text" v-model="business.security[0].deviceTxt[0].minHeight" oninput = "value=value.replace(/[^\d]/g,'')">个
+                                                                </p>
+                                                                <p class="paddingLeft1">
+                                                                    数据库：危急漏洞≤<input type="text" v-model="business.security[0].deviceTxt[1].maxHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    高风险漏洞≤<input type="text" v-model="business.security[0].deviceTxt[1].midHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    中风险漏洞≤<input type="text" v-model="business.security[0].deviceTxt[1].minHeight" oninput = "value=value.replace(/[^\d]/g,'')">个
+                                                                </p>
+                                                                <p class="paddingLeft1">
+                                                                    中间件：危急漏洞≤<input type="text" v-model="business.security[0].deviceTxt[2].maxHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    高风险漏洞≤<input type="text" v-model="business.security[0].deviceTxt[2].midHeight" oninput = "value=value.replace(/[^\d]/g,'')">个 &nbsp; &nbsp; &nbsp;
+                                                                    中风险漏洞≤<input type="text" v-model="business.security[0].deviceTxt[2].minHeight" oninput = "value=value.replace(/[^\d]/g,'')">个
                                                                 </p>
                                                             </div>
                                                         </li>

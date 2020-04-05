@@ -122,6 +122,7 @@
     cursor: pointer;
 }
 .model .modelCon .table .tabCon .conList ul li p.paddingLeft{padding-left: 20px}
+.model .modelCon .table .tabCon .conList ul li p.paddingLeft1{padding-left: 80px}
 .model .modelCon .table .tabCon .conList ul li a{width: auto}
 .model .modelCon .table .tabCon .conList ul li img{
     width: 20px;
@@ -170,6 +171,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     padding: 5px 0;
     position: relative;
 }
@@ -206,3 +208,4 @@
 .model .modelCon .table .tabCon .conList ul li ul li .item{border: none;padding: 0}
 .model .modelCon .table .tabCon .conList ul li ul li ul{margin: -12px 0}
 .model .modelCon .table .tabCon .conList ul li ul li ul li{margin-left: 22px;}
+.model .modelCon .table .tabCon .conList ul li ul li ul li p{width: 100%}

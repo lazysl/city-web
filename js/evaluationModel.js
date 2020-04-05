@@ -20,7 +20,16 @@ new Vue({
             ],
             healthTotal: 10,
             security: [
-                {id: 0, percent: "", maxHeight: "", midHeight: "", minHeight: "", fraction: 1},
+                {
+                    id: 0,
+                    percent: "",
+                    fraction: 1,
+                    deviceTxt: [
+                        {name: "服务器", id: 1, maxHeight: "", midHeight: "", minHeight: "",},
+                        {name: "数据库", id: 2, maxHeight: "", midHeight: "", minHeight: "",},
+                        {name: "中间件", id: 3, maxHeight: "", midHeight: "", minHeight: "",},
+                    ],
+                },
                 {id: 1, percent: "", num: "", fraction: 1},
                 {id: 2, num: "", fraction: 3},
                 {id: 3, num: "", fraction: 2},
@@ -96,7 +105,7 @@ new Vue({
         initMode() {
             this.postAjax(this.getCheckMode(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
-                    for (let i in res.data) {
+                    for (const i in res.data) {
                         let rule = "";
                         if (res.data[i].id == 1) {
                             rule = JSON.parse(res.data[i].rule);
@@ -110,12 +119,15 @@ new Vue({
                                 this.business.health[i].qualification = rule.business.health[i].qualification;
                                 this.business.health[i].fraction = rule.business.health[i].fraction;
                             }
-                            for (let j in rule.business.security) {
+                            for (const j in rule.business.security) {
                                 if (j == 0) {
                                     this.business.security[j].percent = rule.business.security[j].percent;
-                                    this.business.security[j].maxHeight = rule.business.security[j].maxHeight;
-                                    this.business.security[j].midHeight = rule.business.security[j].midHeight;
-                                    this.business.security[j].minHeight = rule.business.security[j].minHeight;
+                                    for (const k in rule.business.security[j].deviceTxt){
+                                        this.business.security[j].deviceTxt[k].maxHeight = rule.business.security[j].deviceTxt[k].maxHeight;
+                                        this.business.security[j].deviceTxt[k].midHeight = rule.business.security[j].deviceTxt[k].midHeight;
+                                        this.business.security[j].deviceTxt[k].minHeight = rule.business.security[j].deviceTxt[k].minHeight;
+                                    }
+
                                 } else if (j == 1) {
                                     this.business.security[j].percent = rule.business.security[j].percent;
                                     this.business.security[j].num = rule.business.security[j].num;
@@ -124,11 +136,11 @@ new Vue({
                                 }
                                 this.business.security[j].fraction = rule.business.security[j].fraction;
                             }
-                            for (let h in rule.business.internet) {
+                            for (const h in rule.business.internet) {
                                 this.business.internet[h].num = rule.business.internet[h].num;
                                 this.business.internet[h].fraction = rule.business.internet[h].fraction;
                             }
-                            for (let k in rule.technology.deviceTxt) {
+                            for (const k in rule.technology.deviceTxt) {
                                 this.technology.deviceTxt[k].maxHeight = rule.technology.deviceTxt[k].maxHeight;
                                 this.technology.deviceTxt[k].minHeight = rule.technology.deviceTxt[k].minHeight;
                                 this.technology.deviceTxt[k].fraction = rule.technology.deviceTxt[k].fraction;
@@ -140,23 +152,30 @@ new Vue({
         },
         saveModel() {
             let data, rule;
-            let healthData = [], securityData = [], internetData = [], technologyData = [];
-            for (let i in this.business.health) {
+            let healthData = [], securityData = [], internetData = [], technologyData = [],deviceData=[];
+            for (const i in this.business.health) {
                 healthData.push({
                     id: i,
                     qualification: this.business.health[i].qualification,
                     fraction: this.business.health[i].fraction,
                 })
             }
-            for (let j in this.business.security) {
+            for (const j in this.business.security) {
+                if (this.business.security[j].id==0){
+                    for (const i in this.business.security[j].deviceTxt) {
+                        deviceData.push({
+                            maxHeight: this.business.security[j].deviceTxt[i].maxHeight,
+                            midHeight: this.business.security[j].deviceTxt[i].midHeight,
+                            minHeight: this.business.security[j].deviceTxt[i].minHeight,
+                        })
+                    }
+                }
                 if (j == 0) {
                     securityData.push({
                         id: j,
                         percent: this.business.security[j].percent,
-                        maxHeight: this.business.security[j].maxHeight,
-                        midHeight: this.business.security[j].midHeight,
-                        minHeight: this.business.security[j].minHeight,
                         fraction: this.business.security[j].fraction,
+                        deviceTxt:deviceData,
                     })
                 } else if (j == 1) {
                     securityData.push({
@@ -174,14 +193,14 @@ new Vue({
                 }
 
             }
-            for (let h in this.business.internet) {
+            for (const h in this.business.internet) {
                 internetData.push({
                     id: h,
                     num: this.business.internet[h].num,
                     fraction: this.business.internet[h].fraction,
                 })
             }
-            for (let k in this.technology.deviceTxt) {
+            for (const k in this.technology.deviceTxt) {
                 technologyData.push({
                     id: k,
                     maxHeight: this.technology.deviceTxt[k].maxHeight,
