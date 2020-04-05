@@ -47,21 +47,33 @@ new Vue({
             this.getAjax(this.getUserList(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.userList = res.data;
-                }
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         initOrganization(){
             this.postAjax(this.getOrganization(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.organizationList = res.data;
-                }
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         initRoleList(){
             this.getAjax(this.getRoleList(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.roleList = res.data;
-                }
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         }
     },

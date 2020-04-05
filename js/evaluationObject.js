@@ -128,7 +128,11 @@ new Vue({
             this.getAjax(this.getCheckInfo(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.objectList = res.data;
-                }
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         objectMenu() {
@@ -138,7 +142,11 @@ new Vue({
                     for (let i in res.data) {
                         this.idList.push(res.data[i].id)
                     }
-                }
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         addObjectInfo() {
@@ -151,7 +159,11 @@ new Vue({
             this.postAjax(this.addCheckInfo(data), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
                     this.initInfo()
-                } else alert(res.code_desc);
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         saveObjectInfo() {
@@ -173,15 +185,23 @@ new Vue({
             this.postAjax(this.updateCheckInfo(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.initInfo()
-                } else alert(res.code_desc);
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         delObjectInfo(id, index) {
             this.postAjax(this.deleteCheckInfo(id), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
-                    this.objectList.splice(index, 1)
+                    this.objectList.splice(index, 1);
                     this.initInfo()
-                } else alert(res.code_desc);
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         deviceInfo(obj, type, index, id) {
@@ -198,7 +218,11 @@ new Vue({
             this.getAjax(this.getCheckSqlList(type), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.deviceList = res.data;
-                }
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         checkLeftDevice(name, id, index) {
@@ -269,7 +293,11 @@ new Vue({
                 if (res.code == 200 || res.code_desc == "success") {
                     alert("保存成功");
                     this.initInfo()
-                } else alert(res.code_desc);
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
     },

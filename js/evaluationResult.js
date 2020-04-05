@@ -33,8 +33,11 @@ new Vue({
             this.getAjax(this.getCheckResult(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.resultList = res.data;
-                    console.log(this.resultList)
-                }
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         }
     },

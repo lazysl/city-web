@@ -82,7 +82,11 @@ $.extend({
                     }
                     $("#waring").empty().append(html)
                 }
-            }
+            }else if (res.code = 403){
+                delCookie("user");
+                localStorage.clear();
+                window.location.href = "./login.html"
+            }else alert(res.code_desc)
         })
     },
     initModeAnaly() {
@@ -119,7 +123,11 @@ $.extend({
                     $("#table").empty().append(html);
                     $("#rankList ul").empty().append(rankHtml)
                 }
-            }
+            }else if (res.code = 403){
+                delCookie("user");
+                localStorage.clear();
+                window.location.href = "./login.html"
+            }else alert(res.code_desc)
         })
     },
     initAlarms() {
@@ -141,7 +149,11 @@ $.extend({
                     }
                     $("#alarms").empty().append(html)
                 }
-            }
+            }else if (res.code = 403){
+                delCookie("user");
+                localStorage.clear();
+                window.location.href = "./login.html"
+            }else alert(res.code_desc)
         })
     },
     getDetail(type, waringType) {
@@ -233,7 +245,11 @@ $.extend({
                         }
                     }
                 }
-            }
+            }else if (res.code = 403){
+                delCookie("user");
+                localStorage.clear();
+                window.location.href = "./login.html"
+            }else alert(res.code_desc)
         })
     },
 });

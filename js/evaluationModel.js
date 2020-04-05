@@ -147,7 +147,11 @@ new Vue({
                             }
                         }
                     }
-                } else alert(res.code_desc)
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
         saveModel() {
@@ -231,7 +235,11 @@ new Vue({
             this.postAjax(this.updateCheckMode(data), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     alert("保存成功")
-                } else alert(res.code_desc)
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         },
     },

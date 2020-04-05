@@ -33,7 +33,11 @@ $.extend({
                 $("#username").val(data.username);
                 $("#password").val(data.password);
                 $("#port").val(data.port)
-            }
+            }else if (res.code = 403){
+                delCookie("user");
+                localStorage.clear();
+                window.location.href = "./login.html"
+            }else alert(res.code_desc)
         })
     },
     saveMail: function () {
@@ -49,7 +53,11 @@ $.extend({
             $.getAjax(saveEmailProperties(data), function (res) {
                 if (res.code = 200 && res.code_desc == "success") {
                     alert("保存成功")
-                } else alert("保存失败")
+                }else if (res.code = 403){
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                }else alert(res.code_desc)
             })
         }
     }
