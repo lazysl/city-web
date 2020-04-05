@@ -65,6 +65,16 @@ new Vue({
             if (r != null) value = unescape(r[2]);
             return value;
         },
+        dateFormatFull(longTypeDate) {
+            var dateType = "";
+            var date = new Date();
+            date.setTime(longTypeDate);
+            dateType = date.getFullYear() + "-" + this.getFullPart(date.getMonth() + 1) + "-" + this.getFullPart(date.getDate());
+            return dateType;
+        },
+        getFullPart(day) {
+            return day < 10 ? "0" + day : day;
+        },
         /*展示二级目录*/
         showSub(index) {
             this.activeSubIndex = this.activeSubIndex == index ? -1 : index;

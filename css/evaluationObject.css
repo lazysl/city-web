@@ -117,6 +117,8 @@
     cursor: pointer;
 }
 .object .table ul li p.paddingLeft{padding-left: 20px}
+.object .table ul li p.green{color: #36cfc9;}
+.object .table ul li p.red{color: #f00;}
 .object .table ul li a{width: auto}
 .object .table ul li img{
     width: 20px;

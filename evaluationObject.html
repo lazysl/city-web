@@ -40,8 +40,8 @@
                         <li v-for="(item,index) in objectList">
                             <div class="item">
                                 <p @click="showSub(index)"><em :class="activeSubIndex===index?'checked':''"></em>{{item.name}}</p>
-                                <p>2020-02-14</p>
-                                <p class="green">达标</p>
+                                <p>{{dateFormatFull(item.lastCheckTime)}}</p>
+                                <p :class="item.lastCheckResult==0?'red':'green'">{{item.lastCheckResult==0?"不达标":"达标"}}</p>
                                 <p>{{item.email}}</p>
                                 <div class="manipulate">
                                     <img @click="objectInfo(1,index,item.id)" src="images/template/icon-change.png"/>
