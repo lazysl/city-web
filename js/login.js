@@ -35,6 +35,7 @@ $.extend({
         }
         $.postAjax(login(data), function (res) {
             if (res.code = 200){
+                alert("保存成功");
                 localStorage.setItem("token",res.code_desc);
                 // $.cookie("user", res.data.username,{ expires: 1, path: '/' });
                 localStorage.setItem("user", res.data.username);

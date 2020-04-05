@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/template.css">
     <link rel="stylesheet" href="css/evaluationResult.css">
     <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/browser-polyfill.min.js"></script>
     <script src="js/vue.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
 </head>
@@ -67,7 +69,7 @@
 </div>
 </body>
 <script src="js/public.js"></script>
-<script src="js/evaluationResult.js"></script>
+<script src="js/evaluationResult.js" type="text/babel"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;
     document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
