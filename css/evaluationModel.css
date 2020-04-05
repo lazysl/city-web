@@ -195,7 +195,7 @@
 .model .modelCon .table .tabCon .conList ul li ul li:first-child{padding-top: 10px}
 .model .modelCon .table .tabCon .conList ul li ul li:last-child{padding-bottom: 10px}
 .model .modelCon .table .tabCon .conList ul li ul li p {
-    width: auto;
+    width: 100%;
     justify-content: flex-start;
     cursor: pointer;
 }

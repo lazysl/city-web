@@ -119,7 +119,10 @@
 .object .table ul li p.paddingLeft{padding-left: 20px}
 .object .table ul li p.green{color: #36cfc9;}
 .object .table ul li p.red{color: #f00;}
-.object .table ul li a{width: auto}
+.object .table ul li a {
+    width: 100%;
+    justify-content: flex-start;
+}
 .object .table ul li img{
     width: 20px;
     margin: 0 5px;
@@ -173,7 +176,7 @@
 .object .table ul li ul li:first-child{padding-top: 10px}
 .object .table ul li ul li:last-child{padding-bottom: 10px}
 .object .table ul li ul li p {
-    width: auto;
+    width: 100%;
     justify-content: flex-start;
     cursor: pointer;
 }

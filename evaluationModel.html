@@ -41,38 +41,38 @@
                         <div class="conList">
                             <ul>
                                 <li>
-                                    <div class="item first"><p><em></em>业务考评（{{business.businessTotal}}）</p></div>
-                                    <ul>
+                                    <div class="item first"><p @click="showSub(0)"><em :class="activeSubIndex===0?'checked':''"></em>业务考评（{{business.businessTotal}}）</p></div>
+                                    <ul v-if="activeSubIndex===0" :class="activeSubIndex===0?'display':''">
                                         <li class="sec_li">
-                                            <div class="item second"><i></i><p><em></em>业务健康（{{business.healthTotal}}）</p></div>
-                                            <ul>
+                                            <div class="item second"><i></i><p @click="showThree('0_0')"><em :class="activeThreeIndex===('0_0')?'checked':''"></em>业务健康（{{business.healthTotal}}）</p></div>
+                                            <ul v-if="activeThreeIndex===('0_0')" :class="activeThreeIndex===('0_0')?'display':''">
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>页面可用性（{{business.health[0].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('0_0_0')"><em :class="activeFourIndex===('0_0_0')?'checked':''"></em>页面可用性（{{business.health[0].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('0_0_0')" :class="activeFourIndex===('0_0_0')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：页面状态为<span class="btn">{{business.health[0].qualification}}</span></p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>页面监测（{{business.health[1].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('0_0_1')"><em :class="activeFourIndex===('0_0_1')?'checked':''"></em>页面监测（{{business.health[1].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('0_0_1')" :class="activeFourIndex===('0_0_1')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：响应时间的健康状态为<span class="btn">{{business.health[1].qualification}}</span></p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>数据质量（{{business.health[2].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('0_0_2')"><em :class="activeFourIndex===('0_0_2')?'checked':''"></em>数据质量（{{business.health[2].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('0_0_2')" :class="activeFourIndex===('0_0_2')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：数据质量综合评分≥<input type="text" v-model="business.health[2].qualification" oninput = "value=value.replace(/[^\d]/g,'')"></p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>数据共享（{{business.health[3].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('0_0_3')"><em :class="activeFourIndex===('0_0_3')?'checked':''"></em>数据共享（{{business.health[3].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('0_0_3')" :class="activeFourIndex===('0_0_3')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：数据共享状态为<span class="btn">{{business.health[3].qualification}}</span></p></div>
                                                         </li>
@@ -81,11 +81,11 @@
                                             </ul>
                                         </li>
                                         <li class="sec_li">
-                                            <div class="item second"><i></i><p><em></em>信息安全（{{business.securityTotal}}）</p></div>
-                                            <ul>
+                                            <div class="item second"><i></i><p @click="showThree('1_1')"><em :class="activeThreeIndex===('1_1')?'checked':''"></em>信息安全（{{business.securityTotal}}）</p></div>
+                                            <ul v-if="activeThreeIndex===('1_1')" :class="activeThreeIndex===('1_1')?'display':''">
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>安全漏洞（{{business.security[0].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_0')"><em :class="activeFourIndex===('1_1_0')?'checked':''"></em>安全漏洞（{{business.security[0].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_0')" :class="activeFourIndex===('1_1_0')?'display':''">
                                                         <li>
                                                             <div class="item">
                                                                 <i></i>
@@ -112,8 +112,8 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>病毒攻击（{{business.security[1].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_1')"><em :class="activeFourIndex===('1_1_1')?'checked':''"></em>病毒攻击（{{business.security[1].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_1')" :class="activeFourIndex===('1_1_1')?'display':''">
                                                         <li>
                                                             <div class="item">
                                                                 <i></i>
@@ -126,135 +126,135 @@
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>端口扫描（{{business.security[2].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_2')"><em :class="activeFourIndex===('1_1_2')?'checked':''"></em>端口扫描（{{business.security[2].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_2')" :class="activeFourIndex===('1_1_2')?'display':''">
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：端口扫描数≤<input type="text" v-model="business.security[2].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>强力攻击（{{business.security[3].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_3')"><em :class="activeFourIndex===('1_1_3')?'checked':''"></em>强力攻击（{{business.security[3].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_3')" :class="activeFourIndex===('1_1_3')?'display':''">
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：强力攻击数≤<input type="text" v-model="business.security[3].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>木马后门攻击（{{business.security[4].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_4')"><em :class="activeFourIndex===('1_1_4')?'checked':''"></em>木马后门攻击（{{business.security[4].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_4')" :class="activeFourIndex===('1_1_4')?'display':''">
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：木马后门攻击数≤<input type="text" v-model="business.security[4].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>拒绝访问攻击（{{business.security[5].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_5')"><em :class="activeFourIndex===('1_1_5')?'checked':''"></em>拒绝访问攻击（{{business.security[5].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_5')" :class="activeFourIndex===('1_1_5')?'display':''">
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：拒绝访问攻击数≤<input type="text" v-model="business.security[5].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>缓冲区溢出攻击（{{business.security[6].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_6')"><em :class="activeFourIndex===('1_1_6')?'checked':''"></em>缓冲区溢出攻击（{{business.security[6].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_6')" :class="activeFourIndex===('1_1_6')?'display':''">
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：缓冲区溢出攻击数≤<input type="text" v-model="business.security[6].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>网络蠕虫攻击（{{business.security[7].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_7')"><em :class="activeFourIndex===('1_1_7')?'checked':''"></em>网络蠕虫攻击（{{business.security[7].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_7')" :class="activeFourIndex===('1_1_7')?'display':''">
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：网络蠕虫攻击数≤<input type="text" v-model="business.security[7].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em ></em>IP碎片攻击（{{business.security[8].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('1_1_8')"><em :class="activeFourIndex===('1_1_8')?'checked':''"></em>IP碎片攻击（{{business.security[8].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('1_1_8')" :class="activeFourIndex===('1_1_8')?'display':''">
                                                         <li><div class="item"><i></i><p class="paddingLeft">达标条件：IP碎片攻击数≤<input type="text" v-model="business.security[8].num" oninput = "value=value.replace(/[^\d]/g,'')">个</p></div></li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li class="sec_li">
-                                            <div class="item second"><i></i><p><em></em>物联网设备状态（{{business.internetTotal}}）</p></div>
-                                            <ul>
+                                            <div class="item second"><i></i><p @click="showThree('2_2')"><em :class="activeThreeIndex===('2_2')?'checked':''"></em>物联网设备状态（{{business.internetTotal}}）</p></div>
+                                            <ul v-if="activeThreeIndex===('2_2')" :class="activeThreeIndex===('2_2')?'display':''">
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>执法车（{{business.internet[0].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_0')"><em :class="activeFourIndex===('2_2_0')?'checked':''"></em>执法车（{{business.internet[0].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_0')" :class="activeFourIndex===('2_2_0')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[0].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>绿化车辆（{{business.internet[1].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_1')"><em :class="activeFourIndex===('2_2_1')?'checked':''"></em>绿化车辆（{{business.internet[1].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_1')" :class="activeFourIndex===('2_2_1')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[1].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>环卫车（{{business.internet[2].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_2')"><em :class="activeFourIndex===('2_2_2')?'checked':''"></em>环卫车（{{business.internet[2].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_2')" :class="activeFourIndex===('2_2_2')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[2].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>摄像头（{{business.internet[3].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_3')"><em :class="activeFourIndex===('2_2_3')?'checked':''"></em>摄像头（{{business.internet[3].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_3')" :class="activeFourIndex===('2_2_3')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[3].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>执法仪（{{business.internet[4].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_4')"><em :class="activeFourIndex===('2_2_4')?'checked':''"></em>执法仪（{{business.internet[4].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_4')" :class="activeFourIndex===('2_2_4')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[4].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>对讲机（{{business.internet[5].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_5')"><em :class="activeFourIndex===('2_2_5')?'checked':''"></em>对讲机（{{business.internet[5].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_5')" :class="activeFourIndex===('2_2_5')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[5].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>环卫工牌（{{business.internet[6].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_6')"><em :class="activeFourIndex===('2_2_6')?'checked':''"></em>环卫工牌（{{business.internet[6].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_6')" :class="activeFourIndex===('2_2_6')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[6].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>公厕一体机（{{business.internet[7].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_7')"><em :class="activeFourIndex===('2_2_7')?'checked':''"></em>公厕一体机（{{business.internet[7].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_7')" :class="activeFourIndex===('2_2_7')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[7].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>果壳箱监测仪（{{business.internet[8].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_8')"><em :class="activeFourIndex===('2_2_8')?'checked':''"></em>果壳箱监测仪（{{business.internet[8].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_8')" :class="activeFourIndex===('2_2_8')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[8].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>气体监测仪（{{business.internet[9].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_9')"><em :class="activeFourIndex===('2_2_9')?'checked':''"></em>气体监测仪（{{business.internet[9].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_9')" :class="activeFourIndex===('2_2_9')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[9].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="third_li">
-                                                    <div class="item third"><i></i><p><em></em>避险设备（{{business.internet[10].fraction}}）</p></div>
-                                                    <ul>
+                                                    <div class="item third"><i></i><p @click="showFour('2_2_10')"><em :class="activeFourIndex===('2_2_10')?'checked':''"></em>避险设备（{{business.internet[10].fraction}}）</p></div>
+                                                    <ul v-if="activeFourIndex===('2_2_10')" :class="activeFourIndex===('2_2_10')?'display':''">
                                                         <li>
                                                             <div class="item"><i></i><p class="paddingLeft">达标条件：设备在线率≥<input type="text" v-model="business.internet[10].num" oninput = "value=value.replace(/[^\d]/g,'')">%</p></div>
                                                         </li>
@@ -265,8 +265,8 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <div class="item first"><p><em></em>技术考评（{{technology.technologyTotal}}）</p></div>
-                                    <ul>
+                                    <div class="item first"><p @click="showSub(1)"><em :class="activeSubIndex===1?'checked':''"></em>技术考评（{{technology.technologyTotal}}）</p></div>
+                                    <ul v-if="activeSubIndex===1" :class="activeSubIndex===1?'display':''">
                                         <li v-for="(item,index) in technology.deviceTxt">
                                             <div class="item"><i></i><p @click="showThree(index)"><em :class="activeThreeIndex===index?'checked':''"></em>{{item.name}}({{item.fraction}})</p></div>
                                             <ul v-if="activeThreeIndex===index" :class="activeThreeIndex===index?'display':''">
@@ -293,7 +293,7 @@
 </div>
 <script src="js/public.js"></script>
 <script src="js/evaluationModel.js" type="text/babel"></script>
-<script>
+<!--<script type="text/javascript">
     $(".conList li:eq(0)").children("ul").show();
     $(".first p").click(function () {
         $(this).parents("li").siblings().children("ul").hide();
@@ -313,6 +313,6 @@
         $(this).parents(".third").siblings("ul").toggle();
         $(this).find("em").toggleClass("checked")
     })
-</script>
+</script>-->
 </body>
 </html>
