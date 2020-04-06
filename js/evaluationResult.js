@@ -30,7 +30,7 @@ new Vue({
             this.jsonAjax(param, callbackSuc, callbackErr);
         },
         initResult(){
-            this.getAjax(this.getCheckResult(), (res) => {
+            this.postAjax(this.getCheckResult(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.resultList = res.data;
                 }else if (res.code = 403){

@@ -69,7 +69,7 @@ $.extend({
         });
     },
     initPlan() {
-        $.getAjax(getCheckPlan(), function (res) {
+        $.postAjax(getCheckPlan(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data, checkPlan = "", cronExpression, time = "", day = "", startDate, endDate;
                 if (data) {

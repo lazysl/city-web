@@ -72,7 +72,7 @@ new Vue({
             return txt
         },
         initPlan() {
-            this.getAjax(this.getCheckPlan_v(), (res) => {
+            this.postAjax(this.getCheckPlan_v(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.planList = res.data;
                 }else if (res.code = 403){

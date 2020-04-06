@@ -125,7 +125,7 @@ new Vue({
             }
         },
         initInfo() {
-            this.getAjax(this.getCheckInfo(), (res) => {
+            this.postAjax(this.getCheckInfo(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.objectList = res.data;
                 }else if (res.code = 403){
@@ -136,7 +136,7 @@ new Vue({
             })
         },
         objectMenu() {
-            this.getAjax(this.getCheckMenu(), (res) => {
+            this.postAjax(this.getCheckMenu(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.objectNavList = res.data;
                     for (let i in res.data) {
@@ -215,7 +215,7 @@ new Vue({
             }
         },
         initDevice(type) {
-            this.getAjax(this.getCheckSqlList(type), (res) => {
+            this.postAjax(this.getCheckSqlList(type), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.deviceList = res.data;
                 }else if (res.code = 403){
@@ -289,7 +289,7 @@ new Vue({
             }
         },
         startEvaluation(id){
-            this.getAjax(this.startCheck(id), (res) => {
+            this.postAjax(this.startCheck(id), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
                     alert("保存成功");
                     this.initInfo()

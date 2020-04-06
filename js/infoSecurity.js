@@ -59,7 +59,7 @@ new Vue({
             return value;
         },
         initInfo() {
-            this.getAjax(this.getCheckInfo(), (res) => {
+            this.postAjax(this.getCheckInfo(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     for (const i in res.data) {
                         if (res.data[i].id == this.urlParams("id")) {

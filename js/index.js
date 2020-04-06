@@ -25,7 +25,7 @@ $.extend({
         this.jsonAjax(param, callbackSuc, callbackErr);
     },
     initWaring() {
-        $.getAjax(getWaring(), function (res) {
+        $.postAjax(getWaring(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '', name, type, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11", explain1 = "严重",
@@ -90,7 +90,7 @@ $.extend({
         })
     },
     initModeAnaly() {
-        $.getAjax(getCheckModeAnaly(), function (res) {
+        $.postAjax(getCheckModeAnaly(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '', rankHtml = '';
@@ -131,7 +131,7 @@ $.extend({
         })
     },
     initAlarms() {
-        $.getAjax(listAlarms(), function (res) {
+        $.postAjax(listAlarms(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '';
@@ -168,7 +168,7 @@ $.extend({
                 waringTypes = waringType
             }
         }
-        $.getAjax(js_checkSqlList(type, waringTypes), function (res) {
+        $.postAjax(js_checkSqlList(type, waringTypes), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 $(".tcHide").show();
                 var data = res.data;

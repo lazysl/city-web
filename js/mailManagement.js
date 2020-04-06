@@ -25,7 +25,7 @@ $.extend({
         this.jsonAjax(param, callbackSuc, callbackErr);
     },
     initMail: function () {
-        $.getAjax(getEmailProperties(), function (res) {
+        $.postAjax(getEmailProperties(), function (res) {
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
                 $("#fromEmail").val(data.fromEmail);
@@ -50,7 +50,7 @@ $.extend({
                 username: username,
                 password: password,
             };
-            $.getAjax(saveEmailProperties(data), function (res) {
+            $.postAjax(saveEmailProperties(data), function (res) {
                 if (res.code = 200 && res.code_desc == "success") {
                     alert("保存成功")
                 }else if (res.code = 403){

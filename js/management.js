@@ -44,7 +44,7 @@ new Vue({
             this.typeId = obj.id;
         },
         initUserList(){
-            this.getAjax(this.getUserList(), (res) => {
+            this.postAjax(this.getUserList(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.userList = res.data;
                 }else if (res.code = 403){
@@ -66,7 +66,7 @@ new Vue({
             })
         },
         initRoleList(){
-            this.getAjax(this.getRoleList(), (res) => {
+            this.postAjax(this.getRoleList(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.roleList = res.data;
                 }else if (res.code = 403){
