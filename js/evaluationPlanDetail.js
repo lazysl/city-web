@@ -29,7 +29,7 @@ $.extend({
         var dateType = "";
         var date = new Date();
         date.setTime(longTypeDate);
-        dateType = date.getFullYear() + "-" + this.getFullPart(date.getMonth() + 1) + "-" + this.getFullPart(date.getDate());
+        dateType = date.getFullYear() + "-" + this.getFullPart(date.getMonth() + 1) + "-" + this.getFullPart(date.getDate()) + " " + this.getFullPart(date.getHours()) + ":" + this.getFullPart(date.getMinutes());
         return dateType;
     },
     getFullPart(day) {

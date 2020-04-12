@@ -29,10 +29,10 @@
                 <a class="btn" @click="objectInfo(0)">新增考评对象</a>
             </div>
             <div class="table">
-                <div class="btnList"><span class="btn" @click="startEvaluation(0)">一键全部考评</span><span class="btn1">总体考评结果</span></div>
+                <div class="btnList"><span class="btn" @click="startEvaluation(0)">一键全部考评</span><a class="btn1" href="evaluationResult.html">总体考评结果</a></div>
                 <div class="treeTit">
                     <span>业务系统名称</span>
-                    <span>上次考评对象</span>
+                    <span>上次考评时间</span>
                     <span>上次考评结果</span>
                     <span>考评结果接收邮箱</span>
                     <span>操作</span>
@@ -49,7 +49,7 @@
                                     <img @click="objectInfo(1,index,item.id)" src="images/template/icon-change.png"/>
                                     <img @click="delObjectInfo(item.id,index)" src="images/template/icon-del.png"/>
                                     <span class="btn" @click="startEvaluation(item.id)">手动考评</span>
-                                    <span class="btn1">考评结果</span>
+                                    <a class="btn1" :href="'evaluationResultDetail.html?checkId='+item.id">考评结果</a>
                                 </div>
                             </div>
                             <ul v-if="activeSubIndex===index" :class="activeSubIndex===index?'display':''">
@@ -78,14 +78,26 @@
                                             <div v-if="secItem.type==0">
                                                 <ul v-if="activeFourIndex===secIndex" :class="activeFourIndex===secIndex?'display':''">
                                                     <li v-for="(thirdItem,thirdIndex) in objectNavList" v-if="secItem.id==thirdItem.parentId">
-                                                        <div class="item"><i></i><p class="paddingLeft">{{thirdItem.name}}<img src="images/template/icon-change.png"/></p></div>
+                                                        <div class="item">
+                                                            <i></i>
+                                                            <p :class="item.deviceList[thirdItem.type]&&item.deviceList[thirdItem.type].length>0?'':'paddingLeft'">
+                                                                <span @click="showFive(thirdIndex,item.deviceList[thirdItem.type])">
+                                                                    <em v-if="item.deviceList[thirdItem.type]&&item.deviceList[thirdItem.type].length>0" :class="activeFiveIndex===thirdIndex?'checked':''"></em>
+                                                                    {{thirdItem.name}}
+                                                                </span>
+                                                                <img v-if="thirdItem.type==6||thirdItem.type==7" @click="deviceInfo(1,thirdItem.type,index,item.id)" src="images/template/icon-change.png"/>
+                                                            </p>
+                                                        </div>
+                                                        <ul v-if="activeFiveIndex===thirdIndex" :class="activeFiveIndex===thirdIndex?'display':''">
+                                                            <li v-for="(deviceItem,deviceIndex) in item.deviceList[thirdItem.type]"><div class="item"><i></i><p class="paddingLeft">{{deviceItem.name}}</p></div></li>
+                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </div>
                                             <div v-else>
                                                 <ul v-if="activeFourIndex===secIndex" :class="activeFourIndex===secIndex?'display':''">
                                                     <li v-for="(deviceItem,deviceIndex) in item.deviceList[secItem.type]">
-                                                        <div class="item"><i></i><p class="paddingLeft">{{deviceItem.displayName}}</p></div>
+                                                        <div class="item"><i></i><p class="paddingLeft">{{deviceItem.name}}</p></div>
                                                     </li>
                                                 </ul>
                                             </div>

@@ -14,6 +14,7 @@ new Vue({
         activeSubIndex: -1,
         activeThreeIndex: -1,
         activeFourIndex: -1,
+        activeFiveIndex: -1,
         isDevicePop: false,
         objectDeviceList: [],   //考评对象设备
         deviceList: [],   //考评设备
@@ -69,7 +70,7 @@ new Vue({
             var dateType = "";
             var date = new Date();
             date.setTime(longTypeDate);
-            dateType = date.getFullYear() + "-" + this.getFullPart(date.getMonth() + 1) + "-" + this.getFullPart(date.getDate());
+            dateType = date.getFullYear() + "-" + this.getFullPart(date.getMonth() + 1) + "-" + this.getFullPart(date.getDate()) + " " + this.getFullPart(date.getHours()) + ":" + this.getFullPart(date.getMinutes());
             return dateType;
         },
         getFullPart(day) {
@@ -77,6 +78,9 @@ new Vue({
         },
         /*展示二级目录*/
         showSub(index) {
+            this.activeThreeIndex = -1;
+            this.activeFourIndex = -1;
+            this.activeFiveIndex = -1;
             this.activeSubIndex = this.activeSubIndex == index ? -1 : index;
         },
         /*展示三级目录*/
@@ -87,7 +91,11 @@ new Vue({
         showFour(index, isLast, type, device) {
             if (isLast == 0 || (type != 0 && device && device.length > 0)) this.activeFourIndex = this.activeFourIndex == index ? -1 : index;
         },
-        objectInfo(obj,index, id) {
+        /*展示五级目录*/
+        showFive(index, device) {
+            if (device && device.length > 0) this.activeFiveIndex = this.activeFiveIndex == index ? -1 : index;
+        },
+        objectInfo(obj, index, id) {
             if (obj == 0) {
                 this.isAutoEvaluation = false;
                 this.isObjectInfoPop = !this.isObjectInfoPop;
@@ -128,11 +136,11 @@ new Vue({
             this.postAjax(this.getCheckInfo(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.objectList = res.data;
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
         objectMenu() {
@@ -142,11 +150,11 @@ new Vue({
                     for (let i in res.data) {
                         this.idList.push(res.data[i].id)
                     }
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
         addObjectInfo() {
@@ -159,11 +167,11 @@ new Vue({
             this.postAjax(this.addCheckInfo(data), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
                     this.initInfo()
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
         saveObjectInfo() {
@@ -185,11 +193,11 @@ new Vue({
             this.postAjax(this.updateCheckInfo(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.initInfo()
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
         delObjectInfo(id, index) {
@@ -197,11 +205,11 @@ new Vue({
                 if (res.code == 200 && res.code_desc == "success") {
                     this.objectList.splice(index, 1);
                     this.initInfo()
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
         deviceInfo(obj, type, index, id) {
@@ -211,6 +219,7 @@ new Vue({
                 this.selectedObjectIndex = index;
                 this.deviceType = type;
                 this.deviceId = id;
+                this.deviceList = [];
                 this.initDevice(type);
             }
         },
@@ -218,11 +227,11 @@ new Vue({
             this.postAjax(this.getCheckSqlList(type), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
                     this.deviceList = res.data;
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
         checkLeftDevice(name, id, index) {
@@ -281,23 +290,36 @@ new Vue({
                         if (data[k].name == this.selectedDeviceList[i].name) arrData.push(data[k].name)
                     }
                 }
-                if (arrData.length > 0) alert("请勿添加重复数据");
-                else {
-                    this.addObjectDevice(this.selectedDeviceList);
-                    this.isDevicePop = false;
+                if (this.deviceType == 6 || this.deviceType == 7) {
+                    if (arrData.length > 0) {
+                        alert("请勿添加重复数据");
+                    } else {
+                        if (data.length > 1) alert("该设备只能添加一条数据");
+                        else {
+                            this.addObjectDevice(this.selectedDeviceList);
+                            this.isDevicePop = false;
+                        }
+                    }
+                } else {
+                    if (arrData.length > 0) {
+                        alert("请勿添加重复数据");
+                    } else {
+                        this.addObjectDevice(this.selectedDeviceList);
+                        this.isDevicePop = false;
+                    }
                 }
             }
         },
-        startEvaluation(id){
+        startEvaluation(id) {
             this.postAjax(this.startCheck(id), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
-                    alert("保存成功");
+                    alert("考评成功");
                     this.initInfo()
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
     },

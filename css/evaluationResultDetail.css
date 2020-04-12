@@ -32,41 +32,29 @@
     width: 100%;
     margin: 0 auto;
     background: #eee;
+    display: table;
 }
 .result .table table thead{
     background: #eee;
-    width: 99%;
-    display: table;
-    overflow: hidden
+    width: 100%;
 }
 .result .table table tbody{
     overflow-y: scroll;
-    display: block;
-    width: 100%;
 }
 .result .table table tr{
     width: 100%;
 }
 .result .table table tbody tr {
     width: 100%;
-    display: block;
 }
 .result .table table tr td,.result .table table tr th{
     font-size: 12px;
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #fff;
-    width: 10%
 }
 .result .table table tbody tr td {
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    float: left;
-    padding: 0 10px;
     background: #fff;
-    height: 50px;
 }
 .result .table table tr td{border-bottom: 1px solid #d8dce5;}
 .result .table table tr th{font-size: 14px;}

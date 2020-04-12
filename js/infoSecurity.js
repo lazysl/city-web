@@ -67,38 +67,38 @@ new Vue({
                             this.informationSecurity = JSON.parse(res.data[i].informationSecurity)
                         }
                     }
-                    for (const i in this.informationSecurity){
-                        if (this.informationSecurity[i].id=="leak"){
+                    for (const i in this.informationSecurity) {
+                        if (this.informationSecurity[i].id == "leak") {
                             this.leakPercent = this.informationSecurity[i].leakPercent;
                             for (const j in this.deviceTxt) {
                                 this.deviceTxt[j].maxHeight = this.informationSecurity[i].deviceTxt[j].maxHeight;
                                 this.deviceTxt[j].midHeight = this.informationSecurity[i].deviceTxt[j].midHeight;
                                 this.deviceTxt[j].minHeight = this.informationSecurity[i].deviceTxt[j].minHeight;
                             }
-                        }else if (this.informationSecurity[i].id=="virus"){
+                        } else if (this.informationSecurity[i].id == "virus") {
                             this.virusPercent = this.informationSecurity[i].virusPercent;
                             this.virusNum = this.informationSecurity[i].virusNum;
-                        }else if (this.informationSecurity[i].id=="port"){
+                        } else if (this.informationSecurity[i].id == "port") {
                             this.portNum = this.informationSecurity[i].portNum;
-                        }else if (this.informationSecurity[i].id=="strong"){
+                        } else if (this.informationSecurity[i].id == "strong") {
                             this.strongNum = this.informationSecurity[i].strongNum;
-                        }else if (this.informationSecurity[i].id=="trojan"){
+                        } else if (this.informationSecurity[i].id == "trojan") {
                             this.trojanNum = this.informationSecurity[i].trojanNum;
-                        }else if (this.informationSecurity[i].id=="refuse"){
+                        } else if (this.informationSecurity[i].id == "refuse") {
                             this.refuseNum = this.informationSecurity[i].refuseNum;
-                        }else if (this.informationSecurity[i].id=="buffer"){
+                        } else if (this.informationSecurity[i].id == "buffer") {
                             this.bufferNum = this.informationSecurity[i].bufferNum;
-                        }else if (this.informationSecurity[i].id=="worm"){
+                        } else if (this.informationSecurity[i].id == "worm") {
                             this.wormNum = this.informationSecurity[i].wormNum;
-                        }else if (this.informationSecurity[i].id=="ip"){
+                        } else if (this.informationSecurity[i].id == "ip") {
                             this.ipNum = this.informationSecurity[i].ipNum;
                         }
                     }
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
         cancel() {
@@ -128,16 +128,16 @@ new Vue({
                 })
             }
             let informationSecurity = [
-                {id:"leak", leakPercent: this.leakPercent, deviceTxt: deviceData},//安全漏洞
-                {id:"virus", virusPercent: this.leakPercent, virusNum: this.virusNum},//病毒
-                {id:"port", portNum: this.portNum},//端口
-                {id:"strong", strongNum: this.strongNum},//强力攻击数
-                {id:"trojan", trojanNum: this.trojanNum},//木马攻击数
-                {id:"refuse", refuseNum: this.refuseNum},//拒绝访问攻击数
-                {id:"buffer", bufferNum: this.bufferNum},//缓冲区溢出攻击数
-                {id:"worm", wormNum: this.wormNum},//网络蠕虫攻击数
-                {id:"ip", ipNum: this.ipNum},//IP碎片攻击数
-                ];
+                {id: "leak", leakPercent: this.leakPercent, deviceTxt: deviceData},//安全漏洞
+                {id: "virus", virusPercent: this.virusPercent, virusNum: this.virusNum},//病毒
+                {id: "port", portNum: this.portNum},//端口
+                {id: "strong", strongNum: this.strongNum},//强力攻击数
+                {id: "trojan", trojanNum: this.trojanNum},//木马攻击数
+                {id: "refuse", refuseNum: this.refuseNum},//拒绝访问攻击数
+                {id: "buffer", bufferNum: this.bufferNum},//缓冲区溢出攻击数
+                {id: "worm", wormNum: this.wormNum},//网络蠕虫攻击数
+                {id: "ip", ipNum: this.ipNum},//IP碎片攻击数
+            ];
             let data = {
                 id: this.urlParams("id"),
                 informationSecurity: JSON.stringify(informationSecurity)
@@ -146,11 +146,11 @@ new Vue({
                 if (res.code = 200 && res.code_desc == "success") {
                     alert("保存成功");
                     this.initInfo();
-                }else if (res.code = 403){
+                } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
-                }else alert(res.code_desc)
+                } else alert(res.code_desc)
             })
         },
     },
