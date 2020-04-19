@@ -5,7 +5,7 @@ new Vue({
             {name: "用户", id: "1"},
             {name: "部门", id: "2"},
             {name: "角色", id: "3"},
-            {name: "资源", id: "4"}
+            // {name: "资源", id: "4"}
         ],
         typeIndex:0,
         typeId:'',

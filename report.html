@@ -25,7 +25,7 @@
             <div class="listCon">
                 <div class="title"><span>考评报表管理</span></div>
                 <div class="table">
-                    <div class="btnList"><a class="btn" onclick="$('.tcHide').show()">新建报表</a></div>
+                    <div class="btnList"><a class="btn" @click="reportInfo(0)">新建报表</a></div>
                     <table>
                         <thead>
                         <tr>
@@ -36,16 +36,16 @@
                             <th>操作</th>
                         </tr>
                         </thead>
-                        <tbody id="table">
+                        <tbody id="table" v-for="(item,index) in reportList">
                         <tr>
-                            <td>大数据治理应用平台</td>
-                            <td>2020-01-01</td>
+                            <td>{{item.name}}</td>
+                            <td>{{dateFormatFull(item.checkStartTime)}}</td>
                             <td>admin</td>
                             <td>每天9:00，每周一10:00，每月1日10:30</td>
                             <td>
-                                <a href="evaluationPlanDetail.html"><img src="images/template/icon-time.png"/></a>
-                                <img onclick="$('.tcHide').show()" src="images/template/icon-change.png"/>
-                                <img src="images/template/icon-del.png"/>
+                                <a :href="'evaluationPlanDetail.html?id='+item.id"><img src="images/template/icon-time.png"/></a>
+                                <img @click="reportInfo(1,index,item.id)" src="images/template/icon-change.png"/>
+                                <img @click="delReportInfo(item.id,index)" src="images/template/icon-del.png"/>
                             </td>
                         </tr>
                         </tbody>
@@ -55,38 +55,42 @@
         </div>
     </div>
     <!--新建报表-->
-    <div class="tcHide">
-        <div class="masking" onclick="$('.tcHide').hide()"></div>
+    <div class="tcHide" v-if="isReportPop" :class="isReportPop?'display':''">
+        <div class="masking" @click="reportInfo(0)"></div>
         <div class="tcCon">
             <div class="tcTit"><span>考评报表管理</span></div>
-            <div class="itemList special"><span>报表名称：</span><input type="text"/></div>
+            <div class="itemList special"><span>报表名称：</span><input type="text" v-model="objectName"/></div>
             <div class="itemList special">
                 <span>时间范围：</span>
                 <div class="select">
-                    <span>当天<i></i></span>
-                    <ul>
-                        <li><span>当天</span></li>
-                        <li><span>整周</span></li>
-                        <li><span>整月</span></li>
-                        <li><span>整年</span></li>
+                    <span @click="selectTime">{{timeTxt}}<i></i></span>
+                    <ul v-if="isTime" :class="isTime?'display':''">
+                        <li v-for="(item,index) in timeData" @click="selectTimeType(item)"><span>{{item.name}}</span></li>
                     </ul>
                 </div>
             </div>
             <div class="itemList special flexStart">
                 <span>考评项目：</span>
                 <div class="checkTree">
-                    <div><a class="btn1">全选</a><a class="btn1">取消全选</a></div>
                     <ul>
-                        <li>
-                            <div class="checkList"><input type="checkbox" class="checkbox" id="pro1"><label for="pro1"><img src="images/template/icon-check.png" alt=""></label><p>业务考评</p></div>
+                        <li v-for="(item,index) in objectNavList" v-if="item.parentId==0">
+                            <div class="checkboxList">
+                                <div @click="checkButton(item.id,0)" :class="needIdList!=''&&needIdList!=null&&needIdList.includes(item.id)?'checkbox item-check checked':'checkbox item-check'" :id="item.id"><img src="images/template/icon-check.png" alt=""></div>
+                                <p>{{item.name}}</p>
+                            </div>
                             <ul>
-                                <li>
-                                    <div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1"><label for="pro1_1"><img src="images/template/icon-check.png" alt=""></label><p>业务健康度</p></div>
+                                <li v-for="(secItem,secIndex) in objectNavList" v-if="item.id==secItem.parentId">
+                                    <div class="checkboxList">
+                                        <div @click="checkButton(secItem.id,0)" :class="needIdList!=''&&needIdList!=null&&needIdList.includes(secItem.id)?'checkbox item-check checked':'checkbox item-check'" :id="secItem.id"><img src="images/template/icon-check.png" alt=""></div>
+                                        <p>{{secItem.name}}</p>
+                                    </div>
                                     <ul>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_1"><label for="pro1_1_1"><img src="images/template/icon-check.png" alt=""></label><p>页面可用性</p></div></li>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_2"><label for="pro1_1_2"><img src="images/template/icon-check.png" alt=""></label><p>页面健康度</p></div></li>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_3"><label for="pro1_1_3"><img src="images/template/icon-check.png" alt=""></label><p>数据质量</p></div></li>
-                                        <li><div class="checkList"><input type="checkbox" class="checkbox" id="pro1_1_4"><label for="pro1_1_4"><img src="images/template/icon-check.png" alt=""></label><p>数据共享</p></div></li>
+                                        <li v-for="(thirdItem,thirdIndex) in objectNavList" v-if="secItem.id==thirdItem.parentId">
+                                            <div class="checkboxList">
+                                                <div @click="checkButton(thirdItem.id,0)" :class="needIdList!=''&&needIdList!=null&&needIdList.includes(thirdItem.id)?'checkbox item-check checked':'checkbox item-check'" :id="thirdItem.id"><img src="images/template/icon-check.png" alt=""></div>
+                                                <p>{{thirdItem.name}}</p>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -97,27 +101,32 @@
             <div class="itemList special flexStart">
                 <span>业务系统：</span>
                 <div class="checkTree">
-                    <div><a class="btn1">全选</a><a class="btn1">取消全选</a></div>
                     <ul>
-                        <li>
-                            <div class="checkList"><input type="checkbox" class="checkbox" id="sys1"><label for="pro1"><img src="images/template/icon-check.png" alt=""></label><p>大数据治理应用平台</p></div>
+                        <li v-for="(item,index) in objectList">
+                            <div class="checkboxList">
+                                <div @click="checkButton(item.id,1)" :class="objectNeedIdList!=''&&objectNeedIdList!=null&&objectNeedIdList.includes(item.id)?'checkbox itemCheck checked':'checkbox item-check'" :id="'_'+item.id"><img src="images/template/icon-check.png" alt=""></div>
+                                <p>{{item.name}}</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="itemList paddingLeft">
-                <a class="btn">保存</a><a class="btn1" onclick="$('.tcHide').hide()">取消</a>
+                <a v-if="isEdit" class="btn" @click="saveReportInfo">保存</a>
+                <a v-else class="btn" @click="changeReportInfo">保存</a>
+                <a class="btn1" @click="reportInfo(0)">取消</a>
             </div>
         </div>
     </div>
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/report.js"></script>
 <script>
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
         document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
-        document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
+        // document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
     });
 </script>
 </html>

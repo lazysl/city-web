@@ -52,11 +52,12 @@
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #fff;
+    width: 16.666%;
 }
 .result .table table tbody tr td {
     background: #fff;
 }
-.result .table table tr td{border-bottom: 1px solid #d8dce5;}
+.result .table table tr td{border-bottom: 1px solid #d8dce5;border-right: 1px solid #d8dce5;}
 .result .table table tr th{font-size: 14px;}
 .result .table table tr td.red{
     color: #f00;

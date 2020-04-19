@@ -99,21 +99,12 @@
                         <span>部门名称</span>
                         <input placeholder="请输入部门名称"/>
                         <a class="btn">查询</a>
-                        <a class="btn">同步</a>
-                        <a class="btn">新增</a>
-                        <a class="btn">删除</a>
                     </div>
                     <div class="table">
                         <table>
                             <thead>
                             <tr>
-                                <th>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="departmentTitle">
-                                        <label for="departmentTitle"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>序号</p>
-                                    </div>
-                                </th>
+                                <th>序号</th>
                                 <th>部门名称</th>
                                 <th>上级部门</th>
                                 <th>备注</th>
@@ -121,13 +112,7 @@
                             </thead>
                             <tbody>
                             <tr v-for="(item,index) in organizationList">
-                                <td>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="department1">
-                                        <label for="department1"><img src="images/template/icon-check.png" alt=""></label>
-                                        <p>{{index+1}}</p>
-                                    </div>
-                                </td>
+                                <td>{{index+1}}</td>
                                 <td>{{item.organization}}</td>
                                 <td></td>
                                 <td></td>
@@ -154,7 +139,6 @@
                         <span>角色ID</span>
                         <input placeholder="请输入角色ID"/>
                         <a class="btn">查询</a>
-                        <a class="btn">同步</a>
                         <a class="btn">新增</a>
                         <a class="btn">编辑</a>
                         <a class="btn">删除</a>

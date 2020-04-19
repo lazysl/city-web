@@ -50,7 +50,7 @@
                     </thead>
                     <tbody id="table">
                     <tr v-for="item in resultList">
-                        <td><a :href="'evaluationResultDetail.html?checkId='+item.checkId">{{item.name}}</a></td>
+                        <td>{{item.name}}</td>
                         <td :class="item.result==0?'red':'green'">{{item.result==0?'未达标':'达标'}}</td>
                         <td :class="item.health==0?'red':'green'">{{item.health==0?'未达标':'达标'}}</td>
                         <td :class="item.safe==0?'red':'green'">{{item.safe==0?'未达标':'达标'}}</td>
@@ -59,7 +59,7 @@
                         <td :class="item.sqlDevice==0?'red':'green'">{{item.sqlDevice==0?'未达标':'达标'}}</td>
                         <td :class="item.middleware==0?'red':'green'">{{item.middleware==0?'未达标':'达标'}}</td>
                         <td :class="item.internet==0?'red':'green'">{{item.internet==0?'未达标':'达标'}}</td>
-                        <td><img src="images/template/icon-change.png"/><img src="images/template/icon-issue.png"/></td>
+                        <td><a :href="'evaluationResultDetail.html?checkId='+item.checkId"><img src="images/template/icon-change.png"/></a><img src="images/template/icon-issue.png"/></td>
                     </tr>
                     </tbody>
                 </table>

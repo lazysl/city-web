@@ -1,8 +1,8 @@
 var setting = {
     // www_url: "http://localhost:8080",
-    www_url: "/znkp/cityapi",
+    // www_url: "/znkp/cityapi",
     beiHang_url: '/serverapi',
-    // www_url: "http://192.168.1.75:8080",
+    www_url: "http://192.168.1.75:8080",
     // beiHang_url:'http://192.168.1.72:8060',
     apiKey: "f997bc19a9410ded2c0eb17f24e0690d",
 };
@@ -215,34 +215,63 @@ Vue.prototype.updateCheckMode = function (data) {
     }
 };
 /*获取考评结果*/
-Vue.prototype.getCheckResult = function (data) {
+Vue.prototype.getCheckResult = function () {
     return {
         url: setting.www_url + "/city/checkResult/getCheckResult?apiKey=" + setting.apiKey,
         token: localStorage.getItem("token")
     }
 };
 /*获取所有部门*/
-Vue.prototype.getOrganization = function (data) {
+Vue.prototype.getOrganization = function () {
     return {
         url: setting.www_url + "/city/organization/getOrganization?apiKey=" + setting.apiKey,
         token: localStorage.getItem("token")
     }
 };
 /*获取所有用户*/
-Vue.prototype.getUserList = function (data) {
+Vue.prototype.getUserList = function () {
     return {
         url: setting.www_url + "/city/user/getUserList?apiKey=" + setting.apiKey,
         token: localStorage.getItem("token")
     }
 };
 /*获取所有角色*/
-Vue.prototype.getRoleList = function (data) {
+Vue.prototype.getRoleList = function () {
     return {
         url: setting.www_url + "/city/role/getRoleList?apiKey=" + setting.apiKey,
         token: localStorage.getItem("token")
     }
 };
-
+/*获取考评报表列表*/
+Vue.prototype.getCheckReport = function () {
+    return {
+        url: setting.www_url + "/city/checkReport/getCheckReport?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+};
+/*新建考评报表列表*/
+Vue.prototype.addCheckReport = function (data) {
+    return {
+        url: setting.www_url + "/city/checkReport/addCheckReport?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
+/*编辑考评报表列表*/
+Vue.prototype.updateReportList = function (data) {
+    return {
+        url: setting.www_url + "/city/checkReport/updateReportList?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
+/*删除考评报表列表*/
+Vue.prototype.deleteReportList = function (id) {
+    return {
+        url: setting.www_url + "/city/checkReport/deleteReportList?apiKey=" + setting.apiKey + "&id=" + id,
+        token: localStorage.getItem("token")
+    }
+};
 
 
 
@@ -263,18 +292,3 @@ function saveEmailProperties(data) {
         token: localStorage.getItem("token")
     }
 }
-
-Vue.prototype.getUserList = function () {
-    return {
-        url: setting.www_url + "/city/user/getUserList?apiKey=" + setting.apiKey,
-        token: localStorage.getItem("token")
-    }
-}
-Vue.prototype.setAuth = function (data) {
-    return {
-        url: setting.www_url + "/city/user/setAuth?apiKey=" + setting.apiKey,
-        data: data,
-        token: localStorage.getItem("token")
-    }
-}
-

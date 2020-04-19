@@ -24,6 +24,7 @@
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #fff;
+    width: 20%;
 }
 .report .table table tr td{border-bottom: 1px solid #d8dce5;}
 .report .table table tr th{font-size: 14px;}

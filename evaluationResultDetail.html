@@ -27,8 +27,8 @@
             </div>
             <div class="nameList">
                 <ul>
-                    <li><span>业务系统名称：</span><p>大数据治理应用平台</p></li>
-                    <li><span>当前考评结果：</span><p class="green">达标</p></li>
+                    <li><span>业务系统名称：</span><p>{{objectName}}</p></li>
+                    <li><span>当前考评结果：</span><p :class="objectResult==0?'red':'green'">{{objectResult==0?'未达标':'达标'}}</p></li>
                     <li><a class="btn1">导出报表</a><a class="btn">发送报表</a></li>
                 </ul>
             </div>
@@ -40,116 +40,109 @@
                         <th>当前值</th>
                         <th>达标条件</th>
                         <th>达标状态</th>
-                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody id="table">
                     <tr>
-                        <td rowspan="6">业务考评</td>
-                        <td rowspan="2">业务健康度</td>
-                        <td>业务可用性</td>
-                        <td>正常</td>
-                        <td>正常</td>
-                        <td class="green">达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td rowspan="13">业务考评</td>
+                        <td rowspan="4">业务健康度</td>
+                        <td>页面可用性</td>
+                        <td>{{resultList.businessVaule}}</td>
+                        <td>{{resultList.businessCondition}}</td>
+                        <td :class="resultList.businessStatus==0?'red':'green'">{{resultList.businessStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td>业务响应时间</td>
-                        <td>3100ms</td>
-                        <td>100ms</td>
-                        <td class="red">不达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>页面监测</td>
+                        <td>{{resultList.responseVaule}}</td>
+                        <td>{{resultList.responseCondition}}</td>
+                        <td :class="resultList.responseStatus==0?'red':'green'">{{resultList.responseStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">信息安全</td>
-                        <td>业务可用性</td>
-                        <td>正常</td>
-                        <td>正常</td>
-                        <td class="green">达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>数据质量</td>
+                        <td>{{resultList.dataQualityVaule}}</td>
+                        <td>{{resultList.dataQualityCondition}}</td>
+                        <td :class="resultList.dataQualityStatus==0?'red':'green'">{{resultList.dataQualityStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td>业务响应时间</td>
-                        <td>3100ms</td>
-                        <td>100ms</td>
-                        <td class="red">不达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>数据共享</td>
+                        <td>{{resultList.dataSharingVaule}}</td>
+                        <td>{{resultList.dataSharingCondition}}</td>
+                        <td :class="resultList. dataSharingStatus==0?'red':'green'">{{resultList.dataSharingStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">物联网设备</td>
-                        <td>业务可用性</td>
-                        <td>正常</td>
-                        <td>正常</td>
-                        <td class="green">达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td rowspan="9">信息安全</td>
+                        <td>安全漏洞</td>
+                        <td>{{resultList.securityBreachVaule}}</td>
+                        <td>{{resultList.securityBreachCondition}}</td>
+                        <td :class="resultList.securityBreachStatus==0?'red':'green'">{{resultList.securityBreachStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td>业务响应时间</td>
-                        <td>3100ms</td>
-                        <td>100ms</td>
-                        <td class="red">不达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>病毒攻击</td>
+                        <td>{{resultList.virusAttackVaule}}</td>
+                        <td>{{resultList.virusAttackCondition}}</td>
+                        <td :class="resultList.virusAttackStatus==0?'red':'green'">{{resultList.virusAttackStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td rowspan="8">服务器</td>
-                        <td rowspan="2">业务健康度</td>
-                        <td>业务可用性</td>
-                        <td>正常</td>
-                        <td>正常</td>
-                        <td class="green">达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>端口扫描</td>
+                        <td>{{resultList.portScanVaule}}</td>
+                        <td>{{resultList.portScanCondition}}</td>
+                        <td :class="resultList.portScanStatus==0?'red':'green'">{{resultList.portScanStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td>业务响应时间</td>
-                        <td>3100ms</td>
-                        <td>100ms</td>
-                        <td class="red">不达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>强力攻击</td>
+                        <td>{{resultList.forceAttackVaule}}</td>
+                        <td>{{resultList.forceAttackCondition}}</td>
+                        <td :class="resultList.forceAttackStatus==0?'red':'green'">{{resultList.forceAttackStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">数据库</td>
-                        <td>业务可用性</td>
-                        <td>正常</td>
-                        <td>正常</td>
-                        <td class="green">达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>木马后门攻击</td>
+                        <td>{{resultList.trojanAttackVaule}}</td>
+                        <td>{{resultList.trojanAttackCondition}}</td>
+                        <td :class="resultList.trojanAttackStatus==0?'red':'green'">{{resultList.trojanAttackStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td>业务响应时间</td>
-                        <td>3100ms</td>
-                        <td>100ms</td>
-                        <td class="red">不达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>拒绝访问攻击</td>
+                        <td>{{resultList.deniedAttacVaule}}</td>
+                        <td>{{resultList.deniedAttacCondition}}</td>
+                        <td :class="resultList.deniedAttacStatus==0?'red':'green'">{{resultList.deniedAttacStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">中间件</td>
-                        <td>业务可用性</td>
-                        <td>正常</td>
-                        <td>正常</td>
-                        <td class="green">达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>缓冲区溢出攻击</td>
+                        <td>{{resultList.zoneAttacVaule}}</td>
+                        <td>{{resultList.zoneAttacCondition}}</td>
+                        <td :class="resultList.zoneAttacStatus==0?'red':'green'">{{resultList.zoneAttacStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td>业务响应时间</td>
-                        <td>3100ms</td>
-                        <td>100ms</td>
-                        <td class="red">不达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>网络蠕虫攻击</td>
+                        <td>{{resultList.wormAttacVaule}}</td>
+                        <td>{{resultList.wormAttacCondition}}</td>
+                        <td :class="resultList.wormAttacStatus==0?'red':'green'">{{resultList.wormAttacStatus==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2">网络设备</td>
-                        <td>业务可用性</td>
-                        <td>正常</td>
-                        <td>正常</td>
-                        <td class="green">达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td>IP碎片攻击</td>
+                        <td>{{resultList.ipAttacVaule}}</td>
+                        <td>{{resultList.ipAttacCondition}}</td>
+                        <td :class="resultList.ipAttacStatus==0?'red':'green'">{{resultList.ipAttacStatus==0?'未达标':'达标'}}</td>
+                    </tr>
+                    <!--第二栏-->
+                    <tr>
+                        <td rowspan="3">技术考评</td>
+                        <td colspan="2">服务器</td>
+                        <td>{{resultList.serverVaule}}</td>
+                        <td>{{resultList.serverCondition}}</td>
+                        <td :class="resultList.serverDevice==0?'red':'green'">{{resultList.serverDevice==0?'未达标':'达标'}}</td>
                     </tr>
                     <tr>
-                        <td>业务响应时间</td>
-                        <td>3100ms</td>
-                        <td>100ms</td>
-                        <td class="red">不达标</td>
-                        <td><img src="images/template/icon-change.png"/></td>
+                        <td colspan="2">数据库</td>
+                        <td>{{resultList.sqlVaule}}</td>
+                        <td>{{resultList.sqlCondition}}</td>
+                        <td :class="resultList.sqlDevice==0?'red':'green'">{{resultList.sqlDevice==0?'未达标':'达标'}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">中间件</td>
+                        <td>{{resultList.middlewareVaule}}</td>
+                        <td>{{resultList.middlewareCondition}}</td>
+                        <td :class="resultList.middleware==0?'red':'green'">{{resultList.middleware==0?'未达标':'达标'}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -159,6 +152,7 @@
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/evaluationResultDetail.js"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;
     document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
