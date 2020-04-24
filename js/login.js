@@ -35,10 +35,14 @@ $.extend({
         }
         $.postAjax(login(data), function (res) {
             if (res.code = 200){
-                alert("登录成功");
+                //alert("登录成功");
                 localStorage.setItem("token",res.code_desc);
                 // $.cookie("user", res.data.username,{ expires: 1, path: '/' });
                 localStorage.setItem("user", res.data.username);
+				
+				//Add by paple for SSO test @2020.04.15
+				localStorage.setItem("pw", window.btoa($("#password").val()));
+				
                 window.location.href="./homepage.html"
             }else $(".submit span").show();
         });

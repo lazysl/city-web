@@ -5,6 +5,8 @@ var setting = {
     // www_url: "http://192.168.1.75:8080",
     // beiHang_url:'http://192.168.1.72:8060',
     apiKey: "f997bc19a9410ded2c0eb17f24e0690d",
+	jc_login_url: "http://192.168.1.75:8060/LoginPage.do?",
+	cz_login_url: "http://192.168.1.73:8080/?"
 };
 document.write("<script type='text/javascript' src='js/jquery.cookie.min.js'></script>");
 $(".select").click(function () {

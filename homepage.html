@@ -28,11 +28,11 @@
                 <span><img src="images/homepage/icon1.png"/>管理子系统</span>
                 <p>点击进入>></p>
             </a>
-            <a class="item">
+            <a class="item" href="javascript:void(0)" onclick="openSubSystemSSO('jc')">
                 <span><img src="images/homepage/icon2.png"/>监测子系统</span>
                 <p>点击进入>></p>
             </a>
-            <a class="item">
+            <a class="item" href="javascript:void(0)" onclick="openSubSystemSSO('cz')">
                 <span><img src="images/homepage/icon3.png"/>处置子考评</span>
                 <p>点击进入>></p>
             </a>
@@ -51,7 +51,35 @@
     function quit(){
         delCookie("user");
         localStorage.clear();
+		delSSOCookie(); //删除其他子系统cookie
         window.location.href = "./login.html"
     }
+	
+	// add by paple for SSO @2020.04.24
+	function openSubSystemSSO(subSys) {
+		//console.log("test");
+		var name = window.encodeURIComponent(localStorage.getItem("user"));
+		var pass = window.encodeURIComponent(localStorage.getItem("pw"));
+		console.log(name);
+		console.log(pass);
+		var href = "";
+		console.log(subSys);
+		if (subSys == "jc")
+			href = setting.jc_login_url;
+		else if (subSys == "cz")
+			href = setting.cz_login_url;
+		else
+			href = "";
+		var param = "user=" + name + "&pw=" + pass;
+		param = window.btoa(param);
+		href = encodeURI(href + param);
+		var jcwindow = window.open();
+		jcwindow.location = href;
+	}
+	
+	function delSSOCookie() {
+		document.cookie = 'JSESSIONID=;Domain=192.168.1.75;Path=/';
+		document.cookie = 'JSESSIONID_APM_9090=;Domain=192.168.1.75;Path=/';
+	}
 </script>
 </html>
