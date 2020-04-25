@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/template.css">
     <link rel="stylesheet" href="css/report.css">
     <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/browser-polyfill.min.js"></script>
     <script src="js/vue.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
 </head>
@@ -41,7 +43,7 @@
                             <td>{{item.name}}</td>
                             <td>{{dateFormatFull(item.checkStartTime)}}</td>
                             <td>admin</td>
-                            <td>每天9:00，每周一10:00，每月1日10:30</td>
+                            <td>{{cronExpression(item.checkPlan)}}</td>
                             <td>
                                 <a :href="'evaluationPlanDetail.html?id='+item.id"><img src="images/template/icon-time.png"/></a>
                                 <img @click="reportInfo(1,index,item.id)" src="images/template/icon-change.png"/>
@@ -121,7 +123,7 @@
 </div>
 </body>
 <script src="js/public.js"></script>
-<script src="js/report.js"></script>
+<script src="js/report.js" type="text/babel"></script>
 <script>
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
