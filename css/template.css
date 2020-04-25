@@ -552,7 +552,8 @@ body{
     border-radius: 2px;
     padding: 10px 15px;
 }
- .tcHide.report .tcCon{padding: 0;width: 1000px}
+.tcHide.report .tcCon{padding: 0;width: 1000px}
+.tcHide .tcCon.witdh{width: 400px;top: 30%}
 .tcHide .tcCon .off{
     position: absolute;
     right: 15px;
@@ -600,6 +601,29 @@ body{
     cursor: pointer;
     border: solid 1px #d8dce5;
     width: 60%;
+}
+.tcHide .tcCon .itemList1{text-align: center}
+.tcHide .tcCon .itemList1 p{
+    overflow: hidden;
+    display: inline-block;
+    margin: 30px 0;
+    padding: 5px 15px;
+    font-size: 14px;
+}
+.tcHide .tcCon .itemList1 span{
+    overflow: hidden;
+    display: inline-block;
+    color: #02a7f4;
+    border: solid 1px #02a7f4;
+    border-radius: 4px;
+    padding: 5px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 30px 20px 30px 0;
+}
+.tcHide .tcCon .itemList1 span:hover{
+    background: #02a7f4;
+    color: #fff;
 }
 .tcHide .tcCon .itemErr{
     overflow: hidden;
