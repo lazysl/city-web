@@ -29,7 +29,7 @@ $.extend({
             if (res.code = 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '', name, type, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11", explain1 = "严重",
-                    explain2 = "一般", explain3 = "正常";
+                    explain2 = "故障", explain3 = "正常";
                 if (data) {
                     for (var i in data) {
                         var totalRecords = data[i].totalRecords;
@@ -62,7 +62,7 @@ $.extend({
                             pic1 = "icon12";
                             pic2 = "icon13";
                             pic3 = "icon14";
-                            explain1 = "运行";
+                            explain1 = "打开";
                             explain2 = "已解决";
                             explain3 = "已关闭";
                         }
@@ -178,27 +178,44 @@ $.extend({
                             if (type == 5) {
                                 if (data[i].STATUS == "Resolved") {
                                     explain = "已解决";
+									color = "resolved";
                                 }
-                                if (data[i].STATUS == "Open") {
-                                    explain = "运行";
+                                else if (data[i].STATUS == "Open") {
+                                    explain = "打开";
+									color = "open";
                                 }
-                                if (data[i].STATUS == "closed") {
+                                else if (data[i].STATUS == "Closed") {
                                     explain = "已关闭";
+									color = "closed";
                                 }
-                                html += '<li><span>' + data[i].SUBJECT + '</span><span>' + data[i].CREATEDBY + '</span><span>' + explain + '</span></li>'
+								else if (data[i].STATUS == "Onhold") {
+									explain = "已搁置";
+									color = "onhold";
+								}
+								else {
+									explain = "--";
+								}
+                                html += '<li><span>' + data[i].SUBJECT + '</span><span>' + data[i].CREATEDBY + '</span><span class="' + color + '">' + explain + '</span></li>'
                             } else {
-                                if (data[i].status == "critical") {
+                                if (data[i].status == "Critical" || data[i].status == "critical") {
                                     explain = "严重";
-                                    color = "critical"
+                                    color = "critical";
                                 }
-                                if (data[i].status == "warning") {
-                                    explain = "一般";
-                                    color = "warning"
+                                else if (data[i].status == "Warning" || data[i].status == "warning") {
+                                    explain = "故障";
+                                    color = "warning";
                                 }
-                                if (data[i].status == "Clear" || data[i].status == "clear") {
+                                else if (data[i].status == "Clear" || data[i].status == "clear") {
                                     explain = "正常";
-                                    color = "clear"
+                                    color = "clear";
                                 }
+								else if (data[i].status == "Unknown" || data[i].status == "unknown") {
+                                    explain = "未知";
+                                    color = "critical";
+                                }
+								else {
+									explain = "--";
+								}
                                 if (typeof (data[i].type) == 'undefined') data[i].type = '';
                                 else data[i].type = data[i].type;
                                 html += '<li><span>' + data[i].displayName + '</span><span>' + data[i].type + '</span><span class="' + color + '">' + explain + '</span></li>'

@@ -2,7 +2,7 @@ new Vue({
     el: '#main',
     data: {
         planList: "",
-        weekList: ["周日", "周二", "周三", "周四", "周五", "周六", "周一",]
+        weekList: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {

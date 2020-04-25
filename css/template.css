@@ -673,6 +673,10 @@ body{
 .tcHide .tcCon .ul_list li span.critical{color: #f00}
 .tcHide .tcCon .ul_list li span.warning{color: #fd6123}
 .tcHide .tcCon .ul_list li span.clear{color: #1E6E2D}
+.tcHide .tcCon .ul_list li span.open{color: #06f}
+.tcHide .tcCon .ul_list li span.closed{color: #060}
+.tcHide .tcCon .ul_list li span.resolved{color: #0f6}
+.tcHide .tcCon .ul_list li span.onhold{color: #f00}
 .display{display: block!important;}
 @media screen and (max-width: 1366px){
     #header,#header .logo a{height: 60px}

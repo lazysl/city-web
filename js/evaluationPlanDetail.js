@@ -205,7 +205,8 @@ $.extend({
             };
             $.postAjax(updateCheckPlan(data), function (res) {
                 if (res.code = 200 && res.code_desc == "success") {
-                    alert("保存成功")
+                    alert("保存成功");
+					window.location.href = "evaluationPlan.html";
                 }else if (res.code = 403){
                     delCookie("user");
                     localStorage.clear();
