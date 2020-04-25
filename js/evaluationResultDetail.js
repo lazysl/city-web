@@ -4,6 +4,9 @@ new Vue({
         resultList: "",
         objectName: "",
         objectResult: "",
+        isApproval: false,
+        filed: "",
+        id: ""
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -46,14 +49,26 @@ new Vue({
                             this.resultList = res.data[i];
                             this.objectName = res.data[i].name;
                             this.objectResult = res.data[i].result;
+                            this.id = res.data[i].id;
                         }
                     }
-                    console.log(this.resultList )
                 } else if (res.code = 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
                 } else alert(res.code_desc)
+            })
+        },
+        approvalStatus(type, filed) {
+            this.isApproval = !this.isApproval;
+            if (type == 1) this.filed = filed;
+        },
+        updateResultStatus(result) {
+            this.postAjax(this.updateCheckResult(this.filed, this.id, result), (res) => {
+                if (res.code = 200 && res.code_desc == "success") {
+                    this.isApproval=false;
+                    this.initResult();
+                }
             })
         }
     },

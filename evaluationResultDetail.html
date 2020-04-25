@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="css/template.css">
     <link rel="stylesheet" href="css/evaluationResultDetail.css">
     <script src="js/jquery-2.2.3.min.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script src="js/browser-polyfill.min.js"></script>
     <script src="js/vue.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
 </head>
@@ -49,80 +51,80 @@
                         <td>页面可用性</td>
                         <td>{{resultList.businessVaule}}</td>
                         <td>{{resultList.businessCondition}}</td>
-                        <td :class="resultList.businessStatus==0?'red':'green'">{{resultList.businessStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.businessStatus==0?'red':'green'" @click="approvalStatus(1,'businessStatus')"><div class="item">{{resultList.businessStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>页面监测</td>
                         <td>{{resultList.responseVaule}}</td>
                         <td>{{resultList.responseCondition}}</td>
-                        <td :class="resultList.responseStatus==0?'red':'green'">{{resultList.responseStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.responseStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'responseStatus')">{{resultList.responseStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>数据质量</td>
                         <td>{{resultList.dataQualityVaule}}</td>
                         <td>{{resultList.dataQualityCondition}}</td>
-                        <td :class="resultList.dataQualityStatus==0?'red':'green'">{{resultList.dataQualityStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.dataQualityStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'dataQualityStatus')">{{resultList.dataQualityStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>数据共享</td>
                         <td>{{resultList.dataSharingVaule}}</td>
                         <td>{{resultList.dataSharingCondition}}</td>
-                        <td :class="resultList. dataSharingStatus==0?'red':'green'">{{resultList.dataSharingStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList. dataSharingStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'dataSharingStatus')">{{resultList.dataSharingStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td rowspan="9">信息安全</td>
                         <td>安全漏洞</td>
                         <td>{{resultList.securityBreachVaule}}</td>
                         <td>{{resultList.securityBreachCondition}}</td>
-                        <td :class="resultList.securityBreachStatus==0?'red':'green'">{{resultList.securityBreachStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.securityBreachStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'securityBreachStatus')">{{resultList.securityBreachStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>病毒攻击</td>
                         <td>{{resultList.virusAttackVaule}}</td>
                         <td>{{resultList.virusAttackCondition}}</td>
-                        <td :class="resultList.virusAttackStatus==0?'red':'green'">{{resultList.virusAttackStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.virusAttackStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'virusAttackStatus')">{{resultList.virusAttackStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>端口扫描</td>
                         <td>{{resultList.portScanVaule}}</td>
                         <td>{{resultList.portScanCondition}}</td>
-                        <td :class="resultList.portScanStatus==0?'red':'green'">{{resultList.portScanStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.portScanStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'portScanStatus')">{{resultList.portScanStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>强力攻击</td>
                         <td>{{resultList.forceAttackVaule}}</td>
                         <td>{{resultList.forceAttackCondition}}</td>
-                        <td :class="resultList.forceAttackStatus==0?'red':'green'">{{resultList.forceAttackStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.forceAttackStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'forceAttackStatus')">{{resultList.forceAttackStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>木马后门攻击</td>
                         <td>{{resultList.trojanAttackVaule}}</td>
                         <td>{{resultList.trojanAttackCondition}}</td>
-                        <td :class="resultList.trojanAttackStatus==0?'red':'green'">{{resultList.trojanAttackStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.trojanAttackStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'trojanAttackStatus')">{{resultList.trojanAttackStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>拒绝访问攻击</td>
                         <td>{{resultList.deniedAttacVaule}}</td>
                         <td>{{resultList.deniedAttacCondition}}</td>
-                        <td :class="resultList.deniedAttacStatus==0?'red':'green'">{{resultList.deniedAttacStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.deniedAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'deniedAttacStatus')">{{resultList.deniedAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>缓冲区溢出攻击</td>
                         <td>{{resultList.zoneAttacVaule}}</td>
                         <td>{{resultList.zoneAttacCondition}}</td>
-                        <td :class="resultList.zoneAttacStatus==0?'red':'green'">{{resultList.zoneAttacStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.zoneAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'zoneAttacStatus')">{{resultList.zoneAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>网络蠕虫攻击</td>
                         <td>{{resultList.wormAttacVaule}}</td>
                         <td>{{resultList.wormAttacCondition}}</td>
-                        <td :class="resultList.wormAttacStatus==0?'red':'green'">{{resultList.wormAttacStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.wormAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'wormAttacStatus')">{{resultList.wormAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>IP碎片攻击</td>
                         <td>{{resultList.ipAttacVaule}}</td>
                         <td>{{resultList.ipAttacCondition}}</td>
-                        <td :class="resultList.ipAttacStatus==0?'red':'green'">{{resultList.ipAttacStatus==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.ipAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'ipAttacStatus')">{{resultList.ipAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <!--第二栏-->
                     <tr>
@@ -130,29 +132,40 @@
                         <td colspan="2">服务器</td>
                         <td>{{resultList.serverVaule}}</td>
                         <td>{{resultList.serverCondition}}</td>
-                        <td :class="resultList.serverDevice==0?'red':'green'">{{resultList.serverDevice==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.serverDevice==0?'red':'green'"><div class="item" @click="approvalStatus(1,'serverDevice')">{{resultList.serverDevice==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td colspan="2">数据库</td>
                         <td>{{resultList.sqlVaule}}</td>
                         <td>{{resultList.sqlCondition}}</td>
-                        <td :class="resultList.sqlDevice==0?'red':'green'">{{resultList.sqlDevice==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.sqlDevice==0?'red':'green'"><div class="item" @click="approvalStatus(1,'sqlDevice')">{{resultList.sqlDevice==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td colspan="2">中间件</td>
                         <td>{{resultList.middlewareVaule}}</td>
                         <td>{{resultList.middlewareCondition}}</td>
-                        <td :class="resultList.middleware==0?'red':'green'">{{resultList.middleware==0?'未达标':'达标'}}</td>
+                        <td :class="resultList.middleware==0?'red':'green'"><div class="item" @click="approvalStatus(1,'middleware')">{{resultList.middleware==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <!--审批-->
+    <div class="tcHide" v-if="isApproval" :class="isApproval?'display':''">
+        <div class="masking" @click="approvalStatus(0)"></div>
+        <div class="tcCon witdh">
+            <div class="itemList1">
+                <p>选择修改状态：</p>
+                <span @click="updateResultStatus(1)">达标</span>
+                <span @click="updateResultStatus(0)">未达标</span>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 <script src="js/public.js"></script>
-<script src="js/evaluationResultDetail.js"></script>
+<script src="js/evaluationResultDetail.js" type="text/babel"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;
     document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";

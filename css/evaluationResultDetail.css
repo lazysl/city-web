@@ -57,7 +57,10 @@
 .result .table table tbody tr td {
     background: #fff;
 }
-.result .table table tr td{border-bottom: 1px solid #d8dce5;border-right: 1px solid #d8dce5;}
+.result .table table tr td {
+    border-bottom: 1px solid #d8dce5;
+    border-right: 1px solid #d8dce5;
+}
 .result .table table tr th{font-size: 14px;}
 .result .table table tr td.red{
     color: #f00;
@@ -75,5 +78,16 @@
     color: #333;
     cursor: pointer;
 }
-.result .table table tr th span,.result .table table tr td span{margin: 0 5px;}
-.result .table table tr th img,.result .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}
+.result .table table tr th span,.result .table table tr td span {
+    margin: 0 5px;
+}
+.result .table table tr th img,.result .table table tr td img{
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer
+}
+.result .table table tr td .item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

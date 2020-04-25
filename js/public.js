@@ -275,8 +275,13 @@ Vue.prototype.deleteReportList = function (id) {
         token: localStorage.getItem("token")
     }
 };
-
-
+/*审批考评结果*/
+Vue.prototype.updateCheckResult = function (filed,id,result) {
+    return {
+        url: setting.www_url + "/city/checkResult/updateCheckResult?apiKey=" + setting.apiKey + "&filed=" + filed+ "&id=" + id+ "&result=" + result,
+        token: localStorage.getItem("token")
+    }
+};
 
 
 /*获取邮箱服务配置*/

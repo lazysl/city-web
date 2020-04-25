@@ -134,6 +134,32 @@ new Vue({
             else if (obj.id == 7) this.timeList = new Date(this.getLast1Week(-6)).getTime() + "/" + new Date().getTime();
             else if (obj.id == 30) this.timeList = new Date(this.getLast1Month().beginTime).getTime() + "/" + new Date(this.getLast1Month().endTime).getTime();
         },
+        cronExpression(data) {
+            let time = "", day = "", txt = "", txtDay = "", txtWeek = "", txtMount = "";
+            if (data == null || data == "") txt = "--";
+            else {
+                data = data.split(",");
+                for (let i in data) {
+                    time = data[i].slice(0, data[i].indexOf("?"));
+                    day = data[i].slice(data[i].indexOf("?") + 2, data[i].lastIndexOf("*"));
+                    time = time.split(" ");
+                    day = day.split(" ");
+                    if (i == 0) {
+                        if (data[i] == "" || data == null || data == " ") txtDay = "";
+                        else txtDay = "每日" + time[2] + ":" + time[1] + ":" + time[0]
+                    } else if (i == 1) {
+                        if (data[i] == "" || data == null || data == " ") txtWeek = "";
+                        else txtWeek = "每" + this.weekList[day[1] - 1] + time[2] + ":" + time[1] + ":" + time[0]
+                    } else if (i == 2) {
+                        if (data[i] == "" || data == null || data == " ") txtMount = "";
+                        else txtMount = "每月" + time[3] + "日" + time[2] + ":" + time[1] + ":" + time[0]
+                    }
+                    txt = txtDay + "，" + txtWeek + "，" + txtMount;
+                    txt = txt.slice(0, txt.length - 1)
+                }
+            }
+            return txt
+        },
         initInfo() {
             this.postAjax(this.getCheckInfo(), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
