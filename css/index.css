@@ -386,3 +386,6 @@
     border-radius: 8px;
     background: #34bbfa;
 }
+.index .conList_1 ul li a p {
+	color: #333;
+}

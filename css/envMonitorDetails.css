@@ -1,0 +1,225 @@
+#main{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.plan .checkCon {
+    overflow-y: scroll;
+    margin: 0 20px;
+    padding-bottom: 30px;
+}
+.plan .checkCon .checkItem {
+    margin: 60px 0;
+    border: dashed 1px #d8dce5;
+    padding: 10px 0;
+    position: relative;
+}
+.plan .checkCon .checkItem:first-child{margin-top: 10px}
+.plan .checkCon .checkItem.marginBottom{margin-bottom: 30px}
+.plan .checkCon .checkItem.noBorder{border: none}
+.plan .checkCon .checkItem .position{
+    position: absolute;
+    top: -12px;
+    left: 10px;
+    background: #fff;
+    padding: 0 10px;
+}
+.plan .checkCon .checkItem .itemTime {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 10px
+}
+.plan .checkCon .checkItem .itemTime span{
+    overflow: hidden;
+    font-size: 14px;
+}
+.plan .checkCon .checkItem .itemTime input{
+    width: 100px;
+    height: 24px;
+    line-height: 24px;
+    border: solid 1px #d8dce5;
+    resize: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+    color: #333;
+    text-align: center;
+}
+.plan .checkCon .checkItem .item{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 10px;
+}
+.plan .checkCon .checkItem .item:last-child{margin-bottom: 0}
+.plan .checkCon .checkItem .item p{
+    overflow: hidden;
+    font-size: 14px;
+}
+.plan .checkCon .checkItem .item .input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    min-width: 300px;
+}
+.plan .checkCon .checkItem .item .input.inputTime {
+    min-width: 50px;
+    width: 50px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #333 !important;
+    -webkit-box-shadow: inset 0 0 0 1000px transparent!important;
+    box-shadow: inset 0 0 0 1000px #fff!important;
+}
+.plan .checkCon .checkItem .itemList1{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 10px 0;
+    width: 100%;
+}
+.plan .checkCon .checkItem .itemList1 span{
+    overflow: hidden;
+    font-size: 14px;
+    width: 150px;
+}
+.plan .checkCon .checkItem .itemList1.account span{
+    margin-left: 50px;
+    width: 100px;
+}
+.plan .checkCon .checkItem .itemList1 input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    margin-right: 20px;
+    min-width: 150px;
+}
+.plan .checkCon .checkItem .itemList1 input.width{
+    min-width: 50px;
+    width: 50px;
+    text-align: center;
+}
+.plan .checkCon .checkItem .itemList1 .checkList{margin: 15px 0;width: 100%}
+.plan .checkCon .checkItem .itemList1 .btn{margin-left: 50px}
+.plan .nameList{overflow: hidden;margin: 0 20px 10px}
+.plan .nameList ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.plan .nameList ul li{
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+    margin-bottom: 10px;
+}
+.plan .nameList ul li p{color: #02a7f4;}
+.plan .nameList ul li p.green{color: #36cfc9;}
+.plan .nameList ul li p.red{color: #f00;}
+.plan .nameList ul li img{margin: 0 10px;}
+.plan .nameList ul li input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    min-width: 100px;
+}
+.plan .sensorTable {
+    width: 60%;
+	margin: 0 0 0 20px;
+	float: left;
+}
+.plan .leakText {
+	width: 30%;
+	float: right;
+	vertical-align: middle;
+	display: table-cell;
+	line-height: 50px;
+}
+.plan .leakText .leakSpan {
+	font-size: 20px;
+}
+.plan .leakText .emphasise_clear {
+	font-size: 30px;
+	color: #3e3;
+}
+.plan .table .btnList {
+    overflow: hidden;
+    margin: 0 20px 10px;
+}
+
+.plan .pdu {
+	float: left;
+	width: 50%;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.plan .table .pdu table {
+	float: left;
+	width: 80%;
+	margin-left: 30px;
+}
+
+.plan .table .btnList span{margin-right: 20px}
+.plan .table table{
+    width: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.plan .table table thead{
+    background: #eee;
+    width: 100%;
+    padding-right: 20px;
+}
+.plan .table table tbody{
+    overflow-y: scroll;
+}
+.plan .table table tr td,.plan .table table tr th{
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+.plan .table table tr td{border-bottom: 1px solid #d8dce5;}
+.plan .table table tr th{font-size: 14px;}
+.plan .table table tr td.red{
+    color: #f00;
+    font-weight: bold;
+}
+.plan .table table tr td.green{
+    color: #36cfc9;
+    font-weight: bold;
+}
+.plan .table table tr th a,.plan .table table tr td a {
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    cursor: pointer;
+}
+.plan .table table tr th span,.plan .table table tr td span{margin: 0 5px;}
+.plan .table table tr th img,.plan .table table tr td img{display: inline-block;margin: 0 5px;cursor: pointer}
