@@ -113,6 +113,7 @@ new Vue({
                 this.idList = this.objectList[index].checkItems.split(",");
                 if (this.idList == null || this.idList == "") this.idList = [];
                 this.needIdList = this.objectList[index].checkItems.split(",");
+                console.log(this.objectList[index].checkItems.split(","))
             }
         },
         autoEvaluation() {
