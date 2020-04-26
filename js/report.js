@@ -249,9 +249,9 @@ new Vue({
                 else if (time >= 27) this.timeTxt = "最近30天";
                 this.timeList = this.reportList[index].checkTime;
 
-                this.idList = this.reportList[index].checkItems.split(",");
+                this.idList = this.reportList[index].checkItems.split(",").map(Number);
                 if (this.idList == null || this.idList == "") this.idList = [];
-                this.needIdList = this.reportList[index].checkItems.split(",");
+                this.needIdList = this.reportList[index].checkItems.split(",").map(Number);
                 if (this.needIdList == null || this.needIdList == "") this.needIdList = [];
 
                 this.objectIdList = JSON.parse(this.reportList[index].checkObjectIdList);

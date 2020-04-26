@@ -110,10 +110,9 @@ new Vue({
                 this.objectName = this.objectList[index].name;
                 this.isAutoEvaluation = this.objectList[index].automatic == 0 ? false : true;
                 this.objectID = id;
-                this.idList = this.objectList[index].checkItems.split(",");
+                this.idList = this.objectList[index].checkItems.split(",").map(Number);
                 if (this.idList == null || this.idList == "") this.idList = [];
-                this.needIdList = this.objectList[index].checkItems.split(",");
-                console.log(this.objectList[index].checkItems.split(","))
+                this.needIdList = this.objectList[index].checkItems.split(",").map(Number);
             }
         },
         autoEvaluation() {
