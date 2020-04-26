@@ -11,6 +11,9 @@ new Vue({
 		multiFuncSensors: "",
 		leakSensor: "正常",
 		pdu1: "",
+		pdu2: "",
+		pdu1Energ: "",
+		pdu2Energ: "",
         weekList: ["周日", "周二", "周三", "周四", "周五", "周六", "周一",]
     },
     methods: {
@@ -99,6 +102,12 @@ new Vue({
 				{"id": 3, "name": "多功能传感器UPS室","temp": 29, "humd": 75, "smoke": "正常"}
 			];
 			
+			this.pdu1Energ = {
+				"totalEnerg": 56713,
+				"itEnerg": 29784,
+				"airEnerg": 18742
+			};
+			
 			this.pdu1 = [
 				{"name":"电压", "unit":"V", "L1":224, "L2":225, "L3":223},
 				{"name":"电流", "unit":"A", "L1":9, "L2":6, "L3":5},
@@ -106,6 +115,12 @@ new Vue({
 				{"name":"视在功率", "unit":"VA", "L1":1650, "L2":1500, "L3":1700},
 				{"name":"无功功率", "unit":"var", "L1":1000, "L2":1100, "L3":1200}
 			];
+			
+			this.pdu2Energ = {
+				"totalEnerg": 51924,
+				"itEnerg": 28187,
+				"airEnerg": 16533
+			};
 			// this.getAjax(this.getEnvDataParam(), (data) => {
 				// if (data && data.performanceMonitors && data.performanceMonitors.monitors) {
 					// var monitors = data.performanceMonitors.monitors;

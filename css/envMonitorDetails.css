@@ -165,10 +165,6 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	font-size: 30px;
 	color: #3e3;
 }
-.plan .table .btnList {
-    overflow: hidden;
-    margin: 0 20px 10px;
-}
 
 .plan .pdu {
 	float: left;
@@ -177,13 +173,26 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	text-align: center;
 	vertical-align: middle;
 }
+.plan .pdu .totalEnerg {
+	font-size: 26px;
+	color: #02a7f4;
+}
+.plan .pdu .energ {
+	font-size: 20px;
+	color: #02a7f4;
+}
+.plan .table .btnList {
+    overflow: hidden;
+    margin: 0 20px 10px;
+}
+
 .plan .table .pdu table {
 	float: left;
 	width: 80%;
 	margin-left: 30px;
 }
 
-.plan .table .btnList span{margin-right: 20px}
+.plan .table .btnList span{margin-right: 1px}
 .plan .table table{
     width: 100%;
     margin: 0 auto;

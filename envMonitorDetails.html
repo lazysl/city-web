@@ -30,7 +30,7 @@
 			
 			<!-- 环境 div -->
 			<div class="table">
-				<div class="btnList"><span>环境</span></div>
+				<div class="btnList"><span style="font-size: 18px;">环境</span></div>
 				<div>
 					<div class="sensorTable">
 						<table>
@@ -60,10 +60,11 @@
 			
 			<!-- 动力 div -->
 			<div class="table" style="margin-top: 50px; float: left; width: 100%">
-				<div class="btnList"><span>动力</span></div>
+				<div class="btnList"><span style="font-size: 18px;">动力</span></div>
 				<div>
 					<div class="pdu">
-						<div class="btnList"><span>一体化配电柜1</span></div>
+						<div class="btnList"><span style="font-weight: bold">一体化配电柜1</span></div>
+						<div class="btnList">总电能(kWh)：<span class="totalEnerg">{{pdu1Energ.totalEnerg}}</span> （IT负载：<span class="energ">{{pdu1Energ.itEnerg}}</span>， 空调负载：<span class="energ">{{pdu1Energ.airEnerg}}</span>）</div>
 						<table>
 							<thead>
 							<tr>
@@ -84,7 +85,8 @@
 						</table>
 					</div>
 					<div class="pdu">
-						<div class="btnList"><span>一体化配电柜2</span></div>
+						<div class="btnList"><span style="font-weight: bold">一体化配电柜2</span></div>
+						<div class="btnList">总电能(kWh)：<span class="totalEnerg">{{pdu2Energ.totalEnerg}}</span> （IT负载：<span class="energ">{{pdu2Energ.itEnerg}}</span>， 空调负载：<span class="energ">{{pdu2Energ.airEnerg}}</span>）</div>
 						<table>
 							<thead>
 							<tr>
