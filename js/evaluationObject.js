@@ -110,9 +110,9 @@ new Vue({
                 this.objectName = this.objectList[index].name;
                 this.isAutoEvaluation = this.objectList[index].automatic == 0 ? false : true;
                 this.objectID = id;
-                this.idList = JSON.parse(this.objectList[index].checkItems);
+                this.idList = this.objectList[index].checkItems.split(",");
                 if (this.idList == null || this.idList == "") this.idList = [];
-                this.needIdList = JSON.parse(this.objectList[index].checkItems);
+                this.needIdList = this.objectList[index].checkItems.split(",");
             }
         },
         autoEvaluation() {
@@ -162,7 +162,7 @@ new Vue({
                 "automatic": this.isAutoEvaluation ? 1 : 0,
                 "email": this.objectEmail,
                 "name": this.objectName,
-                "checkItems": JSON.stringify(this.idList),
+                "checkItems": this.idList.join(","),
             };
             this.postAjax(this.addCheckInfo(data), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
@@ -187,7 +187,7 @@ new Vue({
                 "automatic": this.isAutoEvaluation ? 1 : 0,
                 "email": this.objectEmail,
                 "name": this.objectName,
-                "checkItems": JSON.stringify(this.idList),
+                "checkItems": this.idList.join(","),
                 "id": this.objectID,
             };
             this.postAjax(this.updateCheckInfo(data), (res) => {

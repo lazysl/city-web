@@ -249,9 +249,9 @@ new Vue({
                 else if (time >= 27) this.timeTxt = "最近30天";
                 this.timeList = this.reportList[index].checkTime;
 
-                this.idList = JSON.parse(this.reportList[index].checkItems);
+                this.idList = this.reportList[index].checkItems.split(",");
                 if (this.idList == null || this.idList == "") this.idList = [];
-                this.needIdList = JSON.parse(this.reportList[index].checkItems);
+                this.needIdList = this.reportList[index].checkItems.split(",");
                 if (this.needIdList == null || this.needIdList == "") this.needIdList = [];
 
                 this.objectIdList = JSON.parse(this.reportList[index].checkObjectIdList);
@@ -263,8 +263,8 @@ new Vue({
         addReportInfo() {
             let data = {
                 "name": this.objectName,
-                "checkItems": JSON.stringify(this.idList),
-                "checkObjectIdList": JSON.stringify(this.objectIdList),
+                "checkItems": this.idList.join(","),
+                "checkObjectIdList": this.objectIdList.join(","),
                 "checkTime": this.timeList
             };
             this.postAjax(this.addCheckReport(data), (res) => {
@@ -281,8 +281,8 @@ new Vue({
             this.isReportPop = false;
             let data = {
                 "name": this.objectName,
-                "checkItems": JSON.stringify(this.idList),
-                "checkObjectIdList": JSON.stringify(this.objectIdList),
+                "checkItems": this.idList.join(","),
+                "checkObjectIdList": this.objectIdList.join(","),
                 "checkTime": this.timeList,
                 "id": this.objectID,
             };
