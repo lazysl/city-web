@@ -161,9 +161,13 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 .plan .leakText .leakSpan {
 	font-size: 20px;
 }
-.plan .leakText .emphasise_clear {
+.plan .leakText .normal {
 	font-size: 30px;
 	color: #3e3;
+}
+.plan .leakText .alert {
+	font-size: 30px;
+	color: #f11;
 }
 
 .plan .pdu {
@@ -214,13 +218,16 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .plan .table table tr td{border-bottom: 1px solid #d8dce5;}
 .plan .table table tr th{font-size: 14px;}
-.plan .table table tr td.red{
+.plan .table table tr td.critical{
     color: #f00;
     font-weight: bold;
 }
-.plan .table table tr td.green{
-    color: #36cfc9;
+.plan .table table tr td.alert{
+    color: #f2a73b;
     font-weight: bold;
+}
+.plan .table table tr td.clear{
+    color: #36cfc9;
 }
 .plan .table table tr th a,.plan .table table tr td a {
     margin: 0 5px;

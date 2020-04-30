@@ -9,7 +9,7 @@ new Vue({
     el: '#main',
     data: {
 		multiFuncSensors: "",
-		leakSensor: "正常",
+		leakSensor: 2, //2为正常，1为告警
 		pdu1: "",
 		pdu2: "",
 		pdu1Energ: "",
@@ -97,9 +97,9 @@ new Vue({
 		
 		initEnvData() {
 			this.multiFuncSensors = [
-				{"id": 1, "name": "多功能传感器1","temp": 25, "humd": 35, "smoke": "正常"},
-				{"id": 2, "name": "多功能传感器2","temp": 27, "humd": 36, "smoke": "正常"},
-				{"id": 3, "name": "多功能传感器UPS室","temp": 29, "humd": 75, "smoke": "正常"}
+				{"id":1, "name": "多功能传感器1", "temp": 25, "temp_status":5, "humd": 35, "humd_status":5, "smoke":"正常", "smoke_status":5},
+				{"id":2, "name": "多功能传感器2", "temp": 27, "temp_status":3, "humd": 36, "humd_status":5, "smoke":"正常", "smoke_status":5},
+				{"id":3, "name": "多功能传感器UPS室", "temp": 29, "temp_status":1, "humd": 75, "humd_status":5, "smoke": "正常", "smoke_status":5}
 			];
 			
 			this.pdu1Energ = {
@@ -121,21 +121,51 @@ new Vue({
 				"itEnerg": 28187,
 				"airEnerg": 16533
 			};
-			// this.getAjax(this.getEnvDataParam(), (data) => {
-				// if (data && data.performanceMonitors && data.performanceMonitors.monitors) {
-					// var monitors = data.performanceMonitors.monitors;
-					// for (var i in monitors) {
-						// switch (monitors[i].name) {
-							// case "HwIDCSensor1Temp":
-								// if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value)
-									// multiFuncSensors[0].temp = monitors[i].data[0].value;
-								// break;
+			this.getAjax(this.getEnvDataParam(), (data) => {
+				if (data && data.performanceMonitors && data.performanceMonitors.monitors) {
+					var monitors = data.performanceMonitors.monitors;
+					for (var i in monitors) {
+						switch (monitors[i].name) {
+							//温度
+							case "HwIDCSensor1Temp":
+								if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value)
+									multiFuncSensors[0].temp = monitors[i].data[0].value;
+								break;
+							case "HwIDCSensor2Temp":
+								if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value)
+									multiFuncSensors[1].temp = monitors[i].data[0].value;
+								break;
+							case "HwIDCSensor3Temp":
+								if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value)
+									multiFuncSensors[2].temp = monitors[i].data[0].value;
+								break;
 							
+							//湿度
+							case "HwIDCSensor1Humd":
+								if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value)
+									multiFuncSensors[0].humd = monitors[i].data[0].value;
+								break;
+							case "HwIDCSensor2Humd":
+								if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value)
+									multiFuncSensors[1].humd = monitors[i].data[0].value;
+								break;
+							case "HwIDCSensor3Humd":
+								if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value)
+									multiFuncSensors[2].humd = monitors[i].data[0].value;
+								break;
 							
-						// }
-					// }
-				// }
-			// });
+							//烟感
+							case "HwIDCSensor1Smoke":
+								if (monitors[i].data && monitors[i].data[0] && monitors[i].data[0].value) {
+									if (monitors[i].data[0].value == 1)
+										multiFuncSensors[0].smoke = "正常";
+									
+								}
+								break;
+						}
+					}
+				}
+			});
 			
 			//console.log(this.envData);
 			//this.multiFuncSensors = sensors;

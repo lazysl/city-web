@@ -43,17 +43,17 @@
 							</tr>
 							</thead>
 							<tbody id="table">
-							<tr v-for="item in multiFuncSensors" v-if="item.id>0">
+							<tr v-for="item in multiFuncSensors">
 								<td>{{item.name}}</td>
-								<td>{{item.temp}} ℃</td>
-								<td>{{item.humd}} %RH</td>
-								<td>{{item.smoke}}</td>
+								<td :class="{ critical: item.temp_status==1, alert: item.temp_status==2 || item.temp_status==3 || item.temp_status==4, clear: item.temp_status==5 }">{{item.temp}} ℃</td>
+								<td :class="{ critical: item.humd_status==1, alert: item.humd_status==2 || item.humd_status==3 || item.humd_status==4, clear: item.humd_status==5 }">{{item.humd}} %RH</td>
+								<td :class="{ critical: item.smoke_status==1, alert: item.smoke_status==2 || item.smoke_status==3 || item.smoke_status==4, clear: item.smoke_status==5 }">{{item.smoke}}</td>
 							</tr>
 							</tbody>
 						</table>
 					</div>
 					<div class="leakText">
-						<span class="leakSpan">漏水检测：</span><span class="emphasise_clear">{{leakSensor}}</span>
+						<span class="leakSpan">漏水检测：</span><span :class="leakSensor==2? 'normal' : 'alert'">{{leakSensor==2? "正常" : "告警"}}</span>
 					</div>
 				</div>
 			</div>
