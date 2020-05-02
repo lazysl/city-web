@@ -66,11 +66,21 @@ new Vue({
         updateResultStatus(result) {
             this.postAjax(this.updateCheckResult(this.filed, this.id, result), (res) => {
                 if (res.code = 200 && res.code_desc == "success") {
-                    this.isApproval=false;
+                    this.isApproval = false;
                     this.initResult();
                 }
             })
-        }
+        },
+        pdfMap(name) {
+            let pdf = new jsPDF('p', 'pt', 'a4');
+            pdf.internal.scaleFactor = 1;
+            let options = {
+                pagesplit: true,
+            };
+            pdf.addHTML(document.getElementById("tableCon"), options, function () {
+                pdf.save(name + '考评结果.pdf');
+            });
+        },
     },
     mounted() {
         this.initResult()

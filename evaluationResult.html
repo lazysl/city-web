@@ -28,8 +28,8 @@
                 <span>考评结果管理</span>
             </div>
             <div class="table">
-                <div class="btnList"><span class="btn1">导出报表</span><span class="btn1">发送报表</span><span class="btn">一键全部发布</span></div>
-                <table>
+                <div class="btnList"><span class="btn1" @click="pdfMap">导出报表</span><span class="btn1">发送报表</span><span class="btn">一键全部发布</span></div>
+                <table id="tableCon">
                     <thead>
                     <tr>
                         <th rowspan="2">业务系统名称</th>
@@ -69,6 +69,8 @@
 </div>
 </body>
 <script src="js/public.js"></script>
+<script src="js/jspdf.min.js"></script>
+<script src="js/html2canvas.js"></script>
 <script src="js/evaluationResult.js" type="text/babel"></script>
 <script>
     let docHeight = window.innerHeight || document.documentElement.clientHeight;

@@ -39,7 +39,17 @@ new Vue({
                     window.location.href = "./login.html"
                 }else alert(res.code_desc)
             })
-        }
+        },
+        pdfMap() {
+            let pdf = new jsPDF('p', 'pt', 'a4');
+            pdf.internal.scaleFactor = 1;
+            let options = {
+                pagesplit: true,
+            };
+            pdf.addHTML(document.getElementById("tableCon"), options, function() {
+                pdf.save('总考评结果.pdf');
+            });
+        },
     },
     mounted() {
         this.initResult()
