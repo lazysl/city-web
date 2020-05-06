@@ -44,14 +44,13 @@
                         <a class="btn">新增</a>
                         <a class="btn">删除</a>
                     </div>
-                    <div class="table">
+                    <div class="table firstTab">
                         <table>
                             <thead>
                             <tr>
                                 <th>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="userTitle">
-                                        <label for="userTitle"><img src="images/template/icon-check.png" alt=""></label>
+                                    <div class="checkboxList">
+                                        <div class="checkbox item-check" @click="checkButton('allUser')" id="allUser"><img src="images/template/icon-check.png" alt=""></div>
                                         <p>序号</p>
                                     </div>
                                 </th>
@@ -63,25 +62,24 @@
                                 <th>备注</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody :style="{'max-Height':maxHeight}">
                             <tr v-for="(item,index) in userList">
                                 <td>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="user1">
-                                        <label for="user1"><img src="images/template/icon-check.png" alt=""></label>
+                                    <div class="checkboxList">
+                                        <div class="checkbox item-check" :class="userAllChecked?'checkbox item-check checked':'checkbox item-check'" @click="checkButton(item.id)" :id="item.id"><img src="images/template/icon-check.png" alt=""></div>
                                         <p>{{index+1}}</p>
                                     </div>
                                 </td>
-                                <td>{{item.username}}</td>
-                                <td>{{item.fullname}}</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{item.username?item.username:"--"}}</td>
+                                <td>{{item.fullname?item.fullname:"--"}}</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="pageNum">
+                        <!--<div class="pageNum">
                             <ul>
                                 <li>
                                     <em><img src="images/template/arrow-left.png"/></em>
@@ -91,7 +89,7 @@
                                 </li>
                                 <li><p>前往</p><input type="text"/><p>页</p></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="userCon" v-if="typeIndex==1" :class="typeIndex==1?'display':''">
@@ -100,7 +98,7 @@
                         <input placeholder="请输入部门名称"/>
                         <a class="btn">查询</a>
                     </div>
-                    <div class="table">
+                    <div class="table secTab">
                         <table>
                             <thead>
                             <tr>
@@ -110,16 +108,16 @@
                                 <th>备注</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody :style="{'max-Height':maxHeight}">
                             <tr v-for="(item,index) in organizationList">
                                 <td>{{index+1}}</td>
                                 <td>{{item.organization}}</td>
-                                <td></td>
-                                <td></td>
+                                <td>--</td>
+                                <td>--</td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="pageNum">
+                        <!--<div class="pageNum">
                             <ul>
                                 <li>
                                     <em><img src="images/template/arrow-left.png"/></em>
@@ -129,7 +127,7 @@
                                 </li>
                                 <li><p>前往</p><input type="text"/><p>页</p></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="userCon" v-if="typeIndex==2" :class="typeIndex==2?'display':''">
@@ -143,7 +141,7 @@
                         <a class="btn">编辑</a>
                         <a class="btn">删除</a>
                     </div>
-                    <div class="table">
+                    <div class="table secTab">
                         <table>
                             <thead>
                             <tr>
@@ -159,7 +157,7 @@
                                 <th>备注</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody :style="{'max-Height':maxHeight}">
                             <tr v-for="(item,index) in roleList">
                                 <td>
                                     <div class="checkList">
@@ -174,7 +172,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="pageNum">
+                        <!--<div class="pageNum">
                             <ul>
                                 <li>
                                     <em><img src="images/template/arrow-left.png"/></em>
@@ -184,7 +182,7 @@
                                 </li>
                                 <li><p>前往</p><input type="text"/><p>页</p></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="userCon" v-if="typeIndex==3" :class="typeIndex==3?'display':''">
@@ -198,7 +196,7 @@
                         <a class="btn">新增</a>
                         <a class="btn">删除</a>
                     </div>
-                    <div class="table">
+                    <div class="table fourTab">
                         <table>
                             <thead>
                             <tr>
@@ -216,7 +214,7 @@
                                 <th>备注</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody :style="{'max-Height':maxHeight}">
                             <tr>
                                 <td>
                                     <div class="checkList">
@@ -233,7 +231,7 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="pageNum">
+                        <!--<div class="pageNum">
                             <ul>
                                 <li>
                                     <em><img src="images/template/arrow-left.png"/></em>
@@ -243,7 +241,7 @@
                                 </li>
                                 <li><p>前往</p><input type="text"/><p>页</p></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -252,17 +250,5 @@
 </div>
 <script src="js/public.js"></script>
 <script src="js/management.js" type="text/babel"></script>
-<script>
-    $(function () {
-        var docHeight = window.innerHeight || document.documentElement.clientHeight;
-        var docWidth = window.innerWidth || document.documentElement.clientWidth;
-        $("#content .layout").css("height", docHeight - 142);
-        $("#userList").css("max-height", docHeight - 300);
-        if (docWidth <= 1366) {
-            $(".management .manageCon .manageItem .item ul").css("min-height", docHeight - 500);
-            $(".management .manageCon .manageItem .itemCon .itemList .item ul").css("min-height", (docHeight - 540)/2);
-        }
-    });
-</script>
 </body>
 </html>

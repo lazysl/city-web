@@ -70,7 +70,7 @@ $.extend({
     },
     initPlan() {
         $.postAjax(getCheckPlan(), function (res) {
-            if (res.code = 200 && res.code_desc == "success") {
+            if (res.code == 200 && res.code_desc == "success") {
                 var data = res.data, checkPlan = "", cronExpression, time = "", day = "", startDate, endDate;
                 if (data) {
                     for (var i in data) {
@@ -109,7 +109,7 @@ $.extend({
                         }
                     }
                 }
-            }else if (res.code = 403){
+            }else if (res.code == 403){
                 delCookie("user");
                 localStorage.clear();
                 window.location.href = "./login.html"
@@ -200,14 +200,14 @@ $.extend({
             let data = {
                 checkPlan: checkPlans,
                 id: urlParams("id"),
-                checkStartTime: new Date(checkStartTime).getTime(),
-                checkEndTime: new Date(checkEndTime).getTime()
+                checkStartTime: checkStartTime == "" ? "" : new Date(checkStartTime).getTime(),
+                checkEndTime: checkEndTime == "" ? "" : new Date(checkEndTime).getTime()
             };
             $.postAjax(updateCheckPlan(data), function (res) {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     alert("保存成功");
 					window.location.href = "evaluationPlan.html";
-                }else if (res.code = 403){
+                }else if (res.code == 403){
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"

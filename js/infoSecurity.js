@@ -60,7 +60,7 @@ new Vue({
         },
         initInfo() {
             this.postAjax(this.getCheckInfo(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     for (const i in res.data) {
                         if (res.data[i].id == this.urlParams("id")) {
                             this.objectName = res.data[i].name;
@@ -94,7 +94,7 @@ new Vue({
                             this.ipNum = this.informationSecurity[i].ipNum;
                         }
                     }
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -143,10 +143,10 @@ new Vue({
                 informationSecurity: JSON.stringify(informationSecurity)
             };
             this.postAjax(this.updateCheckInfoSecurity(data), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     alert("保存成功");
                     this.initInfo();
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"

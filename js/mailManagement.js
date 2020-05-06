@@ -26,14 +26,14 @@ $.extend({
     },
     initMail: function () {
         $.postAjax(getEmailProperties(), function (res) {
-            if (res.code = 200 && res.code_desc == "success") {
+            if (res.code == 200 && res.code_desc == "success") {
                 var data = res.data;
                 $("#fromEmail").val(data.fromEmail);
                 $("#host").val(data.host);
                 $("#username").val(data.username);
                 $("#password").val(data.password);
                 $("#port").val(data.port)
-            }else if (res.code = 403){
+            }else if (res.code == 403){
                 delCookie("user");
                 localStorage.clear();
                 window.location.href = "./login.html"
@@ -51,9 +51,9 @@ $.extend({
                 password: password,
             };
             $.postAjax(saveEmailProperties(data), function (res) {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     alert("保存成功")
-                }else if (res.code = 403){
+                }else if (res.code == 403){
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"

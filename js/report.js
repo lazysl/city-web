@@ -162,12 +162,12 @@ new Vue({
         },
         initInfo() {
             this.postAjax(this.getCheckInfo(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.objectList = res.data;
                     for (let i in res.data) {
                         this.objectIdList.push(res.data[i].id)
                     }
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -176,9 +176,9 @@ new Vue({
         },
         initReport() {
             this.postAjax(this.getCheckReport(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.reportList = res.data;
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -187,12 +187,12 @@ new Vue({
         },
         objectMenu() {
             this.postAjax(this.getCheckMenu(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.objectNavList = res.data;
                     for (let i in res.data) {
                         this.idList.push(res.data[i].id)
                     }
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -270,7 +270,7 @@ new Vue({
             this.postAjax(this.addCheckReport(data), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
                     this.initReport()
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -289,7 +289,7 @@ new Vue({
             this.postAjax(this.updateReportList(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.initReport()
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -307,7 +307,7 @@ new Vue({
             this.postAjax(this.deleteReportList(id), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.initReport()
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"

@@ -238,6 +238,13 @@ Vue.prototype.getUserList = function () {
         token: localStorage.getItem("token")
     }
 };
+/*删除用户信息*/
+Vue.prototype.deleteUser = function (id) {
+    return {
+        url: setting.www_url + "/city/user/deleteUser?apiKey=" + setting.apiKey + "&id=" + id,
+        token: localStorage.getItem("token")
+    }
+};
 /*获取所有角色*/
 Vue.prototype.getRoleList = function () {
     return {

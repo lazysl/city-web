@@ -66,19 +66,53 @@
     width: 100%;
     margin: 0 auto;
     display: table;
+    background: #eee;
 }
 .management .manageCon .userCon .table table thead{
     background: #eee;
+    width: 99%;
+    display: table;
+    overflow: hidden
+}
+.management .manageCon .userCon .table table tbody{
+    overflow-y: scroll;
+    display: block;
     width: 100%;
 }
+.management .manageCon .userCon .table table tbody tr {
+    width: 100%;
+    display: block;
+}
 .management .manageCon .userCon .table table tr:last-child{border-bottom:none}
-.management .manageCon .userCon .table table tr td,.management .manageCon .userCon .table table tr th{
+.management .manageCon .userCon .table table tr td,
+.management .manageCon .userCon .table table tr th{
+    overflow: hidden;
     font-size: 12px;
-    padding: 10px;
+    padding: 10px 1%;
     border-bottom: 1px solid #d8dce5;
 }
+.management .manageCon .userCon .table.firstTab table tr td,
+.management .manageCon .userCon .table.firstTab table tr th {
+    width: 15%;
+    display: block;
+    float: left;
+}
+.management .manageCon .userCon .table.secTab table tr td,
+.management .manageCon .userCon .table.secTab table tr th {
+    width: 30%;
+    display: block;
+    float: left;
+}
+.management .manageCon .userCon .table.fourTab table tr td,
+.management .manageCon .userCon .table.fourTab table tr th {
+    width: 18%;
+    display: block;
+    float: left;
+}
 .management .manageCon .userCon .table table tr th{font-size: 14px;}
-.management .manageCon .userCon .table table tr th:first-child,.management .manageCon .userCon .table table tr td:first-child{width: 150px;text-align: center}
+.management .manageCon .userCon .table table tr th:first-child,
+.management .manageCon .userCon .table table tr td:first-child{width: 10%;text-align: center}
+.management .manageCon .userCon .table table tr td{background: #fff;}
 .management .manageCon .userCon .table table tr td:first-child p{font-size: 12px}
 .management .manageCon .userCon .table table tr td span{
     overflow: hidden;

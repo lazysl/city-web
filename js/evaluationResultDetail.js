@@ -43,7 +43,7 @@ new Vue({
         },
         initResult() {
             this.postAjax(this.getCheckResult(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     for (let i in res.data) {
                         if (this.urlParams("checkId") == res.data[i].checkId) {
                             this.resultList = res.data[i];
@@ -52,7 +52,7 @@ new Vue({
                             this.id = res.data[i].id;
                         }
                     }
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -65,7 +65,7 @@ new Vue({
         },
         updateResultStatus(result) {
             this.postAjax(this.updateCheckResult(this.filed, this.id, result), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.isApproval = false;
                     this.initResult();
                 }

@@ -104,7 +104,7 @@ new Vue({
         },
         initMode() {
             this.postAjax(this.getCheckMode(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     for (const i in res.data) {
                         let rule = "";
                         if (res.data[i].id == 1) {
@@ -147,7 +147,7 @@ new Vue({
                             }
                         }
                     }
-                }else if (res.code = 403){
+                }else if (res.code == 403){
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -233,9 +233,9 @@ new Vue({
                 rule: JSON.stringify(rule)
             };
             this.postAjax(this.updateCheckMode(data), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     alert("保存成功")
-                }else if (res.code = 403){
+                }else if (res.code == 403){
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"

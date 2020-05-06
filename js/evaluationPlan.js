@@ -73,9 +73,9 @@ new Vue({
         },
         initPlan() {
             this.postAjax(this.getCheckPlan_v(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.planList = res.data;
-                }else if (res.code = 403){
+                }else if (res.code == 403){
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"

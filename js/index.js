@@ -26,7 +26,7 @@ $.extend({
     },
     initWaring() {
         $.postAjax(getWaring(), function (res) {
-            if (res.code = 200 && res.code_desc == "success") {
+            if (res.code == 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '', name, type, pic1 = "icon9", pic2 = "icon10", pic3 = "icon11", explain1 = "严重",
                     explain2 = "故障", explain3 = "正常";
@@ -82,7 +82,7 @@ $.extend({
                     }
                     $("#waring").empty().append(html)
                 }
-            }else if (res.code = 403){
+            }else if (res.code == 403){
                 delCookie("user");
                 localStorage.clear();
                 window.location.href = "./login.html"
@@ -91,7 +91,7 @@ $.extend({
     },
     initModeAnaly() {
         $.postAjax(getCheckModeAnaly(), function (res) {
-            if (res.code = 200 && res.code_desc == "success") {
+            if (res.code == 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '', rankHtml = '';
                 if (data) {
@@ -123,7 +123,7 @@ $.extend({
                     $("#table").empty().append(html);
                     $("#rankList ul").empty().append(rankHtml)
                 }
-            }else if (res.code = 403){
+            }else if (res.code == 403){
                 delCookie("user");
                 localStorage.clear();
                 window.location.href = "./login.html"
@@ -132,7 +132,7 @@ $.extend({
     },
     initAlarms() {
         $.postAjax(listAlarms(), function (res) {
-            if (res.code = 200 && res.code_desc == "success") {
+            if (res.code == 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '';
                 if (data) {
@@ -149,7 +149,7 @@ $.extend({
                     }
                     $("#alarms").empty().append(html)
                 }
-            }else if (res.code = 403){
+            }else if (res.code == 403){
                 delCookie("user");
                 localStorage.clear();
                 window.location.href = "./login.html"
@@ -169,7 +169,7 @@ $.extend({
             }
         }
         $.postAjax(js_checkSqlList(type, waringTypes), function (res) {
-            if (res.code = 200 && res.code_desc == "success") {
+            if (res.code == 200 && res.code_desc == "success") {
                 $(".tcHide").show();
                 var data = res.data;
                 if (data) {
@@ -262,7 +262,7 @@ $.extend({
                         }
                     }
                 }
-            }else if (res.code = 403){
+            }else if (res.code == 403){
                 delCookie("user");
                 localStorage.clear();
                 window.location.href = "./login.html"

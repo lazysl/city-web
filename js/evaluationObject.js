@@ -118,7 +118,7 @@ new Vue({
         autoEvaluation() {
             this.isAutoEvaluation = !this.isAutoEvaluation
         },
-        checkButton(ID, index) {
+        checkButton(ID) {
             let id = document.getElementById(ID);
             if (id.className == 'checkbox item-check') {
                 id.className = 'checkbox item-check checked';
@@ -134,9 +134,9 @@ new Vue({
         },
         initInfo() {
             this.postAjax(this.getCheckInfo(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.objectList = res.data;
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -145,12 +145,12 @@ new Vue({
         },
         objectMenu() {
             this.postAjax(this.getCheckMenu(), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.objectNavList = res.data;
                     for (let i in res.data) {
                         this.idList.push(res.data[i].id)
                     }
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -167,7 +167,7 @@ new Vue({
             this.postAjax(this.addCheckInfo(data), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
                     this.initInfo()
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -193,7 +193,7 @@ new Vue({
             this.postAjax(this.updateCheckInfo(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.initInfo()
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -205,7 +205,7 @@ new Vue({
                 if (res.code == 200 && res.code_desc == "success") {
                     this.objectList.splice(index, 1);
                     this.initInfo()
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -225,9 +225,9 @@ new Vue({
         },
         initDevice(type) {
             this.postAjax(this.getCheckSqlList(type), (res) => {
-                if (res.code = 200 && res.code_desc == "success") {
+                if (res.code == 200 && res.code_desc == "success") {
                     this.deviceList = res.data;
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
@@ -279,7 +279,11 @@ new Vue({
             this.postAjax(this.addCheckDevice(data), (res) => {
                 if (res.code == 200 || res.code_desc == "success") {
                     this.initInfo()
-                } else alert(res.code_desc);
+                } else if (res.code == 403) {
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                } else alert(res.code_desc)
             })
         },
         submitDevice() {
@@ -315,7 +319,7 @@ new Vue({
                 if (res.code == 200 || res.code_desc == "success") {
                     alert("考评成功");
                     this.initInfo()
-                } else if (res.code = 403) {
+                } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
                     window.location.href = "./login.html"
