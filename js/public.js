@@ -238,10 +238,26 @@ Vue.prototype.getUserList = function () {
         token: localStorage.getItem("token")
     }
 };
+/*新增用户信息*/
+Vue.prototype.addUser = function (data) {
+    return {
+        url: setting.www_url + "/city/user/addUser?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
+/*更改用户信息*/
+Vue.prototype.updateUser = function (data) {
+    return {
+        url: setting.www_url + "/city/user/updateUser?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
 /*删除用户信息*/
 Vue.prototype.deleteUser = function (id) {
     return {
-        url: setting.www_url + "/city/user/deleteUser?apiKey=" + setting.apiKey + "&id=" + id,
+        url: setting.www_url + "/city/user/deleteUser?apiKey=" + setting.apiKey + "&ids=" + id,
         token: localStorage.getItem("token")
     }
 };
@@ -249,6 +265,36 @@ Vue.prototype.deleteUser = function (id) {
 Vue.prototype.getRoleList = function () {
     return {
         url: setting.www_url + "/city/role/getRoleList?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+};
+/*获取所有菜单*/
+Vue.prototype.getMeanList = function (id) {
+    return {
+        url: setting.www_url + "/city/menu/getMeanList?apiKey=" + setting.apiKey + "&ids=" + id,
+        token: localStorage.getItem("token")
+    }
+};
+/*新增角色*/
+Vue.prototype.addRole = function (data) {
+    return {
+        url: setting.www_url + "/city/role/addRole?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
+/*修改角色*/
+Vue.prototype.updateRole = function (data) {
+    return {
+        url: setting.www_url + "/city/role/updateRole?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
+/*删除角色*/
+Vue.prototype.deleteRole = function (id) {
+    return {
+        url: setting.www_url + "/city/role/deleteRole?apiKey=" + setting.apiKey + "&ids=" + id,
         token: localStorage.getItem("token")
     }
 };

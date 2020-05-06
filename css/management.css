@@ -88,18 +88,26 @@
 .management .manageCon .userCon .table table tr th{
     overflow: hidden;
     font-size: 12px;
-    padding: 10px 1%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 1%;
     border-bottom: 1px solid #d8dce5;
 }
 .management .manageCon .userCon .table.firstTab table tr td,
 .management .manageCon .userCon .table.firstTab table tr th {
-    width: 15%;
+    width: 12.857%;
     display: block;
     float: left;
 }
 .management .manageCon .userCon .table.secTab table tr td,
 .management .manageCon .userCon .table.secTab table tr th {
     width: 30%;
+    display: block;
+    float: left;
+}
+.management .manageCon .userCon .table.thirdTab table tr td,
+.management .manageCon .userCon .table.thirdTab table tr th {
+    width: 22.5%;
     display: block;
     float: left;
 }
@@ -114,6 +122,7 @@
 .management .manageCon .userCon .table table tr td:first-child{width: 10%;text-align: center}
 .management .manageCon .userCon .table table tr td{background: #fff;}
 .management .manageCon .userCon .table table tr td:first-child p{font-size: 12px}
+.management .manageCon .userCon .table table tr td img{margin-top: 10px}
 .management .manageCon .userCon .table table tr td span{
     overflow: hidden;
     display: inline-block;
@@ -134,7 +143,9 @@
 }
 .management .checkList .checkbox + label, .checkbox{background: #fff}
 .management .manageCon .userCon .table .pageNum{margin: 20px}
-
+.tcHide .tcCon .itemList .checkTree ul li{margin: 5px 0}
+.tcHide .tcCon .itemList .checkTree ul li .checkboxList{margin-left: 0;}
+.checkboxList .checkbox.checked img{margin-top: 0!important;}
 
 
 

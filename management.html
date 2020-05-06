@@ -41,8 +41,8 @@
                         <input placeholder="请输入登录名"/>
                         <a class="btn">查询</a>
                         <a class="btn">同步</a>
-                        <a class="btn">新增</a>
-                        <a class="btn">删除</a>
+                        <a class="btn" @click="userInfoPop(0)">新增</a>
+                        <a class="btn" @click="delUser">删除</a>
                     </div>
                     <div class="table firstTab">
                         <table>
@@ -50,7 +50,7 @@
                             <tr>
                                 <th>
                                     <div class="checkboxList">
-                                        <div class="checkbox item-check" @click="checkButton('allUser')" id="allUser"><img src="images/template/icon-check.png" alt=""></div>
+                                        <div v-if="userLength" :class="allChecked?'checkbox item-check checked':'checkbox item-check'" @click="checkButton('allUser')" id="allUser"><img src="images/template/icon-check.png" alt=""></div>
                                         <p>序号</p>
                                     </div>
                                 </th>
@@ -60,22 +60,25 @@
                                 <th>手机号</th>
                                 <th>办公电话</th>
                                 <th>备注</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody :style="{'max-Height':maxHeight}">
                             <tr v-for="(item,index) in userList">
                                 <td>
                                     <div class="checkboxList">
-                                        <div class="checkbox item-check" :class="userAllChecked?'checkbox item-check checked':'checkbox item-check'" @click="checkButton(item.id)" :id="item.id"><img src="images/template/icon-check.png" alt=""></div>
+                                        <div v-if="item.type==1" :class="allChecked?'checkbox item-check checked':'checkbox item-check'" @click="checkButton(item.id,item.type)" :id="item.id"><img src="images/template/icon-check.png" alt=""></div>
                                         <p>{{index+1}}</p>
                                     </div>
                                 </td>
                                 <td>{{item.username?item.username:"--"}}</td>
-                                <td>{{item.fullname?item.fullname:"--"}}</td>
+                                <td>{{item.user?item.user:"--"}}</td>
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
                                 <td>--</td>
+                                <td v-if="item.type==0">--</td>
+                                <td v-else><img @click="userInfoPop(1,item.id)" src="images/template/icon-change.png"/></td>
                             </tr>
                             </tbody>
                         </table>
@@ -137,38 +140,37 @@
                         <span>角色ID</span>
                         <input placeholder="请输入角色ID"/>
                         <a class="btn">查询</a>
-                        <a class="btn">新增</a>
-                        <a class="btn">编辑</a>
-                        <a class="btn">删除</a>
+                        <a class="btn" @click="roleInfoPop(0)">新增</a>
+                        <a class="btn" @click="delRole">删除</a>
                     </div>
-                    <div class="table secTab">
+                    <div class="table thirdTab">
                         <table>
                             <thead>
                             <tr>
                                 <th>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="roleTitle">
-                                        <label for="roleTitle"><img src="images/template/icon-check.png" alt=""></label>
+                                    <div class="checkboxList">
+                                        <div v-if="userLength" :class="allChecked?'checkbox item-check checked':'checkbox item-check'" @click="checkButton('roleUser')" id="roleUser"><img src="images/template/icon-check.png" alt=""></div>
                                         <p>序号</p>
                                     </div>
                                 </th>
                                 <th>角色名称</th>
                                 <th>角色ID</th>
                                 <th>备注</th>
+                                <th>操作</th>
                             </tr>
                             </thead>
                             <tbody :style="{'max-Height':maxHeight}">
                             <tr v-for="(item,index) in roleList">
                                 <td>
-                                    <div class="checkList">
-                                        <input type="checkbox" class="checkbox" id="role1">
-                                        <label for="role1"><img src="images/template/icon-check.png" alt=""></label>
+                                    <div class="checkboxList">
+                                        <div :class="allChecked?'checkbox item-check checked':'checkbox item-check'" @click="checkButton(item.id)" :id="item.id"><img src="images/template/icon-check.png" alt=""></div>
                                         <p>{{index+1}}</p>
                                     </div>
                                 </td>
                                 <td>{{item.name}}</td>
                                 <td>{{item.id}}</td>
                                 <td>{{item.remark}}</td>
+                                <td><img @click="roleInfoPop(1,item.id)" src="images/template/icon-change.png"/></td>
                             </tr>
                             </tbody>
                         </table>
@@ -244,6 +246,61 @@
                         </div>-->
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <!--新增/编辑用户信息-->
+    <div class="tcHide" v-if="isUserPop" :class="isUserPop?'display':''">
+        <div class="masking" @click="userInfoPop(0)"></div>
+        <div class="tcCon">
+            <div class="tcTit"><span>{{isEdit?"新增":"编辑"}}用户信息</span></div>
+            <div class="itemList special"><span>用户名称：</span><input type="text" v-model="userName"/></div>
+            <div class="itemList special"><span>登录名：</span><input type="text" v-model="account"/></div>
+            <div class="itemList special"><span>密码：</span><input type="text" v-model="password"/></div>
+            <div class="itemList special flexStart">
+                <span>用户权限：</span>
+                <div class="checkTree">
+                    <ul>
+                        <li v-for="(item,index) in roleList">
+                            <div class="checkboxList">
+                                <div @click="checkRadio(item.id,index)" :class="userRoleId==item.id?'checkbox item-check checked':'checkbox item-check'"><img src="images/template/icon-check.png" alt=""></div>
+                                <p>{{item.name}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="itemList paddingLeft">
+                <a v-if="isEdit" class="btn" @click="addUserInfo">保存</a>
+                <a v-else class="btn" @click="changeUserInfo">保存</a>
+                <a class="btn1" @click="userInfoPop(0)">取消</a>
+            </div>
+        </div>
+    </div>
+    <!--新增/编辑角色-->
+    <div class="tcHide" v-if="isRolePop" :class="isRolePop?'display':''">
+        <div class="masking" @click="roleInfoPop(0)"></div>
+        <div class="tcCon">
+            <div class="tcTit"><span>{{isEdit?"新增":"编辑"}}角色</span></div>
+            <div class="itemList special"><span>角色名称：</span><input type="text" v-model="roleName"/></div>
+            <div class="itemList special"><span>备注：</span><input type="text" v-model="roleRemark"/></div>
+            <div class="itemList special flexStart">
+                <span>菜单权限：</span>
+                <div class="checkTree">
+                    <ul>
+                        <li v-for="(item,index) in meanList">
+                            <div class="checkboxList">
+                                <div @click="checkButton('_'+item.id)" :class="needIdList!=''&&needIdList!=null&&needIdList.includes(item.id)?'checkbox item-check checked':'checkbox item-check'" :id="'_'+item.id"><img src="images/template/icon-check.png" alt=""></div>
+                                <p>{{item.name}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="itemList paddingLeft">
+                <a v-if="isEdit" class="btn" @click="addRoleInfo">保存</a>
+                <a v-else class="btn" @click="changeRoleInfo">保存</a>
+                <a class="btn1" @click="roleInfoPop(0)">取消</a>
             </div>
         </div>
     </div>
