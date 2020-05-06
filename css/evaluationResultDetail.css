@@ -21,7 +21,9 @@
 .result .nameList ul li p.red{color: #f00;}
 .result .nameList ul li a{margin: 0 10px;}
 .result .table {
-    width: 100%
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 .result .table .btnList {
     overflow: hidden;
