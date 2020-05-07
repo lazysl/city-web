@@ -21,7 +21,8 @@ new Vue({
         userName: "",  //用户名称
         account: "",  //登录名
         password: "",  //密码
-        userRoleId: "",
+        userInfoId: "",  //用户信息ID
+        userRoleId: "",  //用户角色ID
         isEdit: true,
         isRolePop: false,   //角色弹窗
         meanList: [],  //菜单
@@ -124,6 +125,7 @@ new Vue({
             this.isUserPop = !this.isUserPop;
             if (type == 1) {
                 this.isEdit = false;
+                this.userInfoId = id;
                 for (let i in this.userList) {
                     if (this.userList[i].id == id) {
                         this.userName = this.userList[i].username;
@@ -160,6 +162,7 @@ new Vue({
         },
         changeUserInfo() {
             let data = {
+                id:this.userInfoId,
                 auth: this.userRoleId,
                 user: this.userName,
                 username: this.account,

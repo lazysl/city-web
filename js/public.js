@@ -5,20 +5,20 @@ var setting = {
     // www_url: "http://192.168.1.75:8080",
     // beiHang_url:'http://192.168.1.72:8060',
     apiKey: "f997bc19a9410ded2c0eb17f24e0690d",
-	jc_login_url: "http://192.168.1.75:8060/LoginPage.do?",
-	cz_login_url: "http://192.168.1.73:8080/?",
-	envDeviceName: "172.17.1.67"
+    jc_login_url: "http://192.168.1.75:8060/LoginPage.do?",
+    cz_login_url: "http://192.168.1.73:8080/?",
+    envDeviceName: "172.17.1.67"
 };
+
 document.write("<script type='text/javascript' src='js/jquery.cookie.min.js'></script>");
+
 $(".select").click(function () {
     $(this).find("ul").slideToggle();
 });
+
 $(".select ul li").click(function () {
     var name = $(this).children("span").text();
     $(this).parents("ul").siblings("span").empty().html(name + "<i></i>")
-});
-new Vue({
-    el: document.getElementById("head") ? "#head" : '',
 });
 
 function pageScale() {
@@ -30,9 +30,11 @@ function pageScale() {
 }
 
 pageScale();
+
 $(window).resize(function () {
     pageScale();
 });
+
 $(function () {
     var docHeight = window.innerHeight || document.documentElement.clientHeight;
     var docWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -174,7 +176,7 @@ Vue.prototype.updateCheckInfoSecurity = function (data) {
 /*手动考评*/
 Vue.prototype.startCheck = function (id) {
     return {
-        url: setting.www_url + "/city/checkResult/startCheck?apiKey=" + setting.apiKey+"&id="+id,
+        url: setting.www_url + "/city/checkResult/startCheck?apiKey=" + setting.apiKey + "&id=" + id,
         token: localStorage.getItem("token")
     }
 };
@@ -202,6 +204,7 @@ function updateCheckPlan(data) {
         token: localStorage.getItem("token")
     }
 }
+
 /*获取考评模型*/
 Vue.prototype.getCheckMode = function () {
     return {
@@ -269,9 +272,16 @@ Vue.prototype.getRoleList = function () {
     }
 };
 /*获取所有菜单*/
-Vue.prototype.getMeanList = function (id) {
+Vue.prototype.getMeanList = function () {
     return {
-        url: setting.www_url + "/city/menu/getMeanList?apiKey=" + setting.apiKey + "&ids=" + id,
+        url: setting.www_url + "/city/menu/getMeanList?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+};
+/*获取用户对应的菜单*/
+Vue.prototype.getMenuListByUser = function (id) {
+    return {
+        url: setting.www_url + "/city/menu/getMenuListByUser?apiKey=" + setting.apiKey,
         token: localStorage.getItem("token")
     }
 };
@@ -329,9 +339,9 @@ Vue.prototype.deleteReportList = function (id) {
     }
 };
 /*审批考评结果*/
-Vue.prototype.updateCheckResult = function (filed,id,result) {
+Vue.prototype.updateCheckResult = function (filed, id, result) {
     return {
-        url: setting.www_url + "/city/checkResult/updateCheckResult?apiKey=" + setting.apiKey + "&filed=" + filed+ "&id=" + id+ "&result=" + result,
+        url: setting.www_url + "/city/checkResult/updateCheckResult?apiKey=" + setting.apiKey + "&filed=" + filed + "&id=" + id + "&result=" + result,
         token: localStorage.getItem("token")
     }
 };
@@ -353,3 +363,7 @@ function saveEmailProperties(data) {
         token: localStorage.getItem("token")
     }
 }
+
+new Vue({
+    el: document.getElementById("head") ? "#head" : '',
+});

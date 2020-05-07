@@ -227,27 +227,27 @@ body{
     height: 70px;
     margin: 0 auto 10px;
 }
-#nav ul li span.ic1{
+#nav ul li span.icon1{
     background: url("../images/template/icon1.png") no-repeat center center;
     background-size: 60%;
 }
-#nav ul li span.ic2{
+#nav ul li span.icon2{
     background: url("../images/template/icon2.png") no-repeat center center;
     background-size: 60%;
 }
-#nav ul li span.ic3{
+#nav ul li span.icon3{
     background: url("../images/template/icon3.png") no-repeat center center;
     background-size: 60%;
 }
-#nav ul li span.ic4{
+#nav ul li span.icon4{
     background: url("../images/template/icon4.png") no-repeat center center;
     background-size: 60%;
 }
-#nav ul li span.ic5{
+#nav ul li span.icon5{
     background: url("../images/template/icon5.png") no-repeat center center;
     background-size: 60%;
 }
-#nav ul li span.ic6{
+#nav ul li span.icon6{
     background: url("../images/template/icon6.png") no-repeat center center;
     background-size: 60%;
 }

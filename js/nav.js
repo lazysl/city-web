@@ -11,13 +11,59 @@ Vue.component('common-head',{
         '           </div>' +
         '           <div id="nav">' +
         '               <ul>' +
-        '                   <li><a href="evaluationObject.html"><div class="first"><span class="ic1"></span>考评对象</div></a></li>' +
-        '                   <li><a href="evaluationModel.html"><div class="first"><span class="ic2"></span>考评模型</div></a></li>' +
-        '                   <li><a href="evaluationPlan.html"><div class="first"><span class="ic3"></span>考评计划</div></a></li>' +
-        '                   <li><a href="evaluationResult.html"><div class="first"><span class="ic6"></span>考评结果</div></a></li>' +
-        '                   <li><a href="report.html"><div class="first"><span class="ic4"></span>报表</div></a></li>' +
-        '                   <li><a href="management.html"><div class="first"><span class="ic5"></span>管理</div></a></li>' +
+        '                   <li v-for="item in meanList"><a :href="item.href"><div class="first"><span :class="\'icon\'+item.sort"></span>{{item.name}}</div></a></li>' +
         '               </ul>' +
         '           </div>' +
         '       </div>',
+    data() {
+        return {
+            meanList: []
+        }
+    },
+    methods:{
+        jsonAjax(options, callbackSuc, callbackErr) {
+            options = $.extend(options, {"_r": Math.random()});
+            $.ajax({
+                type: options.ajaxtype,
+                url: options.url,
+                async: true,
+                data: options.data,
+                dataType: "json",
+                headers: {'token': options.token},
+                success: function (data) {
+                    if ($.isFunction(callbackSuc)) callbackSuc(data);
+                },
+                error: function (data) {
+                    if ($.isFunction(callbackErr)) callbackErr(data);
+                }
+            });
+        },
+        getAjax(param, callbackSuc, callbackErr) {
+            param = $.extend(param, {"ajaxtype": "GET"});
+            this.jsonAjax(param, callbackSuc, callbackErr);
+        },
+        postAjax(param, callbackSuc, callbackErr) {
+            param = $.extend(param, {"ajaxtype": "POST"});
+            this.jsonAjax(param, callbackSuc, callbackErr);
+        },
+        initMeanList() {
+            this.postAjax(this.getMenuListByUser(), (res) => {
+                if (res.code == 200 && res.code_desc == "success") {
+                    for (let i in res.data.menu) {
+                        if (res.data.menu[i].type == 0) {
+                            this.meanList.push(res.data.menu[i])
+                        }
+                    }
+                    this.meanList.sort((a,b)=>{return a.sort - b.sort})
+                } else if (res.code == 403) {
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                } else alert(res.code_desc)
+            })
+        },
+    },
+    mounted(){
+        this.initMeanList()
+    }
 });
