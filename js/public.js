@@ -228,16 +228,18 @@ Vue.prototype.getCheckResult = function () {
     }
 };
 /*获取所有部门*/
-Vue.prototype.getOrganization = function () {
+Vue.prototype.getOrganization = function (data) {
     return {
         url: setting.www_url + "/city/organization/getOrganization?apiKey=" + setting.apiKey,
+        data: data,
         token: localStorage.getItem("token")
     }
 };
 /*获取所有用户*/
-Vue.prototype.getUserList = function () {
+Vue.prototype.getUserList = function (data) {
     return {
         url: setting.www_url + "/city/user/getUserList?apiKey=" + setting.apiKey,
+        data: data,
         token: localStorage.getItem("token")
     }
 };
@@ -265,9 +267,10 @@ Vue.prototype.deleteUser = function (id) {
     }
 };
 /*获取所有角色*/
-Vue.prototype.getRoleList = function () {
+Vue.prototype.getRoleList = function (data) {
     return {
         url: setting.www_url + "/city/role/getRoleList?apiKey=" + setting.apiKey,
+        data: data,
         token: localStorage.getItem("token")
     }
 };

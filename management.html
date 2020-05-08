@@ -37,10 +37,10 @@
                 <div class="userCon" v-if="typeIndex==0" :class="typeIndex==0?'display':''">
                     <div class="item">
                         <span>用户名称</span>
-                        <input placeholder="请输入用户名称"/>
+                        <input placeholder="请输入用户名称" v-model="usernameKey"/>
                         <span>登录名</span>
-                        <input placeholder="请输入登录名"/>
-                        <a class="btn">查询</a>
+                        <input placeholder="请输入登录名" v-model="userKey"/>
+                        <a class="btn" @click="brushUserInfo">查询</a>
                         <a class="btn" @click="userInfoPop(0)">新增</a>
                         <a class="btn" @click="delUser">删除</a>
                     </div>
@@ -98,8 +98,8 @@
                 <div class="userCon" v-if="typeIndex==1" :class="typeIndex==1?'display':''">
                     <div class="item">
                         <span>部门名称</span>
-                        <input placeholder="请输入部门名称"/>
-                        <a class="btn">查询</a>
+                        <input placeholder="请输入部门名称" v-model="organizationKey"/>
+                        <a class="btn" @click="brushOrganization">查询</a>
                     </div>
                     <div class="table secTab">
                         <table>
@@ -136,10 +136,10 @@
                 <div class="userCon" v-if="typeIndex==2" :class="typeIndex==2?'display':''">
                     <div class="item">
                         <span>角色名称</span>
-                        <input placeholder="请输入角色名称"/>
+                        <input placeholder="请输入角色名称" v-model="roleNameKey"/>
                         <span>角色ID</span>
-                        <input placeholder="请输入角色ID"/>
-                        <a class="btn">查询</a>
+                        <input placeholder="请输入角色ID" v-model="roleIdKey"/>
+                        <a class="btn" @click="brushRole">查询</a>
                         <a class="btn" @click="roleInfoPop(0)">新增</a>
                         <a class="btn" @click="delRole">删除</a>
                     </div>

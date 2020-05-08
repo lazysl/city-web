@@ -9,9 +9,14 @@ new Vue({
         ],
         typeIndex: 0,
         typeId: '',  //tab的ID
+        usernameKey: "",  //用户信息-用户名称刷选
+        userKey: "",  //用户信息-登录名刷选
         userList: '',  //用户
         organizationList: '',  //部门
+        organizationKey: "",  //部门-部门名称刷选
         roleList: '',  //角色
+        roleNameKey: "",  //角色-角色名称刷选
+        roleIdKey: "",  //角色-角色ID刷选
         maxHeight: "",
         allChecked: false,  //全选
         idList: [],   //考评菜单ID
@@ -105,8 +110,8 @@ new Vue({
             this.idList = [];
             this.isEdit = true;
         },
-        initUserList() {
-            this.postAjax(this.getUserList(), (res) => {
+        getUserInfo(data) {
+            this.postAjax(this.getUserList(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.userList = res.data;
                     for (let i in this.userList) {
@@ -120,6 +125,9 @@ new Vue({
                     window.location.href = "./login.html"
                 } else alert(res.code_desc)
             })
+        },
+        initUserList() {
+            this.getUserInfo();
         },
         userInfoPop(type, id) {
             this.isUserPop = !this.isUserPop;
@@ -162,7 +170,7 @@ new Vue({
         },
         changeUserInfo() {
             let data = {
-                id:this.userInfoId,
+                id: this.userInfoId,
                 auth: this.userRoleId,
                 user: this.userName,
                 username: this.account,
@@ -194,8 +202,15 @@ new Vue({
                 })
             }
         },
-        initOrganization() {
-            this.postAjax(this.getOrganization(), (res) => {
+        brushUserInfo() {
+            let data = {
+                user: this.userKey,
+                username: this.usernameKey
+            };
+            this.getUserInfo(data);
+        },
+        getOrganizationInfo(data) {
+            this.postAjax(this.getOrganization(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.organizationList = res.data;
                 } else if (res.code == 403) {
@@ -205,8 +220,17 @@ new Vue({
                 } else alert(res.code_desc)
             })
         },
-        initRoleList() {
-            this.postAjax(this.getRoleList(), (res) => {
+        initOrganization() {
+            this.getOrganizationInfo()
+        },
+        brushOrganization() {
+            let data = {
+                organization: this.organizationKey,
+            };
+            this.getOrganizationInfo(data);
+        },
+        getRoleInfo(data) {
+            this.postAjax(this.getRoleList(data), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     this.roleList = res.data;
                 } else if (res.code == 403) {
@@ -215,6 +239,16 @@ new Vue({
                     window.location.href = "./login.html"
                 } else alert(res.code_desc)
             })
+        },
+        initRoleList() {
+            this.getRoleInfo();
+        },
+        brushRole() {
+            let data = {
+                name: this.roleNameKey,
+                id: this.roleIdKey,
+            };
+            this.getRoleInfo(data);
         },
         initMeanList() {
             this.postAjax(this.getMeanList(), (res) => {
