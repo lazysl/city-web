@@ -214,11 +214,13 @@ new Vue({
         },
         deviceInfo(obj, type, index, id) {
             this.isDevicePop = !this.isDevicePop;
-            if (obj == 0) this.selectedDeviceList = [];
-            else if (obj == 1) {
+            if (obj == 0) {
+                this.selectedDeviceList = [];
+            } else if (obj == 1) {
                 this.selectedObjectIndex = index;
                 this.deviceType = type;
                 this.deviceId = id;
+                this.selectedDeviceList = [];
                 this.deviceList = [];
                 this.initDevice(type);
             }
@@ -295,15 +297,19 @@ new Vue({
                     }
                 }
                 if (this.deviceType == 6 || this.deviceType == 7) {
-                    if (arrData.length > 0) {
-                        alert("请勿添加重复数据");
-                    } else {
-                        if (data.length > 1) alert("该设备只能添加一条数据");
-                        else {
-                            this.addObjectDevice(this.selectedDeviceList);
-                            this.isDevicePop = false;
+                    if (this.objectList[this.selectedObjectIndex].deviceList[this.deviceType]&&this.objectList[this.selectedObjectIndex].deviceList[this.deviceType].length == 1) alert("该设备只能添加一条数据");
+                    else {
+                        if (arrData.length > 0) {
+                            alert("请勿添加重复数据");
+                        } else {
+                            if (this.selectedDeviceList.length > 1) alert("该设备只能添加一条数据");
+                            else {
+                                this.addObjectDevice(this.selectedDeviceList);
+                                this.isDevicePop = false;
+                            }
                         }
                     }
+
                 } else {
                     if (arrData.length > 0) {
                         alert("请勿添加重复数据");
