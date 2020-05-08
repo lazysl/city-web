@@ -234,14 +234,14 @@ new Vue({
                 } else alert(res.code_desc)
             })
         },
-        checkLeftDevice(name, id, index) {
-            this.checkedLeftDeviceDisName = name;
-            this.checkedLeftDeviceName = id;
+        checkLeftDevice(displayName, name, index) {
+            this.checkedLeftDeviceDisName = displayName;
+            this.checkedLeftDeviceName = name;
             this.deviceIndex = index;
         },
-        checkRightDevice(name, id, index) {
-            this.checkedRightDeviceDisName = name;
-            this.checkedRightDeviceName = id;
+        checkRightDevice(displayName, name, index) {
+            this.checkedRightDeviceDisName = displayName;
+            this.checkedRightDeviceName = name;
             this.deviceIndex = index;
         },
         addDevice() {
@@ -271,8 +271,8 @@ new Vue({
             names = names.slice(0, names.length - 1);
             displayNames = displayNames.slice(0, displayNames.length - 1);
             let data = {
-                "displayName": names,
-                "name": displayNames,
+                "displayName": displayNames,
+                "name": names,
                 "parentId": this.deviceId,
                 "type": this.deviceType,
             };
