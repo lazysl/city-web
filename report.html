@@ -39,8 +39,8 @@
                             <th>操作</th>
                         </tr>
                         </thead>
-                        <tbody id="table" v-for="(item,index) in reportList">
-                        <tr>
+                        <tbody id="table">
+                        <tr v-for="(item,index) in reportList">
                             <td>{{item.name}}</td>
                             <td>{{dateFormatFull(item.checkStartTime)}}</td>
                             <td>admin</td>
@@ -124,11 +124,4 @@
 </div>
 </body>
 <script src="js/report.js" type="text/babel"></script>
-<script>
-    $(function () {
-        var docHeight = window.innerHeight || document.documentElement.clientHeight;
-        document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
-        // document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
-    });
-</script>
 </html>

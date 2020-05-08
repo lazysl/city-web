@@ -161,19 +161,33 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 }
 .plan .table table thead{
     background: #eee;
-    width: 100%;
-    padding-right: 20px;
+    width: 99%;
+    display: table;
+    overflow: hidden
 }
 .plan .table table tbody{
     overflow-y: scroll;
+    display: block;
+    width: 100%;
+}
+.plan .table table tbody tr {
+    width: 100%;
+    display: block;
 }
 .plan .table table tr td,.plan .table table tr th{
     font-size: 12px;
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #fff;
+    width: 20%;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.plan .table table tr td{border-bottom: 1px solid #d8dce5;}
+.plan .table table tr td{border-bottom: 1px solid #d8dce5;background: #fff;}
 .plan .table table tr th{font-size: 14px;}
 .plan .table table tr td.red{
     color: #f00;

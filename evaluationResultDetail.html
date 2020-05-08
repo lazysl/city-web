@@ -47,7 +47,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td rowspan="13">业务考评</td>
+                        <td rowspan="24">业务考评</td>
                         <td rowspan="4">业务健康度</td>
                         <td>页面可用性</td>
                         <td>{{resultList.businessVaule}}</td>
@@ -127,6 +127,73 @@
                         <td>{{resultList.ipAttacCondition}}</td>
                         <td :class="resultList.ipAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'ipAttacStatus')">{{resultList.ipAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
+                    <tr>
+                        <td rowspan="11">物联网设备</td>
+                        <td>执法车</td>
+                        <td>{{resultList.zhifacheVaule}}</td>
+                        <td>{{resultList.zhifacheCondition}}</td>
+                        <td :class="resultList.zhifacheStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'zhifacheStatus')">{{resultList.zhifacheStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>绿化车辆</td>
+                        <td>{{resultList.lvhuacheVaule}}</td>
+                        <td>{{resultList.lvhuacheCondition}}</td>
+                        <td :class="resultList.lvhuacheStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'lvhuacheStatus')">{{resultList.lvhuacheStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>环卫车</td>
+                        <td>{{resultList.huanweicheVaule}}</td>
+                        <td>{{resultList.huanweicheCondition}}</td>
+                        <td :class="resultList.huanweicheStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'huanweicheStatus')">{{resultList.huanweicheStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>摄像头</td>
+                        <td>{{resultList.shexiangtouVaule}}</td>
+                        <td>{{resultList.shexiangtouCondition}}</td>
+                        <td :class="resultList.shexiangtouStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'shexiangtouStatus')">{{resultList.shexiangtouStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>执法仪</td>
+                        <td>{{resultList.zhifayiVaule}}</td>
+                        <td>{{resultList.zhifayiCondition}}</td>
+                        <td :class="resultList.zhifayiStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'zhifayiStatus')">{{resultList.zhifayiStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>对讲机</td>
+                        <td>{{resultList.duijiangjiVaule}}</td>
+                        <td>{{resultList.duijiangjiCondition}}</td>
+                        <td :class="resultList.duijiangjiStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'duijiangjiStatus')">{{resultList.duijiangjiStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>环卫工牌</td>
+                        <td>{{resultList.hwgongpaiVaule}}</td>
+                        <td>{{resultList.hwgongpaiCondition}}</td>
+                        <td :class="resultList.hwgongpaiStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'hwgongpaiStatus')">{{resultList.hwgongpaiStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>公厕一体机</td>
+                        <td>{{resultList.gcyitijiVaule}}</td>
+                        <td>{{resultList.gcyitijiCondition}}</td>
+                        <td :class="resultList.gcyitijiStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'gcyitijiStatus')">{{resultList.gcyitijiStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>果壳箱监测仪</td>
+                        <td>{{resultList.gkxjianceyiVaule}}</td>
+                        <td>{{resultList.gkxjianceyiCondition}}</td>
+                        <td :class="resultList.gkxjianceyiStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'gkxjianceyiStatus')">{{resultList.gkxjianceyiStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>气体监测仪</td>
+                        <td>{{resultList.qtjianceyiVaule}}</td>
+                        <td>{{resultList.qtjianceyiCondition}}</td>
+                        <td :class="resultList.qtjianceyiStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'qtjianceyiStatus')">{{resultList.qtjianceyiStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
+                    <tr>
+                        <td>避险设备</td>
+                        <td>{{resultList.bixianshebeiVaule}}</td>
+                        <td>{{resultList.bixianshebeiCondition}}</td>
+                        <td :class="resultList.bixianshebeiStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'bixianshebeiStatus')">{{resultList.bixianshebeiStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                    </tr>
                     <!--第二栏-->
                     <tr>
                         <td rowspan="3">技术考评</td>
@@ -168,9 +235,4 @@
 <script src="js/jspdf.min.js"></script>
 <script src="js/html2canvas.js"></script>
 <script src="js/evaluationResultDetail.js" type="text/babel"></script>
-<script>
-    let docHeight = window.innerHeight || document.documentElement.clientHeight;
-    document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
-    document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
-</script>
 </html>

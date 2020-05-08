@@ -55,6 +55,11 @@ new Vue({
             if (r != null) value = unescape(r[2]);
             return value;
         },
+        docHeight() {
+            var docHeight = window.innerHeight || document.documentElement.clientHeight;
+            document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
+            document.getElementById("table").style.maxHeight = (docHeight - 205) + "px"
+        },
         dateFormatFull(longTypeDate) {
             var dateType = "";
             var date = new Date();
@@ -316,6 +321,7 @@ new Vue({
         },
     },
     mounted() {
+        this.docHeight();
         this.initReport();
         this.objectMenu();
         this.initInfo();

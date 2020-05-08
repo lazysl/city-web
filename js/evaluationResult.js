@@ -29,6 +29,11 @@ new Vue({
             param = $.extend(param, {"ajaxtype": "POST"});
             this.jsonAjax(param, callbackSuc, callbackErr);
         },
+        docHeight() {
+            let docHeight = window.innerHeight || document.documentElement.clientHeight;
+            document.getElementById("content").children[0].style.height = (docHeight - 142) + "px";
+            document.getElementById("table").style.maxHeight = (docHeight - 355) + "px"
+        },
         initResult(){
             this.postAjax(this.getCheckResult(), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
@@ -52,6 +57,7 @@ new Vue({
         },
     },
     mounted() {
+        this.docHeight();
         this.initResult()
     },
 });
