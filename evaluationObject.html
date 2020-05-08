@@ -98,7 +98,7 @@
                                             <div v-else>
                                                 <ul v-if="activeFourIndex===secIndex" :class="activeFourIndex===secIndex?'display':''">
                                                     <li v-for="(deviceItem,deviceIndex) in item.deviceList[secItem.type]">
-                                                        <div class="item"><i></i><p class="paddingLeft">{{deviceItem.name}}</p></div>
+                                                        <div class="item"><i></i><p class="paddingLeft">{{deviceItem.displayName}}</p></div>
                                                     </li>
                                                 </ul>
                                             </div>
