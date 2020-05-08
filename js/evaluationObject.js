@@ -297,7 +297,7 @@ new Vue({
                     }
                 }
                 if (this.deviceType == 6 || this.deviceType == 7) {
-                    if (this.objectList[this.selectedObjectIndex].deviceList[this.deviceType]&&this.objectList[this.selectedObjectIndex].deviceList[this.deviceType].length == 1) alert("该设备只能添加一条数据");
+                    if (this.objectList[this.selectedObjectIndex].deviceList[this.deviceType] && this.objectList[this.selectedObjectIndex].deviceList[this.deviceType].length == 1) alert("该设备只能添加一条数据");
                     else {
                         if (arrData.length > 0) {
                             alert("请勿添加重复数据");
