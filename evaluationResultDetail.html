@@ -105,27 +105,27 @@
                     </tr>
                     <tr>
                         <td>拒绝访问攻击</td>
-                        <td>{{resultList.deniedAttacVaule}}</td>
-                        <td>{{resultList.deniedAttacCondition}}</td>
-                        <td :class="resultList.deniedAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'deniedAttacStatus')">{{resultList.deniedAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                        <td>{{resultList.deniedAttackVaule}}</td>
+                        <td>{{resultList.deniedAttackCondition}}</td>
+                        <td :class="resultList.deniedAttackStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'deniedAttackStatus')">{{resultList.deniedAttackStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>缓冲区溢出攻击</td>
-                        <td>{{resultList.zoneAttacVaule}}</td>
-                        <td>{{resultList.zoneAttacCondition}}</td>
-                        <td :class="resultList.zoneAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'zoneAttacStatus')">{{resultList.zoneAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                        <td>{{resultList.zoneAttackVaule}}</td>
+                        <td>{{resultList.zoneAttackCondition}}</td>
+                        <td :class="resultList.zoneAttackStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'zoneAttackStatus')">{{resultList.zoneAttackStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>网络蠕虫攻击</td>
-                        <td>{{resultList.wormAttacVaule}}</td>
-                        <td>{{resultList.wormAttacCondition}}</td>
-                        <td :class="resultList.wormAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'wormAttacStatus')">{{resultList.wormAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                        <td>{{resultList.wormAttackVaule}}</td>
+                        <td>{{resultList.wormAttackCondition}}</td>
+                        <td :class="resultList.wormAttackStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'wormAttackStatus')">{{resultList.wormAttackStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td>IP碎片攻击</td>
-                        <td>{{resultList.ipAttacVaule}}</td>
-                        <td>{{resultList.ipAttacCondition}}</td>
-                        <td :class="resultList.ipAttacStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'ipAttacStatus')">{{resultList.ipAttacStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
+                        <td>{{resultList.ipAttackVaule}}</td>
+                        <td>{{resultList.ipAttackCondition}}</td>
+                        <td :class="resultList.ipAttackStatus==0?'red':'green'"><div class="item" @click="approvalStatus(1,'ipAttackStatus')">{{resultList.ipAttackStatus==0?'未达标':'达标'}}<img v-if="urlParams('type')==1" src="images/template/icon-change.png"/></div></td>
                     </tr>
                     <tr>
                         <td rowspan="11">物联网设备</td>
