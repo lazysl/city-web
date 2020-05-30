@@ -167,7 +167,10 @@
             <div class="monitorItem">
                 <div class="item">
                     <ul>
-                        <li v-for="(item,index) in deviceList" :class="{checked:deviceIndex==index}" @click="checkLeftDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
+                        <li v-for="(item,index) in deviceList" :class="{checked:deviceIndex==index}" @click="checkLeftDevice(item.displayName,item.name,index)">
+							<input type="checkbox" id="{{item.}}" value="Jack" v-model="checkedNames">
+							{{item.displayName}}
+						</li>
                     </ul>
                 </div>
                 <div class="itemPic">

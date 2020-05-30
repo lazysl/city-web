@@ -94,7 +94,9 @@ $.extend({
             if (res.code == 200 && res.code_desc == "success") {
                 var data = res.data;
                 var html = '', rankHtml = '';
+				var score = 0;
                 if (data) {
+					
                     for (var i in data) {
                         if (Object.keys(data[i].information).length < 4) {
                             if (typeof (data[i].information.server) == "undefined") data[i].information.server = "-/-";
@@ -114,14 +116,16 @@ $.extend({
                             '       <td><span class="' + internetStyle + '"></span>' + data[i].information.internet + '</td>\n' +
                             '     </tr>';
                         var percent = ((data[i].information.server).indexOf('0/') > -1 || (data[i].information.sql).indexOf('0/') > -1 || (data[i].information.middleware).indexOf('0/') > -1 || (data[i].information.internet).indexOf('0/') > -1) ? "20%" : "0%"
-                        rankHtml += '<li>\n' +
+						
+						
+						rankHtml += '<li>\n' +
                             '       <p>' + data[i].name + '</p>\n' +
-                            '       <span><em style="width: ' + percent + '"></em></span>\n' +
-                            '       <p>' + percent + '</p>\n' +
+                            '       <span><em style="width: ' + score + '%"></em></span>\n' +
+                            '       <p>' + score + '</p>\n' +
                             '      </li>'
                     }
                     $("#table").empty().append(html);
-                    $("#rankList ul").empty().append(rankHtml)
+                    //$("#rankList ul").empty().append(rankHtml);
                 }
             }else if (res.code == 403){
                 delCookie("user");
@@ -130,6 +134,37 @@ $.extend({
             }else alert(res.code_desc)
         })
     },
+	initKpScore() {
+		$.postAjax(getKpScoreURL(), function (res) {
+			if (res.code == 200 && res.code_desc == "success") {
+				var data = res.data;
+                var html = '';
+				var score = 0;
+				
+				if (data) {
+					//按考评得分降序排序
+					data.sort(checkScoreDesc);
+					for (var i in data) {
+						score = data[i].score < 100 ? data[i].score : 100;
+						score = score > 0 ? score : 0;
+						console.log(score);
+						html += '<li>\n' +
+                            '       <p>' + data[i].name + '</p>\n' +
+                            '       <span><em style="width: ' + score + '%"></em></span>\n' +
+                            '       <p>' + score + '</p>\n' +
+                            '      </li>';
+						
+					}
+					
+					$("#rankList ul").empty().append(html);
+				}
+			} else if (res.code == 403){
+                delCookie("user");
+                localStorage.clear();
+                window.location.href = "./login.html";
+            } else alert(res.code_desc);
+		});
+	},
     initAlarms() {
         $.postAjax(listAlarms(), function (res) {
             if (res.code == 200 && res.code_desc == "success") {
@@ -269,4 +304,42 @@ $.extend({
             }else alert(res.code_desc)
         })
     },
+	
+	//获取物联网设备信息
+	getIotDeviceInfo() {
+		$.postAjax(getIotInfoUrl(), function (res) {
+			if (res && res.code == 200) {
+				var datas = res.data;
+				var html = "";
+				var totalCount = 0;
+				var totalOnline = 0;
+				for (var i in datas) {
+					var onlineRate = 0;
+					if (datas[i].count > 0 && datas[i].normal) {
+						totalCount += datas[i].count;
+						totalOnline += datas[i].normal;
+						onlineRate = Math.round(datas[i].normal / datas[i].count); //计算在线率，四舍五入取整
+					}
+					html += "<li>\
+                                <p>"+ datas[i].type +"</p>\
+                                <span title=\"在线："+ datas[i].normal +" 总数："+ datas[i].count +"\"><em style=\"width: "+ onlineRate +"%;\"></em></span>\
+                                <p>"+ onlineRate +"%</p>\
+                            </li>";
+				}
+				
+				$("#txtIotDeviceTotal").html(totalCount);
+				$("#txtIotOnlineOffline").html("在线/离线：<em>"+ totalOnline +"</em>/" + (totalCount - totalOnline));
+				$("#listIotDevice").html(html);
+				
+			}
+			
+		});
+		
+	},
 });
+
+//考评得分降序排序
+var checkScoreDesc = function(x,y)
+{
+	return (x["score"] < y["score"]) ? 1 : -1
+};

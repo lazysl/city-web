@@ -102,10 +102,12 @@
                         <div class="title"><span>考评达标排行</span></div>
                         <div class="tabList">
                             <ul>
-                                <li class="checked"><span>日</span></li>
-                                <li><span>周</span></li>
-                                <li><span>月</span></li>
-                                <li><span>年</span></li>
+                                <!-- <li class="checked"><span>日</span></li> -->
+                                <!-- <li><span>周</span></li> -->
+                                <!-- <li><span>月</span></li> -->
+                                <!-- <li><span>年</span></li> -->
+								<li><span>业务系统</span></li>
+								<li><span>考评得分</span></li>
                             </ul>
                         </div>
                         <div class="rankList" id="rankList">
@@ -149,18 +151,18 @@
                 <div class="layout">
                     <div class="interLeft">
                         <p>物联网设备</p>
-                        <span>26190</span>
+                        <span id="txtIotDeviceTotal">--</span>
                         <p>监控总数</p>
                         <canvas id="circle">当前浏览器不支持canvas 请升级！</canvas>
-                        <p>在线/离线：<em>20000</em>/6190</p>
+                        <p id="txtIotOnlineOffline">在线/离线：<em>--</em>/--</p>
                     </div>
                     <div class="interLine"></div>
                     <div class="interRight">
-                        <ul>
+                        <ul id="listIotDevice">
                             <li>
-                                <p>大数据治理应用平台</p>
-                                <span><em></em></span>
-                                <p>20%</p>
+                                <p>------</p>
+                                <span title="在线：100 总数：200"><em width="0%"></em></span>
+                                <p>0%</p>
                             </li>
                         </ul>
                     </div>
@@ -196,7 +198,9 @@
 <script>
     $.initWaring();
     $.initModeAnaly();
+	$.initKpScore();//考评达标排行
     $.initAlarms();
+	$.getIotDeviceInfo(); //获取物联网设备统计信息
     $(function () {
         var docHeight = window.innerHeight || document.documentElement.clientHeight;
         var docWidth = window.innerWidth || document.documentElement.clientWidth;

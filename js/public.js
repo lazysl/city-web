@@ -66,6 +66,13 @@ function getCheckModeAnaly() {
     }
 }
 
+function getKpScoreURL() {
+    return {
+        url: setting.www_url + "/city/checkResult/getCheckResult?apiKey=" + setting.apiKey,
+        token: localStorage.getItem("token")
+    }
+}
+
 function listAlarms() {
     return {
         url: setting.www_url + "/city/waring/listAlarms?apiKey=" + setting.apiKey,
@@ -363,6 +370,14 @@ function saveEmailProperties(data) {
     return {
         url: setting.www_url + "/city/email/saveEmailProperties?apiKey=" + setting.apiKey,
         data: data,
+        token: localStorage.getItem("token")
+    }
+}
+
+/*获取物联网设备信息*/
+function getIotInfoUrl() {
+    return {
+        url: setting.www_url + "/city/iot/getIotInfo",
         token: localStorage.getItem("token")
     }
 }
