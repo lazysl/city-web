@@ -6,6 +6,7 @@ new Vue({
             {name: "部门", id: "2"},
             {name: "角色", id: "3"},
             // {name: "资源", id: "4"}
+            {name: "邮箱", id: "5"},
         ],
         typeIndex: 0,
         typeId: '',  //tab的ID
@@ -104,7 +105,7 @@ new Vue({
             this.userRoleId = id;
         },
         tabClick(obj, index) {
-            this.typeIndex = index;
+            this.typeIndex = (obj.id-1);
             this.typeId = obj.id;
             this.allChecked = false;
             this.idList = [];
