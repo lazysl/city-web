@@ -340,7 +340,7 @@ new Vue({
             }
         },
         initMail() {
-            this.postAjax(getEmailProperties(), (res) => {
+            this.postAjax(this.getEmailProperties(), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     var data = res.data;
                     this.email.fromEmail = data.fromEmail;
@@ -364,7 +364,7 @@ new Vue({
                     username: this.email.username,
                     password: this.email.password,
                 };
-                this.postAjax(saveEmailProperties(data), (res) => {
+                this.postAjax(this.saveEmailProperties(data), (res) => {
                     if (res.code == 200 && res.code_desc == "success") {
                         alert("保存成功")
                     } else if (res.code == 403) {
