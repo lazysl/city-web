@@ -121,7 +121,7 @@ function js_checkSqlList(type, waringType) {
     }
 };
 /*获取考评菜单*/
-Vue.prototype.getCheckMenu = function (data) {
+Vue.prototype.getCheckMenu = function () {
     return {
         url: setting.www_url + "/city/checkMenu/getCheckMenu?apiKey=" + setting.apiKey,
         token: localStorage.getItem("token")
@@ -318,6 +318,14 @@ Vue.prototype.deleteRole = function (id) {
         token: localStorage.getItem("token")
     }
 };
+/*获取考评报表*/
+Vue.prototype.checkResult = function (data) {
+    return {
+        url: setting.www_url + "/city/checkResult/getcheckReport?apiKey=" + setting.apiKey,
+        data: data,
+        token: localStorage.getItem("token")
+    }
+};
 /*获取考评报表列表*/
 Vue.prototype.getCheckReport = function () {
     return {
@@ -355,25 +363,21 @@ Vue.prototype.updateCheckResult = function (filed, id, result) {
         token: localStorage.getItem("token")
     }
 };
-
-
 /*获取邮箱服务配置*/
-function getEmailProperties() {
+Vue.prototype.getEmailProperties = function () {
     return {
         url: setting.www_url + "/city/email/getEmailProperties?apiKey=" + setting.apiKey,
         token: localStorage.getItem("token")
     }
-}
-
+};
 /*保存邮箱服务配置*/
-function saveEmailProperties(data) {
+Vue.prototype.saveEmailProperties = function (data) {
     return {
         url: setting.www_url + "/city/email/saveEmailProperties?apiKey=" + setting.apiKey,
         data: data,
         token: localStorage.getItem("token")
     }
-}
-
+};
 /*获取物联网设备信息*/
 function getIotInfoUrl() {
     return {

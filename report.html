@@ -41,7 +41,7 @@
                         </thead>
                         <tbody id="table">
                         <tr v-for="(item,index) in reportList">
-                            <td>{{item.name}}</td>
+                            <td><a :href="'reportResult.html?id='+item.id+'&time='+item.checkTime">{{item.name}}</a></td>
                             <td>{{dateFormatFull(item.checkStartTime)}}</td>
                             <td>admin</td>
                             <td>{{cronExpression(item.checkPlan)}}</td>

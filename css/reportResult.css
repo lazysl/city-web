@@ -1,0 +1,106 @@
+.reportResult .title {
+    width: 100%
+}
+.reportResult .title .btnList {
+    overflow: hidden;
+}
+.reportResult .title .btnList p{margin-left: 20px}.plan .nameList{overflow: hidden;margin: 0 20px 10px}
+.reportResult .table .nameList{margin: 0 20px}
+.reportResult .table .nameList ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.reportResult .table .nameList ul li{
+    font-size: 14px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 5%;
+    margin-bottom: 10px;
+}
+.reportResult .table .nameList ul li p{color: #02a7f4;}
+.reportResult .table #table{overflow-y: scroll}
+.reportResult .table table{
+    width: 100%;
+    margin: 0 auto;
+    display: table;
+}
+.reportResult .table table thead,.reportResult .table table tbody{
+    background: #eee;
+    width: 100%;
+}
+.reportResult .table table tr {
+    width: 100%;
+}
+.reportResult .table table tr td,.reportResult .table table tr th{
+    font-size: 12px;
+    padding: 0 10px;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+    height: 40px;
+    line-height: 40px;
+}
+.reportResult .table table tr td{border-bottom: 1px solid #d8dce5;background: #fff;}
+.reportResult .table table tr th{font-size: 14px;}
+.reportResult .table table tr td.red{
+    color: #f00;
+    font-weight: bold;
+}
+.reportResult .table table tr td.green{
+    color: #36cfc9;
+    font-weight: bold;
+}
+.reportResult .table table tr th a,.reportResult .table table tr td a {
+    margin: 0 5px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.reportResult .table table tr th span,.reportResult .table table tr td span{margin: 0 5px;}
+.reportResult .table table tr th img,.reportResult .table table tr td img {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    width: 20px;
+}
+.reportResult .table table tr th a img,.reportResult .table table tr td a img{margin: 0}
+.tcHide .tcCon .itemList .checkList{margin: 0}
+.tcHide .tcCon .itemList .checkTree{width: 60%;}
+.tcHide .tcCon .itemList .checkTree a{margin: 0 5px 0 0}
+.tcHide .tcCon .itemList .checkTree ul{max-height: 200px;overflow-y: scroll}
+.tcHide .tcCon .itemList .checkTree ul li{margin: 5px 0}
+.tcHide .tcCon .itemList .checkTree ul li ul{margin-left: 25px;overflow: hidden;}
+.tcHide .tcCon .itemList .checkTree ul li ul li ul{margin-left: 25px;overflow: hidden}
+.tcHide .tcCon .itemList.special .select span{width: 100%}
+.tcHide .tcCon .monitorItem {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 10px 15px;
+}
+.tcHide .tcCon .monitorItem .item{
+    overflow: hidden;
+    border: solid 1px #e4e4e4;
+    width: 40%;
+    min-height: 180px;
+}
+.tcHide .tcCon .monitorItem .item li{
+    overflow: hidden;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border-bottom: solid 1px #e4e4e4;
+    cursor: pointer;
+}
+.tcHide .tcCon .monitorItem .item li.checked,.tcHide .tcCon .monitorItem .item li:hover{background: #e1edff;}
+.tcHide .tcCon .monitorItem .item li:last-child{border-bottom: none}
+.tcHide .tcCon .monitorItem .itemPic{margin: 0 20px}
+.tcHide .tcCon .monitorItem .itemPic img{width: 24px}

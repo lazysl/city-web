@@ -7,6 +7,7 @@ new Vue({
         needIdList: '',
         isReportPop: false,
         isTime: false,
+        weekList: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
         timeTxt: "当天",
         timeData: [
             {name: "当天", id: "0"},
