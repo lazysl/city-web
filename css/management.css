@@ -32,7 +32,7 @@
     font-size: 14px;
     margin: 0 20px;
 }
-.management .manageCon .userCon{display: none}
+.management .manageCon .userCon,.management .manageCon .emailCon{display: none}
 .management .manageCon .userCon .item {
     overflow: hidden;
     padding: 20px;
@@ -143,10 +143,46 @@
 }
 .management .checkList .checkbox + label, .checkbox{background: #fff}
 .management .manageCon .userCon .table .pageNum{margin: 20px}
+.management .manageCon .emailCon{padding: 0 20px}
+.management .manageCon .emailCon .itemList{
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 15px 10px 0;
+    width: 100%;
+}
+.management .manageCon .emailCon .itemList span{
+    overflow: hidden;
+    font-size: 14px;
+    width: 150px;
+}
+.management .manageCon .emailCon .itemList.account span{
+    margin-left: 50px;
+    width: 100px;
+}
+.management .manageCon .emailCon .itemList input{
+    overflow: hidden;
+    resize: none;
+    outline: none;
+    background: transparent;
+    padding: 6px 10px;
+    color: #333;
+    cursor: pointer;
+    border: solid 1px #d8dce5;
+    margin-right: 20px;
+    min-width: 150px;
+}
+.management .manageCon .emailCon .itemList input.width{
+    min-width: 50px;
+    width: 50px;
+    text-align: center;
+}
+.management .manageCon .emailCon .itemList .checkList{margin: 15px 0;width: 100%}
+.management .manageCon .emailCon .itemList .btn{margin-left: 50px}
 .tcHide .tcCon .itemList .checkTree ul li{margin: 5px 0}
 .tcHide .tcCon .itemList .checkTree ul li .checkboxList{margin-left: 0;}
 .checkboxList .checkbox.checked img{margin-top: 0!important;}
-
 
 
 

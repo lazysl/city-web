@@ -31,7 +31,7 @@
             <div class="manageCon">
                 <div class="tabList">
                     <ul>
-                        <li v-for="(item,index) in tabList" :class="{checked:typeIndex==index}" v-on:click="tabClick(item,index)"><span>{{item.name}}</span></li>
+                        <li v-for="(item,index) in tabList" :class="{checked:typeIndex==(item.id-1)}" v-on:click="tabClick(item,index)"><span>{{item.name}}</span></li>
                     </ul>
                 </div>
                 <div class="userCon" v-if="typeIndex==0" :class="typeIndex==0?'display':''">
@@ -243,6 +243,30 @@
                                 <li><p>前往</p><input type="text"/><p>页</p></li>
                             </ul>
                         </div>-->
+                    </div>
+                </div>
+                <div class="emailCon" v-if="typeIndex==4" :class="typeIndex==4?'display':''">
+                    <div class="itemList">
+                        <span>SMTP服务器地址：</span><input type="text" placeholder="请输入" v-model="email.host">
+                        <span>服务端口：</span><input class="width" type="text" v-model="email.port">
+                    </div>
+                    <div class="itemList">
+                        <span>发件人邮件地址：</span><input type="text" placeholder="请输入" v-model="email.fromEmail">
+                    </div>
+                    <div class="itemList">
+                        <div class="checkList checked">
+                            <!--<input type="checkbox" class="checkbox" checked id="mailCode"><label for="mailCode"><img src="images/template/icon-check.png" alt=""></label>-->
+                            <p>发送邮件需要验证</p>
+                        </div>
+                    </div>
+                    <div class="itemList account">
+                        <span>用户名：</span><input type="text" placeholder="请输入" v-model="email.username">
+                    </div>
+                    <div class="itemList account">
+                        <span>密码：</span><input type="password" placeholder="请输入" v-model="email.password">
+                    </div>
+                    <div class="itemList account center">
+                        <a class="btn" @click="saveMail">保存</a>
                     </div>
                 </div>
             </div>

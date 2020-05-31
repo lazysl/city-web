@@ -36,6 +36,13 @@ new Vue({
         roleRemark: "",  //角色备注
         needIdList: "",
         roleId: "",
+        email:{
+            host:"",
+            port:"",
+            fromEmail:"",
+            username:"",
+            password:""
+        }
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -332,12 +339,49 @@ new Vue({
                 })
             }
         },
+        initMail() {
+            this.postAjax(getEmailProperties(), (res) => {
+                if (res.code == 200 && res.code_desc == "success") {
+                    var data = res.data;
+                    this.email.fromEmail = data.fromEmail;
+                    this.email.host = data.host;
+                    this.email.username = data.username;
+                    this.email.password = data.password;
+                    this.email.port = data.port;
+                } else if (res.code == 403) {
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                } else alert(res.code_desc)
+            })
+        },
+        saveMail() {
+            if (this.email.host != '' && this.email.fromEmail != '' && this.email.username != '' && this.email.password != '') {
+                var data = {
+                    fromEmail: this.email.fromEmail,
+                    port: this.email.port,
+                    host: this.email.host,
+                    username: this.email.username,
+                    password: this.email.password,
+                };
+                this.postAjax(saveEmailProperties(data), (res) => {
+                    if (res.code == 200 && res.code_desc == "success") {
+                        alert("保存成功")
+                    } else if (res.code == 403) {
+                        delCookie("user");
+                        localStorage.clear();
+                        window.location.href = "./login.html"
+                    } else alert(res.code_desc)
+                })
+            }
+        }
     },
     mounted() {
         this.docHeight();
         this.initUserList();
         this.initOrganization();
         this.initRoleList();
-        this.initMeanList()
+        this.initMeanList();
+        this.initMail();
     },
 });
