@@ -5,6 +5,8 @@ new Vue({
         reportList: [],
         reportNavList: "",
         weekList: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
+        startTime: "",
+        endTime: "",
         title: [
             {"bixianshebeiCondition": "避险设备达标条件"},
             {"bixianshebeiStatus": "避险设备达标状态"},
@@ -99,7 +101,13 @@ new Vue({
             {"zoneAttackStatus": "缓冲区溢出达标状态"},
             {"zoneAttackVaule": "缓冲区溢出当前值"}
         ],
-        titleData: []
+        titleData: [],
+        pages: "",  //总页数
+        total: "",  //总条数
+        currentPage: 1,  //当前页
+        current: 1,  //输入页
+        nextNum: 1,
+        prevNum: 0,
     },
     methods: {
         jsonAjax(options, callbackSuc, callbackErr) {
@@ -149,24 +157,21 @@ new Vue({
         getFullPart(day) {
             return day < 10 ? "0" + day : day;
         },
-        initReportResult() {
-            let startTime, endTime;
-            if (this.urlParams("time").indexOf("/") > -1) {
-                startTime = this.urlParams("time").split("/")[0];
-                endTime = this.urlParams("time").split("/")[1];
-            } else {
-                startTime = this.urlParams("time");
-                endTime = this.urlParams("time");
-            }
+        getReport(num) {
             let data = {
                 id: this.urlParams("id"),
-                startTime: startTime,
-                endTime: endTime
+                startTime: this.startTime,
+                endTime: this.endTime,
+                size: 10,
+                current: num,
             };
             this.postAjax(this.checkResult(data), (res) => {
                 if (res.code == 200) {
                     let flag = true;
                     this.reportList = res.data.records;
+                    this.total = res.data.total;
+                    this.pages = res.data.pages;
+                    this.currentPage = res.data.current;
                     let data = JSON.parse(JSON.stringify(res.code_desc.split(",")));
                     for (const i in data) {
                         if (data[i] != "name") flag = false;
@@ -220,6 +225,38 @@ new Vue({
                     window.location.href = "./login.html"
                 } else alert(res.code_desc)
             })
+        },
+        initReportResult() {
+            if (this.urlParams("time").indexOf("/") > -1) {
+                this.startTime = this.urlParams("time").split("/")[0];
+                this.endTime = this.urlParams("time").split("/")[1];
+            } else {
+                this.startTime = this.urlParams("time");
+                this.endTime = this.urlParams("time");
+            }
+            this.getReport(this.current);
+        },
+        nextPage() {
+            this.nextNum = Number(this.currentPage) + 1;
+            if (this.pages == this.nextNum) alert("已经是最后一页了");
+            else {
+                this.titleData = [];
+                this.getReport(this.nextNum);
+            }
+        },
+        prevPage() {
+            this.prevNum = Number(this.currentPage) - 1;
+            if (this.prevNum == 0) alert("已经是第一页了");
+            else {
+                this.titleData = [];
+                this.getReport(this.prevNum);
+            }
+        },
+        goPage() {
+            this.titleData = [];
+            this.nextNum = Number(this.current);
+            this.prevNum = Number(this.current);
+            this.getReport(this.current);
         },
         initReport() {
             this.postAjax(this.getCheckReport(), (res) => {

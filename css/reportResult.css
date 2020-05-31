@@ -68,6 +68,8 @@
     width: 20px;
 }
 .reportResult .table table tr th a img,.reportResult .table table tr td a img{margin: 0}
+.reportResult .table .pageNum{margin: 20px}
+.reportResult .table .pageNum .btn{height: 35px;line-height: 35px;padding: 0 20px}
 .tcHide .tcCon .itemList .checkList{margin: 0}
 .tcHide .tcCon .itemList .checkTree{width: 60%;}
 .tcHide .tcCon .itemList .checkTree a{margin: 0 5px 0 0}

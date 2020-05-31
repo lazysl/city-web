@@ -55,6 +55,18 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="pageNum">
+                        <ul>
+                            <li>
+                                <em @click="prevPage"><img src="images/template/arrow-left.png"/></em>
+                                <span>{{currentPage}}</span>
+                                <em @click="nextPage"><img src="images/template/arrow-right.png"/></em>
+                                <p>共{{total}}条</p>
+                            </li>
+                            <li><p>第</p><input type="text" v-model="current"/><p>页</p></li>
+                            <li><p class="btn" @click="goPage">前往</p></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -506,6 +506,7 @@ body{
     padding: 0 10px;
     border-radius: 4px;
     margin: 0 5px;
+    text-align: center;
 }
 .crumbs {
     width: 100%;
