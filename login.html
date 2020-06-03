@@ -63,6 +63,23 @@
             $.initLogin(data);
         }
     });
+	$("body").keydown(function(event) {
+		if (event.keyCode == 13) {//keyCode=13是回车键
+			//$("#login_btn").click();
+			if (userName.val() == "") {
+				$(".errInfo.userName span").show();
+			} else if (password.val() == "") {
+				$(".errInfo.password span").show();
+			} else {
+				$(".errInfo span").hide();
+				var data = {
+					userName: userName.val(),
+					password: password.val()
+				};
+				$.initLogin(data);
+			}
+		}
+	});
     userName.blur(function () {
         if (userName.val() == "") $(".userName span").show();
         else $(".userName span").hide()
