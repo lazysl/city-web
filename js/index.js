@@ -318,7 +318,7 @@ $.extend({
 					if (datas[i].count > 0 && datas[i].normal) {
 						totalCount += datas[i].count;
 						totalOnline += datas[i].normal;
-						onlineRate = Math.round(datas[i].normal / datas[i].count); //计算在线率，四舍五入取整
+						onlineRate = Math.round(datas[i].normal / datas[i].count * 100); //计算在线率，四舍五入取整
 					}
 					html += "<li>\
                                 <p>"+ datas[i].type +"</p>\
