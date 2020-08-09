@@ -220,7 +220,8 @@ new Vue({
                 this.selectedObjectIndex = index;
                 this.deviceType = type;
                 this.deviceId = data.id;
-                this.selectedDeviceList = data.deviceList[type];
+                if (data.deviceList[type]) this.selectedDeviceList = JSON.parse(JSON.stringify(data.deviceList[type]));
+                else this.selectedDeviceList = [];
                 this.deviceList = [];
                 this.initDevice(type);
             }

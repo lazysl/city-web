@@ -32,7 +32,7 @@
                 <ul>
                     <li><span>业务系统名称：</span><p>{{objectName}}</p></li>
                     <li><span>当前考评结果：</span><p :class="objectResult==0?'red':'green'">{{objectResult==0?'未达标':'达标'}}</p></li>
-                    <li><a class="btn1" @click="pdfMap(objectName)">导出报表</a><a class="btn">发送报表</a></li>
+                    <li><a class="btn1" @click="pdfMap(objectName)">导出报表</a><a class="btn" @click="sendReport()">发送报表</a></li>
                 </ul>
             </div>
             <div class="table" id="table">

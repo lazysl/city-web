@@ -351,6 +351,10 @@
 .index .interCon .interRight{
     overflow: hidden;
 }
+.index .interCon .interRight ul{
+    height: 200px;
+    overflow-y: scroll;
+}
 .index .interCon .interRight li{
     overflow: hidden;
     display: flex;

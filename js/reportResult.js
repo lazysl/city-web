@@ -283,6 +283,13 @@ new Vue({
                 pdf.save(name + '.pdf');
             });
         },
+        sendReport(){
+            this.postAjax(this.sendCheckResult(this.urlParams("id")), (res) => {
+                if (res.code == 200 && res.code_desc == "success") {
+                    alert("发送成功")
+                }else alert(res.code_desc)
+            })
+        },
     },
     mounted() {
         this.docHeight();

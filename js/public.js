@@ -234,6 +234,20 @@ Vue.prototype.getCheckResult = function () {
         token: localStorage.getItem("token")
     }
 };
+/*发送考评结果*/
+Vue.prototype.sendCheckResult = function (id) {
+    return {
+        url: setting.www_url + "/city/checkResult/sendCheckResult?apiKey=" + setting.apiKey + "&id=" + id,
+        token: localStorage.getItem("token")
+    }
+};
+/*发送考评结果(批量)*/
+Vue.prototype.sendCheckResults = function (id) {
+    return {
+        url: setting.www_url + "/city/checkResult/sendCheckResults?apiKey=" + setting.apiKey + "&ids=" + id,
+        token: localStorage.getItem("token")
+    }
+};
 /*获取所有部门*/
 Vue.prototype.getOrganization = function (data) {
     return {
@@ -378,6 +392,7 @@ Vue.prototype.saveEmailProperties = function (data) {
         token: localStorage.getItem("token")
     }
 };
+
 /*获取物联网设备信息*/
 function getIotInfoUrl() {
     return {

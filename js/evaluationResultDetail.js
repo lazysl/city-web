@@ -86,6 +86,13 @@ new Vue({
                 pdf.save(name + '考评结果.pdf');
             });
         },
+        sendReport(){
+            this.postAjax(this.sendCheckResult(this.id), (res) => {
+                if (res.code == 200 && res.code_desc == "success") {
+                    alert("发送成功")
+                }else alert(res.code_desc)
+            })
+        },
     },
     mounted() {
         this.docHeight();
