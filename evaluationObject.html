@@ -43,7 +43,7 @@
                         <li v-for="(item,index) in objectList">
                             <div class="item">
                                 <p @click="showSub(index)"><em :class="activeSubIndex===index?'checked':''"></em>{{item.name}}</p>
-                                <p>{{dateFormatFull(item.lastCheckTime)}}</p>
+                                <p>{{item.lastCheckTime==0?"--":dateFormatFull(item.lastCheckTime)}}</p>
                                 <p :class="item.lastCheckResult==0?'red':'green'">{{item.lastCheckResult==0?"不达标":"达标"}}</p>
                                 <p>{{item.email}}</p>
                                 <div class="manipulate">
@@ -73,7 +73,7 @@
                                                         <em v-if="item.deviceList[secItem.type]&&item.deviceList[secItem.type].length>0" :class="activeFourIndex===secIndex?'checked':''"></em>
                                                         {{secItem.name}}
                                                     </span>
-                                                    <img @click="deviceInfo(1,secItem.type,index,item.id)" src="images/template/icon-change.png"/>
+                                                    <img @click="deviceInfo(1,secItem.type,index,item)" src="images/template/icon-change.png"/>
                                                 </p>
                                             </div>
                                             <div v-if="secItem.type==0">
@@ -86,7 +86,7 @@
                                                                     <em v-if="item.deviceList[thirdItem.type]&&item.deviceList[thirdItem.type].length>0" :class="activeFiveIndex===thirdIndex?'checked':''"></em>
                                                                     {{thirdItem.name}}
                                                                 </span>
-                                                                <img v-if="thirdItem.type==6||thirdItem.type==7" @click="deviceInfo(1,thirdItem.type,index,item.id)" src="images/template/icon-change.png"/>
+                                                                <img v-if="thirdItem.type==6||thirdItem.type==7" @click="deviceInfo(1,thirdItem.type,index,item)" src="images/template/icon-change.png"/>
                                                             </p>
                                                         </div>
                                                         <ul v-if="activeFiveIndex===thirdIndex" :class="activeFiveIndex===thirdIndex?'display':''">
@@ -167,10 +167,7 @@
             <div class="monitorItem">
                 <div class="item">
                     <ul>
-                        <li v-for="(item,index) in deviceList" :class="{checked:deviceIndex==index}" @click="checkLeftDevice(item.displayName,item.name,index)">
-							<input type="checkbox" id="{{item.}}" value="Jack" v-model="checkedNames">
-							{{item.displayName}}
-						</li>
+                        <li v-for="(item,index) in deviceList" :class="{checked:deviceIndex==index}" @click="checkLeftDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
                     </ul>
                 </div>
                 <div class="itemPic">

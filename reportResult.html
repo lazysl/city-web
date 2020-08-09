@@ -47,7 +47,7 @@
                                     <p v-if="itemName.id=='name'">{{item[itemName.id]}}</p>
                                     <p v-else-if="itemName.id=='id'">{{item[itemName.id]}}</p>
                                     <p v-else-if="itemName.id=='checkId'">{{item[itemName.id]}}</p>
-                                    <p v-else-if="itemName.id=='time'">{{dateFormatFull(item[itemName.id])}}</p>
+                                    <p v-else-if="itemName.id=='time'">{{item[itemName.id]==0?"--":dateFormatFull(item[itemName.id])}}</p>
                                     <p v-else-if="itemName.id=='type'">{{item[itemName.id]==1?'日':item[itemName.id]==2?'周':item[itemName.id]==3?'月':'年'}}</p>
                                     <p v-else>{{item[itemName.id]==0?'未达标':'达标'}}</p>
                                 </td>

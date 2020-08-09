@@ -219,7 +219,8 @@ new Vue({
                         }
                     }
                 }
-            } else if (type == 1) {
+            }
+            if (type == 1) {
                 let id = document.getElementById("_"+ID);
                 if (id.className == 'checkbox itemCheck') {
                     id.className = 'checkbox itemCheck checked';
@@ -232,6 +233,7 @@ new Vue({
                         }
                     }
                 }
+
             }
         },
         reportInfo(obj, index, id) {

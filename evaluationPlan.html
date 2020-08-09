@@ -44,8 +44,8 @@
                     <tr v-for="item in planList" v-if="item.id>0">
                         <td>{{item.name}}</td>
                         <td>{{cronExpression(item.checkPlan)}}</td>
-                        <td>{{dateFormatFull(item.checkStartTime)}}</td>
-                        <td>{{dateFormatFull(item.checkEndTime)}}</td>
+                        <td>{{item.checkStartTime==0?"--":dateFormatFull(item.checkStartTime)}}</td>
+                        <td>{{item.checkEndTime==0?"--":dateFormatFull(item.checkEndTime)}}</td>
                         <td><a :href="'evaluationPlanDetail.html?id='+item.id"><img src="images/template/icon-change.png"/></a></td>
                     </tr>
                     </tbody>

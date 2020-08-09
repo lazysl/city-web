@@ -42,7 +42,7 @@
                         <tbody id="table">
                         <tr v-for="(item,index) in reportList">
                             <td><a :href="'reportResult.html?id='+item.id+'&time='+item.checkTime">{{item.name}}</a></td>
-                            <td>{{dateFormatFull(item.checkStartTime)}}</td>
+                            <td>{{item.checkStartTime==0?"--":dateFormatFull(item.checkStartTime)}}</td>
                             <td>admin</td>
                             <td>{{cronExpression(item.checkPlan)}}</td>
                             <td>
@@ -107,7 +107,7 @@
                     <ul>
                         <li v-for="(item,index) in objectList">
                             <div class="checkboxList">
-                                <div @click="checkButton(item.id,1)" :class="objectNeedIdList!=''&&objectNeedIdList!=null&&objectNeedIdList.includes(item.id)?'checkbox itemCheck checked':'checkbox item-check'" :id="'_'+item.id"><img src="images/template/icon-check.png" alt=""></div>
+                                <div @click="checkButton(item.id,1)" :class="objectNeedIdList!=''&&objectNeedIdList!=null&&objectNeedIdList.includes(item.id)?'checkbox itemCheck checked':'checkbox itemCheck'" :id="'_'+item.id"><img src="images/template/icon-check.png" alt=""></div>
                                 <p>{{item.name}}</p>
                             </div>
                         </li>

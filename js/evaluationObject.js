@@ -212,15 +212,15 @@ new Vue({
                 } else alert(res.code_desc)
             })
         },
-        deviceInfo(obj, type, index, id) {
+        deviceInfo(obj, type, index, data) {
             this.isDevicePop = !this.isDevicePop;
             if (obj == 0) {
                 this.selectedDeviceList = [];
             } else if (obj == 1) {
                 this.selectedObjectIndex = index;
                 this.deviceType = type;
-                this.deviceId = id;
-                this.selectedDeviceList = [];
+                this.deviceId = data.id;
+                this.selectedDeviceList = data.deviceList[type];
                 this.deviceList = [];
                 this.initDevice(type);
             }
@@ -228,7 +228,15 @@ new Vue({
         initDevice(type) {
             this.postAjax(this.getCheckSqlList(type), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
-                    this.deviceList = res.data;
+                    let data = JSON.parse(JSON.stringify(res.data));
+                    for (let i in data) {
+                        for (let j in this.selectedDeviceList) {
+                            if (data[i].name == this.selectedDeviceList[j].name) {
+                                data.splice(i,1)
+                            }
+                        }
+                    }
+                    this.deviceList = data;
                 } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();
