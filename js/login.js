@@ -26,7 +26,7 @@ $.extend({
     initLogin:function (obj) {
         var data;
         if (getQueryString("code") != '' && getQueryString("code") != null && typeof getQueryString("code") != "undefined") {
-            data = obj
+            data = {code: obj};
         } else {
             data = {
                 userName: obj.userName,
