@@ -165,7 +165,7 @@
         <div class="tcCon">
             <div class="tcTit"><span>考评设备</span></div>
             <div class="monitorItem">
-                <div class="item">
+                <div class="item" style="overflow:auto;max-height:500px">
                     <ul>
                         <li v-for="(item,index) in deviceList" :class="{checked:deviceIndex==index}" @click="checkLeftDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
                     </ul>
@@ -174,7 +174,7 @@
                     <img @click="addDevice" src="images/template/icon-right.png"/>
                     <img @click="delDevice" src="images/template/icon-left.png"/>
                 </div>
-                <div class="item">
+                <div class="item" style="overflow:auto;max-height:500px">
                     <ul>
                         <li v-for="(item,index) in selectedDeviceList" :class="{checked:deviceIndex==index}" v-on:click="checkRightDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
                     </ul>
