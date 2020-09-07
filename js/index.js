@@ -319,7 +319,7 @@ $.extend({
                                 <p>" + onlineRate + "%</p>\
                             </li>";
                 }
-                circleRange = Number(((totalCount - totalOnline) / totalOnline * 100).toFixed(2));
+                circleRange = Number((totalOnline / totalCount * 100).toFixed(2));
                 $("#txtIotDeviceTotal").html(totalCount);
                 $("#txtIotOnlineOffline").html("在线/离线：<em>" + totalOnline + "</em>/" + (totalCount - totalOnline));
                 $("#listIotDevice").html(html);
