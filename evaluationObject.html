@@ -167,7 +167,7 @@
             <div class="monitorItem">
                 <div class="item" style="overflow:auto;max-height:500px">
                     <ul>
-                        <li v-for="(item,index) in deviceList" :class="{checked:deviceIndex==index}" @click="checkLeftDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
+                        <li v-for="(item,index) in deviceList" :class="{checked:deviceIndexLeft==index}" @click="checkLeftDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
                     </ul>
                 </div>
                 <div class="itemPic">
@@ -176,7 +176,7 @@
                 </div>
                 <div class="item" style="overflow:auto;max-height:500px">
                     <ul>
-                        <li v-for="(item,index) in selectedDeviceList" :class="{checked:deviceIndex==index}" v-on:click="checkRightDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
+                        <li v-for="(item,index) in selectedDeviceList" :class="{checked:deviceIndexRight==index}" v-on:click="checkRightDevice(item.displayName,item.name,index)">{{item.displayName}}</li>
                     </ul>
                 </div>
             </div>

@@ -19,13 +19,15 @@ new Vue({
         objectDeviceList: [],   //考评对象设备
         deviceList: [],   //考评设备
         selectedDeviceList: [],   //选中考评设备
-        deviceIndex: -1,   //设备索引
+        deviceIndex: -1,   //设备索引(Deprecated)
+		deviceIndexLeft: -1, //左侧栏点选设备的索引，根据鼠标点击动态变化
+		deviceIndexRight: -1,//右侧栏点选设备的索引，根据鼠标点击动态变化
         checkedLeftDeviceDisName: '',
         checkedLeftDeviceName: '',
         checkedRightDeviceDisName: '',
         checkedRightDeviceName: '',
         selectedObjectIndex: -1,  //选择考评对象的索引
-        deviceType: "",
+        deviceType: "",  //设备类型（0:考评对象，1：服务器，2：数据库 3：中间件 6:URL业务监测 8:物联网设备 ）
         deviceId: "",
     },
     methods: {
@@ -230,10 +232,12 @@ new Vue({
             this.postAjax(this.getCheckSqlList(type), (res) => {
                 if (res.code == 200 && res.code_desc == "success") {
                     let data = JSON.parse(JSON.stringify(res.data));
-                    for (let i in data) {
+                    for (var i=0; i<data.length; i++) {
                         for (let j in this.selectedDeviceList) {
-                            if (data[i].name == this.selectedDeviceList[j].name) {
-                                data.splice(i,1)
+                            if (data[i] && (data[i].name == this.selectedDeviceList[j].name)) {
+                                data.splice(i,1);
+								i = i - 1; //从数组删除元素之后，需要改变循环变量
+								break;
                             }
                         }
                     }
@@ -248,29 +252,35 @@ new Vue({
         checkLeftDevice(displayName, name, index) {
             this.checkedLeftDeviceDisName = displayName;
             this.checkedLeftDeviceName = name;
-            this.deviceIndex = index;
+            //this.deviceIndex = index;
+			this.deviceIndexLeft = index;
+			this.deviceIndexRight = -1; //每次点左边，将右边的已选设备索引重置
         },
         checkRightDevice(displayName, name, index) {
             this.checkedRightDeviceDisName = displayName;
             this.checkedRightDeviceName = name;
-            this.deviceIndex = index;
+            //this.deviceIndex = index;
+			this.deviceIndexRight = index;
+			this.deviceIndexLeft = -1; //每次点右边，将左边的已选设备索引重置
         },
         addDevice() {
             if (this.checkedLeftDeviceName != '') {
                 let arrData = {name: this.checkedLeftDeviceName, displayName: this.checkedLeftDeviceDisName};
                 this.selectedDeviceList.push(arrData);
-                this.deviceList.splice(this.deviceIndex, 1);
+                //this.deviceList.splice(this.deviceIndex, 1);
+				this.deviceList.splice(this.deviceIndexLeft, 1); //左侧栏的设备数组删除设备
                 this.checkedLeftDeviceName = "";
-                this.checkedLeftDeviceDisName = ""
+                this.checkedLeftDeviceDisName = "";
             }
         },
         delDevice() {
             if (this.checkedRightDeviceDisName != '') {
                 let arrData = {name: this.checkedRightDeviceName, displayName: this.checkedRightDeviceDisName};
                 this.deviceList.push(arrData);
-                this.selectedDeviceList.splice(this.deviceIndex, 1);
+                //this.selectedDeviceList.splice(this.deviceIndex, 1);
+				this.selectedDeviceList.splice(this.deviceIndexRight, 1); //右侧栏的设备数组删除设备
                 this.checkedRightDeviceName = "";
-                this.checkedRightDeviceDisName = ""
+                this.checkedRightDeviceDisName = "";
             }
         },
         addObjectDevice(deviceData) {
@@ -297,16 +307,53 @@ new Vue({
                 } else alert(res.code_desc)
             })
         },
+		delObjectDevice(id) { //删除指定的考评设备
+			this.postAjax(this.deleteCheckInfo(id), (res) => {
+                if (res.code == 200 || res.code_desc == "success") {
+                    this.initInfo(); //后台数据重载;
+                } else if (res.code == 403) {
+                    delCookie("user");
+                    localStorage.clear();
+                    window.location.href = "./login.html"
+                } else alert(res.code_desc)
+            })
+		},
         submitDevice() {
+			let data = this.objectList[this.selectedObjectIndex].deviceList[this.deviceType]; //data为当前所选考评对象、所选设备类型的原来已关联的设备
+			let arrData = []; //原列表中有，新的已选列表中也有的设备
+			let newDeviceList = []; //原列表中没有，新选择的设备
+			let delDeviceList = []; //原列表中有，现在删除了的设备
             if (this.selectedDeviceList.length > 0) {
-                let data = this.objectList[this.selectedObjectIndex].deviceList[this.deviceType], arrData = [];
-                for (let i in this.selectedDeviceList) {
+				//筛选新增的设备
+				for (let i in this.selectedDeviceList) {
+					let isNewSelect = true; //指示当前设备是否为新选择的设备
                     for (let k in data) {
-                        if (data[k].name == this.selectedDeviceList[i].name) arrData.push(data[k].name)
+                        if (data[k].name == this.selectedDeviceList[i].name) {
+							arrData.push(data[k].name); //原列表中有，新的已选列表中也有的设备
+							isNewSelect = false;
+							break;
+						}
                     }
+					if (isNewSelect)
+						newDeviceList.push(this.selectedDeviceList[i]);
                 }
+				
+				//筛选删除的设备
+				for (let i in data) {
+					let isNewDelete = true; //指示当前的设备是否需要删除
+					for (let j in this.selectedDeviceList) {
+						if (this.selectedDeviceList[j].name == data[i].name) {
+							isNewDelete = false;
+							break;
+						}
+					}
+					if (isNewDelete)
+						delDeviceList.push(data[i]);
+				}
+				
                 if (this.deviceType == 6 || this.deviceType == 7) {
-                    if (this.objectList[this.selectedObjectIndex].deviceList[this.deviceType] && this.objectList[this.selectedObjectIndex].deviceList[this.deviceType].length == 1) alert("该设备只能添加一条数据");
+                    if (this.objectList[this.selectedObjectIndex].deviceList[this.deviceType] && this.objectList[this.selectedObjectIndex].deviceList[this.deviceType].length == 1) 
+						alert("该设备只能添加一条数据");
                     else {
                         if (arrData.length > 0) {
                             alert("请勿添加重复数据");
@@ -320,14 +367,33 @@ new Vue({
                     }
 
                 } else {
-                    if (arrData.length > 0) {
-                        alert("请勿添加重复数据");
-                    } else {
-                        this.addObjectDevice(this.selectedDeviceList);
-                        this.isDevicePop = false;
-                    }
+					//新增设备
+					if (newDeviceList.length > 0) {
+						this.addObjectDevice(newDeviceList);
+					}
+					
+					//删除设备
+					if (delDeviceList.length > 0) {
+						for (let i in delDeviceList)
+							this.delObjectDevice(delDeviceList[i].id);
+					}
+					
+					this.isDevicePop = false; //折叠所有子项？
+					
+                    //if (arrData.length > 0) {
+                    //    alert("请勿添加重复数据");
+                    //} else {
+                    //    this.addObjectDevice(this.selectedDeviceList);
+                    //    this.isDevicePop = false;
+                    //}
                 }
-            }
+            } else {
+				//已选列表为空，表明删除了所有设备
+				for (let i in data) {
+					this.delObjectDevice(data[i].id);
+				}
+				this.isDevicePop = false; //折叠所有子项？
+			}
         },
         startEvaluation(id) {
             this.postAjax(this.startCheck(id), (res) => {
