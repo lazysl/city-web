@@ -378,7 +378,7 @@ new Vue({
 							this.delObjectDevice(delDeviceList[i].id);
 					}
 					
-					this.isDevicePop = false; //折叠所有子项？
+					this.isDevicePop = false; //关闭考评设备弹出层
 					
                     //if (arrData.length > 0) {
                     //    alert("请勿添加重复数据");
@@ -392,7 +392,7 @@ new Vue({
 				for (let i in data) {
 					this.delObjectDevice(data[i].id);
 				}
-				this.isDevicePop = false; //折叠所有子项？
+				this.isDevicePop = false; //关闭考评设备弹出层
 			}
         },
         startEvaluation(id) {
