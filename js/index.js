@@ -229,18 +229,21 @@ $.extend({
                                 }
                                 html += '<li><span>' + data[i].SUBJECT + '</span><span>' + data[i].CREATEDBY + '</span><span class="' + color + '">' + explain + '</span></li>'
                             } else {
-                                if (data[i].status == "Critical" || data[i].status == "critical") {
+                                if (data[i].status.toLowerCase() == "critical") {
                                     explain = "严重";
                                     color = "critical";
-                                } else if (data[i].status == "Warning" || data[i].status == "warning") {
+                                } else if (data[i].status.toLowerCase() == "trouble") {
                                     explain = "故障";
                                     color = "warning";
-                                } else if (data[i].status == "Clear" || data[i].status == "clear") {
+                                } else if (data[i].status.toLowerCase() == "clear") {
                                     explain = "正常";
                                     color = "clear";
-                                } else if (data[i].status == "Unknown" || data[i].status == "unknown") {
+                                } else if (data[i].status.toLowerCase() == "unknown") {
                                     explain = "未知";
-                                    color = "critical";
+                                    color = "warning";
+                                } else if (data[i].status.toLowerCase() == "service down") {
+                                    explain = "服务宕机";
+                                    color = "warning";
                                 } else {
                                     explain = "--";
                                 }
