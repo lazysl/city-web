@@ -44,7 +44,11 @@ $.extend({
 				localStorage.setItem("pw", window.btoa($("#password").val()));
 				
                 window.location.href="./homepage.html"
-            }else $(".submit span").show();
+            }else {
+				$('#checkUserName').text('用户名或密码错误').show();
+				setTimeout("$('#checkUserName').hide()",1500);
+				//return false;
+			}
         });
     },
 });

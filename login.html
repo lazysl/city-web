@@ -11,12 +11,14 @@
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="wap-font-scale" content="no">
-    <link rel="stylesheet" href="css/template.css">
-    <link rel="stylesheet" href="css/login.css">
+	<link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/template.css"> -->
+    <!-- <link rel="stylesheet" href="css/login.css"> -->
     <script src="js/vue.js"></script>
     <script src="js/jquery-2.2.3.min.js"></script>
 </head>
 <body>
+<!-- OLD LOGIN
 <div id="main">
     <div id="login">
         <div class="layout">
@@ -29,6 +31,46 @@
             <div class="errInfo submit"><span>用户名或密码错误</span></div>
         </div>
     </div>
+</div> -->
+
+<div id="main" class="aui-flexView clearfix">
+	<div class="aui-login-bg" style="text-align: center;">
+		<b style="font-size: 20pt;color: #FFF;letter-spacing: 5px;"></b>
+		<p style="font-size: 12pt;color: #FFF;"></p>		
+		<img src="images/body-bg.png" alt="">
+	</div>
+	<div id="login" class="aui-login-box">
+		<div style="text-align: center;margin: 30px;">
+		<img src="images/logo.jpg" style="width: 45px;position: relative;left: 25px">
+		<h2 class="aui-login-title">智能考评管理系统</h2>
+		</div>
+		
+		<div class="aui-login-form">
+			<span style="font-size: 12pt">用户名</span>
+			<span id="checkUserName" style="color: #FF7739"></span>
+			<p>
+				<input type="text" name='username' placeholder="请输入登录用户名" id="userName">
+			</p>
+			<span style="font-size: 12pt">密码</span>
+			<span id="checkPassword" style="color: #FF7739"></span>
+			<p>
+				<input type="password" name='password'  placeholder="请输入登录密码" id="password">
+			</p>
+			
+			<button type="submit" class="aui-button-go" id="submit">登录</button>
+			<!--<div style="margin-top: 10px">
+				<div style="float: left;">
+					<label for="rem-pwd" class="label">
+						<input type="checkbox" id="rem-pwd" class="checkbox">
+						<span>记住密码</span>
+					</label>
+				</div>
+				<div style="float: right;" >
+					<a href="#">忘记密码？</a>
+				</div>
+			</div>-->
+		</div>
+	</div>
 </div>
 </body>
 <script src="js/jquery.cookie.min.js"></script>
@@ -44,13 +86,13 @@
     if (getQueryString("code")!=''&&getQueryString("code")!=null&&typeof getQueryString("code")!="undefined"){
         $.initLogin(getQueryString("code"));
     }
-    var docHeight = $('#main').height();
-    var loginH = $('#login').height();
-    var result = (docHeight - loginH) / 2.5;
-    $('#login').css("margin-top", result + "px");
+    //var docHeight = $('#main').height();
+    //var loginH = $('#login').height();
+    //var result = (docHeight - loginH) / 2.5;
+    //$('#login').css("margin-top", result + "px");
     var userName = $("#userName"), password = $("#password");
     $("#submit").click(function () {
-        if (userName.val() == "") {
+        /*if (userName.val() == "") {
             $(".errInfo.userName span").show();
         } else if (password.val() == "") {
             $(".errInfo.password span").show();
@@ -61,17 +103,40 @@
                 password: password.val()
             };
             $.initLogin(data);
+        }*/
+		
+		if ($("input[name='username']").val() == ''){
+			$('#checkUserName').text('用户名不能为空').show();
+			setTimeout("$('#checkUserName').hide()",1500);
+			return false;
+		}
+		if ($("input[name='password']").val() == ''){
+			$('#checkPassword').text('密码不能为空').show();
+			setTimeout("$('#checkPassword').hide()",1500);
+			return false;
+		} else {
+            //$(".errInfo span").hide();
+            var data = {
+                userName: userName.val(),
+                password: password.val()
+            };
+            $.initLogin(data);
         }
     });
 	$("body").keydown(function(event) {
 		if (event.keyCode == 13) {//keyCode=13是回车键
 			//$("#login_btn").click();
-			if (userName.val() == "") {
-				$(".errInfo.userName span").show();
-			} else if (password.val() == "") {
-				$(".errInfo.password span").show();
+			if ($("input[name='username']").val() == ''){
+				$('#checkUserName').text('用户名不能为空').show();
+				setTimeout("$('#checkUserName').hide()",1500);
+				return false;
+			}
+			if ($("input[name='password']").val() == ''){
+				$('#checkPassword').text('密码不能为空').show();
+				setTimeout("$('#checkPassword').hide()",1500);
+				return false;
 			} else {
-				$(".errInfo span").hide();
+				//$(".errInfo span").hide();
 				var data = {
 					userName: userName.val(),
 					password: password.val()
@@ -80,19 +145,37 @@
 			}
 		}
 	});
-    userName.blur(function () {
-        if (userName.val() == "") $(".userName span").show();
-        else $(".userName span").hide()
+	
+	//---------------------------------------------------------
+	//NEW LOGIN FUNCTIONS
+	$(document).ready(function(){
+        var strName = localStorage.getItem('keyName');
+        var strPass = localStorage.getItem('keyPass');
+        if(strName){
+            $('#userName').val(strName);
+            console.log(strName)
+        }if(strPass){
+            $('#password').val(strPass);
+        }
     });
-    userName.focus(function () {
-        $(".userName span").hide();
-    });
-    password.blur(function () {
-        if (password.val() == "") $(".password span").show();
-        else $(".password span").hide()
-    });
-    password.focus(function () {
-        $(".password span").hide();
-    });
+	
+    function loginBtn_click(){
+            var strName = $('#user').val();
+            var strPass = $('#pass').val();
+            localStorage.setItem('keyName',strName);
+            if($('#rem-pwd').is(':checked')){
+                localStorage.setItem('keyPass',strPass);
+            }else{
+                localStorage.removeItem('keyPass');
+            }
+        }
+
+    $("input[name='password']").click(function(){
+		if($("input[name='username']").val() == ''){
+			$('#checkUserName').text('用户名不能为空').show();
+			setTimeout("$('#checkUserName').hide()",1500);
+			return false;
+		}
+	})
 </script>
 </html>
