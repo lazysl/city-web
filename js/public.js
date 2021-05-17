@@ -1,6 +1,6 @@
 var setting = {
-    // www_url: "http://localhost:8080",
-    www_url: "/cityapi",
+    www_url: "http://192.168.111.146:8080",
+    // www_url: "/cityapi",
     beiHang_url: '/serverapi',
     // www_url: "http://192.168.1.75:8080",
     // beiHang_url:'http://192.168.1.72:8060',

@@ -54,7 +54,10 @@ Vue.component('common-head',{
                             this.meanList.push(res.data.menu[i])
                         }
                     }
-                    this.meanList.sort((a,b)=>{return a.sort - b.sort})
+                    this.meanList.sort((a, b) => {
+                        return a.sort - b.sort
+                    });
+                    localStorage.setItem("menu",JSON.stringify(this.meanList));
                 } else if (res.code == 403) {
                     delCookie("user");
                     localStorage.clear();

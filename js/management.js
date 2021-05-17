@@ -374,7 +374,19 @@ new Vue({
                     } else alert(res.code_desc)
                 })
             }
-        }
+        },
+        initMenu() {
+            let href = window.location.pathname.substring(1, window.location.pathname.length), isExist = false;
+            let meanList = JSON.parse(localStorage.getItem("menu"));
+            for (let i in meanList) {
+                if (meanList[i].href == href) {
+                    isExist = true;
+                }
+            }
+            if (!isExist){
+                window.location.href = "./noAuthority.html"
+            }
+        },
     },
     mounted() {
         this.docHeight();
@@ -383,5 +395,6 @@ new Vue({
         this.initRoleList();
         this.initMeanList();
         this.initMail();
+        this.initMenu()
     },
 });

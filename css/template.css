@@ -261,6 +261,12 @@ body{
     z-index: 1;
     margin-bottom: 30px;
 }
+#noAuthority{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
 .layout{
     background: #fff;
     box-shadow: 0 3px 18px rgba(0,0,0,.1);
